@@ -1,0 +1,236 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>RAG에 에이전트 레이어 추가하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">RAG에 에이전트 레이어 추가하기</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-10-04 09:02:38</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-f8d379ff-7e53-469b-9635-eac091dd7eb4" data-ke-size="size16"><span style="color: #000000;">오늘은 단순한 RAG를 넘어서 RAG에 에이전트를 추가하는 새로운 주제에 대한 설명자료를 요약정리 하였습니다.</span></p>
+<p id="SE-886c43e5-c87a-4621-842b-821800b9ab5c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cea8a120-9977-415d-8dfd-1490e6db6777" data-ke-size="size16"><span style="color: #000000;"><b>Llama Index 개요</b></span></p>
+<p id="SE-9921f2f0-2274-4eb6-9927-7a66a2983ef6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-85e174b7-4059-4363-b5c1-ce37bb0e83ef" data-ke-size="size16"><span style="color: #000000;">Llama Index는 데이터를 언어 모델에 연결하여 애플리케이션을 구축하기 위한 프레임워크입니다. 주요 기능은 다음과 같습니다:</span></p>
+<p id="SE-35ba9690-8a27-413c-9f38-04ec8f55786e" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">데이터 로더</span></li>
+<li><span style="color: #000000;">데이터 인덱싱</span></li>
+<li><span style="color: #000000;">쿼리 오케스트레이션 (검색, 프롬프트 오케스트레이션, LLM 등)</span></li>
+</ul>
+<p id="SE-0e10f21d-e5e5-47ac-ab1c-d4c83e1561bf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e054ef56-4cbf-4fde-ab2a-257d1742df69" data-ke-size="size16"><span style="color: #000000;">이를 통해 개발자는 채팅 인터페이스, 워크플로우 자동화, 문서 인사이트 추출 등 다양한 애플리케이션을 구축할 수 있습니다.</span></p>
+<p id="SE-bb87c256-3842-44f8-8a1a-b9b21448b1f0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-94419fd4-d175-4609-b234-f2d5076bbc44" data-ke-size="size16"><span style="color: #000000;"><b>RAG(Retrieval-Augmented Generation)란?</b></span></p>
+<p id="SE-9da35183-d6c6-47d6-b137-7833894d51cf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e1c252ad-4fda-4154-bef6-f6d853b7a7e0" data-ke-size="size16"><span style="color: #000000;">RAG는 문서 검색과 언어 모델 로직을 결합하여 애플리케이션을 구축하는 방법입니다. 주요 단계는 다음과 같습니다:</span></p>
+<p id="SE-00073c5f-3863-461e-ad10-0bd98b3d6182" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">문서를 청크로 나누기</span></li>
+<li><span style="color: #000000;">벡터 데이터베이스에 저장</span></li>
+<li><span style="color: #000000;">검색 및 LLM 로직을 사용하여 데이터베이스에서 데이터를 가져와 애플리케이션 구축</span></li>
+</ol>
+<p id="SE-45ce3761-654d-4243-bafa-6dec05918c7d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-369a78b3-b247-43e6-a911-87110772d1b5" data-ke-size="size16"><span style="color: #000000;">RAG는 간단한 질문이나 작은 문서 집합에 대해서는 효과적이지만, 복잡한 쿼리에는 한계가 있습니다.</span></p>
+<p id="SE-6fc8abe0-e762-446a-968c-da40f8373009" data-ke-size="size16">&nbsp;</p>
+<p id="SE-52fb7e92-04e4-473f-a8a2-5a14177d13ad" data-ke-size="size16"><span style="color: #000000;"><b>단순 RAG의 한계</b></span></p>
+<p id="SE-bdde25ee-b952-422c-96d9-5679cfc24ad2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-83ce3dff-7613-48b7-a34f-a11430101f53" data-ke-size="size16"><span style="color: #000000;">단순 RAG는 다음과 같은 경우에 어려움을 겪습니다:</span></p>
+<p id="SE-504b2e1e-f07c-421a-bd84-11f19dfa53c1" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">복잡한 질문</span></li>
+<li><span style="color: #000000;">요약</span></li>
+<li><span style="color: #000000;">비교 질문</span></li>
+<li><span style="color: #000000;">구조화된 분석</span></li>
+<li><span style="color: #000000;">다중 부분 질문</span></li>
+</ul>
+<p id="SE-58e680c1-691d-4810-a374-1f906fffe0be" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fe8601f1-bfd3-4eda-9b57-5b53a21b1002" data-ke-size="size16"><span style="color: #000000;">이러한 한계를 극복하기 위해 에이전트를 RAG에 통합하는 방법을 살펴보겠습니다.</span></p>
+<p id="SE-6b7cf0ce-8189-40bc-8e68-d3f6f3c1769e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c2f1dbc8-6db5-4a5c-acab-7d9002f878d8" data-ke-size="size16"><span style="color: #000000;"><b>에이전트 소개</b></span></p>
+<p id="SE-25444172-1f4d-4d83-839e-bf2e04192bc1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a02fb691-4eca-449f-92f3-9639f302c6a4" data-ke-size="size16"><span style="color: #000000;">에이전트는 RAG 프레임워크에 통합되어 질문 답변 능력을 향상시키고 데이터에 대한 추론을 개선합니다. 에이전트를 사용하면 더 복잡한 처리와 동적 응답이 가능해집니다.</span></p>
+<p id="SE-91a4d2d1-2168-476c-adb4-92230483656a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b1b3cb2d-91ea-4ee9-b672-88585c206d45" data-ke-size="size16"><span style="color: #000000;"><b>RAG에 에이전트 레이어 추가하기</b></span></p>
+<p id="SE-caec153b-9c09-4c3f-b67d-81582063887c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ce7250c6-31db-40bd-a816-644aafa3d28d" data-ke-size="size16"><span style="color: #000000;">RAG 파이프라인의 다양한 단계에 에이전트를 추가할 수 있습니다:</span></p>
+<p id="SE-b9a98282-27c1-4dd5-b388-a47913434784" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">시작 단계</span></li>
+<li><span style="color: #000000;">중간 단계</span></li>
+<li><span style="color: #000000;">끝 단계</span></li>
+</ol>
+<p id="SE-3f425e0b-4170-42d1-91bf-b39a0a85ee76" data-ke-size="size16">&nbsp;</p>
+<p id="SE-39f8c2a1-a529-4b36-90d5-986b82e462ec" data-ke-size="size16"><span style="color: #000000;">이를 통해 RAG 프로세스의 각 부분을 더 지능적으로 만들 수 있습니다.</span></p>
+<p id="SE-af5a4a0a-0890-4289-8c2b-7f04669137a6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-64e9e58e-4954-49a2-9202-21befb12e762" data-ke-size="size16"><span style="color: #000000;"><b>에이전트의 정의</b></span></p>
+<p id="SE-b73a775a-0ac1-4765-accf-9e053a81fab4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8766bd38-f03a-4428-8747-da54b899ced4" data-ke-size="size16"><span style="color: #000000;">에이전트는 LLM을 사용하여 추론과 도구 선택을 수행합니다. RAG는 에이전트가 사용할 수 있는 하나의 도구일 뿐입니다. 에이전트는 RAG 외에도 다른 도구들을 사용하여 데이터에 접근하고 응답을 생성할 수 있습니다.</span></p>
+<p id="SE-5896f83e-5fb9-4350-94d6-d4fde409a67a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-959b03fb-092a-4f61-a9a7-8f163b8d53d2" data-ke-size="size16"><span style="color: #000000;"><b>에이전트의 스펙트럼</b></span></p>
+<p id="SE-0e9db02a-a771-4afe-866a-deb0245673c4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6a428705-f54c-40f9-8cd6-cc3e6c9120e8" data-ke-size="size16"><span style="color: #000000;">에이전트는 단순한 것부터 고급 수준까지 다양한 스펙트럼이 있습니다:</span></p>
+<p id="SE-f9ed8da7-54fc-4813-9219-49a42b015ab9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f7f7c7b2-068e-484d-85a6-d0bb27f261f4" data-ke-size="size16"><span style="color: #000000;"><b>단순한 에이전트</b></span></p>
+<p id="SE-823abd44-8598-4082-81b3-13cf54fcfe71" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">라우팅</span></li>
+<li><span style="color: #000000;">쿼리 계획</span></li>
+<li><span style="color: #000000;">단일 파이프라인에서의 도구 사용</span></li>
+</ul>
+<p id="SE-6b86b116-0342-4319-b006-2bb114212bc7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-01b082be-0764-454b-b03c-e38307d60f84" data-ke-size="size16"><span style="color: #000000;"><b>고급 에이전트</b></span></p>
+<p id="SE-08904214-7174-45ce-b333-8b6d6bf59011" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">자동화된 추론 루프 (예: ReAct)</span></li>
+<li><span style="color: #000000;">동적 쿼리 계획</span></li>
+</ul>
+<p id="SE-b304c53a-45d1-4101-a344-8b7e3a195b87" data-ke-size="size16">&nbsp;</p>
+<p id="SE-07b0a43b-46a6-49e0-b976-1a58479818bd" data-ke-size="size16"><span style="color: #000000;">단순한 에이전트는 비용과 지연 시간이 낮지만 표현력이 제한적입니다. 고급 에이전트는 더 강력하지만 비용과 지연 시간이 높습니다.</span></p>
+<p id="SE-2a90268a-a499-424e-aff9-ab1742a106e6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a045f702-aa03-47b3-8077-e55646ab406a" data-ke-size="size16"><span style="color: #000000;"><b>라우팅</b></span></p>
+<p id="SE-62e758ac-63e6-43f2-b490-119d752a4426" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7fd83f10-11d2-48be-8ccb-fd7ec3ec03a2" data-ke-size="size16"><span style="color: #000000;">라우팅은 가장 기본적인 형태의 에이전트 추론입니다. 주어진 입력 작업이나 질문에 대해 적절한 선택지를 고르는 것입니다.</span></p>
+<p id="SE-44d84841-8a4e-4acb-9ac7-ff72fc953b50" data-ke-size="size16">&nbsp;</p>
+<p id="SE-648979cf-b53a-4dfa-931b-4020895c5a1d" data-ke-size="size16"><span style="color: #000000;">예를 들어:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">RAG 파이프라인</span></li>
+<li><span style="color: #000000;">요약 파이프라인</span></li>
+</ul>
+<p id="SE-23677759-1420-4f3c-a978-fa745e27a57c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5c73eb65-400c-428c-8488-e38c9ad2afbf" data-ke-size="size16"><span style="color: #000000;">사용자의 질문에 따라 적절한 파이프라인을 선택할 수 있습니다.</span></p>
+<p id="SE-f72b7292-b15c-432e-b0f0-932083c96488" data-ke-size="size16">&nbsp;</p>
+<p id="SE-18321618-154a-448d-9698-93b136bf9712" data-ke-size="size16"><span style="color: #000000;"><b>쿼리 계획</b></span></p>
+<p id="SE-060a6249-b95f-4842-83fe-e5dab1768379" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5591c370-0c33-408e-8195-d94df4f97ea1" data-ke-size="size16"><span style="color: #000000;">쿼리 계획은 주어진 질문을 병렬로 처리할 수 있는 하위 쿼리로 분해하는 과정입니다.</span></p>
+<p id="SE-7114e693-86ab-45db-a2c3-c9c8fc301e1d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1f22cdf8-93b1-4ba5-be29-778bb40139c1" data-ke-size="size16"><span style="color: #000000;">예시: "2021년 우버와 리프트의 매출 성장을 비교해주세요."</span></p>
+<p id="SE-b341b51c-100a-4540-93c0-c6e61b23fb2b" data-ke-size="size16"><span style="color: #000000;">이 질문은 두 개의 하위 질문으로 나눌 수 있습니다:</span></p>
+<p id="SE-dc980125-9d78-455c-b630-433d4fec7c8d" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">2021년 리프트의 매출은?</span></li>
+<li><span style="color: #000000;">2021년 우버의 매출은?</span></li>
+</ol>
+<p id="SE-d215d9bf-ebd0-4167-a61b-eaa373ee3a0f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-21984905-03af-4287-b671-b5e19a488cda" data-ke-size="size16"><span style="color: #000000;">각 하위 질문을 관련 데이터 소스에 대해 실행하고 결과를 결합하여 최종 답변을 생성합니다.</span></p>
+<p id="SE-2d4fa9e9-e473-4352-bcab-f2ae3c068cdf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-15ed5759-69ca-4560-aee9-087206aeac5b" data-ke-size="size16"><span style="color: #000000;"><b>도구 사용</b></span></p>
+<p id="SE-635a4cb4-bb1f-48e5-8211-01fabde77383" data-ke-size="size16">&nbsp;</p>
+<p id="SE-37ee3420-922b-416a-823b-261d9c3d1dc1" data-ke-size="size16"><span style="color: #000000;">도구 사용은 LLM이 API를 호출하고 주어진 도구를 사용하기 위한 매개변수를 추론하는 것입니다. 이는 다음과 같은 경우에 유용합니다:</span></p>
+<p id="SE-abfdc009-7f1e-4019-a7a1-2cf215102c4b" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">벡터 데이터베이스 쿼리</span></li>
+<li><span style="color: #000000;">SQL 데이터베이스 쿼리</span></li>
+<li><span style="color: #000000;">Google 검색, Google 캘린더 등의 외부 API 사용</span></li>
+</ul>
+<p id="SE-3ac3a9d8-6cb5-4e92-85ba-2b36e4755f6d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f4efc0ca-9997-478b-9210-72821af929b7" data-ke-size="size16"><span style="color: #000000;">에이전트는 사용자 쿼리를 도구의 매개변수로 변환하여 더 정확한 결과를 얻을 수 있습니다.</span></p>
+<p id="SE-3802bef1-371a-4432-a307-244181a370bc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b3f89f36-0125-4c0d-bd20-0b3e4e3f6c09" data-ke-size="size16">&nbsp;</p>
+<p id="SE-947ee8bd-2310-4454-a1dd-c4fd0c79c23e" data-ke-size="size16"><span style="color: #000000;"><b>순차적 다중 부분 문제 해결</b></span></p>
+<p id="SE-accb448c-6dde-40ba-a90f-b02e886fc058" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e9718823-5b79-418c-b066-368e9827f9b9" data-ke-size="size16"><span style="color: #000000;">더 복잡한 문제를 해결하기 위해 에이전트는 다음과 같은 기능을 갖추어야 합니다:</span></p>
+<p id="SE-2ef8fb61-8aac-43d4-9aaf-0193547bcc67" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">반복적인 실행을 위한 루프 추가</span></li>
+<li><span style="color: #000000;">상태를 유지하기 위한 메모리 모듈 추가</span></li>
+</ol>
+<p id="SE-4ae35b52-74ef-4804-b34a-8ec1506b7575" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9111476e-d7ea-475d-9c09-ce370dda8b52" data-ke-size="size16"><span style="color: #000000;">Llama Index에서는 이를 "데이터 에이전트"라고 부르며, 다음과 같은 구성 요소를 포함합니다:</span></p>
+<p id="SE-25242ac4-6468-40e8-b5ca-60f2d241cbac" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">실행 파이프라인 (쿼리 계획, 도구 사용, 라우팅 등)</span></li>
+<li><span style="color: #000000;">에이전트 루프 (예: ReAct)</span></li>
+</ul>
+<p id="SE-42d8cfb2-e3a2-4862-b6c2-3a8b3ad39eec" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fd0c070c-d29c-4c4a-8bea-3b1a8fd956c5" data-ke-size="size16"><span style="color: #000000;"><b>ReAct 패러다임</b></span></p>
+<p id="SE-48645704-5040-4413-939c-1078ae8c4353" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5419e047-c311-4f5f-b525-d6552cb06875" data-ke-size="size16"><span style="color: #000000;">ReAct는 2022년에 발표된 논문에서 소개된 인기 있는 에이전트 루프입니다. 주요 특징은 다음과 같습니다:</span></p>
+<p id="SE-acd6b488-b7f7-4cfd-9b73-9ceb438e6257" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">질문을 받아 생각(Thought)을 생성</span></li>
+<li><span style="color: #000000;">행동(Action)과 그에 대한 입력을 결정</span></li>
+<li><span style="color: #000000;">중간 결과를 대화 기록에 추가</span></li>
+<li><span style="color: #000000;">작업이 완료될 때까지 반복</span></li>
+</ol>
+<p id="SE-d09ef6d6-2e8e-4de1-8ecf-65b4de8a32f3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fa2dda6d-f583-4faa-939a-1dadaef08dba" data-ke-size="size16"><span style="color: #000000;">ReAct는 다음과 같은 기능을 포함합니다:</span></p>
+<p id="SE-04210604-d099-43dc-ac34-9abdcefb8d9d" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">도구 사용</span></li>
+<li><span style="color: #000000;">질문 분해 및 쿼리 계획</span></li>
+<li><span style="color: #000000;">라우팅</span></li>
+</ul>
+<p id="SE-d5768e91-f23f-42e7-854b-da217f6c39e5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7e4ed865-845a-4bd2-a75b-71ee1e1f4b0a" data-ke-size="size16"><span style="color: #000000;"><b>ReAct를 넘어서: 고급 에이전트 아키텍처</b></span></p>
+<p id="SE-33d7b54b-d950-4101-a4b0-f5d712559337" data-ke-size="size16">&nbsp;</p>
+<p id="SE-73d11426-de77-458d-966b-96b85c4fe8e0" data-ke-size="size16"><span style="color: #000000;">최근 연구에서는 ReAct를 넘어서는 고급 에이전트 아키텍처를 제안하고 있습니다:</span></p>
+<p id="SE-e1c238e1-6a08-4082-9634-b77debfa61b0" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">장기 계획 수립</span></li>
+<li><span style="color: #000000;">시뮬레이션 및 롤아웃</span></li>
+<li><span style="color: #000000;">시스템 수준 구성 요소 최적화</span></li>
+</ul>
+<p id="SE-b5511b02-54ba-4473-869b-af3cb809ee58" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1792aaea-8e83-4d20-8d26-94fc8fbb8772" data-ke-size="size16"><span style="color: #000000;">예를 들어, "LM 컴파일러" 논문에서는 컴퓨터 아키텍처와 유사한 접근 방식을 제안합니다:</span></p>
+<p id="SE-76a989be-1843-47a2-b705-7885e47249bd" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">전체 계산 그래프를 미리 계획</span></li>
+<li><span style="color: #000000;">의존성 그래프 매핑</span></li>
+<li><span style="color: #000000;">가능한 경우 병렬로 작업 실행</span></li>
+<li><span style="color: #000000;">필요에 따라 재계획</span></li>
+</ol>
+<p id="SE-6f54a959-2826-496b-8024-20e827108b64" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ddc280af-b54b-4c7c-9a7a-b7a50f4c00f3" data-ke-size="size16"><span style="color: #000000;">이러한 접근 방식은 더 복잡하고 추상적인 작업을 처리할 수 있게 해줍니다.</span></p>
+<p id="SE-66e8d1c9-df45-426a-ba62-8ce760f88188" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d2618110-5c61-4708-8990-fb297c6cf845" data-ke-size="size16"><span style="color: #000000;"><b>에이전트 개발을 위한 추가 요구사항</b></span></p>
+<p id="SE-e5baf93a-da5c-43e2-b435-413b525476b6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8e896f35-fa5b-4982-b308-7fe17887cf57" data-ke-size="size16"><span style="color: #000000;">에이전트 시스템이 발전함에 따라 다음과 같은 요구사항이 중요해질 것입니다:</span></p>
+<p id="SE-5d993d22-c450-4990-b655-aff3a074425c" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">관찰 가능성: 에이전트 실행의 전체 추적을 볼 수 있어야 함</span></li>
+<li><span style="color: #000000;">제어: 에이전트의 중간 단계를 단계별로 안내할 수 있어야 함</span></li>
+<li><span style="color: #000000;">사용자 정의 가능성: 연구 논문을 넘어 실제 구현과 실험이 가능해야 함</span></li>
+</ol>
+<p id="SE-089f3fc3-f686-42fd-b5dc-afda02fb253f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f55cfd3a-764b-4791-a64e-adc568ca7efb" data-ke-size="size16"><span style="color: #000000;">Llama Index에서는 이러한 요구사항을 충족하기 위한 쿼리 구문을 제공하고 있습니다. 개발자는 이를 통해 모듈을 조합하고 for 루프에서 실행할 수 있으며, 중간 사용자 입력을 주입하고 전체 실행 과정을 관찰할 수 있습니다.</span></p>
+<p id="SE-1418165c-8715-4c8a-8d6f-39e556188c26" data-ke-size="size16">&nbsp;</p>
+<p id="SE-29726c4e-3bf6-4fb8-9bb0-c479f8ff9677" data-ke-size="size16"><span style="color: #000000;"><b>결론</b></span></p>
+<p id="SE-0b15c1d7-3f47-49e5-8b37-2b4ed33fe655" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f9ea7342-78ed-4d79-9d4d-a072d8a81e53" data-ke-size="size16"><span style="color: #000000;">RAG에 에이전트 레이어를 추가함으로써 더 강력하고 유연한 언어 모델 애플리케이션을 구축할 수 있습니다. 단순한 라우팅부터 복잡한 다단계 추론까지, 에이전트는 RAG의 한계를 극복하고 더 지능적인 시스템을 만들 수 있게 해줍니다.</span></p>
+<p id="SE-e5cd8f42-396d-4c7c-9e27-2ba6b7454ad6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0f884049-5649-463b-bdb1-fd7c203b0628" data-ke-size="size16"><span style="color: #000000;">앞으로 모델이 개선되고 비용이 낮아짐에 따라 더 많은 사람들이 에이전트를 구축하게 될 것입니다. 이에 따라 관찰 가능성, 제어, 사용자 정의 가능성이 중요한 요구사항이 될 것입니다. Llama Index와 같은 프레임워크는 이러한 요구사항을 충족시키는 도구를 제공하여 개발자들이 더 쉽게 고급 에이전트 시스템을 구축할 수 있도록 지원할 것입니다.</span></p>
+<p id="SE-64018864-d8cd-45b0-b27e-2c2745624f15" data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

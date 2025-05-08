@@ -1,0 +1,119 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AutoRAG 사용방법 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AutoRAG 사용방법 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-08-30 20:09:30</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-dab1b1c0-85ad-4020-8738-5be22cf982b4" data-ke-size="size16"><span style="color: #000000;">AutoRAG는 Retrieval-Augmented Generation(RAG) 시스템을 자동화하는 강력한 도구입니다. 이 글에서는 GitHub의 AutoRAG-template을 기반으로 AutoRAG의 설치부터 사용까지 상세히 알아보겠습니다.</span></p>
+<p id="SE-633d9e3f-55c5-4f09-8d72-cda043fbfb87" data-ke-size="size16">&nbsp;</p>
+<p id="SE-98fa860d-5e88-4dc0-9caf-6098491f2cb3" data-ke-size="size16"><span style="color: #000000;"><b>1. 준비 단계</b></span></p>
+<p id="SE-a273b5ed-1053-4c01-9a68-8cc6a7608b98" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d31142d5-6314-47d2-9a83-7e49a53ba136" data-ke-size="size16"><span style="color: #000000;"><b>1.1 환경 설정</b></span></p>
+<p id="SE-62f7426b-4851-440a-85d0-da0d90b4ccaa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fe5aeae0-0b4d-42b6-b63b-49dd27344544" data-ke-size="size16"><span style="color: #000000;"><b>GitHub 저장소 클론</b></span><span style="color: #000000;">: 터미널에서 다음 명령어를 실행합니다.</span></p>
+<p id="SE-6e0c63e2-6548-450a-9b88-e21a631144f3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2b16e9f5-c279-4e46-864a-75944a5a5141" data-ke-size="size16"><span style="color: #000000;">git clone &lt;<a href="https://github.com/Marker-Inc-Korea/AutoRAG-template.git">https://github.com/Marker-Inc-Korea/AutoRAG-template.git</a>&gt; </span></p>
+<p id="SE-5c095809-c16b-4086-9ed9-ba40710a2e90" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ffe99e98-8ccf-4ad2-9d78-10ae084f1326" data-ke-size="size16"><span style="color: #000000;"><b>작업 디렉토리 이동</b></span><span style="color: #000000;">: 클론한 저장소로 이동합니다.</span></p>
+<p id="SE-f2e712a7-64eb-4040-953c-a259a2e5387e" data-ke-size="size16"><span style="color: #000000;">cd AutoRAG-template </span></p>
+<p id="SE-0d6fec8c-dc35-4fe7-bd18-840cafd2e16c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c9460721-5394-453c-984b-3be9fe9a665a" data-ke-size="size16"><span style="color: #000000;"><b>가상 환경 생성</b></span><span style="color: #000000;">: Python 가상 환경을 만들어 프로젝트를 격리합니다.</span></p>
+<p id="SE-16257c18-5b71-409b-853e-44f983b060a3" data-ke-size="size16"><span style="color: #000000;">python -m venv autorag_env </span></p>
+<p id="SE-ec664d72-9173-49b9-88ff-b79f6c821832" data-ke-size="size16">&nbsp;</p>
+<p id="SE-960366de-6548-4358-b35a-6247a3fb52e3" data-ke-size="size16"><span style="color: #000000;"><b>가상 환경 활성화</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-addf9cd8-7c2e-493c-aa35-680b829ba9d5" data-ke-size="size16"><span style="color: #000000;">Windows: autorag_env\\\\Scripts\\\\activate</span></p>
+<p id="SE-aaf2b172-f50c-4ca4-9c76-2adde62c571b" data-ke-size="size16"><span style="color: #000000;">macOS/Linux: source autorag_env/bin/activate</span></p>
+<p id="SE-9251a0e3-a7f7-4c7a-915b-25ab549c033c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1b054cdc-72c3-45e6-864e-8e8eb6d78e63" data-ke-size="size16"><span style="color: #000000;"><b>1.2 의존성 설치</b></span></p>
+<p id="SE-8275228f-8491-4be3-b35d-be77ce3a7e0f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4f539bee-04fc-436b-b00a-ca5875d1d845" data-ke-size="size16"><span style="color: #000000;"><b>requirements.txt 확인</b></span><span style="color: #000000;">: 필요한 패키지 목록을 확인합니다.</span></p>
+<p id="SE-7b4de8d0-d1f8-4eea-bf1b-67b626ec005c" data-ke-size="size16"><span style="color: #000000;"><b>패키지 설치</b></span><span style="color: #000000;">: 다음 명령어로 필요한 패키지를 설치합니다.</span></p>
+<p id="SE-1fb5e25b-2e43-4802-8881-698501c8e0f6" data-ke-size="size16"><span style="color: #000000;">pip install -r requirements.txt </span></p>
+<p id="SE-6d5f5fbc-b1b8-4bab-8a29-e7390a492966" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b801b12a-848f-4081-913f-7aa1c55696e8" data-ke-size="size16"><span style="color: #000000;"><b>2. 데이터 준비</b></span></p>
+<p id="SE-43509f4e-6014-4572-81aa-32dd3a59cff9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0c6d4877-3538-40dc-9dce-d0d34cd01d57" data-ke-size="size16"><span style="color: #000000;"><b>데이터 폴더 생성</b></span><span style="color: #000000;">: 프로젝트 루트에 'data' 폴더를 만듭니다.</span></p>
+<p id="SE-862ff7f0-689b-4a42-b4a4-c09661064b5e" data-ke-size="size16"><span style="color: #000000;"><b>데이터셋 다운로드</b></span><span style="color: #000000;">: 필요한 데이터셋을 'data' 폴더에 다운로드합니다.</span></p>
+<p id="SE-38774a23-4449-4374-a9f5-83f7e12168c3" data-ke-size="size16"><span style="color: #000000;"><b>데이터 구조 확인</b></span><span style="color: #000000;">: QA 데이터와 코퍼스 데이터의 구조를 파악합니다.</span></p>
+<p id="SE-3f6377a4-9ec0-42cf-9e71-7f93719baa2c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b0165a74-57e4-488b-b046-c4820b930eb1" data-ke-size="size16"><span style="color: #000000;"><b>3. 환경 변수 설정</b></span></p>
+<p id="SE-2d4f95fa-5378-4252-a2ad-e6880471532a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3db91ccd-91c2-443a-94e8-0db0c0b52277" data-ke-size="size16"><span style="color: #000000;"><b>.env 파일 생성</b></span><span style="color: #000000;">: .env.template 파일을 복사하여 .env 파일을 만듭니다.</span></p>
+<p id="SE-e167e6cd-8d33-4d9e-b450-8b1a1bbe7200" data-ke-size="size16"><span style="color: #000000;"><b>환경 변수 설정</b></span><span style="color: #000000;">: .env 파일에 필요한 환경 변수를 설정합니다.</span></p>
+<p id="SE-239d7a83-499a-4f9b-bdb6-29345f8eeac1" data-ke-size="size16"><span style="color: #000000;"><b>API 키 입력</b></span><span style="color: #000000;">: 필요한 경우 API 키를 .env 파일에 추가합니다.</span></p>
+<p id="SE-ddd21adb-3700-41dd-8383-f935ac5b594b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-25aa0fd0-c851-450f-92ad-0670a71d120f" data-ke-size="size16"><span style="color: #000000;"><b>4. 설정 파일 준비</b></span></p>
+<p id="SE-2168b263-23b2-45f1-80f3-5027e6b8e1a1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1b63fb12-b736-463b-881c-d2a390f58ae4" data-ke-size="size16"><span style="color: #000000;"><b>config 폴더 확인</b></span><span style="color: #000000;">: 'config' 폴더에 있는 예제 설정 파일을 검토합니다.</span></p>
+<p id="SE-68755abb-a706-42d4-ae4b-99bec8b49ad3" data-ke-size="size16"><span style="color: #000000;"><b>설정 파일 생성</b></span><span style="color: #000000;">: 프로젝트에 맞는 새로운 YAML 설정 파일을 만듭니다.</span></p>
+<p id="SE-0d4fc673-c7b5-476f-bc8b-77e4261680a9" data-ke-size="size16"><span style="color: #000000;"><b>경로 설정</b></span><span style="color: #000000;">: 설정 파일에 QA 데이터, 코퍼스 데이터, 프로젝트 디렉토리 경로를 지정합니다.</span></p>
+<p id="SE-d936f28a-cc7a-4e49-aeb6-9bd75943764c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e0e31e73-6257-4c00-80a8-ca4cf1bbff91" data-ke-size="size16"><span style="color: #000000;"><b>5. AutoRAG 실행</b></span></p>
+<p id="SE-0ae1f57b-cf67-403a-b26b-8550cebedb0f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9c648fec-c410-4b5f-a697-d01697075618" data-ke-size="size16"><span style="color: #000000;"><b>실행 명령어 준비</b></span><span style="color: #000000;">: 다음 형식의 명령어를 준비합니다.</span></p>
+<p id="SE-d337184f-1801-432d-9523-b3a73e4a95df" data-ke-size="size16"><span style="color: #000000;">python main.py --config /path/to/config.yaml </span></p>
+<p id="SE-0eef23d9-2140-4d14-87d5-8cf097593413" data-ke-size="size16"><span style="color: #000000;"><b>명령어 실행</b></span><span style="color: #000000;">: 준비한 명령어를 터미널에서 실행합니다.</span></p>
+<p id="SE-b40d96f0-e2da-4a34-8723-15370b8fdd5b" data-ke-size="size16"><span style="color: #000000;"><b>로그 확인</b></span><span style="color: #000000;">: 실행 중 출력되는 로그를 모니터링합니다.</span></p>
+<p id="SE-a4559158-e569-4e0c-af6d-cbf5252347bc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-17d7e22a-d865-4f11-9b28-48d4938081f6" data-ke-size="size16"><span style="color: #000000;"><b>6. 결과 분석</b></span></p>
+<p id="SE-de8ed418-36f3-46a0-899d-4c2184485082" data-ke-size="size16">&nbsp;</p>
+<p id="SE-760d997f-f3eb-415f-a149-b575f7cb62a0" data-ke-size="size16"><span style="color: #000000;"><b>벤치마크 폴더 확인</b></span><span style="color: #000000;">: 'benchmark' 폴더에서 결과를 확인합니다.</span></p>
+<p id="SE-418faeab-089d-40c9-9c1d-24287958fb42" data-ke-size="size16"><span style="color: #000000;"><b>성능 지표 분석</b></span><span style="color: #000000;">: 생성된 벤치마크 결과를 분석합니다.</span></p>
+<p id="SE-375b21a9-bc5f-45b1-83f2-7c08d99d90e9" data-ke-size="size16"><span style="color: #000000;"><b>오류 검토</b></span><span style="color: #000000;">: 발생한 오류나 경고 메시지를 검토합니다.</span></p>
+<p id="SE-3a6cf721-8ada-4940-97c6-ddfbb204b7cb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1e5f5b67-9981-4e56-be92-14417861df14" data-ke-size="size16"><span style="color: #000000;"><b>7. 최적화 및 개선</b></span></p>
+<p id="SE-8bbf15cf-4668-44f5-9753-815ceeae4c6a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-12be86a0-70c1-4026-8c14-e17b01aee4f0" data-ke-size="size16"><span style="color: #000000;"><b>파라미터 조정</b></span><span style="color: #000000;">: 설정 파일의 파라미터를 조정하여 성능을 개선합니다.</span></p>
+<p id="SE-dfaeeb6b-aa3d-4b96-9e28-080e749fd536" data-ke-size="size16"><span style="color: #000000;"><b>모델 선택</b></span><span style="color: #000000;">: 다양한 임베딩 모델과 언어 모델을 실험합니다.</span></p>
+<p id="SE-7b521b0f-c0f1-4375-a4e5-3c6506369dbe" data-ke-size="size16"><span style="color: #000000;"><b>데이터 전처리</b></span><span style="color: #000000;">: 필요한 경우 데이터 전처리 단계를 추가합니다.</span></p>
+<p id="SE-f48f8362-76af-4e4e-83b0-46c3344fd197" data-ke-size="size16">&nbsp;</p>
+<p id="SE-726ff940-b738-4ee9-a9b7-bb742255a80e" data-ke-size="size16"><span style="color: #000000;"><b>8. 고급 기능 활용</b></span></p>
+<p id="SE-9ed0a95c-6b34-4af1-a79e-dc3e6abc0091" data-ke-size="size16">&nbsp;</p>
+<p id="SE-32424732-fca0-4afe-8969-4c9d647b5328" data-ke-size="size16"><span style="color: #000000;"><b>커스텀 컴포넌트</b></span><span style="color: #000000;">: 필요에 따라 커스텀 컴포넌트를 개발합니다.</span></p>
+<p id="SE-963e02d1-e5a2-4eb4-a557-d5439b326619" data-ke-size="size16"><span style="color: #000000;"><b>파이프라인 확장</b></span><span style="color: #000000;">: AutoRAG 파이프라인을 프로젝트에 맞게 확장합니다.</span></p>
+<p id="SE-36e7c622-5925-4c65-9e40-c4122e5af083" data-ke-size="size16"><span style="color: #000000;"><b>분산 처리</b></span><span style="color: #000000;">: 대규모 데이터셋을 위한 분산 처리 방법을 고려합니다.</span></p>
+<p id="SE-b74b3741-c11b-491b-92fd-13e86c597cc0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0465e12f-b846-4c95-a9c8-d27ee46f5051" data-ke-size="size16"><span style="color: #000000;"><b>9. 문서화 및 공유</b></span></p>
+<p id="SE-18cc3a63-4cdd-4fb4-a494-f8add72ad97b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9da6f0dd-4323-4dc9-be07-075ba71c06ce" data-ke-size="size16"><span style="color: #000000;"><b>README 업데이트</b></span><span style="color: #000000;">: 프로젝트의 README 파일을 상세히 작성합니다.</span></p>
+<p id="SE-a6f6e58a-3932-4bd5-95a0-fce3c5e0a248" data-ke-size="size16"><span style="color: #000000;"><b>사용 사례 문서화</b></span><span style="color: #000000;">: 성공적인 사용 사례와 학습된 내용을 문서화합니다.</span></p>
+<p id="SE-d24ccac4-d8fb-456b-826b-08664ee88426" data-ke-size="size16"><span style="color: #000000;"><b>커뮤니티 참여</b></span><span style="color: #000000;">: GitHub 이슈와 토론을 통해 커뮤니티에 참여합니다.</span></p>
+<p id="SE-60bafb97-e2ca-4657-95da-10f368cda6b1" data-ke-size="size16"><span style="color: #000000;">AutoRAG를 활용하면 효율적인 RAG 시스템을 구축할 수 있습니다. </span></p>
+<p id="SE-88026a90-0cff-494e-8474-e3fb22d943b8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-83ab06ee-b89b-4ac0-bf8e-2e9f6cc87aa8" data-ke-size="size16"><span style="color: #000000;">이 가이드를 따라 단계별로 진행하면서 프로젝트에 맞게 조정하고 최적화하세요. AutoRAG의 강력한 기능을 통해 정보 검색과 생성 작업의 품질을 크게 향상시킬 수 있습니다. 지속적인 실험과 개선을 통해 최상의 결과를 얻을 수 있을 것입니다</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

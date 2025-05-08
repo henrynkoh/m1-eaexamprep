@@ -1,0 +1,256 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Youtube 영상요약하기_n8n</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Youtube 영상요약하기_n8n</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-10-03 05:59:50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<div id="SE-328ef032-06a0-4841-9392-dd242ae6b56c" data-a11y-title="본문" data-compid="SE-328ef032-06a0-4841-9392-dd242ae6b56c">
+<div>
+<div data-direction="top" data-compid="SE-328ef032-06a0-4841-9392-dd242ae6b56c" data-unitid="">
+<div>
+<div id="SE-b74630cc-607f-415f-87a9-1baf1f13ec13">
+<p id="SE-8391f17b-a728-4956-a826-67ea66bd963d" data-ke-size="size16"><span style="color: #000000;">오늘은 코딩 없이 AI 에이전트를 구현하여 YouTube 영상을 요약하고 관련 영상을 검색하는 방법에 대해 알아보겠습니다. 이 과정에서 우리는 n8n이라는 강력한 도구를 사용할 것입니다.</span></p>
+<p id="SE-c0c15736-d9e7-46c8-b5ae-a6dd03cb9130" data-ke-size="size16">&nbsp;</p>
+<p id="SE-478aa656-fada-48e2-8e57-f611072f5e67" data-ke-size="size16"><span style="color: #000000;"><b>1. n8n 소개</b></span></p>
+<p id="SE-840878f5-0c5a-4ea3-a728-a056b1277d69" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8da865c6-3710-4370-8120-b1dd58fdfa00" data-ke-size="size16"><span style="color: #000000;">n8n은 Zapier나 Make와 같은 자동화 도구와 유사하지만, AI 기능을 더 많이 활용할 수 있는 특징이 있습니다. 특히 AI 에이전트를 구현하기 위한 도구들이 풍부하여 코드를 거의 또는 전혀 작성하지 않고도 제품을 만들 수 있습니다.</span></p>
+<p id="SE-9d46ab68-3dfa-4a90-94b8-bb0df401506e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d43fccbf-e215-4027-b810-e2a6587b77f7" data-ke-size="size16"><span style="color: #000000;">n8n을 사용하는 방법은 크게 세 가지가 있습니다:</span></p>
+<p id="SE-05f0a082-ed74-42d4-9e2e-ce8f52c4f72f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6ab575cb-2758-417e-91a7-1b1c1027036a" data-ke-size="size16"><span style="color: #000000;">클라우드 서비스 이용 (유료)</span></p>
+<p id="SE-a203bbf1-1bfc-4e74-9b39-3abc3a2bad67" data-ke-size="size16"><span style="color: #000000;">자체 서버에 설치 (Self-hosted)</span></p>
+<p id="SE-2e14be9c-bb00-46dd-ae1e-229333c091ff" data-ke-size="size16"><span style="color: #000000;">로컬 컴퓨터에 설치</span></p>
+<p id="SE-96ed3718-cd23-4f21-b854-b2df84de5512" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ec15bcda-0fc8-4cb3-a407-66bfec4f0b92" data-ke-size="size16"><span style="color: #000000;">이 튜토리얼에서는 로컬 설치 방법을 사용하겠습니다.</span></p>
+<p id="SE-1082ca6e-9af7-491a-8e23-f5f21dde1971" data-ke-size="size16">&nbsp;</p>
+<p id="SE-094081e8-aecb-4e50-ab57-b758514cc5bb" data-ke-size="size16"><span style="color: #000000;"><b>2. n8n 설치하기</b></span></p>
+<p id="SE-a0ee76fa-2d6f-4cb9-bc0a-693f6aabf2f7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-543963e4-0c54-4ff8-9916-fb5232a9191c" data-ke-size="size16"><span style="color: #000000;">n8n을 로컬에 설치하기 위해서는 먼저 Docker를 설치해야 합니다. Docker가 설치되어 있지 않다면, Docker 공식 웹사이트에서 운영체제에 맞는 버전을 다운로드하여 설치하세요.</span></p>
+<p id="SE-d8343a7e-688d-4b3c-b71f-2854369737b7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-64ebcf9a-f970-4173-bf06-6947cc1d8170" data-ke-size="size16"><span style="color: #000000;">Docker가 설치되면, 다음 단계를 따라 n8n을 설치합니다:</span></p>
+<p id="SE-93722776-aa5a-4852-8116-9d195d4abc70" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c160af14-0305-4c9d-a565-e09dae1ddc66" data-ke-size="size16"><span style="color: #000000;">원하는 폴더로 이동합니다.</span></p>
+<p id="SE-28466908-72fd-4fb1-a729-af0bfcc71167" data-ke-size="size16"><span style="color: #000000;">n8n GitHub 저장소에서 제공하는 명령어를 복사하여 터미널에 붙여넣습니다.</span></p>
+<p id="SE-b861d918-b340-4ac0-aa51-a58d0346a3d2" data-ke-size="size16"><span style="color: #000000;">설치가 완료되면 Docker Desktop에서 n8n이 실행 중인 것을 확인할 수 있습니다.</span></p>
+<p id="SE-5cc91c0c-ed55-40a4-b018-5b6269f0feef" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3ee0d40d-e424-4e1c-8809-4670eb91aca1" data-ke-size="size16"><span style="color: #000000;">브라우저에서 localhost:5678로 접속하여 n8n 인터페이스에 접근합니다.</span></p>
+<p id="SE-341f57f1-08c6-4dfc-9a5f-c2d1c3c11753" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ac0f6da2-27ac-42ac-af64-c1272a43d4ca" data-ke-size="size16"><span style="color: #000000;"><b>3. n8n 워크플로우 만들기</b></span></p>
+<p id="SE-33fce065-9c1a-4b54-8c4d-80e64846aa13" data-ke-size="size16">&nbsp;</p>
+<p id="SE-103be61b-de83-43a1-aea9-78da0868c9f6" data-ke-size="size16"><span style="color: #000000;">이제 n8n에서 워크플로우를 만들어 YouTube 영상을 요약하고 관련 영상을 검색하는 과정을 살펴보겠습니다.</span></p>
+<p id="SE-4c004ab7-d5ec-4d05-96d3-0b9522d5951c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d3226373-9337-467c-9ef1-13161cd83300" data-ke-size="size16"><span style="color: #000000;"><b>1) YouTube 트랜스크립트 추출</b></span></p>
+<p id="SE-0bf6f3f0-f593-4c2a-bd74-db5168a42a32" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4108cafa-1616-49bf-bc98-75595ab4290e" data-ke-size="size16"><span style="color: #000000;">먼저 YouTube 영상의 자막을 추출해야 합니다. 이를 위해 커뮤니티에서 제공하는 'YouTube Transcript' 노드를 설치합니다.</span></p>
+<p id="SE-bf370dfc-62b5-4c5b-b4bb-c980f6b5608c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-42f1a8e0-05e4-41fb-86a4-84b9dadf1259" data-ke-size="size16"><span style="color: #000000;">n8n 설정에서 'Community Nodes'로 이동합니다.</span></p>
+<p id="SE-dacb6a9d-fd61-4f6d-8081-2c5c0973daaa" data-ke-size="size16"><span style="color: #000000;">'n8n-nodes-youtube-transcript'를 검색하여 설치합니다.</span></p>
+<p id="SE-0f4b31c1-690b-4d7e-8e68-f0a98e649c62" data-ke-size="size16"><span style="color: #000000;">워크플로우에 'YouTube Transcript' 노드를 추가합니다.</span></p>
+<p id="SE-eeb33ded-1822-40ae-acd9-3712510a88cd" data-ke-size="size16"><span style="color: #000000;">YouTube 영상 URL을 입력하고 테스트합니다.</span></p>
+<p id="SE-033734a5-c134-41e6-9d29-76071cf7cd5d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d920dfc8-1d82-45d6-8296-778d302b4f92" data-ke-size="size16"><span style="color: #000000;"><b>2) 텍스트 요약하기</b></span></p>
+<p id="SE-c85cc16b-20ff-4c81-a47c-f575303a4ef0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a9525f71-72be-496d-a89c-6a75538ec820" data-ke-size="size16"><span style="color: #000000;">다음으로 LangChain의 Summarization 체인을 사용하여 추출된 자막을 요약합니다.</span></p>
+<p id="SE-37f20469-47f4-4f3b-b998-48a249668686" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d0118a5e-1870-426f-8af5-a11ad155ef05" data-ke-size="size16"><span style="color: #000000;">'LangChain' 노드 그룹에서 'Summarization' 노드를 추가합니다.</span></p>
+<p id="SE-50d47f32-57e8-4da6-b7a6-c5a33a1c96aa" data-ke-size="size16"><span style="color: #000000;">OpenAI API 키를 설정합니다.</span></p>
+<p id="SE-b3fe19e5-98f5-4548-b276-931a8cf477a4" data-ke-size="size16"><span style="color: #000000;">모델을 선택하고 요약 옵션을 설정합니다.</span></p>
+<p id="SE-42a859b8-7e84-41ce-b727-5840a1cc7e29" data-ke-size="size16"><span style="color: #000000;">'YouTube Transcript' 노드와 연결하고 테스트합니다.</span></p>
+<p id="SE-a3ddde40-b933-4eb1-920e-8b558440dd03" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7a78004d-0fb4-457a-96e3-5173cc293d50" data-ke-size="size16"><span style="color: #000000;"><b>3) 정보 추출하기</b></span></p>
+<p id="SE-2ab7eb14-033d-4440-978c-3e3867d763b1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-621a5d8b-feb2-462d-8cf1-fcc6fe3e64dc" data-ke-size="size16"><span style="color: #000000;">요약된 텍스트에서 태그와 검색어를 추출합니다.</span></p>
+<p id="SE-bfeb26f3-adc8-4653-9d09-f7e2db060e4d" data-ke-size="size16"><span style="color: #000000;">'Information Extractor' 노드를 추가합니다.</span></p>
+<p id="SE-2d43e637-4b2f-4c95-a2e0-4a48666a9296" data-ke-size="size16"><span style="color: #000000;">추출할 정보(태그, 검색어)를 정의합니다.</span></p>
+<p id="SE-ae34e3ae-a453-467b-a6bc-2ffdbee351b1" data-ke-size="size16"><span style="color: #000000;">'Summarization' 노드와 연결하고 테스트합니다.</span></p>
+<p id="SE-14f86a4d-2584-457a-83d1-e6b9570c46f2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-71a1c195-83d5-4fc7-b56d-15bee5f5093b" data-ke-size="size16"><span style="color: #000000;"><b>4) AI 에이전트로 관련 영상 검색하기</b></span></p>
+<p id="SE-d86ed5d9-e10c-47c5-8fb4-fc8e17e81ed5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-746263dd-da12-46e0-a275-9929965a7420" data-ke-size="size16"><span style="color: #000000;">추출된 정보를 바탕으로 AI 에이전트를 사용하여 관련 YouTube 영상을 검색합니다.</span></p>
+<p id="SE-e36565dd-1238-47b7-a3b2-2882c201a97f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7207be74-352d-42f2-a25b-03e30a5b60cb" data-ke-size="size16"><span style="color: #000000;">'AI Agent' 노드를 추가합니다.</span></p>
+<p id="SE-b428069e-7f97-4117-9238-f735db532bef" data-ke-size="size16"><span style="color: #000000;">SerpAPI를 사용하기 위해 'HTTP Request' 도구를 설정합니다.</span></p>
+<p id="SE-b288f19f-e0e2-4edf-a40e-a19af86b757e" data-ke-size="size16"><span style="color: #000000;">AI 에이전트에 검색 지시사항을 입력합니다.</span></p>
+<p id="SE-5093c8f4-d8eb-4747-8ad3-7bee7917e786" data-ke-size="size16"><span style="color: #000000;">'Structured Output Parser'를 사용하여 결과를 구조화합니다.</span></p>
+<p id="SE-31ad29ea-93c7-4b2e-8df2-3c68dd02a2b2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d58dbd40-45cc-4e86-82ac-5d70282363ee" data-ke-size="size16"><span style="color: #000000;"><b>6) 결과 전송하기</b></span></p>
+<p id="SE-3cd74b31-0eee-4452-a442-8e8a9b34d08e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-25332b1a-f343-4b89-a193-afae5611c1b0" data-ke-size="size16"><span style="color: #000000;">마지막으로 요약과 관련 영상 정보를 Discord로 전송합니다.</span></p>
+<p id="SE-00a1cc3b-e569-459e-b616-1648afc00486" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ab8a2899-9cc0-4a13-8947-6ea3f1e71da1" data-ke-size="size16"><span style="color: #000000;">'Discord' 노드를 추가합니다.</span></p>
+<p id="SE-91892989-c4c3-4bfb-ad3b-6bfba9dd9d1c" data-ke-size="size16"><span style="color: #000000;">Discord 웹훅 URL을 설정합니다.</span></p>
+<p id="SE-4b4e19f2-dd7c-4e35-ba1b-a8db69a3d18c" data-ke-size="size16"><span style="color: #000000;">메시지 형식을 구성합니다.</span></p>
+<p id="SE-51a34e08-5dae-48db-9dd8-aed0b28b0b59" data-ke-size="size16"><span style="color: #000000;">'Merge' 노드를 사용하여 요약과 관련 영상 정보를 합칩니다.</span></p>
+<p id="SE-140d5d14-1b30-46ed-9680-4774cbfc863b" data-ke-size="size16"><span style="color: #000000;">테스트하여 Discord로 메시지가 전송되는지 확인합니다.</span></p>
+<p id="SE-5d57a6aa-96f9-4c21-8e17-3ef712b1d6c5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5a77080a-514b-4fc2-b35c-95168ded7898" data-ke-size="size16"><span style="color: #000000;"><b>7) 워크플로우 최적화</b></span></p>
+<p id="SE-0cbffda9-5b58-4709-97e0-2d510cfe1a33" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9785af7d-614e-4c35-9b7b-3a6b3de44b59" data-ke-size="size16"><span style="color: #000000;">워크플로우를 더욱 유연하게 만들기 위해 웹훅을 사용하여 입력을 받을 수 있습니다. 이렇게 하면 외부에서 YouTube URL을 입력받아 자동으로 처리할 수 있습니다.</span></p>
+<p id="SE-384be4d0-0c0f-486a-8846-7ac8d1698e55" data-ke-size="size16"><span style="color: #000000;">워크플로우 시작 부분에 'Webhook' 노드를 추가합니다.</span></p>
+<p id="SE-0406e0b5-106a-494f-955b-96aedfd6eb35" data-ke-size="size16"><span style="color: #000000;">YouTube URL을 받을 수 있는 구조를 설정합니다.</span></p>
+<p id="SE-245fb322-1d2d-49c9-9768-10040efe735d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7a88856a-8e7b-4607-86b9-cabdcd46835e" data-ke-size="size16"><span style="color: #000000;">받은 URL을 'YouTube Transcript' 노드로 전달합니다.</span></p>
+<p id="SE-0ef23f01-91e5-47b5-a299-44b6ebea2c21" data-ke-size="size16">&nbsp;</p>
+<p id="SE-03b1708d-5809-404b-bacc-d0e5af811c38" data-ke-size="size16"><span style="color: #000000;"><b>마무리</b></span></p>
+<p id="SE-3c2f671f-5dc2-4f84-b3f8-1e8c5a8989b1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-31ab73de-237a-4b05-bef2-f189378cfd68" data-ke-size="size16"><span style="color: #000000;">이렇게 우리는 코딩 없이 n8n을 사용하여 AI 에이전트를 구현하고, LangChain을 활용하여 YouTube 영상을 요약하고 관련 영상을 검색하는 워크플로우를 만들었습니다. 이 방법을 응용하면 다양한 AI 기반 자동화 작업을 수행할 수 있습니다.</span></p>
+<p id="SE-24b85c43-0970-4aa8-a16e-2e418c5232c0" data-ke-size="size16"><span style="color: #000000;">n8n의 가능성은 무궁무진합니다. 예를 들어, 음성 녹음을 텍스트로 변환하고 요약한 후 노션이나 디스코드로 회의록을 자동으로 작성하는 등의 작업도 가능합니다.</span></p>
+<p id="SE-3e862027-d1ca-4bad-ad8a-93c5ddd0ddae" data-ke-size="size16"><span style="color: #000000;">이 튜토리얼이 여러분의 AI 프로젝트에 도움이 되었기를 바랍니다. 더 많은 정보와 아이디어 교환을 원하신다면, 커뮤니티 디스코드 채널에 참여해 주세요. 함께 n8n의 무한한 가능성을 탐험해 봅시다!</span></p>
+<p id="SE-f814ad3a-d3bf-4d16-b4fa-5a8aca05e093" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cbb6ba9b-5a92-4ed9-a440-5a1c855eb506" data-ke-size="size16"><span style="color: #000000;"><b>&lt; AI로 YouTube 요약하기 단계별 소개 &gt;</b></span></p>
+<p id="SE-d656d904-6350-4d5b-8055-1c411d8a8edd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4d82573f-7dd6-4da9-8933-a70e9ce4f693" data-ke-size="size16"><span style="color: #000000;"><b>n8n 워크플로우 상세 설명</b></span></p>
+<p id="SE-b909a1e9-055f-4fca-8de8-b141fa48c1a7" data-ke-size="size16"><span style="color: #000000;">이제 각 단계를 더 자세히 살펴보며, n8n에서 워크플로우를 구축하는 방법을 알아보겠습니다.</span></p>
+<p id="SE-e930dcf1-b5a1-4c2f-ae26-dd98d7698f09" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6f4f7233-6b76-4647-a38d-b0ea887f6f04" data-ke-size="size16"><span style="color: #000000;"><b>YouTube 트랜스크립트 추출 상세 과정</b></span></p>
+<p id="SE-734ea6e0-e09b-46d9-aef6-8cf71ac9c6b6" data-ke-size="size16"><span style="color: #000000;">n8n 대시보드에서 새 워크플로우를 생성합니다.</span></p>
+<p id="SE-c9a3dda1-86aa-465c-9054-b05698751a0b" data-ke-size="size16"><span style="color: #000000;">검색 창에 'YouTube'를 입력하고 'YouTube Transcript' 노드를 선택합니다.</span></p>
+<p id="SE-e0906ffa-d9c7-4c65-bde1-7edb7b5d7663" data-ke-size="size16"><span style="color: #000000;">노드 설정에서 'Video URL or ID' 필드에 YouTube 영상 URL을 입력합니다.</span></p>
+<p id="SE-bc8c7775-4ca5-43e7-b608-b0b0a8bb4c30" data-ke-size="size16"><span style="color: #000000;">'Output Format'을 'Merged Text'로 설정하여 전체 자막을 하나의 텍스트로 받습니다.</span></p>
+<p id="SE-11190430-b4c9-4266-906c-3b36e690ece1" data-ke-size="size16"><span style="color: #000000;">'Execute Node' 버튼을 클릭하여 노드를 테스트합니다.</span></p>
+<p id="SE-3227db9e-9469-44c2-869d-c89cd1a15c7c" data-ke-size="size16"><span style="color: #000000;"><b>LangChain을 이용한 텍스트 요약 과정</b></span></p>
+<p id="SE-30cddff7-366e-4e33-9359-594258424e74" data-ke-size="size16"><span style="color: #000000;">'LangChain' 카테고리에서 'Summarization' 노드를 워크플로우에 추가합니다.</span></p>
+<p id="SE-f5a766ad-c0ae-469a-8e97-243cf350ce2b" data-ke-size="size16"><span style="color: #000000;">OpenAI API 키를 설정합니다. 처음 사용하는 경우 새 자격 증명을 생성해야 합니다.</span></p>
+<p id="SE-89d1c415-a2cd-4a94-919b-e7c19917a6a7" data-ke-size="size16"><span style="color: #000000;">모델 선택에서 'gpt-4'나 원하는 모델을 선택합니다.</span></p>
+<p id="SE-0eb4c360-f049-4e77-8b53-7ec9ec32d4ad" data-ke-size="size16"><span style="color: #000000;">'Add Option'을 클릭하고 'Summarization Method and Prompts'에서 요약 방식을 커스터마이즈할 수 있습니다.</span></p>
+<p id="SE-5df36102-e812-489f-8d98-dd8408982a10" data-ke-size="size16"><span style="color: #000000;">예를 들어, "in Korean"을 추가하여 한국어로 요약을 받을 수 있습니다.</span></p>
+<p id="SE-bff1889b-891c-47c6-a243-d41b3063230f" data-ke-size="size16"><span style="color: #000000;">'YouTube Transcript' 노드의 출력을 'Summarization' 노드의 입력으로 연결합니다.</span></p>
+<p id="SE-35866cc3-67ef-41a7-8cb7-e58b24319a29" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2582e5f9-f177-45d7-bdea-6473b0218924" data-ke-size="size16"><span style="color: #000000;"><b>정보 추출기 설정</b></span></p>
+<p id="SE-79362a1f-786a-435d-bd4e-845b34e0a823" data-ke-size="size16"><span style="color: #000000;">'Information Extractor' 노드를 워크플로우에 추가합니다.</span></p>
+<p id="SE-b3651304-0f31-4f81-a5cd-1e199a20bed3" data-ke-size="size16"><span style="color: #000000;">'Model' 필드에서 사용할 AI 모델을 선택합니다.</span></p>
+<p id="SE-c28eb749-e3ae-48d6-ae1e-44e5e9ce7953" data-ke-size="size16"><span style="color: #000000;">'Sampling Temperature'를 낮게 설정하여 더 정확한 정보 추출을 유도합니다.</span></p>
+<p id="SE-682ec019-cee0-44cc-8349-873a4d8ebb5e" data-ke-size="size16"><span style="color: #000000;">'Text' 필드에 이전 노드의 출력을 변수로 연결합니다.</span></p>
+<p id="SE-7b1c7eb3-eeb4-4870-b1b3-8967b8dd39a3" data-ke-size="size16"><span style="color: #000000;">'JSON Schema'에서 추출할 정보의 구조를 정의합니다. 예:</span></p>
+<p id="SE-0130abd8-23db-46b7-8d05-d04d618596df" data-ke-size="size16"><span style="color: #000000;">{ "tags": "영상의 주요 태그", "searchTerms": "관련 영상 검색을 위한 검색어" } </span></p>
+<p id="SE-20957f84-d407-4a5a-b6c7-7b554291b851" data-ke-size="size16"><span style="color: #000000;">노드를 테스트하여 정보가 올바르게 추출되는지 확인합니다.</span></p>
+<p id="SE-4bf09bc1-16b2-4000-af0c-b166d2c6b38b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e76497f2-5041-46c8-ac0a-93b576f8f19a" data-ke-size="size16"><span style="color: #000000;"><b>AI 에이전트 구성</b></span></p>
+<p id="SE-26802f96-3c82-4575-8b6c-1980a2b18e6b" data-ke-size="size16"><span style="color: #000000;">'AI Agent' 노드를 워크플로우에 추가합니다.</span></p>
+<p id="SE-c26c2341-347a-40a9-834f-dcf4ba3e8f7e" data-ke-size="size16"><span style="color: #000000;">'Agent Type'을 'Tool Agent'로 설정합니다.</span></p>
+<p id="SE-c6e54e54-6a44-4d6f-8051-10a57156625d" data-ke-size="size16"><span style="color: #000000;">'Tools' 섹션에서 'HTTP Request' 도구를 추가합니다.</span></p>
+<p id="SE-9a74e6dd-8a14-44ed-9658-aa1639415365" data-ke-size="size16"><span style="color: #000000;">SerpAPI 설정:</span></p>
+<p id="SE-6da9de7e-1e1c-4602-be8f-e7a68cea3dae" data-ke-size="size16"><span style="color: #000000;">URL: <a href="https://serpapi.com/search.json">https://serpapi.com/search.json</a></span></p>
+<p id="SE-55c21215-6d33-409f-b978-0793bfc69ec4" data-ke-size="size16"><span style="color: #000000;">Method: GET</span></p>
+<p id="SE-ff53e184-bec7-4632-ba4c-dd8115915fb5" data-ke-size="size16"><span style="color: #000000;">Query Parameters: </span></p>
+<p id="SE-28db1125-a0b3-43c0-a4ff-078df714e5c5" data-ke-size="size16"><span style="color: #000000;">api_key: SerpAPI 키</span></p>
+<p id="SE-41e22d4b-2416-451b-9b7f-9057d48322f1" data-ke-size="size16"><span style="color: #000000;">q: {{$json["searchTerms"]}}</span></p>
+<p id="SE-e18b6912-0183-4d50-b788-4fe805ff3814" data-ke-size="size16"><span style="color: #000000;">'Prompt' 필드에 에이전트 지시사항을 입력합니다. 예:</span></p>
+<p id="SE-c01acbae-5755-4b38-a44c-d86320a9e7a2" data-ke-size="size16"><span style="color: #000000;">구글에서 관련 YouTube 영상을 검색해서 나열해 주세요. 검색은 한 번만 해주세요. 태그: {{$json["tags"]}} 검색어: {{$json["searchTerms"]}} </span></p>
+<p id="SE-a7c903c2-6f84-4989-a8a3-074125b01938" data-ke-size="size16"><span style="color: #000000;">'Structured Output Parser'를 설정하여 결과를 구조화합니다:</span></p>
+<p id="SE-0111d039-3145-4c3a-a1d8-fc518cc1e330" data-ke-size="size16"><span style="color: #000000;">[ { "title": "영상 제목", "url": "영상 URL" } ] </span></p>
+<p id="SE-8b732160-6b95-43ea-a254-7fe496751544" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8de015b4-dc16-456f-a375-d85542ded6ad" data-ke-size="size16"><span style="color: #000000;"><b>Discord로 결과 전송</b></span></p>
+<p id="SE-971bd038-0734-461e-bd22-de599a29f8a4" data-ke-size="size16"><span style="color: #000000;">'Discord' 노드를 워크플로우에 추가합니다.</span></p>
+<p id="SE-a1c90a6f-6055-4498-9f6b-05cf185193dc" data-ke-size="size16"><span style="color: #000000;">Discord 웹훅 URL을 설정합니다.</span></p>
+<p id="SE-4773cacd-db5a-49f9-b022-fccbc474222e" data-ke-size="size16"><span style="color: #000000;">메시지 형식을 구성합니다. 예:</span></p>
+<p id="SE-395ef554-1493-4348-887c-a712d234b4f9" data-ke-size="size16"><span style="color: #000000;">?</span><span style="color: #000000;"> 요약: {{$node["Summarization"].json["text"]}} </span><span style="color: #000000;">?</span><span style="color: #000000;"> 관련 추천 영상: {% for video in $node["AI Agent"].json["output"] %} {{loop.index}}. [{{video.title}}]({{video.url}}) {% endfor %} </span></p>
+<p id="SE-c6dda1df-9326-4814-8a3f-940c90307f12" data-ke-size="size16"><span style="color: #000000;">'Merge' 노드를 사용하여 요약과 관련 영상 정보를 합칩니다.</span></p>
+<p id="SE-14a42d90-1b3f-44f5-98d0-85eec4f200cf" data-ke-size="size16"><span style="color: #000000;">'Discord' 노드를 'Merge' 노드의 출력과 연결합니다.</span></p>
+<p id="SE-57d77bad-1005-4984-b71e-9a03925a888a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4deef83d-0d2c-4283-b198-3596143168ec" data-ke-size="size16"><span style="color: #000000;"><b>워크플로우 최적화 및 확장</b></span></p>
+<p id="SE-1013284c-5560-4abd-9665-6fce9571c4e6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-daba69ea-3ae3-4856-bcee-2f160781529c" data-ke-size="size16"><span style="color: #000000;"><b>웹훅 사용하기</b></span></p>
+<p id="SE-37fd241f-dd11-4200-9ea5-cfc26b4771f1" data-ke-size="size16"><span style="color: #000000;">워크플로우 시작 부분에 'Webhook' 노드를 추가합니다.</span></p>
+<p id="SE-6e747667-6987-496f-967a-bd98d1cff54e" data-ke-size="size16"><span style="color: #000000;">웹훅 설정:</span></p>
+<p id="SE-33354ba0-06b2-4040-907c-7801f7a1ee68" data-ke-size="size16"><span style="color: #000000;">HTTP Method: POST</span></p>
+<p id="SE-fc0b03e1-ada1-41f1-b0c3-97c417a4c022" data-ke-size="size16"><span style="color: #000000;">Path: /youtube-summary</span></p>
+<p id="SE-a964094b-c0ec-432c-a5a5-aa7301faf751" data-ke-size="size16"><span style="color: #000000;">Response Code: 200</span></p>
+<p id="SE-302eb30c-6e6e-4f5e-a44d-642e6bc430d2" data-ke-size="size16"><span style="color: #000000;">Response Body: JSON</span></p>
+<p id="SE-442a6969-f044-47c7-9149-433f8a72ea88" data-ke-size="size16"><span style="color: #000000;">'YouTube Transcript' 노드의 'Video URL or ID' 필드를 웹훅 입력과 연결:</span></p>
+<p id="SE-57d84fd3-49ce-43d9-8943-bb2b8b837095" data-ke-size="size16"><span style="color: #000000;">{{$json["body"]["youtube_url"]}} </span></p>
+<p id="SE-42e17ba5-05fa-4dbc-92af-51e5ea2e80f1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e676aa43-8671-4b39-a7f3-cd0519889a1c" data-ke-size="size16"><span style="color: #000000;"><b>에러 처리</b></span></p>
+<p id="SE-89c96d3e-47a8-461e-9c5b-e2c8f406e46c" data-ke-size="size16"><span style="color: #000000;">각 주요 노드 뒤에 'IF' 노드를 추가하여 에러를 체크합니다.</span></p>
+<p id="SE-e7a5b47f-0d9a-4175-b55a-e500fc37b2fe" data-ke-size="size16"><span style="color: #000000;">에러 발생 시 'Error' 브랜치를 통해 에러 메시지를 Discord로 전송하거나 로그를 남깁니다.</span></p>
+<p id="SE-df03f34d-1894-43a8-9bd6-21b0d68ed5f8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c03c0390-3783-4f0d-b251-b5ca8c6a53ce" data-ke-size="size16"><span style="color: #000000;"><b>결과 저장</b></span></p>
+<p id="SE-9871fb39-c3b0-4d25-ac42-5754cf4aac7d" data-ke-size="size16"><span style="color: #000000;">'Notion' 또는 'Airtable' 노드를 추가하여 요약 결과를 데이터베이스에 저장합니다.</span></p>
+<p id="SE-5865a38b-1188-428b-8ae4-798fa744869f" data-ke-size="size16"><span style="color: #000000;">저장 정보 구조: </span></p>
+<p id="SE-87997372-14fe-4f8f-95bf-79932b713f3e" data-ke-size="size16"><span style="color: #000000;">영상 URL</span></p>
+<p id="SE-598d7bba-75d8-4c40-b7e6-34dead27f374" data-ke-size="size16"><span style="color: #000000;">요약 내용</span></p>
+<p id="SE-6ee00553-ded9-42e1-833b-0fef430ad334" data-ke-size="size16"><span style="color: #000000;">관련 영상 목록</span></p>
+<p id="SE-ac83f143-c774-47df-99d3-c085818455e9" data-ke-size="size16"><span style="color: #000000;">처리 시간</span></p>
+<p id="SE-d2f67e03-22df-465a-b53c-5b452fde7774" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0a093b4c-7ba8-4135-87b2-9e721c9dd1b8" data-ke-size="size16"><span style="color: #000000;"><b>고급 기능 구현</b></span></p>
+<p id="SE-cfb8189a-6a0b-41cb-a263-dc64f77f0801" data-ke-size="size16">&nbsp;</p>
+<p id="SE-edbf6fc3-2658-4711-84c5-4be886756263" data-ke-size="size16"><span style="color: #000000;"><b>다국어 지원</b></span></p>
+<p id="SE-4ec71885-1a41-4fc9-98d4-1d335cdef052" data-ke-size="size16"><span style="color: #000000;">'Language Detection' 노드를 추가하여 입력 텍스트의 언어를 감지합니다.</span></p>
+<p id="SE-b21808de-bffa-4b5b-a526-4bb809ee5ade" data-ke-size="size16"><span style="color: #000000;">감지된 언어에 따라 다른 요약 프롬프트를 사용합니다.</span></p>
+<p id="SE-a309ebb6-5da7-48c3-99cc-0825cd561436" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4c80dcf1-3d94-40b0-9a59-63304d2577ec" data-ke-size="size16"><span style="color: #000000;"><b>키워드 추출 및 태그 생성</b></span></p>
+<p id="SE-23b7e44f-78d0-4b3f-84eb-18aa9272d096" data-ke-size="size16"><span style="color: #000000;">'Keyword Extractor' 노드를 추가하여 요약에서 주요 키워드를 추출합니다.</span></p>
+<p id="SE-337ba2ac-99a3-410c-b1f7-db3ec3bb8fdb" data-ke-size="size16"><span style="color: #000000;">추출</span></p>
+<p id="SE-5aefe346-6f67-47c1-a36c-2d01bc7e63ca" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b0c07e20-7bb7-4261-b94f-e3edbcacf000" data-ke-size="size16"><span style="color: #000000;">The speaker concludes by summarizing the key points they demonstrated:</span></p>
+<p id="SE-1201eeea-66f2-4789-a8d7-a986070e8cc7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-09f03ac4-cfed-4169-b6f6-9c065256e38e" data-ke-size="size16"><span style="color: #000000;">Implementing an AI agent without writing any code</span></p>
+<p id="SE-64796bc9-dc8f-41d5-83ef-971a65b0e2c8" data-ke-size="size16"><span style="color: #000000;">Utilizing LangChain</span></p>
+<p id="SE-5f6f2c79-f5f5-4e0c-a534-2795e1fc21cb" data-ke-size="size16"><span style="color: #000000;">Summarizing YouTube videos</span></p>
+<p id="SE-e6953a06-0e00-42a4-893c-3e3b69b0a704" data-ke-size="size16"><span style="color: #000000;">Sending messages to third-party apps</span></p>
+<p id="SE-a8852443-9b8c-4cac-86d3-9b92de2d2880" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d6c58cf4-2c44-4176-9bef-3691da6ebd60" data-ke-size="size16"><span style="color: #000000;">They express disappointment that n8n is not well-known in Korea, emphasizing its potential for creating various products. The speaker mentions they are testing a product that transcribes voice recordings, summarizes them, and sends meeting minutes to platforms like Notion, Discord, or Telegram.The video ends with an invitation for viewers to join the Discord community if they have questions or want to discuss the topic further, and a thank you message for watching the long video.</span></p>
+<p id="SE-f58aa528-aaa0-4742-928a-aced69402b13" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bf26409d-97f4-4d13-998c-9cf62bf43b6a" data-ke-size="size16"><span style="color: #000000;">자료원: </span></p>
+<p id="SE-bda90a88-4420-4140-9209-500fd6288d63" data-ke-size="size16"><span style="color: #000000;" data-href="https://www.youtube.com/watch?v=ZUwWpNEu8-k"><a href="https://www.youtube.com/watch?v=ZUwWpNEu8-k">https://www.youtube.com/watch?v=ZUwWpNEu8-k</a></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-57ad8a1a-0444-48c7-83cb-848986076aa3" data-a11y-title="embed 링크" data-compid="SE-57ad8a1a-0444-48c7-83cb-848986076aa3">
+<div>
+<div data-direction="top" data-compid="SE-57ad8a1a-0444-48c7-83cb-848986076aa3" data-unitid="">
+<div>
+<div>&nbsp;</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-5bb38649-81ac-468c-b20b-b1be4ffa3dd8" data-a11y-title="본문" data-compid="SE-5bb38649-81ac-468c-b20b-b1be4ffa3dd8">
+<div>
+<div data-direction="top" data-compid="SE-5bb38649-81ac-468c-b20b-b1be4ffa3dd8" data-unitid="">
+<div>
+<div id="SE-49fff539-c22c-40b1-9f9a-56108a154c86">
+<p id="SE-c57ac3c5-f875-48d6-a638-fd3fb55eb87f" data-ke-size="size16">&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Hugging Face의 transformers</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Hugging Face의 transformers</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-11-10 23:23:32</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-76a99bd0-5314-48eb-a69c-feece0687c83" data-ke-size="size16"><span style="color: #000000;">Hugging Face의 transformers 라이브러리에 대한 검색자료를 요약정리 하였습니다. </span></p>
+<p id="SE-5ef5a9e1-7b13-4a15-8354-dffc8701d25a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-19654a13-ea4b-4964-bfc6-c87b85b5b3db" data-ke-size="size16"><span style="color: #000000;">Hugging Face의 transformers 라이브러리는 자연어 처리(NLP) 모델을 쉽게 다룰 수 있도록 도와주는 강력한 도구입니다. 이 글에서는 Mac Mini에서 transformers를 설치하고 활용하는 방법을 30단계로 나누어 쉽게 따라할 수 있는 DIY 가이드를 제공합니다.</span></p>
+<p id="SE-7c5244b0-85d5-4734-ba27-c55124a737ff" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0cc6721c-0797-488a-ae40-897042fefd02" data-ke-size="size16"><span style="color: #000000;"><b>1&ndash;10단계: 환경 설정 및 설치</b></span></p>
+<p id="SE-39775171-75ac-4c5b-aee7-35505cd8a234" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>Python 설치</b></span><span style="color: #000000;">: Python 3.8 이상이 설치되어 있는지 확인하세요. python3 --version을 실행해 확인하고, 설치되지 않았다면 Homebrew로 brew install python 명령어를 사용하세요.</span></li>
+<li><span style="color: #000000;"><b>Homebrew 설치</b></span><span style="color: #000000;">: 설치가 필요하다면 /bin/bash -c "$(curl -fsSL &lt;<a href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>&gt;)" 명령어를 사용하세요.</span></li>
+<li><span style="color: #000000;"><b>Git 설치</b></span><span style="color: #000000;">: git --version으로 Git 설치 여부를 확인하고, 설치가 필요하면 brew install git을 실행하세요.</span></li>
+<li><span style="color: #000000;"><b>가상 환경 설정</b></span><span style="color: #000000;">: python3 -m venv env로 가상 환경을 만들고 source env/bin/activate로 활성화하세요.</span></li>
+<li><span style="color: #000000;"><b>pip 업그레이드</b></span><span style="color: #000000;">: 최신 버전의 pip을 위해 pip install --upgrade pip을 실행하세요.</span></li>
+<li><span style="color: #000000;"><b>transformers 라이브러리 설치</b></span><span style="color: #000000;">: pip install transformers 명령어를 사용해 Hugging Face 라이브러리를 설치하세요.</span></li>
+<li><span style="color: #000000;"><b>PyTorch 설치</b></span><span style="color: #000000;">: Mac Mini의 칩셋에 맞게 pip install torch로 PyTorch를 설치하거나 </span><span style="color: #000000;" data-href="https://pytorch.org/get-started/locally/">PyTorch 웹사이트</span><span style="color: #000000;">의 지침을 따르세요.</span></li>
+<li><span style="color: #000000;"><b>옵션: GPU 지원</b></span><span style="color: #000000;">: M1/M2 칩셋을 사용하는 경우 </span><span style="color: #000000;" data-href="https://developer.apple.com/metal/">Metal Performance Shaders</span><span style="color: #000000;">를 탐색해보세요.</span></li>
+<li><span style="color: #000000;"><b>datasets 라이브러리 설치</b></span><span style="color: #000000;">: pip install datasets로 데이터셋을 쉽게 로드할 수 있도록 합니다.</span></li>
+<li><span style="color: #000000;"><b>설치 확인</b></span><span style="color: #000000;">: python -c "import transformers; print(transformers.__version__)"을 실행해 모든 설치가 완료되었는지 확인하세요.</span></li>
+</ol>
+<p id="SE-b371bde3-df70-41ef-b2e0-e5fa5f0561f5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b6e51645-a8c7-47f5-921b-fd2ee508fed2" data-ke-size="size16"><span style="color: #000000;"><b>11&ndash;20단계: 기본 사용법과 모델 로딩 </b></span></p>
+<p id="SE-6da2ea8b-8071-46cc-b57a-df8ad5dae3fe" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bfc9c4e1-2822-49f7-ba2a-df4d2cf8146b" data-ke-size="size16"><span style="color: #000000;">11. </span><span style="color: #000000;"><b>필수 라이브러리 불러오기</b></span><span style="color: #000000;">: python from transformers import pipeline, AutoModelForSequenceClassification, AutoTokenizer</span></p>
+<p id="SE-27ea8dd2-6bb9-4a3e-93c6-ea8bcc9f3a72" data-ke-size="size16">&nbsp;</p>
+<p id="SE-16b1cc74-93ce-437c-a40a-495fe2a60683" data-ke-size="size16"><span style="color: #000000;">12. </span><span style="color: #000000;"><b>사전 학습된 모델 로드</b></span><span style="color: #000000;">: python classifier = pipeline("sentiment-analysis")</span></p>
+<p id="SE-374fe0fc-4ef7-44c6-aa2f-6b9b50cab928" data-ke-size="size16"><span style="color: #000000;">13. </span><span style="color: #000000;"><b>간단한 추론 실행</b></span><span style="color: #000000;">: python result = classifier("Hugging Face is amazing!") print(result)</span></p>
+<p id="SE-dc18c981-a2bf-4443-83ef-e1bf86e50548" data-ke-size="size16"><span style="color: #000000;">14. </span><span style="color: #000000;"><b>커스텀 모델 로드</b></span><span style="color: #000000;">: python model_name = "bert-base-uncased" model = AutoModelForSequenceClassification.from_pretrained(model_name) tokenizer = AutoTokenizer.from_pretrained(model_name)</span></p>
+<p id="SE-2ecfeb32-5831-4ead-a2da-c7a313482c0b" data-ke-size="size16"><span style="color: #000000;">15. </span><span style="color: #000000;"><b>입력 텍스트 토크나이즈</b></span><span style="color: #000000;">: python inputs = tokenizer("Hugging Face transforms the AI landscape!", return_tensors="pt")</span></p>
+<p id="SE-946ff1ab-0fd0-4f76-b628-6ec8c8aa4eb1" data-ke-size="size16"><span style="color: #000000;">16. </span><span style="color: #000000;"><b>모델 추론 실행</b></span><span style="color: #000000;">: python outputs = model(**inputs) print(outputs.logits)</span></p>
+<p id="SE-73eb3125-6b09-4128-aad2-4e05ce518bac" data-ke-size="size16"><span style="color: #000000;">17. </span><span style="color: #000000;"><b>특정 작업 파이프라인 사용</b></span><span style="color: #000000;">: python summarizer = pipeline("summarization") summary = summarizer("Long text here...", max_length=130, min_length=30, do_sample=False) print(summary)</span></p>
+<p id="SE-f28064ff-5857-4128-9d99-12d44a82fa26" data-ke-size="size16"><span style="color: #000000;">18. </span><span style="color: #000000;"><b>추론 설정 커스터마이즈</b></span><span style="color: #000000;">: 효율성을 위해 batch_size, top_k 등의 파이프라인 설정을 조정하세요. 19. </span><span style="color: #000000;"><b>데이터셋 다루기</b></span><span style="color: #000000;">: python from datasets import load_dataset dataset = load_dataset("imdb")</span></p>
+<p id="SE-b4a54c62-16ea-4968-98f4-f6124f6b04f9" data-ke-size="size16"><span style="color: #000000;">20. </span><span style="color: #000000;"><b>훈련용 데이터 처리</b></span><span style="color: #000000;">: python train_texts = dataset['train']['text'] train_labels = dataset['train']['label']</span></p>
+<p id="SE-7ec2d7d7-a428-4430-91ec-eeeb589e5c18" data-ke-size="size16">&nbsp;</p>
+<p id="SE-065bed1c-1680-4be8-a252-b184033cb473" data-ke-size="size16"><span style="color: #000000;"><b>21&ndash;30단계: 고급 모델 커스터마이징과 사용법</b></span></p>
+<p id="SE-7d66bd07-3f15-4523-a623-ebcb08917167" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e8239d94-398c-4fd2-89ce-c2e2365dae49" data-ke-size="size16"><span style="color: #000000;">21. </span><span style="color: #000000;"><b>사전 학습된 모델 미세 조정</b></span><span style="color: #000000;">: Hugging Face의 Trainer API를 사용해 맞춤 훈련을 진행하세요. python from transformers import Trainer, TrainingArguments training_args = TrainingArguments("test_trainer")</span></p>
+<p id="SE-df5689a9-1391-4810-a835-dac9e863bc6e" data-ke-size="size16"><span style="color: #000000;">22. </span><span style="color: #000000;"><b>데이터 보정기 설정</b></span><span style="color: #000000;">: python from transformers import DataCollatorWithPadding data_collator = DataCollatorWithPadding(tokenizer=tokenizer)</span></p>
+<p id="SE-5c23b421-2cfc-412f-bad6-17fc44e773e1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fbb4c3b1-da16-4889-8503-6149aeed282b" data-ke-size="size16"><span style="color: #000000;">23. </span><span style="color: #000000;"><b>훈련 데이터 준비</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-63fa8b9c-2c47-4b63-8a44-a01c73fb2c81" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6475ac1b-653f-44ce-98b4-f2d4a4686ea9" data-ke-size="size16"><span style="color: #000000;">def tokenize_function(examples): return tokenizer(examples["text"], padding="max_length", truncation=True) </span></p>
+<p id="SE-5bcc4e23-e870-4ff3-90bc-6685c1e04d0b" data-ke-size="size16"><span style="color: #000000;">tokenized_datasets = dataset.map(tokenize_function, batched=True)</span></p>
+<p id="SE-7eecf8a2-3c3c-4de2-9da0-f57bc98cd635" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>모델 구성 정의</b></span><span style="color: #000000;">:</span></li>
+<li><span style="color: #000000;">from transformers import AutoConfig config = AutoConfig.from_pretrained(model_name, num_labels=2) </span></li>
+<li><span style="color: #000000;"><b>Trainer 초기화</b></span><span style="color: #000000;">:</span></li>
+<li><span style="color: #000000;">trainer = Trainer( model=model, args=training_args, train_dataset=tokenized_datasets['train'], eval_dataset=tokenized_datasets['test'], tokenizer=tokenizer, data_collator=data_collator ) </span></li>
+<li><span style="color: #000000;"><b>모델 훈련</b></span><span style="color: #000000;">:</span></li>
+<li><span style="color: #000000;">trainer.train() </span></li>
+<li><span style="color: #000000;"><b>모델 평가</b></span><span style="color: #000000;">:</span></li>
+<li><span style="color: #000000;">eval_results = trainer.evaluate() print(f"Evaluation results: {eval_results}") </span></li>
+<li><span style="color: #000000;"><b>모델 저장</b></span><span style="color: #000000;">:</span></li>
+<li><span style="color: #000000;">model.save_pretrained("my_fine_tuned_model") tokenizer.save_pretrained("my_fine_tuned_model") </span></li>
+<li><span style="color: #000000;"><b>커스텀 모델 로드 및 추론</b></span><span style="color: #000000;">:</span></li>
+<li><span style="color: #000000;">custom_model = AutoModelForSequenceClassification.from_pretrained("my_fine_tuned_model") custom_pipeline = pipeline("sentiment-analysis", model=custom_model, tokenizer=tokenizer) </span></li>
+<li><span style="color: #000000;"><b>실제 데이터로 테스트</b></span><span style="color: #000000;">:</span></li>
+<li><span style="color: #000000;">test_result = custom_pipeline("This is a great test!") print(test_result) </span></li>
+</ol>
+<p id="SE-4ef135e4-bd65-4f44-a29a-1e846644fb6e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e21bc89d-473f-4e90-9b9a-b59d72f45623" data-ke-size="size16"><span style="color: #000000;"><b>마무리</b></span></p>
+<p id="SE-35ad2571-31a6-4781-b05a-03a15c62756f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3083e3a4-9dad-4959-bec2-97fc28a645b8" data-ke-size="size16"><span style="color: #000000;">이 가이드를 통해 Mac Mini에서 Hugging Face의 transformers 라이브러리를 설치하고 다양한 NLP 모델을 효과적으로 활용할 수 있는 방법을 배울 수 있습니다. 이를 바탕으로 자연어 처리 프로젝트를 성공적으로 수행해 보세요!</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

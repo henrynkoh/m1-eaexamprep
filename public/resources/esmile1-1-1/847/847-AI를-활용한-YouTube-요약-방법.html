@@ -1,0 +1,267 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AI를 활용한 YouTube 요약 방법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AI를 활용한 YouTube 요약 방법</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-11-24 15:43:12</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16"><b># AI를 활용한 YouTube 요약 방법 (n8n 이용)</b></p>
+<p data-ke-size="size16">YouTube 영상을 요약하고 관련 정보를 자동으로 처리하는 것은 AI와 노코드 툴을 활용하면 어렵지 않습니다. 이 글에서는 <b>n8n</b>을 사용하여 YouTube 영상을 요약하고 이를 다양한 플랫폼으로 공유하는 프로세스를 체계적으로 설명합니다. 아래는 전체 과정으로, 30단계로 구성된 상세 가이드입니다.</p>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>1단계: n8n 소개</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>n8n</b>은 자동화를 위한 오픈소스 노코드 플랫폼입니다.</li>
+<li>Zapier와 유사하지만, AI 통합 및 커스터마이징 옵션이 더 강력합니다.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>2단계: 환경 설정</b></h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>n8n 클라우드 사용</b>: 월 20유로(약 3만 원).</li>
+<li><b>Self-hosted 설치</b>: 로컬 서버나 클라우드 서버에서 실행.</li>
+<li><b>로컬 설치</b>: 무료로 컴퓨터에 설치하여 사용.</li>
+</ol>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>3단계: 로컬 설치 준비</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><a href="https://n8n.io/">n8n 공식 웹사이트</a>에서 설치 패키지 다운로드.</li>
+<li>설치 전 <b>Docker</b> 설치 필요.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Windows: Docker for Windows 설치.</li>
+<li>Mac: Docker for Mac 설치.</li>
+</ul>
+</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>4단계: Docker 설정</b></h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Docker Desktop 실행 후 설정 완료.</li>
+<li>n8n의 Self-hosted AI Starter Kit 다운로드.</li>
+</ol>
+<pre class="vim"><code>git clone &lt;https://github.com/n8n-io/self-hosted-ai-starter-kit.git&gt;
+cd self-hosted-ai-starter-kit
+docker-compose up
+
+</code></pre>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>5단계: n8n 실행 확인</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>브라우저에서 http://localhost:5678 접속하여 n8n 실행 확인.</li>
+<li>관리자 계정 설정 및 기본 워크플로우 준비.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>6단계: 기본 워크플로우 이해</b></h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>YouTube 링크 입력.</li>
+<li>영상 Transcript(자막) 추출.</li>
+<li>AI 요약 및 데이터 분석.</li>
+<li>결과를 디스코드, 노션, 텔레그램 등으로 전달.</li>
+</ol>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>7단계: YouTube Transcript 추출</b></h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>Community Nodes</b> 활성화:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>n8n 설정 메뉴 &rarr; Community Nodes 설치.</li>
+</ul>
+</li>
+<li>n8n-youtube-transcript 설치:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>패키지 설치 후 활성화.</li>
+</ul>
+</li>
+</ol>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>8단계: YouTube URL 입력</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>YouTube Transcript 노드에 영상 URL 추가.</li>
+<li>테스트 실행하여 자막 데이터를 병합된 텍스트 형태로 확인.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>9단계: LangChain 활용</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Summarization 체인을 사용하여 자막 요약.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>모델 설정: OpenAI ChatGPT (GPT-4 버전 추천).</li>
+<li>출력 결과를 한국어로 변환.</li>
+</ul>
+</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>10단계: 요약 결과 확인</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>요약 텍스트를 설정 및 테스트.</li>
+<li>출력 내용을 원하는 방식으로 커스터마이징(예: 키워드 구조화).</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>11단계: 추가 정보 추출</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>Information Extractor</b> 노드 추가.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>주요 키워드 및 태그 추출.</li>
+<li>검색어(term)를 지정하여 서치 준비.</li>
+</ul>
+</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>12단계: AI Agent 설정</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>AI Agent 노드 연결.</li>
+<li><b>SerpApi</b>나 HTTP Request를 활용하여 관련 영상을 검색.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>13단계: SerpApi 설정</b></h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><a href="https://serpapi.com/">SerpApi</a> 가입 및 API 키 생성.</li>
+<li>API 요청 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>URL: <a href="https://serpapi.com/search">https://serpapi.com/search</a></li>
+<li>매개변수: api_key, q(검색어).</li>
+</ul>
+</li>
+</ol>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>14단계: AI Agent와 연동</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>검색 결과를 정리 및 출력 형식 설정.</li>
+<li>관련 영상 3개를 선택하여 데이터 구조화.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>15단계: 결과 출력 포맷 지정</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>JSON 형태로 결과 구성.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>예: 타이틀, URL, 요약 구조.</li>
+</ul>
+</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>16단계: Discord 연동</b></h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>디스코드에서 새로운 Webhook 생성.</li>
+<li>Webhook URL을 n8n 설정에 입력.</li>
+<li>디스코드 채널로 메시지 보내기 테스트.</li>
+</ol>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>17단계: 디스코드 메시지 꾸미기</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>타이틀, 요약, 관련 영상 리스트를 포함한 메시지 작성.</li>
+<li>이모지와 텍스트 구조로 가독성 향상.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>18단계: 노션 연동</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>Notion API</b>를 활용하여 요약 및 영상 데이터를 노션에 저장.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>19단계: 텔레그램 연동</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>텔레그램 봇 API를 사용하여 메시지 전송.</li>
+<li>요약 내용과 관련 링크 전달.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>20단계: 웹사이트 연동</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>웹훅(Webhook) 사용:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>입력된 YouTube URL 데이터를 n8n으로 전달.</li>
+<li>처리 결과를 다시 웹사이트로 전송.</li>
+</ul>
+</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>21단계: 워크플로우 병합</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>Merge 노드</b>로 데이터 흐름 통합.</li>
+<li>요약 결과와 AI Agent 결과를 하나로 합침.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>22단계: 오류 처리</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>각 노드의 테스트 스텝 확인.</li>
+<li>오류 발생 시 디버깅 및 설정 변경.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>23단계: 로직 최적화</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>API 호출 횟수 및 요약 속도 최적화.</li>
+<li>필요한 경우 GPU 활용으로 성능 강화.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>24단계: 사용자 입력 처리</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>웹훅을 통해 사용자 요청에 따라 동작하도록 구성.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>25단계: 트리거 자동화</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>주기적으로 실행되도록 트리거 추가.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>예: 매일 특정 시간에 유튜브 요약.</li>
+</ul>
+</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>26단계: 서버 모니터링</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>n8n 서버 상태 및 로그 확인.</li>
+<li>Docker 컨테이너 관리.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>27단계: 추가 기능 확장</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>다른 AI 모델 통합(예: Anthropic Claude, Google Gemini).</li>
+<li>복잡한 요약 및 분석 요구에 대응.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>28단계: 워크플로우 저장 및 공유</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>JSON 파일로 워크플로우 저장.</li>
+<li>팀과 공유하여 공동 작업 가능.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>29단계: 결과 검토</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>최종 결과물을 검토 및 수정.</li>
+<li>사용자 피드백 반영.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h2 data-ke-size="size26"><b>30단계: 프로젝트 배포</b></h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>설정 완료 후 워크플로우 실행.</li>
+<li>클라이언트 또는 팀과 공유.</li>
+</ul>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16">이 과정을 통해 코딩 없이도 AI를 활용한 YouTube 요약 및 데이터 처리가 가능합니다. n8n의 강력한 기능을 경험하고 싶다면 직접 따라 해보세요! ?</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AutoRAG 사용시 주의사항 (2)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AutoRAG 사용시 주의사항 (2)</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-08-30 20:52:58</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-af1637c5-0db6-4ca4-a0a7-8ddb7d5ffa07" data-ke-size="size16"><span style="color: #000000;"><b>1. AutoRAG에서 지원하는 주요 모듈:</b></span></p>
+<p id="SE-73ef88c2-6f96-4cbf-9b9b-b48ed847481f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-053ab3bc-e75f-412d-8c57-f379c876ca86" data-ke-size="size16"><span style="color: #000000;">12가지 모듈은 정확히 명시되어 있지 않지만, 일반적인 RAG 파이프라인의 주요 구성 요소들을 포함할 것으로 추정됩니다. 일반적으로 RAG 파이프라인에서 사용되는 주요 모듈들은 다음과 같습니다:</span></p>
+<p id="SE-0c147cb5-b276-4443-814a-edbbe1fc958a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d1d78c08-e536-4bbd-add7-fcf475b1e65a" data-ke-size="size16"><span style="color: #000000;"><b>(1) 문서 로더 (Document Loader)</b></span><span style="color: #000000;">: 다양한 형식의 문서를 로드합니다.</span></p>
+<p id="SE-1e01910c-d640-440a-a64e-31586f400769" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c7e90d4b-3674-4353-bd28-0a36555341be" data-ke-size="size16"><span style="color: #000000;"><b>(2) 텍스트 분할기 (Text Splitter)</b></span><span style="color: #000000;">: 긴 문서를 적절한 크기의 청크로 분할합니다.</span></p>
+<p id="SE-3f995011-3f9e-4156-a0c6-287f0fb8e2dc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1b9dcfcc-5427-4e7e-97a4-454cfb4c79a9" data-ke-size="size16"><span style="color: #000000;"><b>(3) 임베딩 모델 (Embedding Model)</b></span><span style="color: #000000;">: 텍스트를 벡터로 변환합니다.</span></p>
+<p id="SE-d3da565e-ad11-4c4f-a835-eb4bd7714c7c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a4a457a3-671a-4913-a5da-38b286a888d6" data-ke-size="size16"><span style="color: #000000;"><b>(4) 벡터 저장소 (Vector Store)</b></span><span style="color: #000000;">: 임베딩된 벡터를 저장하고 검색합니다.</span></p>
+<p id="SE-72bf4b6b-f9ed-429f-b738-cd1cdb736e5d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a251fe6e-b25b-4788-9659-a0328277f91a" data-ke-size="size16"><span style="color: #000000;"><b>(5) 검색기 (Retriever)</b></span><span style="color: #000000;">: 관련 문서를 검색합니다.</span></p>
+<p id="SE-83492871-373d-40c9-881e-b089cdd27669" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3c4d963f-b6c5-49f1-9a44-98a1a6f95a58" data-ke-size="size16"><span style="color: #000000;"><b>(6) 재순위화 모듈 (Reranker)</b></span><span style="color: #000000;">: 검색된 문서의 순위를 조정합니다.</span></p>
+<p id="SE-b9080f2c-bad0-4669-a179-69358d4c6594" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e81bd820-0745-4f96-bbe5-0d567789218b" data-ke-size="size16"><span style="color: #000000;"><b>(7) 프롬프트 템플릿 (Prompt Template)</b></span><span style="color: #000000;">: LLM에 전달할 프롬프트를 생성합니다.</span></p>
+<p id="SE-6efd763e-5696-43de-b1a1-8216fdc016ec" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9eafdd67-bc08-411c-99b0-2ef239bdce8b" data-ke-size="size16"><span style="color: #000000;"><b>(8) 언어 모델 (Language Model)</b></span><span style="color: #000000;">: 최종 응답을 생성합니다.</span></p>
+<p id="SE-de615b30-da9d-4fc1-bf98-8aa5213312a4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f285bedf-935a-4b10-9ab1-384faa81758b" data-ke-size="size16"><span style="color: #000000;"><b>(9) 답변 생성기 (Answer Generator)</b></span><span style="color: #000000;">: LLM의 출력을 처리하여 최종 답변을 생성합니다.</span></p>
+<p id="SE-645fabb4-b4aa-4fa0-b40d-60999de98d36" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c8027fa1-10b2-4912-9c0b-a34019c2a080" data-ke-size="size16"><span style="color: #000000;"><b>(10) 메모리 모듈 (Memory)</b></span><span style="color: #000000;">: 대화 기록을 관리합니다.</span></p>
+<p id="SE-ad6ba49f-abc8-405f-93f2-c2db8b8e3020" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b7a11651-a7dc-4e43-b918-646e5558beca" data-ke-size="size16"><span style="color: #000000;"><b>(11) 평가 모듈 (Evaluator)</b></span><span style="color: #000000;">: 생성된 답변의 품질을 평가합니</span></p>
+<p id="SE-74652b9e-d515-4a35-9be1-0fd7c490f78c" data-ke-size="size16"><span style="color: #000000;">다.</span></p>
+<p id="SE-123824a7-47e8-40ac-b042-f67a243b541c" data-ke-size="size16"><span style="color: #000000;"><b>(12) 후처리 모듈 (Postprocessor)</b></span><span style="color: #000000;">: 생성된 답변을 정제하거나 포맷팅합니다.</span></p>
+<p id="SE-0002b330-aad5-47f9-afcb-6d571f314b7f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-47d1ab11-c660-4f48-a4bc-36d479be4c50" data-ke-size="size16"><span style="color: #000000;">AutoRAG는 이러한 모듈들의 다양한 조합을 자동으로 평가하여 최적의 RAG 파이프라인을 찾아냅니다. 이를 통해 사용자는 수동으로 모든 조합을 테스트할 필요 없이 효율적으로 최적의 파이프라인을 구성할 수 있습니다.</span></p>
+<p id="SE-592aacfd-c00a-4bf3-826c-83f55af688e5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5e841077-2bc4-4fde-bf00-c9fcca1a8f71" data-ke-size="size16"><span style="color: #000000;"><b>2. RAG 파이프라인중 핵심적인 모듈:</b></span></p>
+<p id="SE-68012578-ba6b-4d22-96e9-cbb2005d8575" data-ke-size="size16">&nbsp;</p>
+<p id="SE-80266f6c-3f64-42e7-91db-73f931fe2460" data-ke-size="size16"><span style="color: #000000;">AutoRAG의 12가지 모듈 중 가장 인기 있는 것들을 정확히 순위화하기는 어렵지만, RAG 파이프라인에서 핵심적인 역할을 하는 몇 가지 주요 모듈을 꼽을 수 있습니다:</span></p>
+<p id="SE-28f71880-bc80-4e54-90e7-d8cf8cf9aa8d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0cf5cdf7-865b-421c-9a68-651a2c446245" data-ke-size="size16"><span style="color: #000000;"><b>(1) 임베딩 모델 (Embedding Model)</b></span><span style="color: #000000;">: 텍스트를 벡터로 변환하는 핵심 모듈로, 검색의 기반이 됩니다.</span></p>
+<p id="SE-5c4339de-fb6d-4b37-a0f4-69f943c450f8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0cd7fd72-d8de-45e6-81f4-f089018c413a" data-ke-size="size16"><span style="color: #000000;"><b>(2) 검색기 (Retriever)</b></span><span style="color: #000000;">: 관련 문서를 효과적으로 검색하는 중요한 모듈입니다.</span></p>
+<p id="SE-11e6b041-0c42-49a7-a0f5-2288263a2d9c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-262a8b85-8e43-4df5-94f5-595615a93bee" data-ke-size="size16"><span style="color: #000000;"><b>(3) 언어 모델 (Language Model)</b></span><span style="color: #000000;">: 최종 응답을 생성하는 핵심 모듈입니다.</span></p>
+<p id="SE-3db94738-27f1-406f-a045-98936609bbbc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0368efea-ef01-48b4-9722-c780eb49b2a6" data-ke-size="size16"><span style="color: #000000;"><b>(4) 재순위화 모듈 (Reranker)</b></span><span style="color: #000000;">: 검색된 문서의 순위를 조정하여 정확도를 높입니다.</span></p>
+<p id="SE-8b1f5395-6385-4dc7-9fd1-83ac5caad578" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cf27e7b3-e6fc-4dbf-8c6a-f1d2ffdb3924" data-ke-size="size16"><span style="color: #000000;"><b>(5) 텍스트 분할기 (Text Splitter)</b></span><span style="color: #000000;">: 긴 문서를 적절한 크기로 분할하여 검색 효율을 높입니다.</span></p>
+<p id="SE-36117fd4-5e61-4425-85de-4ea1e30cc288" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8464fe35-0e27-46f9-836f-9a494ef8938f" data-ke-size="size16"><span style="color: #000000;">이러한 모듈들은 RAG 파이프라인의 성능에 직접적인 영향을 미치기 때문에 많은 관심과 최적화 노력이 집중되는 편입니다. AutoRAG는 이러한 모듈들의 다양한 조합을 자동으로 평가하여 최적의 파이프라인을 찾아내는 것이 주요 기능입니다.</span></p>
+<p id="SE-dc9c5017-b451-4b3c-9426-db7079a0db7c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-925a0b9f-c991-4f83-a75c-e9703e802c62" data-ke-size="size16"><span style="color: #000000;"><b>3. 데이터셋의 특성에 따라 효과:</b></span></p>
+<p id="SE-af70fe4b-331f-456b-8ee2-942c61a5aee2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-806664c4-c1c0-47a5-9206-fa2f0a7a4a9b" data-ke-size="size16"><span style="color: #000000;">AutoRAG의 각 모듈은 데이터셋의 특성에 따라 효과가 다를 수 있습니다. 일반적으로 다음과 같은 경향이 있습니다:</span></p>
+<p id="SE-c6541324-8ddb-4dbc-ad88-3cef3322fda9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bfdb5f33-cfa3-4afb-88d6-badf35be7a99" data-ke-size="size16"><span style="color: #000000;"><b>(1) 임베딩 모델: </b></span></p>
+<p id="SE-9ae11f0d-0d3b-4901-a745-30661a73c3af" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e18739a9-6ec1-4820-ba9f-fbb4a44b4864" data-ke-size="size16"><span style="color: #000000;">도메인 특화 데이터셋에는 해당 분야에 특화된 임베딩 모델이 효과적입니다.</span></p>
+<p id="SE-283eec56-f0c9-4613-90fb-a56d48461c00" data-ke-size="size16"><span style="color: #000000;">일반적인 데이터셋에는 범용 임베딩 모델(예: BERT)이 잘 작동합니다.</span></p>
+<p id="SE-f0f5d904-ed5c-4fd2-9fd6-3a251166464e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9deffccf-fcef-4dfe-b74b-fa66e2e9377e" data-ke-size="size16"><span style="color: #000000;"><b>(2) 검색기(Retriever): </b></span></p>
+<p id="SE-d20787f7-24c6-4b1b-8766-b32c64ec4e1f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-da59106b-7c21-4e9e-8708-13b8ebe00905" data-ke-size="size16"><span style="color: #000000;">긴 문서가 많은 데이터셋에는 밀집 검색(Dense Retrieval)이 효과적입니다.</span></p>
+<p id="SE-7f5e47fe-0d3c-4ff6-88e0-b8d73e885a63" data-ke-size="size16"><span style="color: #000000;">짧은 문서나 키워드 중심 데이터셋에는 BM25와 같은 희소 검색이 유용할 수 있습니다.</span></p>
+<p id="SE-c2f59bda-7f31-4feb-b75e-8fd5dd4eff7b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ceb8f7fb-d350-443f-b2d0-d59c90bc392f" data-ke-size="size16"><span style="color: #000000;"><b>(3) 재순위화 모듈(Reranker): </b></span></p>
+<p id="SE-fe78c545-1d57-40b7-9e44-1fa73d56a5c5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1a088853-b094-4b73-a018-981977bcc97c" data-ke-size="size16"><span style="color: #000000;">복잡한 질의가 많은 데이터셋에서 특히 효과적입니다.</span></p>
+<p id="SE-bdaee6e2-6c6b-471d-87aa-f100e3b7072b" data-ke-size="size16"><span style="color: #000000;">검색 결과의 정확도를 높이는 데 도움이 됩니다.</span></p>
+<p id="SE-69c2e79a-88ff-44cc-a7b6-8624a1a94b8f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ba27c350-8c6d-4e40-ac6a-6c68c949b11c" data-ke-size="size16"><span style="color: #000000;"><b>(4) 텍스트 분할기(Text Splitter): </b></span></p>
+<p id="SE-5cefbd56-b189-4c65-9037-efee84009421" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6c5df3c3-643f-4f7a-9531-fc6fa0824381" data-ke-size="size16"><span style="color: #000000;">긴 문서가 많은 데이터셋에서 중요합니다.</span></p>
+<p id="SE-e4daa389-8ca0-442e-b4db-2cba9b33ec92" data-ke-size="size16"><span style="color: #000000;">문서의 구조와 내용에 따라 적절한 분할 방식을 선택해야 합니다.</span></p>
+<p id="SE-c3442c3e-e63d-4d3c-981a-6cb4344d8e49" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c4bec563-41db-4a7d-a416-81d0c749e23d" data-ke-size="size16"><span style="color: #000000;"><b>(5) 언어 모델(LLM): </b></span></p>
+<p id="SE-4aa76221-2765-458e-9500-65f155d716cc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6d5502ac-6d56-488d-8ff8-6746431c0728" data-ke-size="size16"><span style="color: #000000;">도메인 특화 데이터셋에는 해당 분야에 맞게 파인튜닝된 모델이 효과적입니다.</span></p>
+<p id="SE-d49200fe-f51e-4e3e-b71d-19332b73594e" data-ke-size="size16"><span style="color: #000000;">일반적인 데이터셋에는 GPT와 같은 범용 모델이 잘 작동합니다.</span></p>
+<p id="SE-36c2b32b-61d8-403b-b37a-22de4053b558" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fff07246-0f77-402e-b507-8c6e8d70df94" data-ke-size="size16"><span style="color: #000000;">AutoRAG는 이러한 모듈들의 다양한 조합을 자동으로 평가하여 특정 데이터셋에 가장 적합한 파이프라인을 찾아냅니다. 따라서 사용자는 자신의 데이터셋 특성을 잘 이해하고, AutoRAG를 통해 최적의 조합을 찾는 것이 중요합니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

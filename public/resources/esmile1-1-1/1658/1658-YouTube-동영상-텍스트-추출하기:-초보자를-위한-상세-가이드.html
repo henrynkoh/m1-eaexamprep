@@ -1,0 +1,239 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>YouTube 동영상 텍스트 추출하기: 초보자를 위한 상세 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">YouTube 동영상 텍스트 추출하기: 초보자를 위한 상세 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-16 09:24:40</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>YouTube 동영상 텍스트 추출하기: 초보자를 위한 상세 가이드</h1>
+<p data-ke-size="size16">안녕하세요! 오늘은 YouTube 동영상에서 텍스트를 추출하는 방법을 아주 쉽게 설명해드리겠습니다. 외부 프로그램 없이 Chrome 브라우저만으로 작업하는 방법을 배워보겠습니다.</p>
+<h2 data-ke-size="size26">필요한 정보</h2>
+<p data-ke-size="size16">작업에 필요한 두 가지 중요한 URL입니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Cloud Function URL:</li>
+</ol>
+<pre class="groovy"><code>&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>텍스트를 추출할 YouTube 동영상 URL:</li>
+</ol>
+<pre class="xml"><code>&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;
+
+</code></pre>
+<h2 data-ke-size="size26">30단계 상세 가이드</h2>
+<h3 data-ke-size="size23">기본 준비</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Chrome 브라우저를 실행합니다.</li>
+<li>키보드에서 F12 키를 누릅니다. (또는 Ctrl + Shift + I)</li>
+<li>개발자 도구가 열리면 상단의 "Console" 탭을 클릭합니다.</li>
+</ol>
+<h3 data-ke-size="size23">코드 입력</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>콘솔에 다음 코드를 한 줄씩 신중하게 입력합니다:</li>
+</ol>
+<pre class="javascript"><code>fetch('&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;'
+  })
+})
+.then(response =&gt; response.json())
+.then(data =&gt; console.log(data))
+.catch(error =&gt; console.error('Error:', error));
+
+</code></pre>
+<h3 data-ke-size="size23">코드 실행 및 확인</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>전체 코드를 입력한 후 Enter 키를 누릅니다.</li>
+<li>"Network" 탭을 클릭합니다.</li>
+<li>"Fetch/XHR" 필터를 선택합니다.</li>
+<li>요청이 전송되는 것을 확인합니다.</li>
+</ol>
+<h3 data-ke-size="size23">결과 확인</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>응답이 오면 응답 내용을 확인합니다.</li>
+<li>텍스트가 성공적으로 추출되었는지 확인합니다.</li>
+</ol>
+<h2 data-ke-size="size26">자주 발생하는 오류와 해결방법</h2>
+<h3 data-ke-size="size23">CORS 오류 발생 시</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>다음과 같이 코드를 수정해봅니다:</li>
+</ol>
+<pre class="lisp"><code>fetch('&lt;https://cors-anywhere.herokuapp.com/https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;'
+  })
+})
+
+</code></pre>
+<h3 data-ke-size="size23">네트워크 오류 발생 시</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>인터넷 연결을 확인합니다.</li>
+<li>URL이 정확한지 다시 한 번 확인합니다.</li>
+<li>Cloud Function이 활성화되어 있는지 확인합니다.</li>
+</ol>
+<h3 data-ke-size="size23">응답 오류 발생 시</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>콘솔에 표시된 오류 메시지를 확인합니다.</li>
+<li>YouTube 동영상이 공개 상태인지 확인합니다.</li>
+<li>동영상 URL이 올바른지 확인합니다.</li>
+</ol>
+<h2 data-ke-size="size26">추가 기능</h2>
+<h3 data-ke-size="size23">응답 데이터 저장하기</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>다음 코드를 사용하여 결과를 변수에 저장할 수 있습니다:</li>
+</ol>
+<pre class="javascript"><code>let transcribedText;
+fetch('&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;'
+  })
+})
+.then(response =&gt; response.json())
+.then(data =&gt; {
+  transcribedText = data;
+  console.log('저장된 텍스트:', transcribedText);
+})
+
+</code></pre>
+<h3 data-ke-size="size23">텍스트 파일로 저장하기</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>추출된 텍스트를 파일로 저장하려면 다음 코드를 사용합니다:</li>
+</ol>
+<pre class="typescript"><code>.then(data =&gt; {
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'text/plain'});
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'youtube-transcript.txt';
+  a.click();
+})
+
+</code></pre>
+<h2 data-ke-size="size26">고급 기능</h2>
+<h3 data-ke-size="size23">여러 동영상 처리하기</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>여러 동영상을 한 번에 처리하려면 다음과 같이 코드를 작성합니다:</li>
+</ol>
+<pre class="javascript"><code>const videos = [
+  '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;',
+  // 추가 동영상 URL들
+];
+
+Promise.all(videos.map(video =&gt;
+  fetch('&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ url: video })
+  }).then(response =&gt; response.json())
+))
+.then(results =&gt; {
+  console.log('모든 결과:', results);
+})
+
+</code></pre>
+<h3 data-ke-size="size23">진행 상태 모니터링</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>진행 상태를 확인하려면 다음 코드를 사용합니다:</li>
+</ol>
+<pre class="less"><code>fetch('&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;'
+  })
+})
+.then(response =&gt; {
+  console.log('상태:', response.status);
+  return response.json();
+})
+
+</code></pre>
+<h2 data-ke-size="size26">문제 해결 팁</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>요청이 실패하면 다음 사항을 확인하세요:</li>
+</ol>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>인터넷 연결 상태</li>
+<li>URL 정확성</li>
+<li>YouTube 동영상 접근 가능 여부</li>
+<li>Cloud Function 상태</li>
+</ul>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>응답이 너무 오래 걸리면:</li>
+</ol>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>동영상 길이 확인</li>
+<li>네트워크 상태 확인</li>
+<li>다른 시간대에 다시 시도</li>
+</ul>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>텍스트가 올바르게 추출되지 않으면:</li>
+</ol>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>동영상에 자막이 있는지 확인</li>
+<li>동영상 언어 설정 확인</li>
+<li>Cloud Function 로그 확인</li>
+</ul>
+<h2 data-ke-size="size26">보안 주의사항</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>API 키나 민감한 정보는 절대 공개하지 마세요.</li>
+<li>HTTPS를 사용하는 URL만 사용하세요.</li>
+<li>요청 횟수를 적절히 제한하세요.</li>
+<li>응답 데이터를 안전하게 처리하세요.</li>
+<li>개인정보가 포함된 동영상은 주의해서 처리하세요.</li>
+<li>모든 작업이 완료되면 개발자 도구를 닫으세요.</li>
+</ol>
+<h2 data-ke-size="size26">결론</h2>
+<p data-ke-size="size16">이 가이드를 따라하면 Chrome 브라우저만으로도 YouTube 동영상에서 텍스트를 추출할 수 있습니다. 처음에는 복잡해 보일 수 있지만, 단계별로 차근차근 따라하면 충분히 할 수 있습니다.</p>
+<p data-ke-size="size16">중요한 점은 각 단계를 정확히 따르고, 오류가 발생했을 때 당황하지 않고 제시된 해결 방법을 차례대로 시도해보는 것입니다.</p>
+<p data-ke-size="size16">실습을 통해 익숙해지면, 이 기술을 다양한 용도로 활용할 수 있을 것입니다. 화이팅!</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

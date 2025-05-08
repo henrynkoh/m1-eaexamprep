@@ -1,0 +1,300 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>구글 시트, 앱스 스크립트, 유튜브 API를 활용하여 나만의 뷰트랩(VidIQ) 만들기: 30단계 상세 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">구글 시트, 앱스 스크립트, 유튜브 API를 활용하여 나만의 뷰트랩(VidIQ) 만들기: 30단계 상세 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-01 01:09:05</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">구글 시트, 앱스 스크립트, 유튜브 API를 활용하여 나만의 뷰트랩(VidIQ) 만들기: 30단계 상세 가이드</h2>
+<p data-ke-size="size16">유튜브 채널 운영자라면 VidIQ와 같은 분석 도구가 얼마나 유용한지 잘 아실 겁니다. 하지만 구독료가 부담스러울 수도 있죠. 이 글에서는 구글 시트, 구글 앱스 스크립트, 유튜브 API를 활용하여 VidIQ와 유사한 기능을 직접 구축하는 방법을 자세히 알아보겠습니다. 30단계로 세분화된 상세 가이드를 통해, 코딩 경험이 없는 분들도 쉽게 따라 할 수 있도록 안내해 드리겠습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>왜 구글 시트, 앱스 스크립트, 유튜브 API를 사용해야 할까요?</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>무료:</b>&nbsp;구글 시트와 앱스 스크립트는 기본적으로 무료로 제공됩니다. 유튜브 API는 일정한 할당량 내에서 무료로 사용할 수 있습니다.</li>
+<li><b>유연성:</b>&nbsp;직접 코드를 작성하여 원하는 기능을 자유롭게 추가하고 수정할 수 있습니다.</li>
+<li><b>자동화:</b>&nbsp;앱스 스크립트를 사용하여 데이터 수집 및 분석을 자동화할 수 있습니다.</li>
+<li><b>데이터 제어:</b>&nbsp;모든 데이터는 구글 시트에 저장되므로, 데이터에 대한 완전한 제어권을 가질 수 있습니다.</li>
+<li><b>학습 기회:</b>&nbsp;앱스 스크립트와 유튜브 API를 사용하면서 프로그래밍 및 데이터 분석 능력을 향상시킬 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>기본 개념 이해</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>구글 시트:</b>&nbsp;데이터를 저장하고 관리하는 스프레드시트 도구입니다.</li>
+<li><b>구글 앱스 스크립트:</b>&nbsp;구글 제품(시트, 문서, 드라이브 등)을 자동화하고 확장하는 데 사용되는 스크립트 언어입니다.</li>
+<li><b>유튜브 API:</b>&nbsp;유튜브 데이터에 접근하고 조작할 수 있도록 제공되는 인터페이스입니다.</li>
+</ul>
+<p data-ke-size="size16"><b>30단계 상세 가이드</b></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>1단계: 구글 시트 생성 및 설정</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 드라이브에 접속하여 새 구글 시트를 만듭니다.</li>
+<li>시트 이름을 '유튜브 분석'과 같이 적절하게 변경합니다.</li>
+<li>시트 상단에 열 제목을 추가합니다. (예:&nbsp;동영상 ID,&nbsp;제목,&nbsp;조회수,&nbsp;좋아요,&nbsp;댓글수,&nbsp;게시일,&nbsp;태그,&nbsp;설명,&nbsp;채널 ID,&nbsp;채널 이름,&nbsp;구독자 수&nbsp;등).</li>
+</ol>
+<p data-ke-size="size16"><b>2단계: 유튜브 API 키 획득</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><a href="https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fconsole.developers.google.com%2F"><b>구글 개발자 콘솔</b></a>에 접속합니다.</li>
+<li>새 프로젝트를 만들거나 기존 프로젝트를 선택합니다.</li>
+<li>'API 및 서비스' &gt; '라이브러리'로 이동하여 'YouTube Data API v3'를 검색하고 활성화합니다.</li>
+<li>'사용자 인증 정보' 페이지에서 '사용자 인증 정보 만들기' &gt; 'API 키'를 선택하여 API 키를 생성합니다.</li>
+<li>API 키를 안전한 곳에 저장합니다. 이 키는 앱스 스크립트에서 사용됩니다.</li>
+</ol>
+<p data-ke-size="size16"><b>3단계: 앱스 스크립트 편집기 열기</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 시트에서 '확장 프로그램' &gt; 'Apps Script'를 클릭합니다.</li>
+<li>새 스크립트 편집기가 열립니다.</li>
+<li>프로젝트 이름을 '유튜브 분석'과 같이 적절하게 변경합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>4단계: 기본 코드 구조 작성</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>function myFunction() {}&nbsp;함수를 기본 구조로 작성합니다.</li>
+<li>이 함수 안에 모든 코드를 작성합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>5단계: 유튜브 API 라이브러리 추가</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>앱스 스크립트 편집기에서 '편집' &gt; '프로젝트 라이브러리'를 선택합니다.</li>
+<li>'스크립트 ID' 필드에&nbsp;1cB-T7i0j1fI4zFm28l742d9X5tL2uL_6eL-f-H44G32gO0a1hY8v8g7hU4sF6x를 입력하고 '찾기'를 클릭합니다.</li>
+<li>'YouTube' 라이브러리를 선택하고 추가합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>6단계: API 키 및 시트 ID 변수 설정</b></p>
+<p data-ke-size="size16">const API_KEY = 'YOUR_API_KEY'; // 2단계에서 얻은 API 키로 변경 const SHEET_ID = SpreadsheetApp.getActiveSpreadsheet().getId(); const SHEET_NAME = '시트1'; // 시트 이름으로 변경</p>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>7단계: 유튜브 API를 사용하여 동영상 정보 가져오기 함수 작성</b></p>
+<p data-ke-size="size16">function getVideoInfo(videoId) { try { var response = YouTube.Videos.list('snippet,statistics,contentDetails', { id: videoId, key: API_KEY }); if (response.items.length === 0) { return null; // 동영상 정보가 없는 경우 null 반환 } var video = response.items[0]; return { title: video.snippet.title, viewCount: video.statistics.viewCount, likeCount: video.statistics.likeCount, commentCount: video.statistics.commentCount, publishedAt: video.snippet.publishedAt, tags: video.snippet.tags, description: video.snippet.description, channelId: video.snippet.channelId, }; } catch (e) { console.error("Error fetching video info:", e); return null; } }</p>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>8단계: 유튜브 API를 사용하여 채널 정보 가져오기 함수 작성</b></p>
+<p data-ke-size="size16">function getChannelInfo(channelId) { try { var response = YouTube.Channels.list('snippet,statistics', { id: channelId, key: API_KEY }); if (response.items.length === 0) { return null; // 채널 정보가 없는 경우 null 반환 } var channel = response.items[0]; return { channelTitle: channel.snippet.title, subscriberCount: channel.statistics.subscriberCount, }; } catch (e) { console.error("Error fetching channel info:", e); return null; } }</p>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>9단계: 시트에 데이터 쓰기 함수 작성</b></p>
+<p data-ke-size="size16">function writeDataToSheet(videoData, channelData, rowNumber) { var ss = SpreadsheetApp.openById(SHEET_ID); var sheet = ss.getSheetByName(SHEET_NAME); var rowData = [ videoData.videoId, // 추가된 부분 videoData.title, videoData.viewCount, videoData.likeCount, videoData.commentCount, videoData.publishedAt, videoData.tags ? videoData.tags.join(', ') : '', videoData.description, videoData.channelId, channelData ? channelData.channelTitle : '', channelData ? channelData.subscriberCount : '', ]; sheet.getRange(rowNumber, 1, 1, rowData.length).setValues([rowData]); }</p>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>10단계: 동영상 ID 추출 함수 작성</b></p>
+<p data-ke-size="size16">function extractVideoId(url) { if (!url) return null; var videoId; try { if (url.includes('youtu.be')) { videoId = url.split('youtu.be/')[1]; } else if (url.includes('youtube.com')) { const urlParams = new URLSearchParams(new URL(url).search); videoId = urlParams.get('v'); } return videoId; } catch (e) { console.error("Error extracting video ID:", e); return null; } }</p>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>11단계: 메인 함수(myFunction) 구현</b></p>
+<p data-ke-size="size16">`function myFunction() { var ss = SpreadsheetApp.openById(SHEET_ID); var sheet = ss.getSheetByName(SHEET_NAME); var lastRow = sheet.getLastRow();</p>
+<p data-ke-size="size16">for(let i = 2; i &lt;= lastRow; i++){ // 두 번째 행부터 데이터 읽기 (첫 번째 행은 열 제목) var videoUrl = sheet.getRange(i, 1).getValue(); // 첫 번째 열(동영상 URL)에서 값 가져오기 var videoId = extractVideoId(videoUrl);</p>
+<pre class="reasonml"><code>  if(videoId){
+     var videoData = getVideoInfo(videoId);
+     if (videoData) {
+        var channelData = getChannelInfo(videoData.channelId);
+        if(channelData){
+          videoData.videoId = videoId; // videoId 추가
+          writeDataToSheet(videoData, channelData, i);
+        }
+     } else {
+         console.warn("Video info not found for video ID:", videoId);
+     }
+  } else {
+     console.warn("Invalid video URL at row:", i)
+  }
+
+  Utilities.sleep(1000); // API 요청 제한 방지 (1초 지연)
+</code></pre>
+<p data-ke-size="size16">}</p>
+<p data-ke-size="size16">Logger.log("Data fetching completed!"); }`</p>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>12단계: 스크립트 저장</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>앱스 스크립트 편집기에서 '파일' &gt; '저장'을 클릭합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>13단계: 스크립트 실행 권한 부여</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>앱스 스크립트 편집기에서 '실행' &gt; 'myFunction'을 클릭합니다.</li>
+<li>스크립트 실행에 필요한 권한을 부여합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>14단계: 시트 업데이트</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 시트의 첫 번째 열(A열)에 유튜브 동영상 URL을 입력합니다.</li>
+<li>앱스 스크립트 편집기에서 '실행' &gt; 'myFunction'을 클릭합니다.</li>
+<li>잠시 후, 데이터가 시트에 채워집니다.</li>
+</ol>
+<p data-ke-size="size16"><b>15단계: 추가 기능 구현 (키워드 분석)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>동영상 설명에서 키워드를 추출하여 분석하는 함수를 추가합니다.<b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</li>
+<li>function analyzeKeywords(description) { if (!description) return []; var keywords = description.toLowerCase().match(/\\b\\w{3,}\\b/g); // 최소 3글자 이상 return keywords ? keywords : []; }</li>
+<li>writeDataToSheet&nbsp;함수에 키워드를 추가하는 코드를 작성합니다.</li>
+</ol>
+<p data-ke-size="size16">// ... var keywords = analyzeKeywords(videoData.description); var rowData = [ videoData.videoId, // ... keywords.join(', '), // ... ]; // ...</p>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>시트에 '키워드' 열을 추가합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>16단계: 추가 기능 구현 (태그 분석)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>태그를 분석하는 기능을 추가합니다.<b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</li>
+<li>function analyzeTags(tags) { if (!tags || tags.length === 0) return []; return tags; }</li>
+<li>writeDataToSheet&nbsp;함수에 태그를 추가하는 코드를 작성합니다.<b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</li>
+<li>// ... var tags = analyzeTags(videoData.tags); var rowData = [ videoData.videoId, // ... tags.join(', '), // ... ]; // ...</li>
+<li>시트에 '태그' 열을 추가합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>17단계: 추가 기능 구현 (데이터 시각화)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 시트의 차트 기능을 사용하여 데이터를 시각화합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>조회수, 좋아요, 댓글수 등을 그래프로 나타냅니다.</li>
+<li>채널별 구독자 수 변화를 그래프로 나타냅니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>18단계: 추가 기능 구현 (데이터 필터링)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 시트의 필터 기능을 사용하여 데이터를 필터링합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>특정 기간 동안의 조회수 변화를 확인합니다.</li>
+<li>특정 키워드가 포함된 동영상을 검색합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>19단계: 추가 기능 구현 (데이터 정렬)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 시트의 정렬 기능을 사용하여 데이터를 정렬합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>조회수 순으로 동영상을 정렬합니다.</li>
+<li>댓글 수 순으로 동영상을 정렬합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>20단계: 추가 기능 구현 (데이터 업데이트)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>앱스 스크립트 트리거를 설정하여 정기적으로 데이터를 업데이트합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>매일 또는 매주 자동으로 데이터를 업데이트합니다.</li>
+<li>'편집' &gt; '현재 프로젝트 트리거'를 클릭하여 트리거를 설정합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>21단계: 추가 기능 구현 (채널 전체 분석)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>특정 채널의 모든 동영상을 분석하는 기능을 추가합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>유튜브 API를 사용하여 채널의 모든 동영상 ID를 가져옵니다.</li>
+<li>각 동영상에 대한 정보를 추출하여 시트에 저장합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>22단계: 추가 기능 구현 (경쟁 채널 분석)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>경쟁 채널을 분석하는 기능을 추가합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>경쟁 채널의 동영상 정보를 가져와서 자신의 채널과 비교합니다.</li>
+<li>경쟁 채널의 키워드 및 태그를 분석합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>23단계: 추가 기능 구현 (실시간 분석)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>실시간 조회수 변화를 감지하는 기능을 추가합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>앱스 스크립트를 사용하여 주기적으로 데이터를 가져와서 실시간으로 시트에 업데이트합니다.</li>
+<li>실시간 차트를 만들어 실시간 변화를 시각화합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>24단계: 추가 기능 구현 (자동 알림)</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>특정 조건이 충족되면 자동으로 알림을 보내는 기능을 추가합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>특정 동영상의 조회수가 일정 수준을 넘어서면 알림을 보냅니다.</li>
+<li>특정 키워드가 포함된 댓글이 달리면 알림을 보냅니다.</li>
+<li>이메일 알림 기능을 추가합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>25단계: 사용자 정의 함수 추가</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>사용자 정의 함수를 사용하여 시트에서 직접 데이터를 분석하고 조작할 수 있도록 합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>앱스 스크립트에서 사용자 정의 함수를 정의합니다.</li>
+<li>시트에서 이 함수를 사용하여 데이터를 분석합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>26단계: 오류 처리 및 로깅</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>try-catch&nbsp;블록을 사용하여 오류를 처리하고 콘솔에 오류 메시지를 기록합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>오류 발생 시 사용자에게 알림을 보냅니다.</li>
+<li>오류 로그를 분석하여 스크립트를 개선합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>27단계: 코드 리팩토링</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>코드를 정리하고 가독성을 높입니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>함수를 분리하여 코드를 모듈화합니다.</li>
+<li>변수 이름을 명확하게 지정합니다.</li>
+<li>주석을 추가하여 코드를 설명합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>28단계: 코드 최적화</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>코드 실행 속도를 최적화합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>불필요한 API 호출을 줄입니다.</li>
+<li>배열을 사용하여 데이터를 효율적으로 처리합니다.</li>
+<li>캐싱을 사용하여 중복된 데이터 요청을 줄입니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>29단계: 사용자 인터페이스 개선</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>사용자 정의 메뉴 또는 사이드바를 추가하여 사용자 인터페이스를 개선합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>버튼을 사용하여 스크립트를 실행합니다.</li>
+<li>사용자 설정 옵션을 제공합니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>30단계: 문서화 및 공유</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>스크립트 코드와 사용법을 문서화합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>티스토리 블로그와 같은 곳에 게시합니다.</li>
+<li>다른 사용자와 스크립트를 공유하고 피드백을 받습니다.</li>
+</ul>
+</li>
+</ol>
+<p data-ke-size="size16"><b>결론</b></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">이 30단계 가이드를 따라 하면, 구글 시트, 앱스 스크립트, 유튜브 API를 사용하여 자신만의 뷰트랩(VidIQ)을 만들 수 있습니다. 이러한 도구를 통해 유튜브 채널 운영 효율성을 높이고 데이터를 기반으로 더 나은 콘텐츠 전략을 수립할 수 있을 것입니다. 또한, 이 과정에서 앱스 스크립트와 유튜브 API에 대한 이해도를 높이고, 프로그래밍 및 데이터 분석 능력을 향상시킬 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,549 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>e-Book 제목: AI 에이전트 팀으로 업무 자동화하기: 20개 이상의 에이전트와 함께하는 혁신적인 업무 프로세스 구축 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">e-Book 제목: AI 에이전트 팀으로 업무 자동화하기: 20개 이상의 에이전트와 함께하는 혁신적인 업무 프로세스 구축 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-05 01:36:14</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16"><b><span>e-Book 제목: AI 에이전트 팀으로 업무 자동화하기: 20개 이상의 에이전트와 함께하는 혁신적인 업무 프로세스 구축 가이드</span></b></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>머리말 (2 페이지)</span></b><span><span>&nbsp;</span>(내용 동일)</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>제1장: AI 에이전트 팀의 이해 (10 페이지)</span></b><span><span>&nbsp;</span>(내용 동일)</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>제2장: AI 에이전트 팀 구축 준비 (10 페이지)</span></b><span><span>&nbsp;</span>(내용 동일)</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>제3장: AI 에이전트 팀 구축 실전 (30 페이지)</span></b></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><b><span>3.1 디렉터 에이전트 설정 (5 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>디렉터 에이전트 프로필 및 역할 설정</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>설정 화면 (텍스트 기반 예시):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="erlang"><code>에이전트 이름: Director_Agent
+에이전트 설명: 전체 워크플로우를 관리하고 에이전트 간 협업을 조정합니다.
+역할: 워크플로우 관리자, 에이전트 조정자</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"사용자가 '새로운 프로젝트 시작'이라는 음성 메시지를 보내면, 디렉터 에이전트는 해당 메시지를 받아 프로젝트 매니저 에이전트에게 전달합니다."</span></li>
+</ul>
+</li>
+<li><span>코어 지침 설정 (목표, 책임, 제약 조건)</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>코드 예시 (Python, Relevance AI):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="makefile"><code># 디렉터 에이전트의 코어 지침
+core_instructions = {
+    "goal": "업무 프로세스를 효율적으로 자동화하고 에이전트 간 협업을 원활하게 관리한다.",
+    "responsibility": [
+        "워크플로우 전체 관리",
+        "각 에이전트의 역할 조정",
+        "에러 발생 시 처리",
+        "사용자 요청 처리"
+    ],
+    "constraint": "모든 작업은 지정된 시간 내에 완료되어야 한다."
+}
+# Relevance AI SDK를 사용하여 코어 지침 설정
+agent = relevanceai.Agent("Director_Agent")
+agent.set_core_instructions(core_instructions)</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span><span>Python</span></li>
+</ul>
+</li>
+<li><span>서브 에이전트 컨텍스트 및 정보 제공 방법 설명</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"디렉터 에이전트는 프로젝트 매니저 에이전트에게 다음과 같은 컨텍스트 정보를 제공합니다. {'project_name': '새로운 프로젝트', 'deadline': '2024-12-31'}"</span></li>
+</ul>
+</li>
+<li><span>필수 도구 (WhatsApp, 날짜 확인 등) 연결</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>설정 화면 (텍스트 기반 예시):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="markdown"><code>도구 연결:
+    1. WhatsApp API: WhatsApp 메시지 전송 및 수신
+      - API Key: [YOUR_WHATSAPP_API_KEY]
+    2. 현재 날짜 확인 도구: 시스템 날짜 및 시간 확인</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+<li><b><span>코드 예시 (Python, Relevance AI):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code># WhatsApp API 도구 연결
+whatsapp_tool = relevanceai.Tool(
+   name="WhatsApp_Tool",
+   type="whatsapp",
+   api_key="[YOUR_WHATSAPP_API_KEY]"
+)
+agent.add_tool(whatsapp_tool)
+
+# 현재 날짜 확인 도구 연결
+date_tool = relevanceai.Tool(
+   name="Current_Date_Tool",
+   type="date"
+)
+agent.add_tool(date_tool)</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span><span>Python</span></li>
+</ul>
+</li>
+<li><span>예시 코드 또는 설정 파일 제공 (위 코드 참조)</span></li>
+</ul>
+</li>
+<li><b><span>3.2 매니저 에이전트 설정 (15 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>3.2.1 커뮤니케이션 매니저 에이전트 설정 (5 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>6개 서브 에이전트 (WhatsApp, LinkedIn, Slack, 이메일, 캘린더, 음성) 연결</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>설정 화면 (텍스트 기반 예시):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="angelscript"><code>매니저 에이전트 이름: Communication_Manager
+서브 에이전트:
+  1. WhatsApp_Agent
+  2. LinkedIn_Agent
+  3. Slack_Agent
+  4. Email_Agent
+  5. Calendar_Agent
+  6. Voice_Agent</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+</ul>
+</li>
+<li><span>각 서브 에이전트의 프로필 및 역할 정의</span></li>
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"WhatsApp 에이전트는 사용자의 WhatsApp 메시지를 수신하고, 필요한 경우 다른 에이전트에게 전달합니다. LinkedIn 에이전트는 LinkedIn 메시지를 확인하고 연결 요청을 처리합니다."</span></li>
+<li><span>각 서브 에이전트에 필요한 API 및 도구 연결 방법</span></li>
+<li><b><span>코드 예시 (Python, Relevance AI):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code># WhatsApp 에이전트 설정
+ whatsapp_agent = relevanceai.Agent("WhatsApp_Agent")
+  whatsapp_tool = relevanceai.Tool(
+    name="WhatsApp_Tool",
+    type="whatsapp",
+    api_key="[YOUR_WHATSAPP_API_KEY]"
+   )
+ whatsapp_agent.add_tool(whatsapp_tool)
+
+# LinkedIn 에이전트 설정
+ linkedin_agent = relevanceai.Agent("LinkedIn_Agent")
+ linkedin_tool = relevanceai.Tool(
+    name="LinkedIn_Tool",
+    type="linkedin",
+    api_key="[YOUR_LINKEDIN_API_KEY]"
+)
+  linkedin_agent.add_tool(linkedin_tool)
+
+# 다른 서브 에이전트 설정도 유사하게 진행
+# ...</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span><span>Python</span></li>
+<li><span>예시 설정 코드 및 상세 가이드 제공 (위 코드 참조)</span></li>
+</ul>
+</li>
+<li><b><span>3.2.2 프로젝트 매니저 에이전트 설정 (4 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>설정 화면 (텍스트 기반 예시):</span></b><br /><span>```</span><br /><span>매니저 에이전트 이름: Project_Manager</span><br /><span>서브 에이전트:</span>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span>CRM_Agent (HubSpot)</span></li>
+<li><span>GoogleDocs_Agent</span></li>
+<li><span>Notion_Agent</span><br /><span>```</span></li>
+</ol>
+</li>
+<li><span>CRM, Google Docs, Notion 서브 에이전트 연결</span></li>
+<li><span>각 서브 에이전트의 기능 및 역할 상세 설명</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"CRM 에이전트는 새로운 리드를 CRM 시스템에 추가하고, Google Docs 에이전트는 새로운 회의록 문서를 생성하며, Notion 에이전트는 새로운 프로젝트를 Notion 데이터베이스에 기록합니다."</span></li>
+</ul>
+</li>
+<li><span>각 서브 에이전트에 필요한 API 연결 및 설정</span></li>
+<li><b><span>코드 예시 (Python, Relevance AI):</span></b><br /><span>```python</span><br /><span># HubSpot 에이전트 설정</span><br /><span>hubspot_agent = relevanceai.Agent("CRM_Agent")</span><br /><span>hubspot_tool = relevanceai.Tool(</span><br /><span>name="HubSpot_Tool",</span><br /><span>type="hubspot",</span><br /><span>api_key="[YOUR_HUBSPOT_API_KEY]"</span><br /><span>)</span><br /><span>hubspot_agent.add_tool(hubspot_tool)</span></li>
+</ul>
+<div style="color: #000000;">
+<div>
+<pre class="routeros"><code># Google Docs 에이전트 설정
+googledocs_agent = relevanceai.Agent("GoogleDocs_Agent")
+ googledocs_tool = relevanceai.Tool(
+    name="GoogleDocs_Tool",
+    type="googledocs",
+    api_key="[YOUR_GOOGLE_API_KEY]"
+    )
+googledocs_agent.add_tool(googledocs_tool)
+  # Notion 에이전트 설정
+notion_agent = relevanceai.Agent("Notion_Agent")
+ notion_tool = relevanceai.Tool(
+    name="Notion_Tool",
+    type="notion",
+    api_key="[YOUR_NOTION_API_KEY]"
+    )
+notion_agent.add_tool(notion_tool)
+# ...
+```</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></div>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>예시 설정 코드 및 상세 가이드 제공 (위 코드 참조)</span></li>
+</ul>
+</li>
+<li><b><span>3.2.3 리서치 매니저 에이전트 설정 (3 페이지)</span></b></li>
+<li><b><span>설정 화면 (텍스트 기반 예시):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="angelscript"><code>매니저 에이전트 이름: Research_Manager
+서브 에이전트:
+  1. Travel_Agent
+  2. General_Research_Agent</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+</ul>
+<div style="color: #000000;">
+<div>
+<pre class="routeros"><code>*   여행 에이전트, 일반 리서치 에이전트 연결
+*   각 서브 에이전트의 기능 및 역할 상세 설명
+    *   **시나리오:** "여행 에이전트는 사용자 요청에 따라 항공편 및 호텔 정보를 검색하고, 일반 리서치 에이전트는 특정 주제에 대한 웹 검색 결과를 요약합니다."
+*   Google 검색, 웹 스크래핑, LinkedIn 스크래퍼 도구 연결 방법
+     *   **코드 예시 (Python, Relevance AI):**
+    ```python
+     # 여행 에이전트 설정
+    travel_agent = relevanceai.Agent("Travel_Agent")
+     google_search_tool = relevanceai.Tool(
+        name="Google_Search_Tool",
+        type="google_search",
+         api_key="[YOUR_GOOGLE_API_KEY]"
+        )
+    travel_agent.add_tool(google_search_tool)
+    # 웹 스크래핑 도구
+     web_scraping_tool = relevanceai.Tool(
+        name="Web_Scraping_Tool",
+         type="web_scraping"
+    )
+    travel_agent.add_tool(web_scraping_tool)
+
+     # 일반 리서치 에이전트 설정
+     research_agent = relevanceai.Agent("General_Research_Agent")
+    linkedin_scraper_tool = relevanceai.Tool(
+        name="LinkedIn_Scraper_Tool",
+        type="linkedin_scraper",
+         api_key="[YOUR_LINKEDIN_API_KEY]"
+    )
+     research_agent.add_tool(linkedin_scraper_tool)
+    # ...
+    ```
+*   예시 설정 코드 및 상세 가이드 제공 (위 코드 참조)</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></div>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>3.2.4 콘텐츠 매니저 에이전트 설정 (3 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>설정 화면 (텍스트 기반 예시):</span></b><br /><span>```</span><br /><span>매니저 에이전트 이름: Content_Manager</span><br /><span>서브 에이전트:</span>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span>Blog_Writer_Agent</span></li>
+<li><span>LinkedIn_Post_Agent</span></li>
+<li><span>SocialMedia_Agent</span><br /><span>```</span></li>
+</ol>
+</li>
+<li><span>블로그 작성, LinkedIn 포스팅, 기타 소셜 미디어 에이전트 연결</span></li>
+<li><span>각 서브 에이전트의 기능 및 역할 상세 설명</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"블로그 작성 에이전트는 지정된 주제에 대한 블로그 포스트를 작성하고, LinkedIn 포스팅 에이전트는 생성된 콘텐츠를 LinkedIn에 게시합니다."</span></li>
+</ul>
+</li>
+<li><span>콘텐츠 게시 도구 연결 및 설정 방법</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>코드 예시 (Python, Relevance AI):</span></b></li>
+</ul>
+<div style="color: #000000;">
+<div>
+<pre class="routeros"><code># 블로그 작성 에이전트 설정
+  blog_writer_agent = relevanceai.Agent("Blog_Writer_Agent")
+  blog_post_tool = relevanceai.Tool(
+    name="Blog_Post_Tool",
+    type="blog_post",
+    api_key="[YOUR_BLOG_API_KEY]"
+    )
+ blog_writer_agent.add_tool(blog_post_tool)
+
+
+ # LinkedIn 포스팅 에이전트 설정
+ linkedin_post_agent = relevanceai.Agent("LinkedIn_Post_Agent")
+ linkedin_posting_tool = relevanceai.Tool(
+    name="LinkedIn_Posting_Tool",
+    type="linkedin_posting",
+    api_key="[YOUR_LINKEDIN_API_KEY]"
+    )
+ linkedin_post_agent.add_tool(linkedin_posting_tool)
+
+# ...</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span><span>Python</span></div>
+</li>
+<li><span>예시 설정 코드 및 상세 가이드 제공 (위 코드 참조)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><b><span>3.3 서브 에이전트 상세 설정 (10 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>각 서브 에이전트의 상세 기능 및 설정 방법 설명</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>WhatsApp 에이전트:</span></b><span><span>&nbsp;</span>메시지 검색, 전송 도구 연결 및 설정</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"사용자가 '회의 일정을 알려줘'라고 메시지를 보내면, WhatsApp 에이전트는 메시지를 읽고 캘린더 에이전트에게 전달합니다."</span></li>
+</ul>
+</li>
+<li><b><span>LinkedIn 에이전트:</span></b><span><span>&nbsp;</span>메시지 검색, 전송, 초대장 전송 도구 연결 및 설정</span></li>
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"LinkedIn 에이전트는 새로운 연결 요청이 오면 자동으로 수락하고, 연결된 사람에게 메시지를 보냅니다."</span></li>
+<li><b><span>이메일 및 캘린더 에이전트:</span></b><span><span>&nbsp;</span>API 연동 및 설정 방법 상세 가이드</span></li>
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"이메일 에이전트는 특정 키워드가 포함된 이메일을 검색하여 내용을 요약하고, 캘린더 에이전트는 새로운 회의 일정을 캘린더에 추가합니다."</span></li>
+<li><b><span>HubSpot 에이전트:</span></b><span><span>&nbsp;</span>CRM 작업 도구 연결 및 설정 방법</span></li>
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"HubSpot 에이전트는 새로운 리드 정보를 CRM 시스템에 등록하고, 리드 상태를 업데이트합니다."</span></li>
+<li><b><span>Notion 에이전트:</span></b><span><span>&nbsp;</span>데이터베이스 작업 도구 연결 및 설정 방법</span></li>
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"Notion 에이전트는 새로운 프로젝트 정보를 Notion 데이터베이스에 저장하고, 관련 페이지를 생성합니다."</span></li>
+<li><b><span>Google Drive/Docs 에이전트:</span></b><span><span>&nbsp;</span>문서 생성 및 관리 도구 연결 및 설정 방법</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>시나리오:</span></b><span><span>&nbsp;</span>"Google Docs 에이전트는 회의록 문서를 생성하고, Google Drive에 저장합니다."</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span>파인튜닝된 모델 적용 방법 설명 (예: LinkedIn 포스팅용)</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>코드 예시 (Python, Relevance AI):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code># LinkedIn 포스팅 에이전트 설정
+  linkedin_post_agent = relevanceai.Agent("LinkedIn_Post_Agent")
+
+   # 파인튜닝된 모델 로드
+fine_tuned_model = relevanceai.Model.load("[YOUR_FINE_TUNED_MODEL_ID]")
+linkedin_post_agent.set_model(fine_tuned_model)
+
+   linkedin_posting_tool = relevanceai.Tool(
+    name="LinkedIn_Posting_Tool",
+    type="linkedin_posting",
+    api_key="[YOUR_LINKEDIN_API_KEY]"
+    )
+ linkedin_post_agent.add_tool(linkedin_posting_tool)</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span><span>Python</span></li>
+</ul>
+</li>
+<li><span>각 서브 에이전트별 설정 예시 및 코드 제공 (위 코드 참조)</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>제4장: 워크플로우 자동화 및 추가 기능 (20 페이지)</span></b></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><b><span>4.1 Make.com을 활용한 워크플로우 자동화 (8 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>Make.com 소개 및 주요 기능 설명</span></li>
+<li><span>HTTP 요청 설정 및 사용 방법 상세 가이드</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>설정 화면 (텍스트 기반 예시, Make.com):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="oxygene"><code>Module: HTTP Request
+URL: https://api.example.com/data
+Method: POST
+Headers:
+  Content-Type: application/json
+  Authorization: Bearer [YOUR_API_TOKEN]
+Body:
+  {
+    "key1": "value1",
+    "key2": "value2"
+   }</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+</ul>
+</li>
+<li><span>헤더 및 바디 구성 방법 설명</span></li>
+<li><span>스케줄링 설정 및 트리거 설정 방법</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>설정 화면 (텍스트 기반 예시, Make.com):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="mipsasm"><code>Trigger: Schedule
+Schedule: Every day at 9:00 AM</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+<li><b><span>설정 화면 (텍스트 기반 예시, Make.com):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="groovy"><code>Trigger: Webhook
+Webhook URL: [YOUR_WEBHOOK_URL]</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+</ul>
+</li>
+<li><span>워크플로우 예시 (항공편 옵션 찾기, 점심 약속 변경 등)</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>시나리오 (항공편 옵션 찾기):</span></b><span><span>&nbsp;</span>"사용자가 '서울에서 뉴욕 가는 항공편 찾아줘'라고 말하면, 디렉터 에이전트는 메시지를 받아 리서치 매니저에게 전달하고, 리서치 매니저는 항공편 정보를 검색하여 구글 독스에 저장하고 결과를 WhatsApp 에이전트를 통해 사용자에게 전달합니다."</span></li>
+<li><b><span>시나리오 (점심 약속 변경):</span></b><span><span>&nbsp;</span>"사용자가 '내일 점심 약속 1시로 변경해줘'라고 말하면, 디렉터 에이전트는 캘린더 에이전트를 호출하여 일정을 업데이트하고, 상대방에게 WhatsApp 메시지를 보냅니다."</span></li>
+</ul>
+</li>
+<li><span>실제 사용 예시 및 템플릿 제공</span></li>
+</ul>
+</li>
+<li><b><span>4.2 WhatsApp Business API 설정 (선택 사항) (5 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>API 키 발급 및 Webhook 설정 방법 가이드</span></li>
+<li><b><span>설정 화면 (텍스트 기반 예시):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="angelscript"><code>WhatsApp Business API 설정:
+  1. API 키: [YOUR_WHATSAPP_BUSINESS_API_KEY]
+  2. Webhook URL: [YOUR_WEBHOOK_URL]</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></li>
+<li><span>미디어 처리 로직 및 음성 메시지 처리 로직 구현 방법</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b><span>코드 예시 (Python):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="ruby"><code># 음성 메시지를 텍스트로 변환
+def transcribe_audio(audio_file):
+   # STT (Speech-to-Text) API 호출
+   text = stt_api.transcribe(audio_file)
+   return text
+# 미디어 파일 처리 함수
+def process_media_file(media_file):
+    # 이미지 처리 (OCR) 또는 비디오 처리 로직 추가
+    # ...
+    return processed_media</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span><span>Python</span></li>
+</ul>
+</li>
+<li><span>보안 설정 및 API 키 관리 방법</span></li>
+<li><span>주의 사항 및 문제 해결 방법 안내</span></li>
+</ul>
+</li>
+<li><b><span>4.3 이미지 및 문서 처리 (4 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>OCR 및 이미지 인식 기능 연동 방법</span></li>
+<li><b><span>코드 예시 (Python):</span></b></li>
+<li style="color: #000000;">
+<div>
+<pre class="ruby"><code># 이미지 파일에서 텍스트 추출
+def extract_text_from_image(image_file):
+    # OCR API 호출
+    text = ocr_api.extract_text(image_file)
+    return text
+
+ # 이미지 파일 분석
+ def analyze_image(image_file):
+    # 이미지 인식 API 호출
+    analysis_result = image_recognition_api.analyze(image_file)
+   return analysis_result</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span><span>Python</span></li>
+</ul>
+<div style="color: #000000;">
+<div>
+<pre class="scheme"><code>```</code></pre>
+</div>
+<div><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></div>
+<span>Use code<span>&nbsp;</span><a style="color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></div>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>추출된 정보 처리 및 에이전트 전달 방법</span></li>
+<li><span>각종 이미지 및 문서 처리 API 소개</span></li>
+<li><span>실제 예시 및 코드 제공 (위 코드 참조)</span></li>
+</ul>
+</li>
+<li><b><span>4.4 추가 기능 개발 및 활용 (3 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>다국어 지원 설정 방법 안내</span></li>
+<li><span>사용자 인터페이스 개선 방법 (대시보드 구현)</span></li>
+<li><span>사용 통계 시각화 및 분석 방법</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>제5장: 시스템 관리 및 유지보수 (20 페이지)</span></b></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><b><span>5.1 보안 설정 및 에러 핸들링 (7 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>API 키 관리 및 접근 제어 방법</span></li>
+<li><span>데이터 암호화 설정 및 안전한 데이터 처리 방법</span></li>
+<li><span>에러 핸들링 및 로깅 시스템 구현</span></li>
+<li><b><span>코드 예시 (Python):</span></b><br /><span>python import logging logging.basicConfig(filename='agent_system.log', level=logging.ERROR) try: # 에러 발생 가능한 코드 pass except Exception as e: logging.error(f"An error occurred: {e}") # 에러 처리 로직 # ...</span></li>
+<li><span>보안 취약점 점검 및 개선 방법</span></li>
+</ul>
+</li>
+<li><b><span>5.2 테스트 및 디버깅 (5 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>각 에이전트 및 전체 시스템 테스트 방법 소개</span></li>
+<li><span>디버깅 도구 및 사용 방법 설명</span></li>
+<li><span>테스트 케이스 설계 및 실행 방법</span></li>
+<li><span>일반적인 오류 및 해결 방법</span></li>
+</ul>
+</li>
+<li><b><span>5.3 성능 최적화 (5 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>응답 시간 개선 방법</span></li>
+<li><span>리소스 사용 최적화 전략</span></li>
+<li><span>성능 측정 및 분석 방법</span></li>
+<li><span>확장성 고려 사항 및 시스템 아키텍처 개선 방법</span></li>
+</ul>
+</li>
+<li><b><span>5.4 백업 및 복구 전략 (3 페이지)</span></b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span>데이터 백업 방법 및 주기 설정</span></li>
+<li><span>시스템 복구 방법 및 절차 설명</span></li>
+<li><span>재해 복구 계획 수립 방법</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>제6장: 법적, 윤리적 고려사항 및 장기적 계획 (8 페이지)</span></b><span><span>&nbsp;</span>(내용 동일)</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>결론 (2 페이지)</span></b><span><span>&nbsp;</span>(내용 동일)</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><b><span>참고 자료 (1 페이지)</span></b><span><span>&nbsp;</span>(내용 동일)</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

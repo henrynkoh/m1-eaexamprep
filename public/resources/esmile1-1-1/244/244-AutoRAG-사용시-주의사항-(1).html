@@ -1,0 +1,112 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AutoRAG 사용시 주의사항 (1)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AutoRAG 사용시 주의사항 (1)</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-08-30 20:32:27</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-233a1e15-274a-4f52-a774-f58c5ef690f8" data-ke-size="size16"><span style="color: #000000;"><b>1. AutoRAG 설치 시 주의해야 할 주요 사항:</b></span></p>
+<p id="SE-1d910b9b-c4a3-4d22-8278-34e4c3ef67eb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9959fe5b-83ab-4216-b7b2-e1bf30c629db" data-ke-size="size16"><span style="color: #000000;"><b>(1) 한국어 버전 설치</b></span><span style="color: #000000;">: AutoRAG를 한국어로 사용하기 위해서는 반드시 한국어 버전으로 설치해야 합니다. 설치 명령어에 [ko]를 포함시켜야 합니다.</span></p>
+<p id="SE-0f1458ae-bf03-445b-a731-cf628437e7b9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-49711598-ed96-4f19-a9dc-8349e0abc21b" data-ke-size="size16"><span style="color: #000000;">pip install AutoRAG[ko] </span></p>
+<p id="SE-c68a348b-e782-45cc-92fc-c8cd6a60cff6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-207c7213-bec3-4c6c-a8d9-a4776bbc467b" data-ke-size="size16"><span style="color: #000000;"><b>(2) JDK 설치</b></span><span style="color: #000000;">: konlpy 라이브러리 사용을 위해 JDK(Java Development Kit)를 반드시 설치해야 합니다. 예를 들어, MacBook Pro M2에서는 JDK 17 설치로 문제없이 작동했다고 합니다.</span></p>
+<p id="SE-0f9867af-f0ec-4017-954e-02199a61b883" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1c0264d9-d297-4f3e-ac4c-b08ac010dd40" data-ke-size="size16"><span style="color: #000000;"><b>(3) 환경 변수 설정</b></span><span style="color: #000000;">: .env 파일에 필요한 API 키 정보를 입력해야 합니다. 특히 업스테이지 임베딩 모델 사용을 위해 업스테이지 API 키 정보를 반드시 입력해야 합니다.</span></p>
+<p id="SE-40af3def-6b00-4950-a154-745517a27932" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f4f66dfa-3662-4489-b018-b4c7990454a9" data-ke-size="size16"><span style="color: #000000;"><b>(4) 임베딩 모델 추가</b></span><span style="color: #000000;">: AutoRAG 실행 전에 업스테이지 임베딩 모델을 추가하는 것이 필수적입니다.</span></p>
+<p id="SE-e4c90b6a-7c15-4451-ae1d-f3c7f482ad1a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4a1c69db-ca79-4323-8376-fd3911ff9acd" data-ke-size="size16"><span style="color: #000000;">이러한 사항들을 주의 깊게 확인하고 설정함으로써 AutoRAG를 올바르게 설치하고 사용할 수 있습니다. 특히 한국어 처리를 위한 설정에 주의를 기울여야 합니다.</span></p>
+<p id="SE-a2c21003-e8a2-47a3-87ed-31baa2a5e2ea" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f25c623b-7a08-4da5-b8a2-0897d57cd3af" data-ke-size="size16"><span style="color: #000000;"><b>2. AutoRAG 설치 시 필요한 주요 라이브러리들:</b></span></p>
+<p id="SE-c6db185d-75fe-4e31-8553-63f43ab9f63e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fa20cea7-0b9c-446e-8ffd-5e4cf58fc42f" data-ke-size="size16"><span style="color: #000000;"><b>(1) AutoRAG</b></span><span style="color: #000000;">: 핵심 라이브러리로, 한국어 버전 설치를 위해 다음 명령어를 사용합니다.</span></p>
+<p id="SE-cf125385-58ab-494d-afdf-069d70c8c3d9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ce0e994a-1d95-4bf3-b923-90d578cae061" data-ke-size="size16"><span style="color: #000000;">pip install AutoRAG[ko] </span></p>
+<p id="SE-bf332f9c-7bfe-4606-b16e-7f84b8cd013e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3e3be074-a10d-43dd-be75-855f2e4c3a3c" data-ke-size="size16"><span style="color: #000000;"><b>(2) JDK (Java Development Kit)</b></span><span style="color: #000000;">: konlpy 라이브러리 사용을 위해 필수적입니다. JDK 17 버전이 권장됩니다.</span></p>
+<p id="SE-67f32331-5380-426b-86f0-3f663395c700" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0e6e90de-7aa6-4bfb-a073-b912134ad01c" data-ke-size="size16"><span style="color: #000000;"><b>konlpy</b></span><span style="color: #000000;">: 한국어 자연어 처리를 위한 라이브러리입니다.</span></p>
+<p id="SE-2af6a02b-0477-4ab0-98aa-a40ebf509d27" data-ke-size="size16">&nbsp;</p>
+<p id="SE-794737ac-c3d4-42c7-b16d-8fd877d33c06" data-ke-size="size16"><span style="color: #000000;"><b>(3) 업스테이지 임베딩 모델</b></span><span style="color: #000000;">: AutoRAG 실행을 위해 필요한 임베딩 모델입니다.</span></p>
+<p id="SE-70eb219f-00fe-45e1-bb63-dcb2f1a6c696" data-ke-size="size16">&nbsp;</p>
+<p id="SE-841374f3-821a-4977-91d6-3088e31d3a58" data-ke-size="size16"><span style="color: #000000;"><b>(4) Python 관련 라이브러리</b></span><span style="color: #000000;">: AutoRAG는 Python 기반이므로, 기본적인 Python 라이브러리들이 필요합니다.</span></p>
+<p id="SE-720ce476-cdd9-4e30-a952-829c21384a88" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e5fc26b7-6f93-4c80-bf7f-ab66108fdfb6" data-ke-size="size16"><span style="color: #000000;"><b>(5) 데이터베이스 관련 라이브러리</b></span><span style="color: #000000;">: 프로젝트에 따라 필요할 수 있습니다.</span></p>
+<p id="SE-486e19f4-825d-4249-b63a-c01bfae01744" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8cbd482d-18e8-472a-8ddd-a8ffc277af61" data-ke-size="size16"><span style="color: #000000;"><b>웹 프레임워크</b></span><span style="color: #000000;">: Flask나 TurboGears와 같은 웹 프레임워크가 필요할 수 있습니다, 특히 웹 애플리케이션 개발 시.</span></p>
+<p id="SE-15ac7d39-c582-4064-af1b-b7bbf6fa4744" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4275684a-2fb5-47b2-9622-aecce68f3787" data-ke-size="size16"><span style="color: #000000;"><b>테스트 프레임워크</b></span><span style="color: #000000;">: Unittest, Robot, PyUnit 등의 테스트 프레임워크가 필요할 수 있습니다.</span></p>
+<p id="SE-f01644f9-4bb2-47e1-a78c-172daefe0de6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d5d9196e-368a-4e0e-ac64-fdc43bcb6a0a" data-ke-size="size16"><span style="color: #000000;">이러한 라이브러리들은 AutoRAG의 기본 기능을 사용하고, 한국어 처리를 위해 필요합니다. 프로젝트의 특성에 따라 추가적인 라이브러리가 필요할 수 있으므로, 프로젝트 요구사항을 잘 파악하고 그에 맞는 라이브러리를 설치해야 합니다.</span></p>
+<p id="SE-925fa79e-c069-4c8b-96c8-ed0aea1bc3f6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e00d87c4-c24a-47ad-b9d4-8b2763ba185e" data-ke-size="size16"><span style="color: #000000;"><b>3. AutoRAG를 설치한 후 최적의 RAG 파이프라인을 찾는 방법:</b></span></p>
+<p id="SE-6a21899b-c8bd-4837-9943-ea8725370e82" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6cb8b52a-c6d9-476b-9437-a350f938bb89" data-ke-size="size16"><span style="color: #000000;"><b>(1) 평가 데이터셋 준비</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-73681820-ce87-4f5c-ae3b-419b0b940b13" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7081845f-6365-45f6-8182-b8817bff8c9b" data-ke-size="size16"><span style="color: #000000;">고품질의 QA 데이터셋과 코퍼스 데이터셋을 준비합니다.</span></p>
+<p id="SE-312b23b1-bbb6-4096-8fe4-504223f55927" data-ke-size="size16"><span style="color: #000000;">데이터는 parquet 형식으로 저장해야 합니다.</span></p>
+<p id="SE-e59e7025-a7dd-49ba-a85d-af0ff832064b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ff895040-d629-416f-8986-fb2deb5400c4" data-ke-size="size16"><span style="color: #000000;"><b>(2) 설정 파일 작성</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-8b2eeb13-45d4-4921-9957-b45d0b101608" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b50b896a-bb4a-41ad-8ebb-f00b993b2b1e" data-ke-size="size16"><span style="color: #000000;">YAML 형식의 설정 파일을 작성합니다.</span></p>
+<p id="SE-9b50b306-0aca-482a-bb5d-286371981052" data-ke-size="size16"><span style="color: #000000;">AutoRAG GitHub 저장소의 sample_config 폴더에서 예제를 참고할 수 있습니다.</span></p>
+<p id="SE-5864410f-4913-4a41-b8c8-140b46ddfa56" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2bec7baf-4676-44ed-9768-815a1d19d889" data-ke-size="size16"><span style="color: #000000;"><b>(3) AutoRAG 실행</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-5e81e84c-58fb-4c13-8a87-b6398b37a606" data-ke-size="size16">&nbsp;</p>
+<p id="SE-72af26ce-fb81-4f57-840e-69413cbc6379" data-ke-size="size16"><span style="color: #000000;">다음 명령어로 AutoRAG를 실행합니다:</span></p>
+<p id="SE-8862a5f3-28bc-4cfd-87e6-6779f8bfb6e5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c27a92fc-3121-4dc8-8c8b-6cd9de937987" data-ke-size="size16"><span style="color: #000000;">autorag evaluate \\\\ --config your/path/to/config.yaml \\\\ --qa_data_path your/path/to/qa.parquet \\\\ --corpus_data_path your/path/to/corpus.parquet \\\\ --project_dir your/path/to/project_dir </span></p>
+<p id="SE-26134761-9824-4a53-bb61-90ec2e145c34" data-ke-size="size16">&nbsp;</p>
+<p id="SE-483d9894-b041-43b4-97c8-ecfbe7533531" data-ke-size="size16"><span style="color: #000000;"><b>(4) 결과 분석</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-d0ab4be5-05fc-4608-9560-c5ae0f067a20" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7be4c148-d139-4866-858b-c8c491b2646d" data-ke-size="size16"><span style="color: #000000;">AutoRAG는 설정에 따라 다양한 RAG 파이프라인을 자동으로 평가합니다.</span></p>
+<p id="SE-3f68628d-90bd-4ba9-bf3e-ea504dbaff5c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-030be8db-be5f-4f4a-8958-504f19eed1f4" data-ke-size="size16"><span style="color: #000000;">각 단계별 평가 결과를 저장하여 성능 변화를 실시간으로 확인할 수 있습니다.</span></p>
+<p id="SE-c13eaa40-1956-43f3-b222-f4b7c4753f1a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ea55d839-d4d3-4d0b-a53e-ac810fe5c7ac" data-ke-size="size16"><span style="color: #000000;"><b>(5) 최적 파이프라인 선택</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-8662be4f-df8f-44e8-84d1-cd42a5cecb55" data-ke-size="size16">&nbsp;</p>
+<p id="SE-71503068-e70b-4fb0-909a-be939f75d9e6" data-ke-size="size16"><span style="color: #000000;">평가 결과를 바탕으로 최적의 RAG 파이프라인을 선택합니다.</span></p>
+<p id="SE-34e97957-edd0-4a03-a045-13d8f7db3f46" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d655f0d1-cd4f-4e70-bc99-aca6f7415a16" data-ke-size="size16"><span style="color: #000000;"><b>(6) 파이프라인 배포</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-4824a832-abfc-4232-b7e1-c78c60d9d65b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4522c71a-79b3-4434-92b8-3d4cf4cf7c85" data-ke-size="size16"><span style="color: #000000;">선택된 최적의 파이프라인을 단일 YAML 파일로 배포할 수 있습니다.</span></p>
+<p id="SE-ed0befcc-b94a-4d1c-8015-3b399c17f700" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3d403f36-b470-4e84-84d3-11d4a15251cc" data-ke-size="size16"><span style="color: #000000;">FastAPI 서버나 웹 인터페이스를 통해 배포 가능합니다.</span></p>
+<p id="SE-b0256daa-b7fc-4d62-a830-ef6b5edb37e3" data-ke-size="size16"><span style="color: #000000;">AutoRAG는 다양한 모듈 조합(최대 960가지)을 자동으로 평가하여 최적의 파이프라인을 찾아줍니다. 이를 통해 수동으로 모든 조합을 테스트해야 하는 번거로움을 크게 줄일 수 있습니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

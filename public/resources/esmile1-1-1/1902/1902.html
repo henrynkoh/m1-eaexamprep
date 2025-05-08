@@ -1,0 +1,373 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Google Apps Script를 활용한 AI 자동화 시스템 구축 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Google Apps Script를 활용한 AI 자동화 시스템 구축 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-02 04:05:02</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26">Google Apps Script를 활용한 AI 자동화 시스템 구축 가이드</h2>
+<p data-ke-size="size16">2025년 현재, AI 기술의 발전과 함께 자동화 시스템의 중요성이 더욱 부각되고 있습니다. 이 글에서는 Google Apps Script를 활용하여 무료로 구축할 수 있는 AI 자동화 시스템에 대해 상세히 알아보겠습니다. 특히 Gemini API를 활용한 텍스트 요약 기능을 중심으로, 실제 구현 방법과 활용 사례를 소개하겠습니다.</p>
+<h3 data-ke-size="size23">1. Google Apps Script 소개</h3>
+<p data-ke-size="size16">Google Apps Script는 Google 워크스페이스 애플리케이션을 위한 경량 애플리케이션 개발 플랫폼입니다. JavaScript를 기반으로 하며, Google Sheets, Docs, Forms 등과 쉽게 연동할 수 있어 다양한 자동화 작업에 활용됩니다.</p>
+<h3 data-ke-size="size23">2. 프로젝트 설정</h3>
+<p data-ke-size="size16">먼저 Google Sheets에서 새 프로젝트를 생성하고, Apps Script를 설정하는 방법을 알아보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google Sheets에서 새 스프레드시트를 생성합니다.</li>
+<li>파일명을 "2025-0126-apps-script-tutorial"로 지정합니다.</li>
+<li>스프레드시트의 첫 번째 행에 다음과 같이 열 제목을 입력합니다:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>A열: number</li>
+<li>B열: llm</li>
+<li>C열: summary</li>
+</ul>
+</li>
+<li>B열에 다음과 같이 LLM 모델명을 입력합니다:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>B2: gemini 1.5 flash</li>
+<li>B3: gemini 2.0-flash-exp</li>
+<li>B4: gemini 1.5 pro</li>
+</ul>
+</li>
+<li>A열에 1, 2, 3을 입력합니다.</li>
+<li>상단 메뉴에서 "확장 프로그램" &gt; "Apps Script"를 선택합니다.</li>
+</ol>
+<h3 data-ke-size="size23">3. Gemini API 연동</h3>
+<p data-ke-size="size16">Gemini API를 Apps Script에 연동하는 방법을 살펴보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google AI Studio에서 Gemini API 키를 발급받습니다.</li>
+<li>Apps Script 편집기에서 새 스크립트 파일을 생성합니다.</li>
+<li>다음과 같은 기본 함수 구조를 작성합니다:</li>
+</ol>
+<pre class="javascript"><code>function summarizeText(text) {
+  const apiKey = 'YOUR_API_KEY_HERE';
+  const apiUrl = '&lt;https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent&gt;';
+
+  const payload = {
+    contents: [{
+      parts: [{
+        text: `다음 텍스트를 3줄로 요약해주세요: ${text}`
+      }]
+    }]
+  };
+
+  const options = {
+    method: 'post',
+    contentType: 'application/json',
+    headers: {
+      'x-goog-api-key': apiKey
+    },
+    payload: JSON.stringify(payload)
+  };
+
+  const response = UrlFetchApp.fetch(apiUrl, options);
+  const result = JSON.parse(response.getContentText());
+
+  return result.candidates[0].content.parts[0].text;
+}
+
+</code></pre>
+<h3 data-ke-size="size23">4. 스프레드시트 연동</h3>
+<p data-ke-size="size16">작성한 함수를 스프레드시트와 연동하는 방법을 알아보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Apps Script 편집기에서 다음 함수를 추가합니다:</li>
+</ol>
+<pre class="reasonml"><code>function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('AI 요약')
+    .addItem('선택한 셀 요약', 'summarizeSelectedCell')
+    .addToUi();
+}
+
+function summarizeSelectedCell() {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const cell = sheet.getActiveCell();
+  const text = cell.getValue();
+  const summary = summarizeText(text);
+  cell.offset(0, 1).setValue(summary);
+}
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>스프레드시트를 새로고침하면 상단에 "AI 요약" 메뉴가 나타납니다.</li>
+</ol>
+<h3 data-ke-size="size23">5. 다중 모델 지원</h3>
+<p data-ke-size="size16">여러 Gemini 모델을 지원하도록 코드를 확장해보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>다음과 같이 함수를 수정합니다:</li>
+</ol>
+<pre class="javascript"><code>function summarizeText(text, model) {
+  const apiKey = 'YOUR_API_KEY_HERE';
+  let apiUrl;
+
+  switch(model) {
+    case 'gemini 1.5 flash':
+      apiUrl = '&lt;https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent&gt;';
+      break;
+    case 'gemini 2.0-flash-exp':
+      apiUrl = '&lt;https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent&gt;';
+      break;
+    case 'gemini 1.5 pro':
+      apiUrl = '&lt;https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent&gt;';
+      break;
+    default:
+      apiUrl = '&lt;https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent&gt;';
+  }
+
+  // 나머지 코드는 동일
+}
+
+function summarizeSelectedCell() {
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const cell = sheet.getActiveCell();
+  const text = cell.getValue();
+  const model = sheet.getRange(cell.getRow(), 2).getValue();
+  const summary = summarizeText(text, model);
+  sheet.getRange(cell.getRow(), 3).setValue(summary);
+}
+
+</code></pre>
+<h3 data-ke-size="size23">6. 조건부 실행</h3>
+<p data-ke-size="size16">체크박스를 사용하여 요약 실행을 제어하는 방법을 알아보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>D열에 "Summary O/X"라는 제목을 추가합니다.</li>
+<li>D2:D4 셀에 체크박스를 삽입합니다.</li>
+<li>C2:C4 셀의 수식을 다음과 같이 수정합니다:</li>
+</ol>
+<pre class="excel"><code>=IF(D2, summarizeText(A2, B2), "")
+
+</code></pre>
+<p data-ke-size="size16">이렇게 하면 체크박스가 선택된 경우에만 요약이 실행됩니다.</p>
+<h3 data-ke-size="size23">7. 웹 크롤링 기능 추가</h3>
+<p data-ke-size="size16">AI 타임스 뉴스 기사를 자동으로 크롤링하고 요약하는 기능을 추가해보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>다음과 같은 함수를 추가합니다:</li>
+</ol>
+<pre class="reasonml"><code>function getAINewsContent(url) {
+  const response = UrlFetchApp.fetch(url);
+  const content = response.getContentText();
+
+  const titleRegex = /&lt;h1 class="tit"&gt;(.*?)&lt;\\\\/h1&gt;/;
+  const bodyRegex = /&lt;div class="news_body"&gt;([\\\\s\\\\S]*?)&lt;\\\\/div&gt;/;
+
+  const title = content.match(titleRegex)[1];
+  const body = content.match(bodyRegex)[1].replace(/&lt;[^&gt;]*&gt;/g, '');
+
+  return { title: title, body: body };
+}
+
+function summarizeAINews(url) {
+  const news = getAINewsContent(url);
+  const summary = summarizeText(news.title + '\\\\n\\\\n' + news.body, 'gemini 1.5 pro');
+  return summary;
+}
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>스프레드시트에 새 시트를 추가하고 "AI News"라고 이름 짓습니다.</li>
+<li>A열에 뉴스 URL을, B열에 요약 결과를 표시하도록 설정합니다.</li>
+</ol>
+<h3 data-ke-size="size23">8. 자동화 스케줄링</h3>
+<p data-ke-size="size16">매일 정해진 시간에 자동으로 뉴스를 크롤링하고 요약하는 기능을 추가해보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>다음 함수를 추가합니다:</li>
+</ol>
+<pre class="reasonml"><code>function scheduleDailyNewsSummary() {
+  ScriptApp.newTrigger('dailyNewsSummary')
+    .timeBased()
+    .everyDays(1)
+    .atHour(9)
+    .create();
+}
+
+function dailyNewsSummary() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('AI News');
+  const urls = sheet.getRange('A2:A').getValues().filter(String);
+
+  urls.forEach((url, index) =&gt; {
+    const summary = summarizeAINews(url);
+    sheet.getRange(index + 2, 2).setValue(summary);
+  });
+}
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>scheduleDailyNewsSummary() 함수를 한 번 실행하여 트리거를 설정합니다.</li>
+</ol>
+<h3 data-ke-size="size23">9. 사용자 인터페이스 개선</h3>
+<p data-ke-size="size16">사용자 경험을 향상시키기 위해 커스텀 사이드바를 추가해보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>다음 함수를 추가합니다:</li>
+</ol>
+<pre class="reasonml"><code>function showSidebar() {
+  const html = HtmlService.createHtmlOutputFromFile('Sidebar')
+    .setTitle('AI 뉴스 요약')
+    .setWidth(300);
+  SpreadsheetApp.getUi().showSidebar(html);
+}
+
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('AI 도구')
+    .addItem('뉴스 요약 사이드바', 'showSidebar')
+    .addToUi();
+}
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>'Sidebar.html' 파일을 생성하고 다음 내용을 추가합니다:</li>
+</ol>
+<pre class="xml"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;base target="_top"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h2&gt;AI 뉴스 요약&lt;/h2&gt;
+    &lt;input type="text" id="newsUrl" placeholder="뉴스 URL 입력"&gt;
+    &lt;button onclick="summarizeNews()"&gt;요약하기&lt;/button&gt;
+    &lt;div id="summary"&gt;&lt;/div&gt;
+
+    &lt;script&gt;
+      function summarizeNews() {
+        var url = document.getElementById('newsUrl').value;
+        google.script.run.withSuccessHandler(showSummary).summarizeAINews(url);
+      }
+
+      function showSummary(summary) {
+        document.getElementById('summary').innerHTML = summary;
+      }
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<p data-ke-size="size16">이제 "AI 도구" 메뉴에서 사이드바를 열 수 있습니다.</p>
+<h3 data-ke-size="size23">10. 오류 처리 및 로깅</h3>
+<p data-ke-size="size16">안정적인 운영을 위해 오류 처리와 로깅 기능을 추가해보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>다음과 같은 로깅 함수를 추가합니다:</li>
+</ol>
+<pre class="reasonml"><code>function logError(functionName, error) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Error Log');
+  if (!sheet) {
+    SpreadsheetApp.getActiveSpreadsheet().insertSheet('Error Log');
+  }
+  sheet.appendRow([new Date(), functionName, error.toString()]);
+}
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>주요 함수에 try-catch 블록을 추가합니다:</li>
+</ol>
+<pre class="reasonml"><code>function summarizeAINews(url) {
+  try {
+    const news = getAINewsContent(url);
+    const summary = summarizeText(news.title + '\\\\n\\\\n' + news.body, 'gemini 1.5 pro');
+    return summary;
+  } catch (error) {
+    logError('summarizeAINews', error);
+    return '요약 중 오류가 발생했습니다.';
+  }
+}
+
+</code></pre>
+<p data-ke-size="size16">이제 오류가 발생하면 'Error Log' 시트에 기록됩니다.</p>
+<h3 data-ke-size="size23">주요 내용 사용 방법 30단계</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google 계정으로 로그인합니다.</li>
+<li>Google Sheets를 엽니다.</li>
+<li>새 스프레드시트를 생성합니다.</li>
+<li>스프레드시트 이름을 "2025-0126-apps-script-tutorial"로 변경합니다.</li>
+<li>A1:C1 셀에 "number", "llm", "summary" 입력합니다.</li>
+<li>B2:B4 셀에 Gemini 모델명을 입력합니다.</li>
+<li>A2:A4 셀에 1, 2, 3을 입력합니다.</li>
+<li>"확장 프로그램" &gt; "Apps Script"를 선택합니다.</li>
+<li>Apps Script 편집기에서 새 스크립트 파일을 생성합니다.</li>
+<li>Gemini API 키를 발급받아 스크립트에 입력합니다.</li>
+<li>summarizeText 함수를 작성합니다.</li>
+<li>onOpen 함수와 summarizeSelectedCell 함수를 추가합니다.</li>
+<li>스크립트를 저장하고 스프레드시트로 돌아갑니다.</li>
+<li>스프레드시트를 새로고침하여 "AI 요약" 메뉴를 확인합니다.</li>
+<li>C열에 요약할 텍스트를 입력합니다.</li>
+<li>"AI 요약" &gt; "선택한 셀 요약"을 클릭하여 요약을 실행합니다.</li>
+<li>D열에 "Summary O/X" 제목을 추가합니다.</li>
+<li>D2:D4 셀에 체크박스를 삽입합니다.</li>
+<li>C2:C4 셀의 수식을 조건부 실행 형식으로 수정합니다.</li>
+<li>새 시트 "AI News"를 추가합니다.</li>
+<li>getAINewsContent 함수와 summarizeAINews 함수를 작성합니다.</li>
+<li>scheduleDailyNewsSummary 함수와 dailyNewsSummary 함수를 추가합니다.</li>
+<li>scheduleDailyNewsSummary</li>
+</ol>
+<p data-ke-size="size16">Google Apps Script를 활용한 AI 타임스 뉴스 Top 10 정리 과제에 대해 마무리하고, 과정에서 사용된 주요 프롬프트 10개를 정리하였습니다.</p>
+<h2 data-ke-size="size26">Google Apps Script로 AI 타임스 Top 10 뉴스 정리 과제 완성하기</h2>
+<p data-ke-size="size16">이 과제를 완성하기 위해 다음과 같은 단계를 거칠 수 있습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>AI 타임스 메인 페이지에서 Top 10 뉴스 목록과 URL 추출</li>
+<li>각 뉴스 URL에서 제목과 본문 추출</li>
+<li>추출한 내용을 Gemini API를 사용해 요약</li>
+<li>결과를 스프레드시트에 정리</li>
+</ol>
+<h3 data-ke-size="size23">구현 단계</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>AI 타임스 메인 페이지 크롤링 함수 작성</li>
+<li>개별 뉴스 기사 크롤링 함수 개선</li>
+<li>Gemini API 연동 함수 수정</li>
+<li>전체 프로세스를 관리할 메인 함수 작성</li>
+<li>결과를 스프레드시트에 출력하는 함수 구현</li>
+</ol>
+<p data-ke-size="size16">이 과정을 통해 메이크(Make)를 사용하지 않고도 Google Apps Script만으로 AI 타임스 Top 10 뉴스를 자동으로 요약하고 정리할 수 있습니다.</p>
+<h2 data-ke-size="size26">과정에서 사용된 Top 10 프롬프트</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>"AI 타임스 메인 페이지에서 Top 10 뉴스 목록과 URL을 추출하는 Google Apps Script 함수를 작성해주세요."</li>
+<li>"개별 뉴스 기사의 제목과 본문을 추출하는 함수를 개선해주세요. URL을 인자로 받아 동적으로 처리할 수 있도록 해주세요."</li>
+<li>"Gemini API를 사용해 텍스트를 요약하는 함수를 수정해주세요. 다양한 모델(1.5 Flash, 2.0 Flash Experimental, 1.5 Pro)을 선택할 수 있게 해주세요."</li>
+<li>"추출한 뉴스 내용을 Gemini API로 요약하고 결과를 반환하는 통합 함수를 작성해주세요."</li>
+<li>"전체 프로세스(크롤링, 요약, 결과 정리)를 관리하는 메인 함수를 작성해주세요."</li>
+<li>"스프레드시트에 결과를 정리하여 출력하는 함수를 구현해주세요. 각 열에 순위, 제목, URL, 요약 내용이 들어가도록 해주세요."</li>
+<li>"사용자가 원하는 날짜의 Top 10 뉴스를 가져올 수 있도록 날짜 입력 기능을 추가해주세요."</li>
+<li>"요약 결과의 길이를 사용자가 지정할 수 있도록 옵션을 추가해주세요(예: 1줄, 3줄, 5줄 요약)."</li>
+<li>"에러 처리와 로깅 기능을 추가하여 크롤링이나 API 호출 실패 시 대응할 수 있도록 해주세요."</li>
+<li>"사용자 인터페이스를 개선하여 버튼 클릭만으로 전체 프로세스를 실행할 수 있는 커스텀 메뉴를 추가해주세요."</li>
+</ol>
+<p data-ke-size="size16">이러한 프롬프트들을 활용하면 Google Apps Script를 이용해 AI 타임스 Top 10 뉴스 자동 요약 시스템을 효과적으로 구축할 수 있습니다. 각 단계별로 세부적인 기능을 구현하고, 최종적으로 사용자 친화적인 인터페이스까지 갖춘 완성도 높은 프로젝트를 만들 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

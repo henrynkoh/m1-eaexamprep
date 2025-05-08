@@ -1,0 +1,222 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AI 기반 블로그 작성 앱 제작 가이드: 코딩 없이 80분 완성</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AI 기반 블로그 작성 앱 제작 가이드: 코딩 없이 80분 완성</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-08 17:09:55</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">AI 기반 블로그 작성 앱 제작 가이드: 코딩 없이 80분 완성</h2>
+<h1 style="background-color: #ffffff; color: #0f0f0f; text-align: start;">I Built an AI Powered Writing App With Zero Coding</h1>
+<p data-ke-size="size16"><b>Cursor + Firebase + DeepSeek/EXA API 조합으로 구현하는 지능형 워드 프로세서</b></p>
+<h3 data-ke-size="size23">1. 핵심 기능 개요</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>블록 단위 콘텐츠 편집(Shift + &rarr;/&larr;)</li>
+<li>AI 자동 완성(Tab 키 활용)</li>
+<li>EXA API 기반 실시간 이미지/링크 검색</li>
+<li>DeepSeek 모델 연계 문맥 인식 작성</li>
+<li>Firebase 실시간 데이터 동기화</li>
+</ul>
+<h3 data-ke-size="size23">2. 개발 환경 구성</h3>
+<p data-ke-size="size16"><b>2.1 필수 도구 설치</b></p>
+<pre class="vim"><code>npm install -g firebase-tools
+curl -o- &lt;https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh&gt; | bash
+
+</code></pre>
+<p data-ke-size="size16"><b>2.2 Cursor 초기 설정</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><a href="https://software-composer.com/">Software Composer</a> 템플릿 선택</li>
+<li>Next.js 기반 프로젝트 생성</li>
+<li>로컬 실행 환경 구성</li>
+</ol>
+<pre class="javascript"><code>// firebase-config.js
+import { initializeApp } from "firebase/app";
+const firebaseConfig = { /* 개인 설정 */ };
+export const app = initializeApp(firebaseConfig);
+
+</code></pre>
+<h3 data-ke-size="size23">3. 데이터 아키텍처 설계</h3>
+<p data-ke-size="size16"><b>Firebase Firestore 구조</b></p>
+<p data-ke-size="size16">컬렉션 문서 필드 데이터 타입</p>
+<table style="border-collapse: collapse; width: 100%;" border="1" data-ke-align="alignLeft">
+<tbody>
+<tr>
+<td>users</td>
+<td>uid, email</td>
+<td>string</td>
+</tr>
+<tr>
+<td>documents</td>
+<td>content, images[], links[]</td>
+<td>array</td>
+</tr>
+</tbody>
+</table>
+<p data-ke-size="size16"><b>블록 데이터 모델</b></p>
+<pre class="css"><code>interface ContentBlock {
+  id: string;
+  text: string;
+  images: string[];
+  links: { url: string; title: string }[];
+}
+
+</code></pre>
+<h3 data-ke-size="size23">4. AI 통합 구현 단계</h3>
+<p data-ke-size="size16"><b>4.1 DeepSeek API 연결</b></p>
+<pre class="javascript"><code>// api/deepseek.js
+export const generateCompletion = async (prompt) =&gt; {
+  const response = await fetch('&lt;https://api.deepseek.com/v1/chat/completions&gt;', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.DEEPSEEK_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: "deepseek-chat",
+      messages: [{ role: "user", content: prompt }]
+    })
+  });
+  return response.json();
+};
+
+</code></pre>
+<p data-ke-size="size16"><b>4.2 EXA 이미지 검색</b></p>
+<pre class="python"><code># utils/exa_search.py
+import requests
+
+def search_images(query):
+    headers = {"Authorization": f"Bearer {EXA_API_KEY}"}
+    params = {
+        "q": query,
+        "num_results": 5,
+        "highlight": True
+    }
+    response = requests.get("&lt;https://api.exa.ai/search&gt;", headers=headers, params=params)
+    return response.json()["results"]
+
+</code></pre>
+<h3 data-ke-size="size23">5. 30단계 상세 구현 매뉴얼</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Cursor에서 'nextjs-template-2' 선택</li>
+<li>Firebase 콘솔에서 새 프로젝트 생성</li>
+<li>사용자 인증 설정(Google OAuth 활성화)</li>
+<li>Firestore 데이터베이스 생성(테스트 모드)</li>
+<li>웹 앱 등록 후 구성 정보 복사</li>
+<li>firebase-config.js 파일 생성</li>
+<li>Firestore 초기화 코드 작성</li>
+<li>사용자 세션 관리 로직 구현</li>
+<li>메인 페이지에 '새 문서' 버튼 추가</li>
+<li>문서 생성 라우트 설정</li>
+<li>블록 편집기 UI 컴포넌트 제작</li>
+<li>Hotkey 라이브러리 통합(react-hotkeys-hook)</li>
+<li>Shift+&rarr; 핸들러 구현</li>
+<li>사이드 패널 토글 로직 작성</li>
+<li>이미지 업로드 컴포넌트 개발</li>
+<li>EXA API 검색 기능 연동</li>
+<li>검색 결과 표시 그리드 레이아웃</li>
+<li>이미지 선택 저장 기능 구현</li>
+<li>DeepSeek 자동 완성 트리거 설정</li>
+<li>문맥 분석 프롬프트 엔지니어링</li>
+<li>생성 텍스트 포맷팅 로직 추가</li>
+<li>실시간 문서 저장 기능(Firestore 연동)</li>
+<li>문서 목록 페이지 구현</li>
+<li>최근 수정 시간 표시 로직</li>
+<li>문서 삭제 기능 추가</li>
+<li>오류 처리 모달 구현</li>
+<li>반응형 CSS 스타일링</li>
+<li>성능 최적화(이미지 지연 로딩)</li>
+<li>PWA 설정(오프라인 작동)</li>
+<li>배포 스크립트 작성</li>
+</ol>
+<h3 data-ke-size="size23">6. 핵심 기능 상호작용 다이어그램</h3>
+<pre class="coq"><code>graph TD
+    A[사용자 입력] --&gt; B{키 입력 분석}
+    B --&gt;|Tab| C[DeepSeek API 호출]
+    B --&gt;|Shift+&rarr;| D[사이드 패널 열기]
+    C --&gt; E[AI 생성 텍스트 삽입]
+    D --&gt; F[이미지/링크 검색]
+    F --&gt; G[EXA API 요청]
+    G --&gt; H[결과 표시]
+    H --&gt; I[사용자 선택 저장]
+
+</code></pre>
+<h3 data-ke-size="size23">7. 문제 해결 가이드</h3>
+<p data-ke-size="size16">증상 원인 해결책</p>
+<table style="border-collapse: collapse; width: 100%;" border="1" data-ke-align="alignLeft">
+<tbody>
+<tr>
+<td>이미지 업로드 실패</td>
+<td>EXIF 메타데이터</td>
+<td>exif-js로 제거</td>
+</tr>
+<tr>
+<td>API 응답 지연</td>
+<td>Cold Start</td>
+<td>사전 워밍 요청</td>
+</tr>
+<tr>
+<td>CSS 깨짐</td>
+<td>CSS-in-JS 충돌</td>
+<td>styled-components 재설치</td>
+</tr>
+<tr>
+<td>인증 오류</td>
+<td>토큰 만료</td>
+<td>자동 갱신 로직 추가</td>
+</tr>
+</tbody>
+</table>
+<h3 data-ke-size="size23">프롬프트 엔지니어링 예시</h3>
+<p data-ke-size="size16"><b>DeepSeek 자동완성 프롬프트</b></p>
+<pre class="asciidoc"><code>주어진 문맥을 분석해 자연스러운 다음 문장 생성:
+- 1문장 길이 제한
+- 원문과 어조 일치
+- 구체적 사실 제시
+
+예시 입력: "AI의 미래는"
+예시 출력: "인간-기계 협업 시스템의 발전으로 일상생활 전반에 적용될 전망"
+
+</code></pre>
+<p data-ke-size="size16"><b>EXA 이미지 검색 최적화</b></p>
+<pre class="ruby"><code># 이미지 검색 쿼리 최적화 함수
+def optimize_query(text_block):
+    keywords = extract_nouns(text_block)  # 한국어 형태소 분석
+    return " ".join(keywords[:5]) + " high quality image"
+
+</code></pre>
+<blockquote data-ke-style="style1">
+<p data-ke-size="size16">"AI 도구의 진정한 가치는 창작 과정의 흐름을 방해하지 않으면서 창의성을 확장시키는 데 있습니다" - 영상 중 발췌</p>
+</blockquote>
+<p data-ke-size="size16">본 가이드는 2025년 2월 기준 최신 API 사양을 반영했으며, AI 모델 업데이트 시 일부 코드 수정이 필요할 수 있습니다. 이미지 캐싱 전략과 오프라인 동기화 기능 추가를 통해 사용자 경험을 더욱 개선할 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

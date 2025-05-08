@@ -1,0 +1,284 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>RAG와 복잡한 문서 처리</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">RAG와 복잡한 문서 처리</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-10-14 06:09:32</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-d585d2d4-bbf4-4646-be06-84e44039fccd" data-ke-size="size16"><span style="color: #000000;">RAG와 복잡한 문서 처리중에서 고급 기술과 실제 적용에 대한 자료를 요약하였습니다. </span></p>
+<p id="SE-f5387c58-640b-4039-b43b-3e08f49c02fd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0e636fd1-9c07-42ec-8c24-7efe13b6ea30" data-ke-size="size16"><span style="color: #000000;">오늘날 인공지능 기술의 발전으로 텍스트 생성과 정보 검색 분야에서 큰 진전이 이루어지고 있습니다. 그 중에서도 Retrieval-Augmented Generation(RAG)은 대규모 언어 모델의 능력을 기존 지식 베이스와 결합하여 더욱 정확하고 신뢰할 수 있는 응답을 생성하는 혁신적인 기술입니다. 하지만 RAG를 실제 비즈니스 환경에 적용할 때, 특히 복잡한 구조의 문서를 다룰 때는 여러 가지 도전 과제가 있습니다.</span></p>
+<p id="SE-8ad178c7-e808-4d83-ae56-4357ec72c981" data-ke-size="size16"><span style="color: #000000;">이 글에서는 RAG 시스템이 복잡한 문서를 효과적으로 처리하고 이해하는 방법, 그리고 이를 통해 더 지능적인 지식 기반 시스템을 구축하는 방법에 대해 깊이 있게 살펴보겠습니다.</span></p>
+<p id="SE-3f9e23d8-aeaa-481a-892d-e04295ae3b5e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-655c87cd-f90f-433d-afc0-9e7afe8734fd" data-ke-size="size16"><span style="color: #000000;"><b>RAG와 복잡한 문서: 기본 개념 이해</b></span></p>
+<p id="SE-97ffa3b2-4f4e-4633-af19-340c8092ee0c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-39090583-eda8-4a46-98b9-918f6226cc7d" data-ke-size="size16"><span style="color: #000000;"><b>RAG(Retrieval-Augmented Generation)란?</b></span></p>
+<p id="SE-81b5caf4-175f-4d0f-88cf-0db197c5e0c5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9fbfbe0c-aa70-4ccb-a459-21762f486e9e" data-ke-size="size16"><span style="color: #000000;">RAG는 정보 검색(Retrieval)과 텍스트 생성(Generation)을 결합한 기술입니다. 이 방식은 대규모 언어 모델의 생성 능력과 외부 지식 소스의 정확성을 결합하여, 더욱 정확하고 최신의 정보를 포함한 응답을 생성할 수 있게 합니다.</span></p>
+<p id="SE-8983202d-0a34-46e8-8328-1d9056f7e304" data-ke-size="size16"><span style="color: #000000;">RAG의 기본 작동 원리는 다음과 같습니다:</span></p>
+<p id="SE-1eb630b1-49bd-4830-a818-d50cac65cb93" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">사용자의 질문이나 프롬프트를 받습니다.</span></li>
+<li><span style="color: #000000;">관련된 정보를 외부 데이터베이스나 문서 컬렉션에서 검색합니다.</span></li>
+<li><span style="color: #000000;">검색된 정보를 컨텍스트로 사용하여 언어 모델이 응답을 생성합니다.</span></li>
+</ol>
+<p id="SE-b64272bd-fe44-4672-8781-6bb179be7993" data-ke-size="size16"><span style="color: #000000;">이 방식을 통해 RAG는 단순히 사전 학습된 지식에만 의존하는 것이 아니라, 최신 정보와 특정 도메인의 전문 지식을 활용할 수 있게 됩니다.</span></p>
+<p id="SE-4b38e65d-b46d-495b-8531-c0eb1cdc780b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c8aea23e-169e-4fc7-9cd0-c438b29db068" data-ke-size="size16"><span style="color: #000000;"><b>복잡한 문서의 특성</b></span></p>
+<p id="SE-ac0e21d0-3b83-49de-8ed2-5e7809580e36" data-ke-size="size16">&nbsp;</p>
+<p id="SE-98ecb70d-911b-43d3-aac1-0189b37af2e8" data-ke-size="size16"><span style="color: #000000;">복잡한 문서란 단순한 텍스트 이상의 구조와 내용을 가진 문서를 말합니다. 이러한 문서들은 다음과 같은 특성을 가질 수 있습니다:</span></p>
+<p id="SE-473066c0-8484-4c59-9703-4e9436319580" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>다양한 형식</b></span><span style="color: #000000;">: PDF, PowerPoint, Excel 스프레드시트, HTML 등 다양한 파일 형식</span></li>
+<li><span style="color: #000000;"><b>복잡한 구조</b></span><span style="color: #000000;">: 목차, 섹션, 하위 섹션, 표, 그래프 등의 복잡한 구조적 요소</span></li>
+<li><span style="color: #000000;"><b>멀티미디어 요소</b></span><span style="color: #000000;">: 이미지, 차트, 다이어그램 등의 시각적 요소</span></li>
+<li><span style="color: #000000;"><b>메타데이터</b></span><span style="color: #000000;">: 저자 정보, 생성 날짜, 버전 등의 부가 정보</span></li>
+<li><span style="color: #000000;"><b>계층적 정보</b></span><span style="color: #000000;">: 상위 개념과 하위 개념 간의 관계를 나타내는 구조</span></li>
+</ul>
+<p id="SE-f4bc81ec-b81a-47c0-824a-2f240bddbb54" data-ke-size="size16">&nbsp;</p>
+<p id="SE-baf25780-c32e-4a23-851e-5e67731988c1" data-ke-size="size16"><span style="color: #000000;">이러한 복잡한 문서들은 단순한 텍스트 추출만으로는 그 내용과 구조를 온전히 이해하기 어렵습니다. 따라서 RAG 시스템에서 이러한 문서들을 효과적으로 처리하기 위해서는 특별한 접근 방식이 필요합니다.</span></p>
+<p id="SE-125bc525-9d96-4dca-b94b-220871f4ccc2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fc4e50d3-6276-48f3-b980-6a1149b15e5c" data-ke-size="size16"><span style="color: #000000;"><b>RAG 시스템의 데이터 품질 향상</b></span></p>
+<p id="SE-44c0d844-252a-4ea3-8962-5addc64a933e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-556f769f-27cf-4743-b62c-892b6fb60aa9" data-ke-size="size16"><span style="color: #000000;">복잡한 문서를 RAG 시스템에서 효과적으로 활용하기 위해서는 데이터의 품질을 향상시키는 것이 중요합니다. 이를 위한 주요 전략들을 살펴보겠습니다.</span></p>
+<p id="SE-adcdf5fc-ea89-4804-97a2-53010659ba10" data-ke-size="size16">&nbsp;</p>
+<p id="SE-665a0353-5f38-4861-950b-17b2c8b3ae1d" data-ke-size="size16"><span style="color: #000000;"><b>효과적인 문서 파싱</b></span></p>
+<p id="SE-b0a87311-e493-4021-b2b2-e25fcc3a40e9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4708ba21-af28-4859-944e-6d13dea91997" data-ke-size="size16"><span style="color: #000000;">복잡한 문서의 구조와 내용을 정확히 이해하기 위해서는 고급 파싱 기술이 필요합니다.</span></p>
+<p id="SE-af01bf20-6fd6-4268-a4ff-2b48ea0e4c54" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>구조 인식</b></span><span style="color: #000000;">: 문서의 섹션, 하위 섹션, 표, 목록 등의 구조를 인식하고 이를 의미 있는 방식으로 표현합니다.</span></li>
+<li><span style="color: #000000;"><b>메타데이터 추출</b></span><span style="color: #000000;">: 문서의 제목, 저자, 생성 날짜 등의 메타데이터를 추출하여 컨텍스트로 활용합니다.</span></li>
+<li><span style="color: #000000;"><b>멀티미디어 요소 처리</b></span><span style="color: #000000;">: 이미지, 차트, 그래프 등의 시각적 요소에 대한 설명을 생성하거나 관련 텍스트를 추출합니다.</span></li>
+</ul>
+<p id="SE-7629d5cc-baab-4813-a78d-e5bb682c1061" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eae3ad35-4ed3-45c8-94f6-745608e33b52" data-ke-size="size16"><span style="color: #000000;">예를 들어, PDF 문서를 파싱할 때는 단순히 텍스트만 추출하는 것이 아니라, 문서의 레이아웃, 폰트 정보, 이미지 위치 등을 함께 고려하여 문서의 구조를 정확히 파악해야 합니다.</span></p>
+<p id="SE-86087924-43dc-4661-937c-283cc1a33857" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ecc5811c-0ea0-4348-8e0f-561bc675717b" data-ke-size="size16"><span style="color: #000000;"><b>효과적인 청킹(Chunking) 전략</b></span></p>
+<p id="SE-de60bf35-bae1-41c7-84a8-b3c756ca70d9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4e3d953f-b07c-4645-8771-f5f58ca29a53" data-ke-size="size16"><span style="color: #000000;">RAG 시스템에서 문서를 효과적으로 검하고 활용하기 위해서는 적절한 크기로 문서를 나누는 청킹 작업이 중요합니다.</span></p>
+<p id="SE-99aabc9b-77ca-4528-aaef-2514bc82dafb" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>의미 기반 청킹</b></span><span style="color: #000000;">: 단순히 문자 수나 단어 수로 나누는 것이 아니라, 문서의 구조와 의미를 고려하여 청크를 생성합니다.</span></li>
+<li><span style="color: #000000;"><b>중첩 청크</b></span><span style="color: #000000;">: 큰 단위의 청크와 작은 단위의 청크를 함께 생성하여 다양한 수준의 컨텍스트를 제공합니다.</span></li>
+<li><span style="color: #000000;"><b>메타데이터 포함</b></span><span style="color: #000000;">: 각 청크에 원본 문서의 메타데이터와 구조적 정보를 포함시켜 컨텍스트를 유지합니다.</span></li>
+</ul>
+<p id="SE-c031e8bd-677c-4c9b-9fa9-504bf0666a9f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-beaccf27-705b-4524-a273-e9f282f4902d" data-ke-size="size16"><span style="color: #000000;">예를 들어, 학술 논문을 청킹할 때는 초록, 서론, 방법론, 결과, 결론 등의 섹션을 고려하여 의미 있는 단위로 나눌 수 있습니다.</span></p>
+<p id="SE-e98e81b0-122d-47ea-be60-14560b8f5254" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cbf5468f-4a30-48ad-92ff-6ef65fced2ab" data-ke-size="size16"><span style="color: #000000;"><b>고급 임베딩 기술</b></span></p>
+<p id="SE-55233e16-8b3b-4336-84c6-9429021f01c9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-01a9ec53-a26b-4b71-84ea-6603ba26135f" data-ke-size="size16"><span style="color: #000000;">문서의 내용을 벡터 공간에 효과적으로 표현하기 위해서는 고급 임베딩 기술이 필요합니다.</span></p>
+<p id="SE-8f133e35-9e85-4fdd-8d87-237f1451bc42" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>문맥 인식 임베딩</b></span><span style="color: #000000;">: 단어나 문장의 주변 컨텍스트를 고려하여 더 정확한 의미 표현을 생성합니다.</span></li>
+<li><span style="color: #000000;"><b>계층적 임베딩</b></span><span style="color: #000000;">: 문서의 구조를 반영하여 섹션, 단락, 문장 수준의 임베딩을 생성합니다.</span></li>
+<li><span style="color: #000000;"><b>다중 모달 임베딩</b></span><span style="color: #000000;">: 텍스트뿐만 아니라 이미지, 표 등의 다양한 요소를 통합적으로 표현하는 임베딩을 생성합니다.</span></li>
+</ul>
+<p id="SE-7020db3b-7a8f-4b22-8b7a-8aa9c87b561d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7b32b811-c778-42b7-a0f6-f4101b147c88" data-ke-size="size16"><span style="color: #000000;">이러한 고급 임베딩 기술을 통해 복잡한 문서의 내용과 구조를 더욱 정확하게 벡터 공간에 표현할 수 있으며, 이는 더 정확한 검색과 관련성 평가로 이어집니다.</span></p>
+<p id="SE-ba1aae54-9c31-4364-afc3-9dea35fb9598" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4ee87de2-ec1c-40be-b013-e6c96766cfdb" data-ke-size="size16"><span style="color: #000000;"><b>고급 검색 기술</b></span></p>
+<p id="SE-15f21547-9513-41cb-a784-a301809eab3d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2d691f1c-6395-4dc5-bbd8-d500da113538" data-ke-size="size16"><span style="color: #000000;">RAG 시스템의 성능을 향상시키기 위해서는 단순한 벡터 검색을 넘어선 고급 검색 기술이 필요합니다.</span></p>
+<p id="SE-21e6d9b5-12eb-4328-8f91-f04785a1d4f9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-25f3829e-1300-43c6-beb8-a6e5b53f1a94" data-ke-size="size16"><span style="color: #000000;"><b>하이브리드 검색</b></span></p>
+<p id="SE-38e603b1-c9cc-4289-b140-75dcdc7cc72c" data-ke-size="size16"><span style="color: #000000;">하이브리드 검색은 여러 검색 방법을 결합하여 더 정확하고 관련성 높은 결과를 얻는 기술입니다.</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>키워드 검색 + 의미 검색</b></span><span style="color: #000000;">: 전통적인 키워드 기반 검색과 임베딩 기반의 의미 검색을 결합합니다.</span></li>
+<li><span style="color: #000000;"><b>BM25 + 벡터 검색</b></span><span style="color: #000000;">: BM25 알고리즘과 같은 통계적 방법과 벡터 검색을 함께 사용하여 정확도를 높입니다.</span></li>
+<li><span style="color: #000000;"><b>메타데이터 필터링</b></span><span style="color: #000000;">: 문서의 메타데이터(예: 날짜, 저자, 카테고리)를 활용하여 검색 결과를 필터링하고 정제합니다.</span></li>
+</ul>
+<p id="SE-5b738323-eb5b-41c3-8ed9-8b387eb928ec" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c2af8d1e-0420-4dfe-8ecf-9bd17dd7455e" data-ke-size="size16"><span style="color: #000000;">예를 들어, 금융 보고서를 검색할 때 "2023년 실적"이라는 쿼리에 대해 '2023'이라는 키워드 매칭과 함께 '실적', '재무 성과' 등의 의미적 유사성을 고려한 벡터 검색을 결합할 수 있습니다.</span></p>
+<p id="SE-5c66c682-411f-460d-81e0-ec79db42ebf6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e2068684-dc3b-413b-bb5b-6704a5f73df3" data-ke-size="size16"><span style="color: #000000;"><b>계층적 검색</b></span></p>
+<p id="SE-5185f70b-0c93-459a-91f1-bd8ceb7166d7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-053c12a4-8fe9-41ce-93ca-15185c638e33" data-ke-size="size16"><span style="color: #000000;">복잡한 문서의 구조를 활용한 계층적 검색 방법은 더 정확하고 컨텍스트에 맞는 정보를 찾는 데 도움이 됩니다.</span></p>
+<p id="SE-5e89238c-d4fb-46d9-a0ca-0b5be750278c" data-ke-size="size16">&nbsp;</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>상위 수준 검색</b></span><span style="color: #000000;">: 먼저 문서나 섹션 수준에서 관련성 높은 부분을 찾습니다.</span></li>
+<li><span style="color: #000000;"><b>하위 수준 검색</b></span><span style="color: #000000;">: 선택된 상위 수준 결과 내에서 더 세부적인 정보를 검색합니다.</span></li>
+<li><span style="color: #000000;"><b>컨텍스트 유지</b></span><span style="color: #000000;">: 검색 결과를 제공할 때 상위 수준의 컨텍스트 정보를 함께 제공합니다.</span></li>
+</ul>
+<p id="SE-6e8573cc-7496-4b4c-b3ac-174a760501ca" data-ke-size="size16"><span style="color: #000000;">예를 들어, 긴 연구 보고서에서 특정 실험 결과를 찾을 때, 먼저 관련 섹션을 찾고 그 안에서 구체적인 데이터나 그래프를 검색할 수 있습니다.</span></p>
+<p id="SE-9f768f16-98c9-44e2-b29e-38bb69e9271b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dbb979ac-9992-45be-b8e0-bab76c90dea0" data-ke-size="size16"><span style="color: #000000;"><b>다중 쿼리 확장</b></span></p>
+<p id="SE-b2c65c7c-8142-4444-8cff-284c94b0de75" data-ke-size="size16"><span style="color: #000000;">사용자의 원래 쿼리를 여러 관련 쿼리로 확장하여 검색의 범위와 정확성을 높이는 기술입니다.</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>동의어 확장</b></span><span style="color: #000000;">: 쿼리의 주요 용어에 대한 동의어를 포함하여 검색합니다.</span></li>
+<li><span style="color: #000000;"><b>개념 확장</b></span><span style="color: #000000;">: 쿼리와 관련된 상위 개념이나 하위 개념을 포함합니다.</span></li>
+<li><span style="color: #000000;"><b>질문 생성</b></span><span style="color: #000000;">: 원래 쿼리를 바탕으로 여러 관련 질문을 생성하여 검색합니다.</span></li>
+</ul>
+<p id="SE-9bda0b73-7162-47e0-b72f-f49f01e4c130" data-ke-size="size16"><span style="color: #000000;">예를 들어, "인공지능의 윤리적 문제"라는 쿼리에 대해 "AI 윤리", "기계학습의 편향성", "자율주행차의 도덕적 딜레마" 등으로 확장하여 검색할 수 있습니다.</span></p>
+<p id="SE-5f34242c-9b9c-4143-954c-5b81dfd556c8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2af7d18d-0057-4fa2-93f3-bd9e9b7c3b0d" data-ke-size="size16"><span style="color: #000000;"><b>LlamaIndex와 LlamaParse 활용</b></span></p>
+<p id="SE-87cf324c-be06-4101-9367-fa41706de9d9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f1193012-d8a4-4fca-8b1f-3c27ab925bac" data-ke-size="size16"><span style="color: #000000;">LlamaIndex와 LlamaParse는 RAG 시스템을 구축하고 복잡한 문서를 처리하는 데 매우 유용한 도구입니다. 이들의 주요 특징과 활용 방법을 살펴보겠습니다.</span></p>
+<p id="SE-a23ad18b-201d-400c-81df-9620265391c0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a7126464-2a5b-40b2-bd24-143320ecd02b" data-ke-size="size16"><span style="color: #000000;"><b>LlamaIndex 소개</b></span></p>
+<p id="SE-d44f6fb1-1abb-4bd3-be16-cb43a0bc2c90" data-ke-size="size16"><span style="color: #000000;">LlamaIndex는 대규모 언어 모델을 사용하여 RAG 파이프라인을 구축하기 위한 강력한 프레임워크입니다.</span></p>
+<p id="SE-e23dc82e-7ac9-4b55-9cee-0c3aa020d2a6" data-ke-size="size16"><span style="color: #000000;">주요 특징:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>다양한 데이터 소스 지원</b></span><span style="color: #000000;">: PDF, 웹페이지, API 등 다양한 형식의 데이터를 쉽게 통합할 수 있습니다.</span></li>
+<li><span style="color: #000000;"><b>유연한 인덱싱</b></span><span style="color: #000000;">: 다양한 인덱싱 전략을 제공하여 효율적인 검색을 가능하게 합니다.</span></li>
+<li><span style="color: #000000;"><b>쿼리 엔진</b></span><span style="color: #000000;">: 복잡한 쿼리 처리와 응답 생성을 위한 다양한 전략을 제공합니다.</span></li>
+<li><span style="color: #000000;"><b>모듈식 구조</b></span><span style="color: #000000;">: 사용자 정의 컴포넌트를 쉽게 통합할 수 있는 유연한 구조를 가지고 있습니다.</span></li>
+</ul>
+<p id="SE-ad5be041-4575-46b6-bbf5-25a757bfde2f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-81326fb3-1874-46db-ad53-04a840ab4de0" data-ke-size="size16"><span style="color: #000000;">LlamaIndex를 사용한 기본적인 RAG 파이프라인 구축 예시:</span></p>
+<p id="SE-5953c6a8-8ff5-4c47-9ecf-e792825433ad" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f19ccde4-754f-409e-b6ce-bdaced294849" data-ke-size="size16"><span style="color: #000000;">from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader # 문서 로드 documents = SimpleDirectoryReader('data').load_data() # 인덱스 생성 index = GPTVectorStoreIndex.from_documents(documents) # 쿼리 엔진 생성 query_engine = index.as_query_engine() # 쿼리 실행 response = query_engine.query("당신의 질문을 여기에 입력하세요") print(response) </span></p>
+<p id="SE-05f6fba2-5467-43cb-b6b0-a57d24c3a20f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3f78085d-90aa-4fee-ae0e-f6d88b9a73c6" data-ke-size="size16"><span style="color: #000000;">이 코드는 지정된 디렉토리에서 문서를 로드하고, 벡터 저장소 인덱스를 생성한 후, 이를 사용하여 쿼리에 응답하는 기본적인 RAG 시스템을 구현합니다.</span></p>
+<p id="SE-132290cd-987a-4e1a-b5e3-97be184968bd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-530d883b-138c-456b-b984-879002d5a22f" data-ke-size="size16"><span style="color: #000000;"><b>LlamaParse 활용</b></span></p>
+<p id="SE-d394ea7b-d1d4-47e1-ad7d-2e6ccb291092" data-ke-size="size16"><span style="color: #000000;">LlamaParse는 복잡</span></p>
+<p id="SE-764abf57-432e-4ea0-a9c3-cb583125ff0d" data-ke-size="size16"><span style="color: #000000;">LlamaParse는 복잡한 문서, 특히 PDF와 같은 구조화된 문서를 효과적으로 파싱하기 위한 도구입니다. LlamaIndex와 함께 사용하면 더욱 강력한 RAG 시스템을 구축할 수 있습니다.</span></p>
+<p id="SE-1d7c159e-180a-4b57-849f-66b01c76bcbf" data-ke-size="size16"><span style="color: #000000;">LlamaParse의 주요 기능:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>고급 PDF 파싱</b></span><span style="color: #000000;">: 텍스트, 표, 이미지 등 PDF의 모든 요소를 정확하게 추출합니다.</span></li>
+<li><span style="color: #000000;"><b>구조 인식</b></span><span style="color: #000000;">: 문서의 계층 구조, 섹션, 하위 섹션 등을 인식합니다.</span></li>
+<li><span style="color: #000000;"><b>메타데이터 추출</b></span><span style="color: #000000;">: 문서의 제목, 저자, 날짜 등 중요한 메타데이터를 자동으로 추출합니다.</span></li>
+<li><span style="color: #000000;"><b>표 및 그래프 처리</b></span><span style="color: #000000;">: 복잡한 표와 그래프의 데이터를 구조화된 형태로 추출합니다.</span></li>
+</ul>
+<p id="SE-37883bb2-87ed-4ba6-9542-27e186ecbb7b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1574974b-12f6-4668-b048-3038d06a31fc" data-ke-size="size16"><span style="color: #000000;">LlamaParse를 사용한 PDF 처리 예시:</span></p>
+<p id="SE-c4167ef1-bf6e-40d4-bc07-69a9828f2351" data-ke-size="size16"><span style="color: #000000;">from llama_index import SimpleDirectoryReader, GPTVectorStoreIndex from llama_index.readers.file.docs_reader import PDFReader # LlamaParse를 사용하여 PDF 로드 reader = PDFReader(parser_config={"extract_images": True}) documents = SimpleDirectoryReader('pdf_directory', file_extractor={'.pdf': reader}).load_data() # 인덱스 생성 index = GPTVectorStoreIndex.from_documents(documents) # 쿼리 엔진 생성 query_engine = index.as_query_engine() # 쿼리 실행 response = query_engine.query("PDF 내의 특정 정보에 대한 질문") print(response) </span></p>
+<p id="SE-dec4fd3c-31e2-4cc9-ac99-e1eea0beda73" data-ke-size="size16"><span style="color: #000000;">이 코드는 LlamaParse를 사용하여 PDF 파일을 로드하고, 추출된 정보를 바탕으로 인덱스를 생성한 후 쿼리에 응답하는 과정을 보여줍니다.</span></p>
+<p id="SE-10bdc216-f4f0-42bd-83d7-c859f56ecbe1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c3bd3958-14e7-43ed-8ae3-0f7bbb2ed3b5" data-ke-size="size16"><span style="color: #000000;"><b>지식 어시스턴트 구축</b></span></p>
+<p id="SE-e043159c-acca-46a5-afee-f20d755c0235" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fb43f60c-bb7f-477b-bbcb-11f1a7836499" data-ke-size="size16"><span style="color: #000000;">RAG 기술을 확장하여 더 복잡하고 지능적인 질문-응답 시스템, 즉 지식 어시스턴트를 구축할 수 있습니다. 이러한 시스템은 단순한 정보 검색을 넘어 복잡한 추론과 다단계 작업을 수행할 수 있습니다.</span></p>
+<p id="SE-6a9b6c44-2494-4012-a9f1-e30cc95630de" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6b088958-df15-456a-9d14-e8a54908e7c0" data-ke-size="size16"><span style="color: #000000;"><b>다단계 쿼리 처리</b></span></p>
+<p id="SE-3211eeab-570d-492a-8646-78f80da7c3d5" data-ke-size="size16"><span style="color: #000000;">복잡한 질문을 여러 단계로 나누어 처리하는 방법입니다.</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>쿼리 분해</b></span><span style="color: #000000;">: 복잡한 질문을 여러 개의 하위 질문으로 나눕니다.</span></li>
+<li><span style="color: #000000;"><b>순차적 처리</b></span><span style="color: #000000;">: 각 하위 질문에 대한 답변을 순차적으로 찾습니다.</span></li>
+<li><span style="color: #000000;"><b>정보 통합</b></span><span style="color: #000000;">: 각 하위 질문의 답변을 종합하여 최종 응답을 생성합니다.</span></li>
+</ol>
+<p id="SE-6640e0ac-0064-493c-aaf3-64552d65731b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-29ac8e2e-1394-4ef9-83a7-3827b64e4ff0" data-ke-size="size16"><span style="color: #000000;">예시 코드:</span></p>
+<p id="SE-da3b892d-0ba0-4f6b-9c8b-b2465443af73" data-ke-size="size16"><span style="color: #000000;">from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader from llama_index.indices.query.query_transform import DecomposeQueryTransform # 문서 로드 및 인덱스 생성 documents = SimpleDirectoryReader('data').load_data() index = GPTVectorStoreIndex.from_documents(documents) # 쿼리 분해 변환기 생성 decompose_transform = DecomposeQueryTransform( GPTVectorStoreIndex, verbose=True ) # 쿼리 엔진 생성 query_engine = index.as_query_engine( query_transform=decompose_transform ) # 복잡한 쿼리 실행 response = query_engine.query("2023년 글로벌 AI 시장의 규모와 주요 기업들의 시장 점유율을 비교 분석해주세요.") print(response) </span></p>
+<p id="SE-7e1d7ce7-32e5-4bf4-b005-79d85f91ebb7" data-ke-size="size16"><span style="color: #000000;">이 코드는 복잡한 질문을 여러 개의 하위 질문으로 분해하고, 각각에 대한 답변을 찾아 종합적인 응답을 생성합니다.</span></p>
+<p id="SE-d4ca0552-aaff-4e33-8a2e-1dd1477974a8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eb90d5c5-5c49-4cf1-a478-7c505682af9b" data-ke-size="size16"><span style="color: #000000;"><b>컨텍스트 인식 응답 생성</b></span></p>
+<p id="SE-c727d837-83e1-4f65-b10c-9fd89c0f9a90" data-ke-size="size16"><span style="color: #000000;">사용자의 이전 질문과 시스템의 응답을 고려하여 더 정확하고 관련성 높은 답변을 생성하는 방법입니다.</span></p>
+<p id="SE-4eadc319-c1f8-46cb-9fe7-bd82401dbe69" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>대화 기록 유지</b></span><span style="color: #000000;">: 사용자와의 대화 내용을 저장하고 관리합니다.</span></li>
+<li><span style="color: #000000;"><b>컨텍스트 통합</b></span><span style="color: #000000;">: 현재 질문과 함께 이전 대화 내용을 고려하여 검색합니다.</span></li>
+<li><span style="color: #000000;"><b>일관성 유지</b></span><span style="color: #000000;">: 이전 응답과 일관된 새로운 응답을 생성합니다.</span></li>
+</ol>
+<p id="SE-7f27828b-3b7e-44d2-9480-385eb4abb7fc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a5bc3b07-9f22-4944-a033-0d9d4e754106" data-ke-size="size16"><span style="color: #000000;">예시 코드:</span></p>
+<p id="SE-02693f35-6a93-41e5-87e5-8421769ca749" data-ke-size="size16"><span style="color: #000000;">from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader from llama_index.memory import ChatMemoryBuffer # 문서 로드 및 인덱스 생성 documents = SimpleDirectoryReader('data').load_data() index = GPTVectorStoreIndex.from_documents(documents) # 채팅 메모리 버퍼 생성 memory = ChatMemoryBuffer.from_defaults(token_limit=1500) # 쿼리 엔진 생성 query_engine = index.as_chat_engine(memory=memory, verbose=True) # 대화 시뮬레이션 response = query_engine.chat("AI의 주요 응용 분야는 무엇인가요?") print("AI 응용 분야:", response) response = query_engine.chat("그 중에서 헬스케어 분야의 구체적인 예시를 들어주세요.") print("헬스케어 분야 예시:", response) </span></p>
+<p id="SE-8f52e3d7-2d83-4e49-bdd5-45b33157c8de" data-ke-size="size16"><span style="color: #000000;">이 코드는 이전 대화 내용을 기억하고 이를 바탕으로 후속 질문에 더 적절한 응답을 생성합니다.</span></p>
+<p id="SE-801b5217-5e9f-4ff1-90a3-5794b6bdea22" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9d94726b-11ac-4010-ba6f-ce4ac8559aa6" data-ke-size="size16"><span style="color: #000000;"><b>다중 소스 통합</b></span></p>
+<p id="SE-16e24ead-a199-438d-88ae-0870450212d6" data-ke-size="size16"><span style="color: #000000;">여러 데이터 소스의 정보를 통합하여 더 포괄적이고 정확한 응답을 생성하는 방법입니다.</span></p>
+<p id="SE-060351a8-bddd-44a6-9770-acc67ba2f21a" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>다양한 소스 인덱싱</b></span><span style="color: #000000;">: 여러 유형의 문서와 데이터 소스를 인덱싱합니다.</span></li>
+<li><span style="color: #000000;"><b>교차 검증</b></span><span style="color: #000000;">: 여러 소스에서 얻은 정보를 비교하고 검증합니다.</span></li>
+<li><span style="color: #000000;"><b>정보 융합</b></span><span style="color: #000000;">: 다양한 소스의 정보를 종합하여 균형 잡힌 응답을 생성합니다.</span></li>
+</ol>
+<p id="SE-db3950fb-3c33-447e-815b-c82a84310007" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e8292b41-82bf-4574-8a74-af0758985449" data-ke-size="size16"><span style="color: #000000;">예시 코드:</span></p>
+<p id="SE-38d331fa-f5f5-4ed4-a2cc-d0eae52ca7e7" data-ke-size="size16"><span style="color: #000000;">from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader from llama_index.indices.composability import ComposableGraph # 여러 소스에서 문서 로드 docs_tech = SimpleDirectoryReader('tech_docs').load_data() docs_finance = SimpleDirectoryReader('finance_docs').load_data() docs_news = SimpleDirectoryReader('news_articles').load_data() # 각 소스별 인덱스 생성 index_tech = GPTVectorStoreIndex.from_documents(docs_tech) index_finance = GPTVectorStoreIndex.from_documents(docs_finance) index_news = GPTVectorStoreIndex.from_documents(docs_news) # 복합 그래프 생성 graph = ComposableGraph.from_indices( GPTVectorStoreIndex, [index_tech, index_finance, index_news], index_summaries=["기술 문서", "재무 보고서", "뉴스 기사"] ) # 쿼리 엔진 생성 query_engine = graph.as_query_engine() # 통합 쿼리 실행 response = query_engine.query("AI 기술이 금융 산업에 미치는 영향과 최근 동향을 설명해주세요.") print(response) </span></p>
+<p id="SE-a1742a24-a7ca-48a9-b3e6-3fc312252370" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a5ebf463-b453-459f-bfb9-976bf379a5f3" data-ke-size="size16"><span style="color: #000000;">이 코드는 기술 문서, 재무 보고서, 뉴스 기사 등 다양한 소스의 정보를 통합하여 더 포괄적인 응답을 생성합니다.</span></p>
+<p id="SE-5a26a26d-6bbc-4096-94b6-406b15d7e32c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-98530726-45f2-4125-bc96-8ff53922ed45" data-ke-size="size16"><span style="color: #000000;"><b>에이전트 유사 행동 구현</b></span></p>
+<p id="SE-7fe71e9c-c587-4d50-8e52-25b4c847f8c4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eeaf3017-ebb9-42f9-a7a6-204f6d79ed97" data-ke-size="size16"><span style="color: #000000;">RAG 시스템에 에이전트 유사 행동을 추가하면 더욱 지능적이고 자율적인 시스템을 구축할 수 있습니다. 이는 계획 수립, 기억, 도구 사용 등의 기능을 포함합니다.</span></p>
+<p id="SE-6720c016-0e0b-4c4d-b1ed-da949b1ef226" data-ke-size="size16"><span style="color: #000000;"><b>계획 수립 능력</b></span></p>
+<p id="SE-17b11c06-9421-4ec6-a1e1-bfa73d65414b" data-ke-size="size16"><span style="color: #000000;">복잡한 작업을 수행하기 위해 단계별 계획을 수립하고 실행하는 능력입니다.</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>목표 분석</b></span><span style="color: #000000;">: 주어진 작업의 최종 목표를 분석합니다.</span></li>
+<li><span style="color: #000000;"><b>단계 분해</b></span><span style="color: #000000;">: 목표를 달성하기 위한 세부 단계를 계획합니다.</span></li>
+<li><span style="color: #000000;"><b>순차적 실행</b></span><span style="color: #000000;">: 각 단계를 순서대로 실행하며 중간 결과를 확인합니다.</span></li>
+</ol>
+<p id="SE-df80b5a3-c8e2-4bbf-8c19-0d16322dfed9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-897fe966-7c82-459b-b9b0-654a3804c9fe" data-ke-size="size16"><span style="color: #000000;">예시 코드:</span></p>
+<p id="SE-5c422d23-655b-41cd-906b-a442af71edb4" data-ke-size="size16"><span style="color: #000000;">from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader from llama_index.tools import QueryEngineTool, ToolMetadata from llama_index.agent import ReActAgent # 문서 로드 및 인덱스 생성 documents = SimpleDirectoryReader('data').load_data() index = GPTVectorStoreIndex.from_documents(documents) # 쿼리 엔진 도구 생성 query_engine_tool = QueryEngineTool( query_engine=index.as_query_engine(), metadata=ToolMetadata( name="data_query", description="데이터베이스에서 정보를 검색하는 도구" ) ) # ReAct 에이전트 생성 agent = ReActAgent.from_tools([query_engine_tool]) # 복잡한 작업 수행 task = "2023년 글로벌 AI 시장 규모를 조사하고, 상위 3개 기업의 시장 점유율을 분석한 후, 향후 5년간의 시장 전망을 요약해주세요." response = agent.chat(task) print(response) </span></p>
+<p id="SE-44b7484b-096b-4ad4-83be-23861ffef326" data-ke-size="size16"><span style="color: #000000;">이 코드는 복잡한 작업을 여러 단계로 나누어 계획하고 실행하는 에이전트를 구현합니다.</span></p>
+<p id="SE-f5efe4e2-17ba-40fc-b9f6-ab2c23f9db70" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1e06367f-c4e6-4adc-8bda-eeaa34dd8e3e" data-ke-size="size16"><span style="color: #000000;"><b>기억 및 학습 능력</b></span></p>
+<p id="SE-230bd539-d7f0-482d-9027-634f08da338c" data-ke-size="size16"><span style="color: #000000;">이전 상호작용의 결과를 기억하고 이를 바탕으로 학습하는 능력입니다.</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>대화 기록 유지</b></span><span style="color: #000000;">: 사용자와의 모든 상호작용을 저장합니다.</span></li>
+<li><span style="color: #000000;"><b>컨텍스트 인식</b></span><span style="color: #000000;">: 현재 상황에 관련된 과거 정보를 검색합니다.</span></li>
+<li><span style="color: #000000;"><b>경험 기반 학습</b></span><span style="color: #000000;">: 이전 상호작용의 결과를 바탕으로 응답을 개선합니다.</span></li>
+</ol>
+<p id="SE-5b554dd7-d357-4ca4-b614-11db80c80601" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8bf036d4-d6e4-40cc-ac7b-c221917f9b03" data-ke-size="size16"><span style="color: #000000;">예시 코드:</span></p>
+<p id="SE-81737989-65c3-4f67-9470-b52b6fd3e70b" data-ke-size="size16"><span style="color: #000000;">from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader from llama_index.memory import ChatMemoryBuffer from llama_index.agent import OpenAIAgent # 문서 로드 및 인덱스 생성 documents = SimpleDirectoryReader('data').load_data() index = GPTVectorStoreIndex.from_documents(documents) # 채팅 메모리 버퍼 생성 memory = ChatMemoryBuffer.from_defaults(token_limit=2000) # OpenAI 에이전트 생성 agent = OpenAIAgent.from_tools( [index.as_query_engine()], memory=memory, verbose=True ) # 대화 시뮬레이션 response = agent.chat("AI의 윤리적 문제에 대해 설명해주세요.") print("AI 윤리:", response) response = agent.chat("이전에 언급한 윤리적 문제 중 가장 시급한 것은 무엇인가요?") print("가장 시급한 윤리적 문제:", response) </span></p>
+<p id="SE-a63bd0be-4815-490b-89cf-476c50db6671" data-ke-size="size16"><span style="color: #000000;">이 코드는 이전 대화 내용을 기억하고 이를 바탕으로 후속 질문에 더 적절하게 응답하는 에이전트를 구현합니다.</span></p>
+<p id="SE-c8583f0c-aad8-4a60-8ed5-c1c90586c856" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0484427f-93e6-403d-acd7-335e993b1b52" data-ke-size="size16"><span style="color: #000000;"><b>도구 사용 능력</b></span></p>
+<p id="SE-ed8ced8b-42d8-4ff9-b43f-b40bf4849d84" data-ke-size="size16"><span style="color: #000000;">다양한 외부 도구와 API를 활용하여 정보를 수집하고 작업을 수행하는 능력입니다.</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>도구 선택</b></span><span style="color: #000000;">: 주어진 작업에 가장 적합한 도구를 선택합니다.</span></li>
+<li><span style="color: #000000;"><b>도구 사용</b></span><span style="color: #000000;">: 선택한 도구를 효과적으로 사용하여 정보를 얻거나 작업을 수행합니다.</span></li>
+<li><span style="color: #000000;"><b>결과 통합</b></span><span style="color: #000000;">: 여러 도구의 사용 결과를 종합하여 최종 응답을 생성합니다.</span></li>
+</ol>
+<p id="SE-88f60f03-6775-4eb0-8b89-8c175dca2def" data-ke-size="size16">&nbsp;</p>
+<p id="SE-078de15a-c584-44d4-8567-05c8090e4b66" data-ke-size="size16"><span style="color: #000000;">예시 코드:</span></p>
+<p id="SE-7d326625-5fea-4173-be29-fbafd38118f2" data-ke-size="size16"><span style="color: #000000;">from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader from llama_index.tools import QueryEngineTool, ToolMetadata from llama_index.agent import OpenAIAgent import requests # 문서 로드 및 인덱스 생성 documents = SimpleDirectoryReader('data').load_data() index = GPTVectorStoreIndex.from_documents(documents) # 쿼리 엔진 도구 생성 query_engine_tool = QueryEngineTool( query_engine=index.as_query_engine(), metadata=ToolMetadata( name="data_query", description="내부 데이터베이스에서 정보를 검색하는 도구" ) ) # 외부 API 도구 생성 def get_weather(location): # 실제 API 호출 대신 더미 응답 return f"{ </span></p>
+<p id="SE-faa7b966-d7a1-470c-ba02-b450ed60d775" data-ke-size="size16"><span style="color: #000000;">It seems the response was cut off. Let me continue from where it left off and complete the section on tool usage capabilities, along with the conclusion.</span></p>
+<p id="SE-7bd42ad1-3e76-49f9-a1a5-0be3de47e115" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2dd9819a-5bfa-4d0a-896f-dbaff4aaaa4f" data-ke-size="size16"><span style="color: #000000;"># 실제 API 호출 대신 더미 응답 return f"{location}의 현재 날씨는 맑고 기온은 25도입니다." # 외부 API 도구 생성 weather_tool = QueryEngineTool( query_function=get_weather, metadata=ToolMetadata( name="weather_query", description="특정 위치의 날씨 정보를 가져오는 도구" ) ) # OpenAI 에이전트 생성 agent = OpenAIAgent.from_tools([query_engine_tool, weather_tool]) # 작업 수행 response = agent.chat("서울의 현재 날씨는 어떤가요?") print(response) </span></p>
+<p id="SE-7db67a45-8ade-4540-bfd3-9e96b4872813" data-ke-size="size16"><span style="color: #000000;">이 코드는 내부 데이터베이스에서 정보를 검색하는 도구와 외부 API를 사용하여 날씨 정보를 가져오는 도구를 함께 활용하는 에이전트를 구현합니다. 이를 통해 사용자는 다양한 소스에서 정보를 통합적으로 얻을 수 있습니다.</span></p>
+<p id="SE-84069565-ed1d-41ab-8c93-0bab1893fdb5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e0a68472-9083-4082-8eac-d2c01503f0ff" data-ke-size="size16"><span style="color: #000000;"><b>결론: RAG와 복잡한 문서 처리의 미래</b></span></p>
+<p id="SE-e2355855-731a-4fb7-859e-ca3b755c35a8" data-ke-size="size16"><span style="color: #000000;">Retrieval-Augmented Generation(RAG) 기술은 복잡한 문서를 효과적으로 처리하고, 더욱 지능적인 지식 기반 시스템을 구축하는 데 필수적인 역할을 합니다. LlamaIndex와 LlamaParse와 같은 도구들은 이러한 시스템을 구축하는 데 필요한 강력한 기능을 제공합니다.</span></p>
+<p id="SE-2e685185-ef89-4418-b64d-4efb270c6e12" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d05cdb20-6acb-4b8b-9e48-b939a0d1f76f" data-ke-size="size16"><span style="color: #000000;"><b>주요 요점 정리</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;"><b>데이터 품질 향상</b></span><span style="color: #000000;">: 문서 파싱, 청킹, 임베딩 기술을 통해 데이터의 품질을 높입니다.</span></li>
+<li><span style="color: #000000;"><b>고급 검색 기술</b></span><span style="color: #000000;">: 하이브리드 검색과 계층적 검색을 통해 더 정확한 결과를 제공합니다.</span></li>
+<li><span style="color: #000000;"><b>지식 어시스턴트 구축</b></span><span style="color: #000000;">: 다단계 쿼리 처리 및 컨텍스트 인식 응답 생성을 통해 지능적인 시스템을 구현합니다.</span></li>
+<li><span style="color: #000000;"><b>에이전트 유사 행동</b></span><span style="color: #000000;">: 계획 수립, 기억 및 학습, 도구 사용 능력을 통해 자율적인 시스템을 만듭니다.</span></li>
+</ul>
+<p id="SE-02093b12-85b5-4f46-a666-a9181bb66c8b" data-ke-size="size16"><span style="color: #000000;">앞으로 RAG 기술은 더욱 발전하여 다양한 분야에서 활용될 것으로 기대됩니다. 특히, 복잡한 문서 처리와 지식 관리 분야에서 그 가능성은 무궁무진합니다. 이러한 기술들을 활용하여 더 나은 정보 검색과 사용자 경험을 제공할 수 있는 기회를 놓치지 마세요!</span></p>
+<p id="SE-e83cf1c0-b3e4-48d3-a1ef-ffe60c4a3ebd" data-ke-size="size16"><span style="color: #000000;">이 글이 RAG와 복잡한 문서 처리에 대한 이해를 돕고, 실제 적용 사례에 대한 통찰력을 제공하기를 바랍니다. 여러분의 프로젝트에 RAG 기술을 적용해 보세요!</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><span style="color: #000000;">&lt; 자료원 &gt;</span></p>
+<p data-ke-size="size16"><span style="color: #000000;"><a href="https://www.youtube.com/watch?v=dI_TmTW9S4c" target="_blank" rel="noopener&nbsp;noreferrer">https://www.youtube.com/watch?v=dI_TmTW9S4c</a></span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

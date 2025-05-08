@@ -1,0 +1,198 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Unsupervised Information Refinement Training of LLMs for RAG</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Unsupervised Information Refinement Training of LLMs for RAG</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-05 00:02:30</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Unsupervised Information Refinement Training of LLMs for RAG</h1>
+<h2 data-ke-size="size26">소개</h2>
+<p data-ke-size="size16">본 논문은 ACL 2024 메인 컨퍼런스에서 발표된 "Unsupervised Information Refinement Training of Large Language Models for Retrieval-Augmented Generation"에 대한 리뷰입니다. 이 연구는 Retrieval-Augmented Generation (RAG) 상황에서 다양한 검색된 텍스트에 대처할 수 있도록 언어 모델의 파인튜닝 방법을 제안합니다.</p>
+<h2 data-ke-size="size26">RAG의 개요</h2>
+<p data-ke-size="size16">RAG는 사용자의 쿼리에 적합한 출력을 생성하기 위해 다음과 같은 3단계 파이프라인을 구성합니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>검색 (Retrieval)</b>: 쿼리가 주어졌을 때 지식 베이스에서 관련 패시지를 추출합니다.</li>
+<li><b>증강 (Augmentation)</b>: 원본 쿼리와 추출된 패시지를 바탕으로 증강된 쿼리를 생성합니다.</li>
+<li><b>생성 (Generation)</b>: 증강된 쿼리를 바탕으로 최종 답변을 생성합니다.</li>
+</ol>
+<h2 data-ke-size="size26">RAG의 한계점</h2>
+<p data-ke-size="size16">RAG의 주요 한계점은 검색 단계에서 추출된 모든 텍스트가 유익하지 않을 수 있다는 것입니다. 이는 다음과 같은 문제를 야기할 수 있습니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>잘못된 정보 포함</li>
+<li>정답 생성에 필요한 정보 부족</li>
+</ul>
+<p data-ke-size="size16">이러한 문제를 해결하기 위해 두 가지 접근 방식이 있었습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>프롬프트 기반 방식</b>: 잘못된 패시지가 입력되었을 때 프롬프트를 통해 올바른 정보로 변환합니다. 하지만 이 방식은 모델 내부 파라미터가 업데이트되지 않아 근본적인 한계가 있습니다.</li>
+<li><b>모델 파라미터 업데이트 방식</b>: 특정 태스크에 대한 RAG 데이터를 구축하여 언어 모델을 학습시킵니다. 그러나 이 방식은 일반화 성능을 잃을 수 있고, 데이터 구축에 많은 비용이 발생합니다.</li>
+</ol>
+<h2 data-ke-size="size26">제안된 방법: InfoRAG</h2>
+<p data-ke-size="size16">저자들은 이러한 한계점을 해결하기 위해 "InfoRAG"라는 비지도 학습 방법을 제안합니다. 이 방법은 기존의 위키피디아와 같은 텍스트 데이터를 활용하여 효율적으로 모델을 학습시킵니다.</p>
+<h3 data-ke-size="size23">InfoRAG의 주요 특징</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>모델 내부 파라미터 업데이트 가능</li>
+<li>기존 데이터를 입력과 출력 형태로 변환하여 저비용으로 다양한 태스크에 대한 일반화 성능 확보</li>
+</ol>
+<h3 data-ke-size="size23">InfoRAG의 세 가지 시나리오</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>모든 필요한 지식이 검색된 텍스트에 있는 경우</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>목적: 복잡하고 긴 검색 텍스트에서 관련 없는 정보를 배제하고 직접적이고 간결한 텍스트만 생성</li>
+</ul>
+</li>
+<li><b>검색된 텍스트에 부정확한 지식이 포함된 경우</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>목적: 언어 모델의 내부 지식을 활용하여 잘못된 지식을 수정하고 누락된 지식을 완성</li>
+</ul>
+</li>
+<li><b>검색된 텍스트에 문제 해결을 위한 정답이 없는 경우</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>목적: 언어 모델의 내부 지식을 활용하여 질문 해결</li>
+</ul>
+</li>
+</ol>
+<h2 data-ke-size="size26">방법론</h2>
+<h3 data-ke-size="size23">데이터 수집 및 전처리</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>위키피디아 데이터에서 K개의 연속된 문장을 추출 (K = 15)</li>
+<li>각 문장을 prefix와 target으로 분리하여 언어 모델의 입력과 출력으로 구성</li>
+</ol>
+<h3 data-ke-size="size23">시나리오별 학습 방법</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>시나리오 1</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>입력: K개의 연속된 문장과 i번째 문장의 prefix</li>
+<li>출력: i번째 문장의 target</li>
+</ul>
+</li>
+<li><b>시나리오 2</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>입력: K개의 연속된 문장(각 문장에 informative token 추출 및 랜덤 마스킹/대체 적용)과 i번째 문장의 prefix</li>
+<li>출력: i번째 문장의 target</li>
+</ul>
+</li>
+<li><b>시나리오 3</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>입력: i번째와 i+1번째 문장을 제외한 K개의 연속된 문장과 i번째 문장의 prefix</li>
+<li>출력: i번째 문장의 target</li>
+</ul>
+</li>
+</ol>
+<h3 data-ke-size="size23">Informative Token 선택 방법</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>각 레이어마다 next word distribution 산출</li>
+<li>최종 레이어와 가장 차이가 큰 중간 레이어 선택 (Jensen-Shannon Divergence 사용)</li>
+<li>선택된 레이어에서 JSD 값이 가장 큰 상위 50% 토큰을 informative token으로 선택</li>
+</ol>
+<h3 data-ke-size="size23">학습 과정</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>세 가지 시나리오에 대한 데이터를 2:4:4 비율로 혼합하여 언어 모델 학습</li>
+</ul>
+<h2 data-ke-size="size26">실험 결과</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>제로샷 설정에서의 성능 향상</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>다양한 태스크에서 로버스트하게 성능 향상</li>
+</ul>
+</li>
+<li><b>Few-shot 학습에서의 성능</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>예시를 추가할수록 베이스라인 대비 높은 성능 향상</li>
+</ul>
+</li>
+<li><b>멀티스텝 추론에서의 성능</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>각 추론 단계의 성능 향상</li>
+</ul>
+</li>
+<li><b>다양한 검색 텍스트 시나리오에서의 성능</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>모든 시나리오에서 효과적인 성능 향상</li>
+</ul>
+</li>
+<li><b>Ablation Study</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>단순 위키피디아 추가 학습보다 InfoRAG 방식이 더 효과적</li>
+</ul>
+</li>
+<li><b>각 시나리오별 학습 방법의 효과</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>시나리오 2와 3은 단일 및 다중 학습에서 모두 성능 향상</li>
+<li>시나리오 1은 다른 시나리오와 결합 시 성능 향상</li>
+</ul>
+</li>
+<li><b>Catastrophic forgetting 방지</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>기존 모델의 언어 생성 능력을 유지하면서 RAG 태스크에서 성능 향상</li>
+</ul>
+</li>
+</ol>
+<h2 data-ke-size="size26">결론</h2>
+<p data-ke-size="size16">InfoRAG는 다양한 검색 텍스트 시나리오에 대응할 수 있는 효과적인 언어 모델 학습 방법을 제안합니다. 실험 결과를 통해 다양한 상황에서의 로버스트한 성능 향상을 입증하였으며, 각 시나리오에 적용한 학습 방법의 적합성을 검증하였습니다.</p>
+<h2 data-ke-size="size26">InfoRAG 사용 방법 (30단계)</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>위키피디아 데이터셋 준비</li>
+<li>데이터 전처리: K개의 연속된 문장 추출 (K = 15)</li>
+<li>각 문장을 prefix와 target으로 분리</li>
+<li>베이스 언어 모델 선택 (예: LLaMA 7B, 13B)</li>
+<li>시나리오 1 데이터 생성</li>
+<li>시나리오 2 데이터 생성을 위한 informative token 추출 준비</li>
+<li>각 레이어의 next word distribution 계산</li>
+<li>Jensen-Shannon Divergence를 사용하여 최종 레이어와 중간 레이어 간 차이 계산</li>
+<li>가장 큰 차이를 보이는 중간 레이어 선택</li>
+<li>선택된 레이어에서 JSD 값이 가장 큰 상위 50% 토큰을 informative token으로 선택</li>
+<li>선택된 informative token에 대해 마스킹, 대체, 유지 작업 수행</li>
+<li>시나리오 2 데이터 생성 완료</li>
+<li>시나리오 3 데이터 생성</li>
+<li>세 가지 시나리오 데이터를 2:4:4 비율로 혼합</li>
+<li>학습 하이퍼파라미터 설정 (learning rate, batch size 등)</li>
+<li>LoRA 방식으로 파인튜닝 준비</li>
+<li>모델 학습 시작</li>
+<li>주기적으로 검증 세트에서 성능 평가</li>
+<li>최적의 체크포인트 선택</li>
+<li>테스트 데이터셋 준비</li>
+<li>제로샷 설정에서 성능 평가</li>
+<li>Few-shot 설정에서 성능 평가</li>
+<li>멀티스텝 추론 태스크에서 성능 평가</li>
+<li>다양한 검색 텍스트 시나리오에서 성능 평가</li>
+<li>기존 언어 생성 능력 유지 여부 확인 (예: MLM 태스크)</li>
+<li>결과 분석 및 해석</li>
+<li>모델 최적화 (필요시 하이퍼파라미터 조정 및 재학습)</li>
+<li>최종 모델 선택</li>
+<li>실제 RAG 시스템에 통합</li>
+<li>지속적인 모니터링 및 업데이트</li>
+</ol>
+<p data-ke-size="size16">이 30단계를 따라 InfoRAG를 구현하고 사용할 수 있습니다. 각 단계는 세부적인 구현 details가 필요할 수 있으며, 실제 적용 시에는 사용 가능한 컴퓨팅 리소스와 데이터셋의 특성에 따라 조정이 필요할 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

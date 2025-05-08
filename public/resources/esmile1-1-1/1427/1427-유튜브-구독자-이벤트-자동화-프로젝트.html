@@ -1,0 +1,206 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>유튜브 구독자 이벤트 자동화 프로젝트</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">유튜브 구독자 이벤트 자동화 프로젝트</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-12-31 02:54:42</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>유튜브 구독자 이벤트 자동화 프로젝트</h1>
+<p data-ke-size="size16">안녕하세요, 여러분! 오늘은 정말 흥미진진한 프로젝트를 소개해드리려고 합니다. 바로 유튜브 구독자 이벤트를 자동화하는 방법인데요. 이 프로젝트를 통해 구독, 좋아요, 댓글 이벤트를 효율적으로 관리할 수 있습니다. 함께 따라와 보세요!</p>
+<h2 data-ke-size="size26">프로젝트 개요</h2>
+<p data-ke-size="size16">이 프로젝트의 목표는 다음과 같습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>유튜브 영상에 좋아요, 댓글, 구독한 분들에게 무료 템플릿을 자동으로 전송</li>
+<li>구글 폼을 통해 참여자 정보 수집</li>
+<li>유튜브 API를 활용해 댓글 정보 자동 확인</li>
+<li>구글 시트와 앱스 스크립트를 이용한 자동화 구현</li>
+</ol>
+<p data-ke-size="size16">이제 이 프로젝트를 어떻게 구현했는지 단계별로 살펴보겠습니다.</p>
+<h2 data-ke-size="size26">구현 단계</h2>
+<h3 data-ke-size="size23">1. 구글 폼 생성</h3>
+<p data-ke-size="size16">먼저 구글 폼을 만들어 참여자 정보를 수집합니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 드라이브에서 '새로 만들기' &gt; '구글 설문지' 선택</li>
+<li>다음 항목들을 추가:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>이름 (단답형)</li>
+<li>이메일 주소 (이메일 형식 유효성 검사 추가)</li>
+<li>유튜브 핸들 (단답형, '@'로 시작하도록 유효성 검사 추가)</li>
+<li>이벤트 동영상에 남긴 댓글 내용 (장문형)</li>
+<li>좋아요와 구독 완료 스크린샷 (파일 업로드, 이미지 파일로 제한)</li>
+<li>개인정보 수집 동의 (체크박스, 필수 항목)</li>
+</ul>
+</li>
+<li>폼 응답을 구글 시트에 연결</li>
+</ol>
+<h3 data-ke-size="size23">2. 구글 시트 설정</h3>
+<p data-ke-size="size16">구글 폼 응답이 저장될 구글 시트를 준비합니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 폼에서 '응답' 탭 선택 후 구글 시트 연결</li>
+<li>시트에 '템플릿 발송 여부' 열 추가</li>
+<li>맨 오른쪽 열에 체크박스 추가 (수동 선택용)</li>
+</ol>
+<h3 data-ke-size="size23">3. 앱스 스크립트 설정</h3>
+<p data-ke-size="size16">구글 시트에서 앱스 스크립트를 열어 자동화 코드를 작성합니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 시트에서 '도구' &gt; '스크립트 편집기' 선택</li>
+<li>새 스크립트 파일 생성</li>
+<li>필요한 라이브러리 추가 (예: YouTube Data API)</li>
+</ol>
+<h3 data-ke-size="size23">4. 유튜브 API 설정</h3>
+<p data-ke-size="size16">유튜브 데이터를 가져오기 위해 API를 설정합니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google Developers Console에서 새 프로젝트 생성</li>
+<li>YouTube Data API v3 활성화</li>
+<li>사용자 인증 정보 생성 (API 키)</li>
+</ol>
+<h3 data-ke-size="size23">5. 주요 함수 구현</h3>
+<p data-ke-size="size16">앱스 스크립트에 다음 주요 함수들을 구현합니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>onOpen(): 스프레드시트 열 때 커스텀 메뉴 생성</li>
+<li>setApiKey(): YouTube API 키 설정</li>
+<li>processResponses(): 폼 응답 처리 메인 함수</li>
+<li>checkYouTubeComments(): 유튜브 댓글 확인 함수</li>
+<li>sendEmail(): 이메일 발송 함수</li>
+</ol>
+<h3 data-ke-size="size23">6. 자동 실행 설정</h3>
+<p data-ke-size="size16">정기적인 실행을 위해 트리거를 설정합니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>앱스 스크립트 편집기에서 트리거 추가</li>
+<li>processResponses 함수를 6시간마다 실행하도록 설정</li>
+</ol>
+<h2 data-ke-size="size26">상세 구현 방법</h2>
+<p data-ke-size="size16">이제 각 단계를 좀 더 자세히 살펴보겠습니다.</p>
+<h3 data-ke-size="size23">구글 폼 상세 설정</h3>
+<p data-ke-size="size16">구글 폼에서 각 질문을 세심하게 설정하는 것이 중요합니다.</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>이메일 주소 입력 시 안내 문구: "자주 사용하는 이메일 주소를 정확히 입력해 주세요. 이 주소로 템플릿이 발송됩니다."</li>
+<li>유튜브 핸들 입력 시 안내 문구: "오타가 생기지 않도록 복사해서 붙여넣기 해주세요."</li>
+<li>개인정보 수집 동의 문구 예시: "수집된 개인정보는 이벤트 진행 목적으로만 사용되며, 1년 후 자동 파기됩니다."</li>
+</ul>
+<h3 data-ke-size="size23">구글 시트 구성</h3>
+<p data-ke-size="size16">구글 시트는 다음과 같이 구성합니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>폼 응답 데이터 (자동 생성)</li>
+<li>템플릿 발송 여부 열 (수동 추가)</li>
+<li>체크박스 열 (수동 추가, 선택적 처리용)</li>
+</ol>
+<h3 data-ke-size="size23">앱스 스크립트 코드 구조</h3>
+<p data-ke-size="size16">앱스 스크립트의 주요 코드 구조는 다음과 같습니다:</p>
+<pre class="actionscript"><code>function onOpen() {
+  // 커스텀 메뉴 생성
+}
+
+function setApiKey() {
+  // YouTube API 키 설정
+}
+
+function processResponses() {
+  // 메인 처리 함수
+}
+
+function checkYouTubeComments(videoId, channelHandle) {
+  // 유튜브 댓글 확인
+}
+
+function sendEmail(recipient, templateType) {
+  // 이메일 발송
+}
+
+</code></pre>
+<h3 data-ke-size="size23">유튜브 API 활용</h3>
+<p data-ke-size="size16">유튜브 API를 통해 댓글을 확인하는 과정은 다음과 같습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>API 호출로 동영상의 모든 댓글 가져오기</li>
+<li>각 댓글의 작성자와 제출된 유튜브 핸들 비교</li>
+<li>일치하는 경우 템플릿 발송 처리</li>
+</ol>
+<h3 data-ke-size="size23">이메일 발송 로직</h3>
+<p data-ke-size="size16">이메일 발송은 다음 두 가지 경우로 나뉩니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>댓글 확인 성공 시: 템플릿 포함 이메일 발송</li>
+<li>댓글 확인 실패 시: 안내 메일 발송 (구글 폼 링크 포함)</li>
+</ol>
+<h3 data-ke-size="size23">자동화 및 수동 실행</h3>
+<p data-ke-size="size16">프로젝트는 다음과 같이 실행될 수 있습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>자동 실행: 6시간마다 트리거로 실행</li>
+<li>수동 실행: 스프레드시트 메뉴에서 선택
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>전체 실행: 모든 미처리 응답 처리</li>
+<li>선택 실행: 체크박스 선택된 항목만 처리</li>
+</ul>
+</li>
+</ol>
+<h2 data-ke-size="size26">주요 기능 사용 방법 (30단계)</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 계정으로 로그인합니다.</li>
+<li>구글 드라이브로 이동합니다.</li>
+<li>'새로 만들기' 버튼을 클릭합니다.</li>
+<li>'구글 설문지'를 선택합니다.</li>
+<li>설문지 제목을 입력합니다 (예: "유튜브 이벤트 참여").</li>
+<li>필요한 질문들을 추가합니다 (이름, 이메일, 유튜브 핸들 등).</li>
+<li>각 질문에 적절한 유효성 검사를 설정합니다.</li>
+<li>파일 업로드 질문을 추가하고 이미지 파일로 제한합니다.</li>
+<li>개인정보 수집 동의 항목을 체크박스로 추가합니다.</li>
+<li>설문지 저장 후 '응답' 탭으로 이동합니다.</li>
+<li>'스프레드시트 만들기' 버튼을 클릭하여 응답 시트를 생성합니다.</li>
+<li>생성된 스프레드시트로 이동합니다.</li>
+<li>스프레드시트에 '템플릿 발송 여부' 열을 추가합니다.</li>
+<li>맨 오른쪽 열에 체크박스를 추가합니다.</li>
+<li>'도구' 메뉴에서 '스크립트 편집기'를 선택합니다.</li>
+<li>새 스크립트 파일을 생성합니다.</li>
+<li>YouTube Data API 라이브러리를 추가합니다.</li>
+<li>필요한 함수들 (onOpen, setApiKey, processResponses 등)을 구현합니다.</li>
+<li>Google Developers Console에서 새 프로젝트를 생성합니다.</li>
+<li>YouTube Data API v3를 활성화합니다.</li>
+<li>API 키를 생성합니다.</li>
+<li>생성된 API 키를 스크립트의 setApiKey 함수에 입력합니다.</li>
+<li>스크립트 편집기에서 트리거를 추가합니다.</li>
+<li>processResponses 함수를 6시간마다 실행하도록 설정합니다.</li>
+<li>스크립트를 저장하고 권한을 부여합니다.</li>
+<li>스프레드시트로 돌아가 새로고침합니다.</li>
+<li>커스텀 메뉴가 생성되었는지 확인합니다.</li>
+<li>테스트를 위해 구글 폼에 샘플 응답을 제출합니다.</li>
+<li>스프레드시트에서 '수동 실행' 메뉴를 선택합니다.</li>
+<li>결과를 확인하고 필요한 경우 코드를 수정합니다.</li>
+</ol>
+<p data-ke-size="size16">이렇게 하면 유튜브 구독자 이벤트 자동화 시스템이 구축됩니다. 이 시스템을 통해 효율적으로 이벤트를 관리하고, 참여자들에게 빠르게 응답할 수 있습니다. 물론 초기 설정에 시간이 좀 걸리지만, 한 번 구축해 놓으면 장기적으로 많은 시간과 노력을 절약할 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">구현 과정에서 어려움이 있다면, 구글 앱스 스크립트 문서를 참조하거나 개발자 커뮤니티에 도움을 요청해보세요. 또한, API 사용량 제한에 주의하고, 개인정보 처리에 관한 법규를 준수하는 것도 잊지 마세요.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">이 프로젝트를 통해 여러분의 유튜브 채널 운영이 한층 더 효율적이고 전문적으로 변화하기를 바랍니다. 화이팅!</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

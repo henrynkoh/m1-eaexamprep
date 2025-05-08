@@ -1,0 +1,181 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>OpenAI GPT-4.5를 이용한 비트코인 자동 투자 실험</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">OpenAI GPT-4.5를 이용한 비트코인 자동 투자 실험</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-10-03 20:50:20</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-92863b4e-be6d-4cca-8563-e5a3f6a16148" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d5b413e5-6d67-4982-a76a-b9319a145719" data-ke-size="size16"><span style="color: #000000;">오늘은 OpenAI의 최신 모델인 GPT-4.5를 활용하여 비트코인 자동 투자 시스템을 구축하고 실험한 과정을 공유하고자 합니다. 이 글에서는 시스템 설계부터 실제 운영까지의 전 과정을 상세히 다룰 예정입니다.</span></p>
+<p id="SE-cbf6e7a3-cd2e-4d39-8721-796b132fd966" data-ke-size="size16">&nbsp;</p>
+<p id="SE-422e8973-e080-4fe2-b002-978884042598" data-ke-size="size16"><span style="color: #000000;"><b>프로젝트 개요</b></span></p>
+<p id="SE-f230e4a4-be28-42c8-af99-f149e8ed15da" data-ke-size="size16"><span style="color: #000000;">이 프로젝트는 이전에 진행했던 AI 비트코인 투자 자동화 강의의 연장선상에 있습니다. 이번에는 GPT-4.5 모델을 도입하여 투자 전략을 개선하고, 실시간으로 투자 결과를 모니터링할 수 있는 시스템을 구축했습니다.</span></p>
+<p id="SE-00eb9154-6539-484c-abc2-0086eeba47c6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-32378964-8495-4a45-9d61-320b5b027306" data-ke-size="size16"><span style="color: #000000;">주요 목표:</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">GPT-4.5를 이용한 투자 결정 시스템 구축</span></li>
+<li><span style="color: #000000;">실시간 투자 모니터링 대시보드 개발</span></li>
+<li><span style="color: #000000;">4시간 간격의 자동 투자 실행</span></li>
+<li><span style="color: #000000;">초기 투자금 200만원으로 성과 추적</span></li>
+</ol>
+<p id="SE-410abf76-7452-4331-a633-e87bacce18ca" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b4064e46-3541-412c-bd10-246025c3df1f" data-ke-size="size16"><span style="color: #000000;"><b>GPT-4.5 모델 소개 및 한계점</b></span></p>
+<p id="SE-2535140c-2884-4303-8d7c-39c049075969" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f2b4d23c-8344-4bff-af79-0b925053a388" data-ke-size="size16"><span style="color: #000000;">GPT-4.5는 OpenAI의 최신 언어 모델로, 이전 버전들보다 더 뛰어난 성능을 보여줍니다. 하지만 현재 베타 버전이기 때문에 몇 가지 제한사항이 있습니다:</span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">API 매개변수 제한: 온도(temperature), 최대 토큰 수 등의 설정 불가</span></li>
+<li><span style="color: #000000;">멀티모달 입력 제한: 텍스트 입력만 가능 (이미지 입력 불가)</span></li>
+<li><span style="color: #000000;">메시지 타입 제한: 시스템 메시지 사용 불가, 사용자와 어시스턴트 메시지만 사용 가능</span></li>
+</ol>
+<p id="SE-55d67b81-a18c-42ef-9d96-211ac6b6acde" data-ke-size="size16"><span style="color: #000000;">이러한 제한사항을 고려하여 시스템을 설계해야 했습니다.</span></p>
+<p id="SE-b774d946-1711-4ef3-825b-5b4e903427c7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-786ccbe0-6160-4f0d-828a-eb3cca94e6ac" data-ke-size="size16"><span style="color: #000000;"><b>시스템 구조 설계</b></span></p>
+<p id="SE-b7f5b7ec-5696-4a2e-b58b-b1edd531ba78" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b9740221-06a6-499b-a907-a37ace001229" data-ke-size="size16"><span style="color: #000000;"><b>1. 데이터 수집</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">비트코인 가격 데이터: 60일치 일봉 데이터, 48시간치 시간봉 데이터</span></li>
+<li><span style="color: #000000;">기술적 지표: RSI, MACD, 볼린저 밴드, 이동평균선, 스토캐스틱 오실레이터, ATR(Average True Range), OBV(On-Balance Volume)</span></li>
+<li><span style="color: #000000;">뉴스 데이터: Google News API를 통한 최신 비트코인 관련 뉴스</span></li>
+<li><span style="color: #000000;">시장 심리 지표: Fear &amp; Greed Index</span></li>
+</ul>
+<p id="SE-a8b7e46b-ed2e-4521-a043-f5cd49b2ee37" data-ke-size="size16"><span style="color: #000000;"><b>2. 투자 결정 로직</b></span></p>
+<p id="SE-02277e37-1e44-4bc2-b1a8-b294aaf1f7b0" data-ke-size="size16"><span style="color: #000000;">GPT-4.5 모델에 다음 정보를 제공하여 투자 결정을 요청합니다:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">현재 비트코인 가격</span></li>
+<li><span style="color: #000000;">기술적 지표 분석 결과</span></li>
+<li><span style="color: #000000;">최신 뉴스 헤드라인</span></li>
+<li><span style="color: #000000;">시장 심리 지표</span></li>
+<li><span style="color: #000000;">현재 포트폴리오 상태</span></li>
+</ul>
+<p id="SE-38195a2a-07d6-475e-9371-0a6b4f775e7a" data-ke-size="size16"><span style="color: #000000;">모델은 이 정보를 바탕으로 '매수', '매도', '홀드' 중 하나를 결정하고, 그 이유를 설명합니다.</span></p>
+<p id="SE-1afdc678-4345-46ae-9b96-6170fb2b4891" data-ke-size="size16"><span style="color: #000000;"><b>3. 자동 거래 실행</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">4시간마다 자동으로 투자 결정을 내리고 실행</span></li>
+<li><span style="color: #000000;">거래소 API를 통한 실제 매매 실행</span></li>
+</ul>
+<p id="SE-53e4dfd4-83cb-450a-a11e-f2153cda7603" data-ke-size="size16"><span style="color: #000000;"><b>4. 모니터링 대시보드</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">Streamlit을 이용한 웹 기반 대시보드</span></li>
+<li><span style="color: #000000;">실시간 포트폴리오 가치, 수익률, 거래 내역 표시</span></li>
+</ul>
+<p id="SE-c0c2b9bd-6331-4b55-b096-6902177480cb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d475c6e9-e1a2-4078-975a-d126d53106a6" data-ke-size="size16"><span style="color: #000000;"><b>시스템 구현 과정</b></span></p>
+<p id="SE-41ca6a0e-1591-422e-b30c-18e2897ddfe8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8adc613a-449a-420d-808e-e26484d9183c" data-ke-size="size16"><span style="color: #000000;"><b>1. 코드 최적화</b></span></p>
+<p id="SE-a4471417-1097-468d-a888-131ecf6b6ab0" data-ke-size="size16"><span style="color: #000000;">기존 코드를 GPT-4.5에 맞게 수정했습니다. 주요 변경 사항은 다음과 같습니다:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">차트 이미지 분석 기능 제거 (GPT-4.5의 이미지 입력 제한으로 인해)</span></li>
+<li><span style="color: #000000;">시스템 메시지를 사용자 메시지로 변경</span></li>
+<li><span style="color: #000000;">JSON 응답 파싱 로직 개선</span></li>
+</ul>
+<p id="SE-80118dda-bd27-4637-b359-b1cae44e0e87" data-ke-size="size16"><span style="color: #000000;"># GPT-4.5 모델 설정 model = "gpt-4.5-preview" # 메시지 구조 변경 messages = [ {"role": "user", "content": "당신은 비트코인 투자 전문가입니다. 제공된 데이터를 분석하고 투자 결정을 내려주세요."}, {"role": "user", "content": f"현재 비트코인 가격: {current_price}\\\\n기술적 지표: {technical_indicators}\\\\n최신 뉴스: {news_headlines}\\\\n시장 심리 지표: {fear_greed_index}"} ] # API 호출 response = openai.ChatCompletion.create( model=model, messages=messages ) # 응답 파싱 decision = parse_gpt_response(response.choices[0].message['content']) </span></p>
+<p id="SE-e3fd4ae7-496c-4bdc-b4f4-cced30c743bd" data-ke-size="size16"><span style="color: #000000;"><b>2. 데이터 수집 개선</b></span></p>
+<p id="SE-665d5d33-16b1-46fe-914c-c2b35808781d" data-ke-size="size16"><span style="color: #000000;">데이터의 양과 질을 개선했습니다:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">히스토리컬 데이터 범위 확장: 30일 &rarr; 60일</span></li>
+<li><span style="color: #000000;">추가 기술적 지표 도입: 스토캐스틱 오실레이터, ATR, OBV</span></li>
+</ul>
+<p id="SE-9ca448d9-2116-4b17-b4a1-771ecf07ea84" data-ke-size="size16"><span style="color: #000000;">def get_technical_indicators(df): df['RSI'] = ta.rsi(df['close']) df['MACD'] = ta.macd(df['close'])['MACD'] df['BB_upper'], df['BB_middle'], df['BB_lower'] = ta.bbands(df['close']) df['SMA_50'] = ta.sma(df['close'], length=50) df['SMA_200'] = ta.sma(df['close'], length=200) df['Stoch_K'], df['Stoch_D'] = ta.stoch(df['high'], df['low'], df['close']) df['ATR'] = ta.atr(df['high'], df['low'], df['close']) df['OBV'] = ta.obv(df['close'], df['volume']) return df </span></p>
+<p id="SE-a176550d-5e4d-4d70-9226-13e576c2fef9" data-ke-size="size16"><span style="color: #000000;"><b>3. 투자 전략 개선</b></span></p>
+<p id="SE-ea8157e6-c88b-48ca-aa85-b42b578599e7" data-ke-size="size16"><span style="color: #000000;">GPT-4.5의 더 나은 분석 능력을 활용하기 위해 투자 전략을 개선했습니다:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">장기 트렌드와 단기 변동성을 동시에 고려</span></li>
+<li><span style="color: #000000;">뉴스 sentiment와 시장 심리 지표의 영향력 강화</span></li>
+<li><span style="color: #000000;">리스크 관리를 위한 포지션 사이즈 조절 로직 추가</span></li>
+</ul>
+<p id="SE-786af10a-5c5c-4f7f-b235-a77cb3ebb35b" data-ke-size="size16"><span style="color: #000000;"><b>4. 스케줄링 및 자동화</b></span></p>
+<p id="SE-717f3ef4-4fdf-4d5a-936a-43a726fb1d3d" data-ke-size="size16"><span style="color: #000000;">4시간마다 자동으로 투자 결정을 내리고 실행하도록 설정했습니다:</span></p>
+<p id="SE-42420b5d-cc00-4a4c-9962-5f2ef2957c21" data-ke-size="size16"><span style="color: #000000;">from apscheduler.schedulers.background import BackgroundScheduler scheduler = BackgroundScheduler() scheduler.add_job(auto_trade, 'cron', hour='*/4') scheduler.start() </span></p>
+<p id="SE-2f02969b-e193-4b73-81a5-de96d01c6bf4" data-ke-size="size16"><span style="color: #000000;"><b>5. 모니터링 대시보드 개선</b></span></p>
+<p id="SE-e775b1f8-6cf2-4221-b8a8-8392b528871d" data-ke-size="size16"><span style="color: #000000;">Streamlit을 사용하여 실시간 모니터링 대시보드를 개선했습니다:</span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">초기 투자 대비 현재 수익률 표시 기능 추가</span></li>
+<li><span style="color: #000000;">거래 내역의 가독성 개선</span></li>
+<li><span style="color: #000000;">실시간 포트폴리오 가치 그래프 추가</span></li>
+</ul>
+<p id="SE-786c63c0-8109-4759-926f-b1b406599cbf" data-ke-size="size16"><span style="color: #000000;">import streamlit as st def display_profit_rate(initial_investment, current_value): profit_rate = (current_value - initial_investment) / initial_investment * 100 st.metric("현재 수익률", f"{profit_rate:.2f}%", f"{current_value - initial_investment:,.0f}원") st.title("GPT-4.5 비트코인 자동 투자 대시보드") display_profit_rate(2000000, get_current_portfolio_value()) st.line_chart(get_portfolio_history()) st.table(get_recent_trades()) </span></p>
+<p id="SE-2bb6bcf1-5903-42e9-864f-68172ef75b6f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-59d1de4a-ff9b-4b55-82bc-5767619f7622" data-ke-size="size16"><span style="color: #000000;"><b>실험 결과 및 분석</b></span></p>
+<p id="SE-b63d044e-96e6-4ab0-ba9c-c3f08ddd781b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-77ce0ae8-da8a-4b9f-987a-34b6f81e00dd" data-ke-size="size16"><span style="color: #000000;"><b>초기 설정</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">초기 투자금: 200만원</span></li>
+<li><span style="color: #000000;">투자 주기: 4시간</span></li>
+<li><span style="color: #000000;">실험 기간: [실험 시작 날짜] ~ [현재]</span></li>
+</ul>
+<p id="SE-997e9a61-a4b3-4679-ac5d-d7d903665632" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f0d33f77-9914-4fe9-a528-59bf9ea6bb9b" data-ke-size="size16"><span style="color: #000000;"><b>현재까지의 성과</b></span></p>
+<p id="SE-9e0c171d-5c07-4ddf-933c-2c01447e1518" data-ke-size="size16"><span style="color: #000000;"><i>참고: 이 부분은 실제 실험 결과에 따라 작성해야 합니다. 아래는 예시입니다.</i></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">현재 포트폴리오 가치: 2,150,000원</span></li>
+<li><span style="color: #000000;">수익률: +7.5%</span></li>
+<li><span style="color: #000000;">총 거래 횟수: 18회 (매수 10회, 매도 8회)</span></li>
+</ul>
+<p id="SE-e5a068ac-8dd8-43b5-b647-81c2ca19a39f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-29a208d7-532e-4fab-9308-d5b5c42bc855" data-ke-size="size16"><span style="color: #000000;"><b>주요 관찰 사항</b></span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">변동성 대응: GPT-4.5 모델은 단기 변동성에 비교적 잘 대응하는 모습을 보였습니다. 특히 급격한 가격 변동 시 적절한 매매 결정을 내리는 경향이 있었습니다.</span></li>
+<li><span style="color: #000000;">뉴스 반영: 주요 뉴스 이벤트에 대한 반응이 신속했습니다. 예를 들어, 대형 기관의 비트코인 매수 소식이 있었을 때 즉각적인 매수 결정을 내렸습니다.</span></li>
+<li><span style="color: #000000;">리스크 관리: 포지션 사이즈를 조절하는 로직이 효과적으로 작동하여, 큰 손실을 방지하는 데 도움이 되었습니다.</span></li>
+<li><span style="color: #000000;">장기 트렌드 인식: 60일치의 데이터를 분석함으로써, 장기 트렌드를 더 잘 파악하고 있는 것으로 보입니다.</span></li>
+</ol>
+<p id="SE-15ca011b-c3e5-4d01-8b3b-918dbcf111cd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dda62513-05e8-4974-8cbf-64ac57383d70" data-ke-size="size16"><span style="color: #000000;"><b>개선 필요 사항</b></span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">과도한 거래: 일부 경우에 불필요하게 잦은 거래를 하는 경향이 있었습니다. 이는 거래 수수료 증가로 이어질 수 있어 개선이 필요합니다.</span></li>
+<li><span style="color: #000000;">극단적 상황 대응: 시장의 극단적인 변동 시 (예: 급격한 가격 하락) 대응이 다소 부족했습니다. 이에 대한 추가적인 전략 수립이 필요해 보입니다.</span></li>
+<li><span style="color: #000000;">기술적 지표 가중치: 현재는 모든 기술적 지표에 동일한 가중치를 부여하고 있습니다. 각 지표의 중요도를 상황에 따라 조절할 수 있는 로직이 필요할 것 같습니다.</span></li>
+</ol>
+<p id="SE-028adfba-9053-401b-9d9b-6ba8c91abb60" data-ke-size="size16">&nbsp;</p>
+<p id="SE-62a466ef-079d-4289-9c3b-c86dd2694c7e" data-ke-size="size16"><span style="color: #000000;"><b>향후 계획</b></span></p>
+<p id="SE-3953b7b7-89b1-4650-ae83-514ad5eeae2e" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">백테스팅 시스템 구축: 과거 데이터를 이용한 백테스팅 시스템을 구축하여 전략의 효과성을 더욱 정확히 평가할 계획입니다.</span></li>
+<li><span style="color: #000000;">다중 모델 앙상블: GPT-4.5와 다른 AI 모델들을 결합한 앙상블 모델을 구축하여 더 안정적인 투자 결정을 내릴 수 있도록 할 예정입니다.</span></li>
+<li><span style="color: #000000;">온체인 데이터 통합: 블록체인 상의 데이터(예: 대량 거래 정보, 지갑 활동 등)를 분석에 포함시켜 더 comprehensive한 시장 분석을 할 계획입니다.</span></li>
+<li><span style="color: #000000;">리스크 관리 강화: VaR(Value at Risk) 등의 고급 리스크 관리 기법을 도입하여 손실 위험을 더욱 효과적으로 관리할 예정입니다.</span></li>
+<li><span style="color: #000000;">UI/UX 개선: 현재의 대시보드를 더욱 사용자 친화적으로 개선하고, 모바일 앱 버전도 개발할 계획입니다.</span></li>
+</ol>
+<p id="SE-9cb142ac-f487-45d4-8144-29824e60603d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-79c31e9a-ddd8-4913-a227-6f674be20a54" data-ke-size="size16"><span style="color: #000000;"><b>결론</b></span></p>
+<p id="SE-9dd62cc4-4e4c-4211-95d5-0f810e5c8943" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a0727a49-d06b-4148-9fed-4bbfff4c3dd7" data-ke-size="size16"><span style="color: #000000;">GPT-4.5를 이용한 비트코인 자동 투자 시스템은 아직 초기 단계이지만, 흥미로운 결과를 보여주고 있습니다. AI 모델의 뛰어난 데이터 분석 능력과 실시간 뉴스 대응 능력이 투자 성과에 긍정적인 영향을 미치는 것으로 보입니다.</span></p>
+<p id="SE-5b53a932-5297-417a-b898-2f81a5cbbf00" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4015ccd3-5296-472d-a032-e23bda3bf787" data-ke-size="size16"><span style="color: #000000;">하지만 이는 어디까지나 실험적인 프로젝트임을 명심해야 합니다. 암호화폐 시장의 높은 변동성과 예측 불가능성을 고려할 때, 이 시스템을 실제 투자에 그대로 적용하는 것은 위험할 수 있습니다. 항상 자신의 투자 결정에 책임을 지고, 감당할 수 있는 범위 내에서만 투자해야 합니다.</span></p>
+<p id="SE-53e6340c-ca0e-4342-b02c-558be530b6d5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-69eb488e-0e0d-4839-b4a2-1281d5e2a998" data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

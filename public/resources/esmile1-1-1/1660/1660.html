@@ -1,0 +1,179 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Chrome DevTools에서 발생한 CORS 오류 해결하기: 초보자를 위한 상세 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Chrome DevTools에서 발생한 CORS 오류 해결하기: 초보자를 위한 상세 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-16 10:00:09</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Chrome DevTools에서 발생한 CORS 오류 해결하기: 초보자를 위한 상세 가이드</h1>
+<p data-ke-size="size16">안녕하세요! 오늘은 Chrome DevTools를 사용하면서 발생하는 CORS 오류를 해결하는 방법에 대해 자세히 알아보겠습니다. 특히 YouTube 동영상 텍스트 추출 과정에서 발생하는 문제를 해결하는 방법을 상세히 설명해드리겠습니다.</p>
+<h2 data-ke-size="size26">CORS 오류란?</h2>
+<p data-ke-size="size16">CORS(Cross-Origin Resource Sharing) 오류는 웹 브라우저의 보안 정책으로 인해 발생하는 문제입니다. 다른 출처(도메인, 프로토콜, 포트)의 리소스를 요청할 때 발생하며, 이는 사용자를 보호하기 위한 중요한 보안 메커니즘입니다.</p>
+<h2 data-ke-size="size26">오류 해결 30단계 가이드</h2>
+<h3 data-ke-size="size23">1단계: 오류 확인 및 분석</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Chrome 개발자 도구(F12)를 엽니다.</li>
+<li>Network 탭을 선택합니다.</li>
+<li>Fetch/XHR 필터를 클릭합니다.</li>
+<li>빨간색으로 표시된 CORS error를 확인합니다.</li>
+</ol>
+<h3 data-ke-size="size23">2단계: 기본적인 해결 방법</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>요청 헤더에 CORS 관련 설정을 추가합니다:</li>
+</ol>
+<pre class="ada"><code>headers: {
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*'
+}
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>서버 측 응답 헤더를 확인합니다.</li>
+<li>프록시 서버 사용을 고려합니다.</li>
+</ol>
+<h3 data-ke-size="size23">3단계: 코드 수정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>fetch 요청을 다음과 같이 수정합니다:</li>
+</ol>
+<pre class="less"><code>fetch('&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;', {
+  method: 'POST',
+  mode: 'cors',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;'
+  })
+})
+
+</code></pre>
+<h3 data-ke-size="size23">4단계: 프록시 서버 사용</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>CORS Anywhere 프록시를 사용합니다:</li>
+</ol>
+<pre class="actionscript"><code>const PROXY_URL = '&lt;https://cors-anywhere.herokuapp.com/&gt;';
+const API_URL = '&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;';
+
+fetch(PROXY_URL + API_URL, {
+  // ... 나머지 설정
+})
+
+</code></pre>
+<h3 data-ke-size="size23">5단계: 서버 측 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Cloud Function 코드에 CORS 헤더를 추가합니다.</li>
+<li>OPTIONS 요청에 대한 처리를 추가합니다.</li>
+<li>허용된 도메인을 설정합니다.</li>
+</ol>
+<h3 data-ke-size="size23">6단계: 임시 해결책</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Chrome을 CORS 비활성화 모드로 실행합니다.</li>
+<li>로컬 개발 환경에서 테스트합니다.</li>
+<li>테스트용 확장 프로그램을 사용합니다.</li>
+</ol>
+<h3 data-ke-size="size23">7단계: 오류 디버깅</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Console 탭에서 자세한 오류 메시지를 확인합니다.</li>
+<li>Network 탭에서 요청/응답 헤더를 분석합니다.</li>
+<li>요청 URL이 정확한지 확인합니다.</li>
+</ol>
+<h3 data-ke-size="size23">8단계: 보안 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>API 키가 필요한 경우 적절히 추가합니다.</li>
+<li>인증 토큰을 설정합니다.</li>
+<li>SSL/TLS 인증서를 확인합니다.</li>
+</ol>
+<h3 data-ke-size="size23">9단계: 성능 최적화</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>캐시 설정을 확인합니다.</li>
+<li>요청 횟수를 최적화합니다.</li>
+<li>응답 시간을 모니터링합니다.</li>
+</ol>
+<h3 data-ke-size="size23">10단계: 최종 확인</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>모든 설정이 올바른지 검토합니다.</li>
+<li>테스트 환경에서 충분히 검증합니다.</li>
+<li>실제 환경에서 테스트합니다.</li>
+<li>오류 로깅을 설정합니다.</li>
+<li>모니터링 시스템을 구축합니다.</li>
+<li>장애 복구 계획을 수립합니다.</li>
+</ol>
+<h2 data-ke-size="size26">주요 해결 방법</h2>
+<h3 data-ke-size="size23">서버 측 해결 방법</h3>
+<pre class="ruby"><code>def handle_cors(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
+
+</code></pre>
+<h3 data-ke-size="size23">클라이언트 측 해결 방법</h3>
+<pre class="javascript"><code>const options = {
+  method: 'POST',
+  mode: 'cors',
+  credentials: 'include',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;'
+  })
+};
+
+fetch(API_URL, options)
+  .then(response =&gt; response.json())
+  .then(data =&gt; console.log(data))
+  .catch(error =&gt; console.error('Error:', error));
+
+</code></pre>
+<h2 data-ke-size="size26">문제 해결 팁</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>단계적 접근</b>: 문제를 하나씩 해결합니다.</li>
+<li><b>로그 확인</b>: 모든 오류 메시지를 주의 깊게 분석합니다.</li>
+<li><b>테스트</b>: 각 변경사항을 철저히 테스트합니다.</li>
+<li><b>문서화</b>: 해결 과정을 문서화하여 추후 참조할 수 있게 합니다.</li>
+</ol>
+<h2 data-ke-size="size26">주의사항</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>보안</b>: CORS는 중요한 보안 메커니즘이므로 신중하게 처리해야 합니다.</li>
+<li><b>호환성</b>: 다양한 브라우저에서 테스트해야 합니다.</li>
+<li><b>성능</b>: 프록시 사용 시 성능 저하가 발생할 수 있습니다.</li>
+<li><b>유지보수</b>: 임시 해결책은 장기적인 해결책이 될 수 없습니다.</li>
+</ol>
+<h2 data-ke-size="size26">결론</h2>
+<p data-ke-size="size16">CORS 오류는 웹 개발에서 흔히 발생하는 문제지만, 적절한 접근 방법과 이해를 통해 해결할 수 있습니다. 이 가이드를 참고하여 단계별로 문제를 해결해 나가시기 바랍니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">문제 해결 과정에서 어려움이 있다면, 각 단계를 차근차근 확인하고 필요한 경우 개발자 커뮤니티의 도움을 받으세요. 성공적인 문제 해결을 기원합니다!</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

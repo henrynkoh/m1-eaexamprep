@@ -1,0 +1,214 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>? Deep Research Assistant PY: 오픈소스 딥 리서치 CLI 도구 사용 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">? Deep Research Assistant PY: 오픈소스 딥 리서치 CLI 도구 사용 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-15 08:36:29</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>오픈소스 딥 리서치 CLI 도구 사용 가이드</h1>
+<h1>An AI-powered research tool in Python that helps you explore topics in depth using AI and web search.</h1>
+<p data-ke-size="size16">안녕하세요! 오늘은 정말 멋진 AI 도구인 "오픈소스 딥 리서치 CLI"에 대해 알아보겠습니다. 이 도구는 마치 여러분의 개인 연구 조교처럼 작동하여 깊이 있는 정보 검색과 분석을 도와줍니다. 함께 이 도구의 구조, 특징, 설치 방법, 그리고 사용법에 대해 자세히 알아볼까요?</p>
+<h2 data-ke-size="size26">1. 프로젝트 구조 이해하기</h2>
+<p data-ke-size="size16">오픈소스 딥 리서치 CLI의 구조는 다음과 같습니다:</p>
+<pre class="dockerfile"><code>deep_research_py/
+├── run.py              # 메인 CLI 인터페이스
+├── deep_research.py    # 핵심 연구 로직
+├── feedback.py         # 후속 질문 생성
+├── prompt.py           # AI용 시스템 프롬프트
+└── ai/
+    ├── providers.py    # AI 서비스 설정
+    └── text_splitter.py # 텍스트 처리 유틸리티
+
+</code></pre>
+<p data-ke-size="size16">이 구조를 보면, 각 파일이 특정 기능을 담당하고 있어 도구의 작동 방식을 이해하는 데 도움이 됩니다.</p>
+<h2 data-ke-size="size26">2. 주요 특징 살펴보기</h2>
+<p data-ke-size="size16">오픈소스 딥 리서치 CLI는 다음과 같은 멋진 특징들을 가지고 있습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>대화형 연구</b>: 여러분의 요구사항을 더 잘 이해하기 위해 후속 질문을 합니다.</li>
+<li><b>깊이 조절</b>: 연구의 폭과 깊이를 원하는 대로 조절할 수 있습니다.</li>
+<li><b>웹 통합</b>: Firecrawl을 사용하여 신뢰할 수 있는 웹 콘텐츠를 추출합니다.</li>
+<li><b>스마트 종합</b>: 여러 출처의 정보를 일관성 있게 종합합니다.</li>
+<li><b>아름다운 CLI</b>: 진행 상황을 추적할 수 있는 풍부한 텍스트 인터페이스를 제공합니다.</li>
+<li><b>마크다운 보고서</b>: 잘 정리된 연구 보고서를 생성합니다.</li>
+</ol>
+<p data-ke-size="size16">이러한 특징들 덕분에 효율적이고 깊이 있는 연구가 가능해집니다.</p>
+<h2 data-ke-size="size26">3. 설치 방법</h2>
+<p data-ke-size="size16">오픈소스 딥 리서치 CLI를 설치하는 방법은 매우 간단합니다. 다음 명령어를 터미널에 입력하세요:</p>
+<pre class="routeros"><code>uv tool install deep-research-py
+
+</code></pre>
+<p data-ke-size="size16">이 명령어는 uv 도구를 사용하여 deep-research-py를 설치합니다.</p>
+<h2 data-ke-size="size26">4. 설정하기</h2>
+<p data-ke-size="size16">도구를 사용하기 전에 필요한 API 키를 환경 변수로 설정해야 합니다:</p>
+<pre class="routeros"><code># 필수: OpenAI API 키
+export OPENAI_API_KEY=your-openai-key-here
+
+# 필수: Firecrawl API 키
+export FIRECRAWL_KEY=your-firecrawl-key-here
+
+</code></pre>
+<p data-ke-size="size16">만약 다른 OpenAI 호환 API나 자체 호스팅된 Firecrawl을 사용하고 싶다면, 추가 설정이 필요합니다:</p>
+<pre class="routeros"><code># OpenAI 호환 API 엔드포인트 설정 (선택사항)
+export OPENAI_API_ENDPOINT="&lt;http://localhost:1234/v1&gt;"
+
+# 다른 모델 사용 시 (선택사항)
+export OPENAI_MODEL="&lt;your_model_name&gt;"
+
+# 자체 호스팅 Firecrawl 사용 시 (선택사항)
+export FIRECRAWL_BASE_URL="&lt;http://localhost:3002&gt;"
+
+</code></pre>
+<h2 data-ke-size="size26">5. 사용 방법</h2>
+<p data-ke-size="size16">오픈소스 딥 리서치 CLI를 실행하는 방법은 다음과 같습니다:</p>
+<pre class="ebnf"><code>deep-research
+
+</code></pre>
+<p data-ke-size="size16">실행하면 다음과 같은 과정을 거치게 됩니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>연구 주제 입력</li>
+<li>연구 폭 설정 (2-10, 기본값 4)</li>
+<li>연구 깊이 설정 (1-5, 기본값 2)</li>
+<li>후속 질문에 답변</li>
+<li>연구 및 보고서 생성 대기</li>
+</ol>
+<p data-ke-size="size16">API 속도 제한이 높은 경우, 동시성 수준을 변경할 수 있습니다:</p>
+<pre class="ada"><code>deep-research --concurrency 10
+
+</code></pre>
+<p data-ke-size="size16">사용 가능한 명령어 목록을 확인하려면:</p>
+<pre class="ada"><code>deep-research --help
+
+</code></pre>
+<h2 data-ke-size="size26">6. 개발 환경 설정</h2>
+<p data-ke-size="size16">개발에 참여하고 싶다면 다음 단계를 따르세요:</p>
+<pre class="properties"><code># 저장소 복제
+git clone &lt;https://github.com/epuerta9/deep-research-py.git&gt;
+cd deep-research-py
+
+# 가상 환경 생성 및 활성화
+uv venv
+source .venv/bin/activate
+
+# 개발 모드로 설치
+uv pip install -e .
+
+# API 키 설정
+export OPENAI_API_KEY=your-openai-key-here
+export FIRECRAWL_KEY=your-firecrawl-key-here
+
+# 도구 실행
+deep-research
+
+</code></pre>
+<h2 data-ke-size="size26">7. 요구사항</h2>
+<p data-ke-size="size16">오픈소스 딥 리서치 CLI를 사용하기 위해서는 다음이 필요합니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Python 3.9 이상</li>
+<li>OpenAI API 키 (GPT-4 접근 권한 권장)</li>
+<li>Firecrawl API 키 (웹 검색용)</li>
+<li>의존성 패키지:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>openai</li>
+<li>firecrawl-py</li>
+<li>typer</li>
+<li>rich</li>
+<li>prompt-toolkit</li>
+<li>aiohttp</li>
+<li>aiofiles</li>
+<li>tiktoken</li>
+</ul>
+</li>
+</ul>
+<h2 data-ke-size="size26">8. 출력 결과</h2>
+<p data-ke-size="size16">이 도구는 다음과 같은 결과물을 생성합니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>output.md로 저장되는 마크다운 보고서</li>
+<li>사용된 출처 목록</li>
+<li>주요 발견 사항 요약</li>
+<li>주제에 대한 상세 분석</li>
+</ol>
+<h2 data-ke-size="size26">9. 라이선스</h2>
+<p data-ke-size="size16">이 프로젝트는 MIT 라이선스를 따릅니다.</p>
+<h2 data-ke-size="size26">10. 기여하기</h2>
+<p data-ke-size="size16">여러분의 기여를 환영합니다! 다음 단계를 따라 기여해 주세요:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>저장소를 포크합니다.</li>
+<li>기능 브랜치를 만듭니다 (git checkout -b feature/amazing-feature).</li>
+<li>개발 의존성을 설치합니다:</li>
+<li>pip install pre-commit pre-commit install</li>
+<li>변경사항을 만듭니다.</li>
+<li>변경사항을 커밋합니다 (git commit -m 'Add amazing feature').</li>
+<li>브랜치에 푸시합니다 (git push origin feature/amazing-feature).</li>
+<li>Pull Request를 엽니다.</li>
+</ol>
+<h2 data-ke-size="size26">11. 오픈소스 딥 리서치 CLI 사용 방법 (30단계)</h2>
+<p data-ke-size="size16">이제 오픈소스 딥 리서치 CLI를 사용하는 방법을 30단계로 자세히 알아보겠습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>환경 준비하기</b>: Python 3.9 이상이 설치되어 있는지 확인합니다.</li>
+<li><b>터미널 열기</b>: 컴퓨터의 명령 프롬프트 또는 터미널을 엽니다.</li>
+<li><b>uv 설치하기</b>: 아직 uv가 설치되어 있지 않다면, 공식 문서를 참고하여 설치합니다.</li>
+<li><b>deep-research-py 설치하기</b>: 터미널에 uv tool install deep-research-py 명령어를 입력하여 도구를 설치합니다.</li>
+<li><b>OpenAI API 키 발급받기</b>: OpenAI 웹사이트에서 API 키를 발급받습니다.</li>
+<li><b>Firecrawl API 키 발급받기</b>: Firecrawl 웹사이트에서 API 키를 발급받습니다.</li>
+<li><b>환경 변수 설정하기</b>: 터미널에서 다음 명령어를 실행하여 API 키를 환경 변수로 설정합니다:</li>
+<li>export OPENAI_API_KEY=your-openai-key-here export FIRECRAWL_KEY=your-firecrawl-key-here</li>
+<li><b>도구 실행하기</b>: 터미널에 deep-research 명령어를 입력하여 도구를 실행합니다.</li>
+<li><b>연구 주제 입력하기</b>: 프롬프트가 나타나면 연구하고 싶은 주제를 입력합니다.</li>
+<li><b>연구 폭 설정하기</b>: 2부터 10 사이의 숫자를 입력하여 연구의 폭을 설정합니다. 기본값은 4입니다.</li>
+<li><b>연구 깊이 설정하기</b>: 1부터 5 사이의 숫자를 입력하여 연구의 깊이를 설정합니다. 기본값은 2입니다.</li>
+<li><b>후속 질문에 답변하기</b>: AI가 연구 주제를 더 잘 이해하기 위해 후속 질문을 할 수 있습니다. 이에 답변합니다.</li>
+<li><b>연구 진행 상황 모니터링하기</b>: CLI 인터페이스에 표시되는 진행 상황을 확인합니다.</li>
+<li><b>웹 검색 결과 확인하기</b>: Firecrawl을 통해 수집된 웹 검색 결과를 확인합니다.</li>
+<li><b>정보 종합 과정 관찰하기</b>: AI가 여러 출처의 정보를 어떻게 종합하는지 관찰합니다.</li>
+<li><b>중간 결과 검토하기</b>: 연구 중간에 생성되는 결과물을 검토합니다.</li>
+<li><b>추가 정보 요청하기</b>: 필요한 경우, 추가 정보나 설명을 요청합니다.</li>
+<li><b>연구 방향 조정하기</b>: 중간 결과를 바탕으로 연구 방향을 조정할 수 있습니다.</li>
+<li><b>최종 보고서 생성 대기하기</b>: AI가 최종 보고서를 생성하는 동안 기다립니다.</li>
+<li><b>출력 파일 확인하기</b>: 생성된 output.md 파일을 확인합니다.</li>
+<li><b>마크다운 보고서 열기</b>: 텍스트 편집기나 마크다운 뷰어로 보고서를 엽니다.</li>
+<li><b>보고서 구조 파악하기</b>: 보고서의 목차, 주요 섹션을 파악합니다.</li>
+<li><b>주요 발견 사항 검토하기</b>: 보고서에서 강조된 주요 발견 사항을 주의 깊게 읽습니다.</li>
+<li><b>상세 분석 내용 확인하기</b>: 주제에 대한 상세 분석 내용을 꼼꼼히 확인합니다.</li>
+<li><b>사용된 출처 확인하기</b>: 보고서 끝에 있는 출처 목록을 확인합니다.</li>
+<li><b>추가 연구 필요성 판단하기</b>: 보고서를 바탕으로 추가 연구가 필요한지 판단합니다.</li>
+<li><b>보고서 편집하기</b>: 필요한 경우, 보고서 내용을 편집하거나 보완합니다.</li>
+<li><b>결과 공유하기</b>: 생성된 보고서를 동료나 팀원과 공유합니다.</li>
+<li><b>피드백 수집하기</b>: 보고서에 대한 다른 사람들의 의견을 수집합니다.</li>
+<li><b>도구 개선에 기여하기</b>: 사용 경험을 바탕으로 오픈소스 프로젝트에 기여할 방법을 고민합니다.</li>
+</ol>
+<p data-ke-size="size16">이렇게 30단계를 통해 오픈소스 딥 리서치 CLI를 효과적으로 사용할 수 있습니다. 각 단계를 차근차근 따라가면서 도구의 기능을 최대한 활용해 보세요. 연구 주제에 따라 설정을 조정하고, 결과를 꼼꼼히 검토하는 것이 중요합니다. 이 도구를 통해 여러분의 연구나 학습이 한층 더 깊이 있고 효율적으로 이루어질 수 있기를 바랍니다.</p>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

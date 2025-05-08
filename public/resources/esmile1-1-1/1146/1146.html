@@ -1,0 +1,174 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>YouTube 동영상 자동 자막 생성: OpenAI의 Whisper & Google Colab</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">YouTube 동영상 자동 자막 생성: OpenAI의 Whisper & Google Colab</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-12-20 00:30:47</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>YouTube 동영상 자동 자막 생성: OpenAI의&nbsp;Whisper&nbsp;&amp;&nbsp;Google&nbsp;Colab</h1>
+<p data-ke-size="size16">YouTube 동영상의 자막을 자동으로 생성하는 것은 콘텐츠 제작자와 시청자 모두에게 큰 도움이 됩니다. OpenAI에서 개발한 Whisper 모델을 활용하면 이 과정을 쉽고 효율적으로 수행할 수 있습니다. 이 글에서는 Whisper 모델을 사용하여 YouTube 동영상의 음성을 텍스트로 변환하는 방법을 상세히 알아보겠습니다.</p>
+<h2 data-ke-size="size26">Whisper 모델 소개</h2>
+<p data-ke-size="size16">Whisper는 OpenAI에서 개발한 강력한 음성 인식 모델입니다. 다양한 언어와 억양을 처리할 수 있으며, 노이즈가 있는 환경에서도 우수한 성능을 보입니다. 이 모델은 여러 크기로 제공되어 사용자의 필요와 하드웨어 사양에 맞게 선택할 수 있습니다.</p>
+<h2 data-ke-size="size26">사용 가능한 Whisper 모델</h2>
+<p data-ke-size="size16">Whisper 모델은 다양한 크기로 제공됩니다. 각 모델의 특징은 다음과 같습니다:</p>
+<p data-ke-size="size16">크기 매개변수 영어 전용 모델 다국어 모델 필요 VRAM 상대 속도</p>
+<table style="border-collapse: collapse; width: 100%;" border="1" data-ke-align="alignLeft">
+<tbody>
+<tr>
+<td>tiny</td>
+<td>39M</td>
+<td>tiny.en</td>
+<td>tiny</td>
+<td>~1GB</td>
+<td>~32x</td>
+</tr>
+<tr>
+<td>base</td>
+<td>74M</td>
+<td>base.en</td>
+<td>base</td>
+<td>~1GB</td>
+<td>~16x</td>
+</tr>
+<tr>
+<td>small</td>
+<td>244M</td>
+<td>small.en</td>
+<td>small</td>
+<td>~2GB</td>
+<td>~6x</td>
+</tr>
+<tr>
+<td>medium</td>
+<td>769M</td>
+<td>medium.en</td>
+<td>medium</td>
+<td>~5GB</td>
+<td>~2x</td>
+</tr>
+<tr>
+<td>large</td>
+<td>1550M</td>
+<td>N/A</td>
+<td>large</td>
+<td>~10GB</td>
+<td>1x</td>
+</tr>
+</tbody>
+</table>
+<p data-ke-size="size16">모델 선택 시 고려사항:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>tiny</b>와 <b>base</b>: 빠른 처리 속도, 낮은 정확도</li>
+<li><b>small</b>과 <b>medium</b>: 균형 잡힌 성능과 속도</li>
+<li><b>large</b>: 최고의 정확도, 느린 처리 속도</li>
+</ul>
+<h2 data-ke-size="size26">시스템 요구사항</h2>
+<p data-ke-size="size16">Whisper 모델을 효과적으로 사용하기 위해서는 다음과 같은 시스템 요구사항을 충족해야 합니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>GPU</b>: T4 이상 권장 (Google Colab에서 무료로 제공)</li>
+<li><b>VRAM</b>: 선택한 모델에 따라 1GB~10GB 필요</li>
+<li><b>저장 공간</b>: 동영상 길이와 출력 형식에 따라 다름</li>
+</ul>
+<h2 data-ke-size="size26">Whisper를 이용한 YouTube 동영상 자막 생성 과정</h2>
+<p data-ke-size="size16">Whisper를 사용하여 YouTube 동영상의 자막을 생성하는 과정은 크게 다음과 같은 단계로 이루어집니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>필요한 라이브러리 설치</li>
+<li>YouTube 동영상 URL 입력 및 Whisper 모델 선택</li>
+<li>YouTube 동영상에서 오디오 추출</li>
+<li>Whisper 모델을 사용하여 오디오 전사</li>
+<li>전사 결과를 텍스트 또는 SRT 형식으로 저장</li>
+</ol>
+<p data-ke-size="size16">이제 각 단계를 자세히 살펴보겠습니다.</p>
+<h2 data-ke-size="size26">상세 사용 방법 (20단계)</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>Google Colab 접속</b>: 웹 브라우저에서 Google Colab(<a href="http://colab.research.google.com/">colab.research.google.com</a>)에 접속합니다.</li>
+<li><b>새 노트북 생성</b>: 'File' &gt; 'New notebook'을 선택하여 새 노트북을 생성합니다.</li>
+<li><b>GPU 설정</b>: 'Runtime' &gt; 'Change runtime type' &gt; 'Hardware accelerator' &gt; 'GPU'를 선택합니다.</li>
+<li><b>필요한 라이브러리 설치</b>: 다음 명령어를 실행하여 필요한 라이브러리를 설치합니다.</li>
+<li>!pip install -q pytube !pip install -q git+<a href="https://github.com/openai/whisper.git">https://github.com/openai/whisper.git</a></li>
+<li><b>필요한 모듈 임포트</b>: 다음 코드를 실행하여 필요한 모듈을 임포트합니다.</li>
+<li>import os, re import torch from pathlib import Path from pytube import YouTube import whisper from whisper.utils import get_writer</li>
+<li><b>YouTube URL 입력</b>: 전사하고자 하는 YouTube 동영상의 URL을 입력합니다.</li>
+<li>YouTube_URL = "&lt;<a href="https://www.youtube.com/watch?v=your_video_id">https://www.youtube.com/watch?v=your_video_id</a>&gt;"</li>
+<li><b>Whisper 모델 선택</b>: 사용할 Whisper 모델을 선택합니다.</li>
+<li>whisper_model = "medium" # "tiny", "base", "small", "medium", "large" 중 선택</li>
+<li><b>출력 형식 설정</b>: 텍스트(.txt) 또는 SRT(.srt) 형식으로 저장할지 선택합니다.</li>
+<li>text = True srt = True</li>
+<li><b>오디오 다운로드 함수 정의</b>: YouTube 동영상에서 오디오를 추출하는 함수를 정의합니다.</li>
+<li>def download_audio_from_youtube(url, file_name=None, out_dir="."): # 함수 내용</li>
+<li><b>오디오 전사 함수 정의</b>: Whisper 모델을 사용하여 오디오를 전사하는 함수를 정의합니다.</li>
+<li>def transcribe_audio(model, file, text, srt): # 함수 내용</li>
+<li><b>Whisper 모델 로드</b>: 선택한 Whisper 모델을 로드합니다.</li>
+<li>device = "cuda" if torch.cuda.is_available() else "cpu" model = whisper.load_model(whisper_model).to(device)</li>
+<li><b>오디오 다운로드</b>: YouTube 동영상에서 오디오를 추출합니다.</li>
+<li>audio = download_audio_from_youtube(YouTube_URL)</li>
+<li><b>오디오 전사</b>: 추출한 오디오를 Whisper 모델을 사용하여 전사합니다.</li>
+<li>result = transcribe_audio(model, audio, text, srt)</li>
+<li><b>결과 확인</b>: 전사 결과를 확인합니다. 텍스트 파일과 SRT 파일이 생성되었는지 확인합니다.</li>
+<li><b>파일 다운로드</b>: 생성된 파일을 로컬 컴퓨터로 다운로드합니다.</li>
+<li><b>텍스트 편집</b>: 필요한 경우 생성된 텍스트를 편집하여 정확도를 높입니다.</li>
+<li><b>SRT 파일 확인</b>: SRT 파일의 형식이 올바른지 확인합니다.</li>
+<li><b>자막 적용</b>: 생성된 SRT 파일을 YouTube 동영상에 적용합니다.</li>
+<li><b>성능 평가</b>: 생성된 자막의 정확도를 평가하고 필요한 경우 모델을 조정합니다.</li>
+<li><b>반복 및 개선</b>: 다른 동영상에 대해서도 과정을 반복하며 전체적인 워크플로우를 개선합니다.</li>
+</ol>
+<h2 data-ke-size="size26">주의사항 및 팁</h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>모델 선택</b>: 동영상의 길이와 원하는 정확도에 따라 적절한 모델을 선택하세요.</li>
+<li><b>저작권</b>: 자동 생성된 자막의 저작권 문제에 주의하세요.</li>
+<li><b>다국어 지원</b>: 다국어 콘텐츠의 경우 다국어 모델을 선택하세요.</li>
+<li><b>후처리</b>: 자동 생성된 자막은 항상 수동으로 검토하고 수정하는 것이 좋습니다.</li>
+<li><b>GPU 사용</b>: 가능하면 GPU를 사용하여 처리 속도를 높이세요.</li>
+</ul>
+<h2 data-ke-size="size26">결론</h2>
+<p data-ke-size="size16">OpenAI의 Whisper 모델을 활용한 YouTube 동영상 자동 자막 생성은 콘텐츠 제작자들에게 큰 도움이 됩니다. 이 과정을 통해 시간을 절약하고 콘텐츠의 접근성을 높일 수 있습니다. 다만, 자동 생성된 자막의 정확성을 항상 확인하고 필요한 경우 수동으로 수정하는 것이 중요합니다. Whisper 모델의 지속적인 발전으로 앞으로 더욱 정확하고 효율적인 자막 생성이 가능해질 것으로 기대됩니다.</p>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">#&nbsp;YouTube&nbsp;Video&nbsp;Transcription&nbsp;with&nbsp;OpenAI's&nbsp;Whisper<br /><br />[![License](<a href="https://img.shields.io/github/license/kazuki-sf/youtube-whisper)](https://github.com/kazuki-sf/youtube-whisper)" target="_blank" rel="noopener&nbsp;noreferrer">https://img.shields.io/github/license/kazuki-sf/youtube-whisper)](https://github.com/kazuki-sf/youtube-whisper)</a><br />[![Open&nbsp;In&nbsp;Colab](<a href="https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kazuki-sf/youtube-whisper/blob/main/youtube_whisper.ipynb)" target="_blank" rel="noopener&nbsp;noreferrer">https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kazuki-sf/youtube-whisper/blob/main/youtube_whisper.ipynb)</a><br /><br />##&nbsp;How&nbsp;to&nbsp;Use&nbsp;the&nbsp;Notebook<br />Feel&nbsp;free&nbsp;to&nbsp;`Copy&nbsp;to&nbsp;Drive`&nbsp;the&nbsp;notebook&nbsp;or&nbsp;run&nbsp;it&nbsp;directly.<br />1.&nbsp;Enter&nbsp;the&nbsp;URL&nbsp;of&nbsp;the&nbsp;YouTube&nbsp;video&nbsp;or&nbsp;shorts&nbsp;you&nbsp;want&nbsp;to&nbsp;transcribe.<br />2.&nbsp;Choose&nbsp;the&nbsp;whisper&nbsp;model&nbsp;you&nbsp;want&nbsp;to&nbsp;use.<br />3.&nbsp;Run&nbsp;the&nbsp;code&nbsp;cell&nbsp;(Step&nbsp;1-3)&nbsp;and&nbsp;wait&nbsp;for&nbsp;the&nbsp;transcription&nbsp;to&nbsp;complete.<br /><br />##&nbsp;Notes<br />*&nbsp;`T4&nbsp;GPU`&nbsp;or&nbsp;higher&nbsp;is&nbsp;recommended&nbsp;for&nbsp;running&nbsp;the&nbsp;notebook.&nbsp;You&nbsp;can&nbsp;change&nbsp;the&nbsp;runtime&nbsp;type&nbsp;by&nbsp;going&nbsp;to&nbsp;`Runtime`&nbsp;-&gt;&nbsp;`Change&nbsp;runtime&nbsp;type`&nbsp;-&gt;&nbsp;`Hardware&nbsp;accelerator`&nbsp;-&gt;&nbsp;`GPU`.<br />*&nbsp;Whenever&nbsp;you&nbsp;change&nbsp;the&nbsp;YouTube&nbsp;URL&nbsp;or&nbsp;Whisper&nbsp;Model,&nbsp;please&nbsp;run&nbsp;the&nbsp;`Step&nbsp;1`&nbsp;and&nbsp;then&nbsp;run&nbsp;`Step&nbsp;3`&nbsp;(You&nbsp;can&nbsp;skip&nbsp;`Step&nbsp;2`&nbsp;if&nbsp;you&nbsp;already&nbsp;ran&nbsp;it&nbsp;before)<br />*&nbsp;When&nbsp;you&nbsp;run&nbsp;`Step&nbsp;3`,&nbsp;the&nbsp;website&nbsp;might&nbsp;ask&nbsp;you&nbsp;a&nbsp;permission&nbsp;to&nbsp;download&nbsp;multiple&nbsp;files.<br />*&nbsp;This&nbsp;project&nbsp;is&nbsp;not&nbsp;affiliated&nbsp;with&nbsp;OpenAI.&nbsp;The&nbsp;code&nbsp;provided&nbsp;here&nbsp;is&nbsp;for&nbsp;educational&nbsp;purposes&nbsp;only.<br />*&nbsp;Here's&nbsp;a&nbsp;list&nbsp;of&nbsp;whisper&nbsp;model&nbsp;and&nbsp;the&nbsp;relative&nbsp;speed&nbsp;of&nbsp;each&nbsp;model.&nbsp;For&nbsp;more&nbsp;information,&nbsp;please&nbsp;visit&nbsp;the&nbsp;official&nbsp;GitHub&nbsp;page:&nbsp;<a href="https://github.com/openai/whisper#available-models-and-languages" target="_blank" rel="noopener&nbsp;noreferrer">https://github.com/openai/whisper#available-models-and-languages</a><br />---<br /><br />|&nbsp;&nbsp;Size&nbsp;&nbsp;|&nbsp;Parameters&nbsp;|&nbsp;English-only&nbsp;model&nbsp;|&nbsp;Multilingual&nbsp;model&nbsp;|&nbsp;Required&nbsp;VRAM&nbsp;|&nbsp;Relative&nbsp;speed&nbsp;|<br />|:------:|:----------:|:------------------:|:------------------:|:-------------:|:--------------:|<br />|&nbsp;&nbsp;tiny&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;39&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`tiny.en`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`tiny`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~1&nbsp;GB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~32x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|&nbsp;&nbsp;base&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;74&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`base.en`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`base`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~1&nbsp;GB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~16x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|&nbsp;small&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;244&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`small.en`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`small`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~2&nbsp;GB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~6x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|&nbsp;medium&nbsp;|&nbsp;&nbsp;&nbsp;769&nbsp;M&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;`medium.en`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`medium`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~5&nbsp;GB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;~2x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br />|&nbsp;large&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;1550&nbsp;M&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N/A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`large`&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;~10&nbsp;GB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br /><br /><br /><br />#&nbsp;@title&nbsp;Step&nbsp;1:&nbsp;Enter&nbsp;URL&nbsp;&amp;&nbsp;Choose&nbsp;Whisper&nbsp;Model<br /><br />#&nbsp;@markdown&nbsp;Enter&nbsp;the&nbsp;URL&nbsp;of&nbsp;the&nbsp;YouTube&nbsp;video<br />YouTube_URL&nbsp;=&nbsp;""&nbsp;#@param&nbsp;{type:"string"}<br /><br />#&nbsp;@markdown&nbsp;Choose&nbsp;the&nbsp;whisper&nbsp;model&nbsp;you&nbsp;want&nbsp;to&nbsp;use<br />whisper_model&nbsp;=&nbsp;"tiny"&nbsp;#&nbsp;@param&nbsp;["tiny",&nbsp;"base",&nbsp;"small",&nbsp;"medium",&nbsp;"large",&nbsp;"large-v2",&nbsp;"large-v3"]<br /><br />#&nbsp;@markdown&nbsp;Save&nbsp;the&nbsp;transcription&nbsp;as&nbsp;text&nbsp;(.txt)&nbsp;file?<br />text&nbsp;=&nbsp;True&nbsp;#@param&nbsp;{type:"boolean"}<br /><br />#&nbsp;@markdown&nbsp;Save&nbsp;the&nbsp;transcription&nbsp;as&nbsp;an&nbsp;SRT&nbsp;(.srt)&nbsp;file?<br />srt&nbsp;=&nbsp;True&nbsp;#@param&nbsp;{type:"boolean"}<br /><br /><br />#&nbsp;Step&nbsp;2:&nbsp;Install&nbsp;Dependencies&nbsp;(this&nbsp;may&nbsp;take&nbsp;about&nbsp;2-3&nbsp;min)<br /><br />!pip&nbsp;install&nbsp;-q&nbsp;pytube<br />!pip&nbsp;install&nbsp;-q&nbsp;git+<a href="https://github.com/openai/whisper.git" target="_blank" rel="noopener&nbsp;noreferrer">https://github.com/openai/whisper.git</a><br /><br />import&nbsp;os,&nbsp;re<br />import&nbsp;torch<br />from&nbsp;pathlib&nbsp;import&nbsp;Path<br />from&nbsp;pytube&nbsp;import&nbsp;YouTube<br />import&nbsp;whisper<br />from&nbsp;whisper.utils&nbsp;import&nbsp;get_writer<br /><br />#&nbsp;Step&nbsp;3:&nbsp;Transcribe&nbsp;the&nbsp;video/audio&nbsp;data<br /><br />device&nbsp;=&nbsp;"cuda"&nbsp;if&nbsp;torch.cuda.is_available()&nbsp;else&nbsp;"cpu"<br />model&nbsp;=&nbsp;whisper.load_model(whisper_model).to(device)<br /><br />#&nbsp;Util&nbsp;function&nbsp;to&nbsp;change&nbsp;name<br />def&nbsp;to_snake_case(name):<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;name.lower().replace("&nbsp;",&nbsp;"_").replace(":",&nbsp;"_").replace("__",&nbsp;"_")<br /><br />#&nbsp;Download&nbsp;the&nbsp;audio&nbsp;data&nbsp;from&nbsp;YouTube&nbsp;video<br />def&nbsp;download_audio_from_youtube(url,&nbsp;&nbsp;file_name&nbsp;=&nbsp;None,&nbsp;out_dir&nbsp;=&nbsp;"."):<br />&nbsp;&nbsp;&nbsp;&nbsp;print(f"\n==&gt;&nbsp;Downloading&nbsp;audio...")<br />&nbsp;&nbsp;&nbsp;&nbsp;yt&nbsp;=&nbsp;YouTube(url)<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;file_name&nbsp;is&nbsp;None:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file_name&nbsp;=&nbsp;Path(out_dir,&nbsp;to_snake_case(yt.title)).with_suffix(".mp4")<br />&nbsp;&nbsp;&nbsp;&nbsp;yt&nbsp;=&nbsp;(yt.streams<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.filter(only_audio&nbsp;=&nbsp;True,&nbsp;file_extension&nbsp;=&nbsp;"mp4")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.order_by("abr")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.desc())<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;yt.first().download(filename&nbsp;=&nbsp;file_name)<br /><br /><br />#&nbsp;Transcribe&nbsp;the&nbsp;audio&nbsp;data&nbsp;with&nbsp;Whisper<br />def&nbsp;transcribe_audio(model,&nbsp;file,&nbsp;text,&nbsp;srt):<br />&nbsp;&nbsp;&nbsp;&nbsp;print("\n=======================")<br />&nbsp;&nbsp;&nbsp;&nbsp;print(f"\n?&nbsp;YouTube&nbsp;URL:&nbsp;{YouTube_URL}")<br />&nbsp;&nbsp;&nbsp;&nbsp;print(f"\n?&nbsp;Whisper&nbsp;Model:&nbsp;{whisper_model}")<br />&nbsp;&nbsp;&nbsp;&nbsp;print("\n=======================")<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;file_path&nbsp;=&nbsp;Path(file)<br />&nbsp;&nbsp;&nbsp;&nbsp;output_directory&nbsp;=&nbsp;file_path.parent<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Run&nbsp;Whisper&nbsp;to&nbsp;transcribe&nbsp;audio<br />&nbsp;&nbsp;&nbsp;&nbsp;print(f"\n==&gt;&nbsp;Transcribing&nbsp;audio")<br />&nbsp;&nbsp;&nbsp;&nbsp;result&nbsp;=&nbsp;model.transcribe(file,&nbsp;verbose&nbsp;=&nbsp;False)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;text:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"\n==&gt;&nbsp;Creating&nbsp;.txt&nbsp;file")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt_path&nbsp;=&nbsp;file_path.with_suffix(".txt")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;open(txt_path,&nbsp;"w",&nbsp;encoding="utf-8")&nbsp;as&nbsp;txt:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txt.write(result["text"])<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;srt:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"\n==&gt;&nbsp;Creating&nbsp;.srt&nbsp;file")<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;srt_writer&nbsp;=&nbsp;get_writer("srt",&nbsp;output_directory)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;srt_writer(result,&nbsp;str(file_path.stem))<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Download&nbsp;the&nbsp;transcribed&nbsp;files&nbsp;locally<br />&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;google.colab&nbsp;import&nbsp;files<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;colab_files&nbsp;=&nbsp;Path("/content")<br />&nbsp;&nbsp;&nbsp;&nbsp;stem&nbsp;=&nbsp;file_path.stem<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;colab_file&nbsp;in&nbsp;colab_files.glob(f"{stem}*"):<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;colab_file.suffix&nbsp;in&nbsp;[".txt",&nbsp;".srt"]:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;files.download(str(colab_file))<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;print("\n✨&nbsp;All&nbsp;Done!")<br />&nbsp;&nbsp;&nbsp;&nbsp;print("=======================")<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;result<br /><br />#&nbsp;Download&nbsp;&amp;&nbsp;Transcribe&nbsp;the&nbsp;audio&nbsp;data<br />audio&nbsp;=&nbsp;download_audio_from_youtube(YouTube_URL)<br />result&nbsp;=&nbsp;transcribe_audio(model,&nbsp;audio,&nbsp;text,&nbsp;srt)</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

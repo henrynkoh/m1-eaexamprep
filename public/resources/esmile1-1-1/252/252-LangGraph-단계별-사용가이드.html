@@ -1,0 +1,144 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>LangGraph 단계별 사용가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">LangGraph 단계별 사용가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-08-31 15:15:30</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-3d33ea0a-fbc1-4199-8fb3-ce4d7d746247" data-ke-size="size16"><span style="color: #000000;">LangGraph는 LangChain 생태계의 일부로, 상태를 유지하는 다중 에이전트 애플리케이션을 구축하기 위한 강력한 도구입니다. 이 가이드에서는 LangGraph의 설치부터 사용까지 상세히 알아보겠습니다.</span></p>
+<p id="SE-39d09648-b4ba-47bb-b4e7-2cdd2ef67018" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cdd5cc4a-c796-482e-a46f-8cfdd7f8b97d" data-ke-size="size16"><span style="color: #000000;"><b>1. 준비 단계</b></span></p>
+<p id="SE-bb167c2a-db4b-4154-a2d6-28c8fed20525" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ec52965d-612a-4be9-8941-372200594129" data-ke-size="size16"><span style="color: #000000;"><b>1.1 환경 설정</b></span></p>
+<p id="SE-a5911f51-0504-49ff-a46e-fa4455f6d688" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1867a53b-f8ae-43ea-84a9-12b1de7ca1cd" data-ke-size="size16"><span style="color: #000000;"><b>(1) Python 설치</b></span><span style="color: #000000;">: LangGraph는 Python 3.8 이상을 요구합니다.</span></p>
+<p id="SE-afbc817f-e571-40ad-806f-01d5526bc4c0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3c28a844-ec9e-48cb-8bbb-dc81d73efbda" data-ke-size="size16"><span style="color: #000000;"><b>(2) 가상 환경 생성</b></span><span style="color: #000000;">: 프로젝트 격리를 위해 가상 환경을 만듭니다.</span></p>
+<p id="SE-3911bed4-06e4-4b78-8b46-8d3a26e6a66a" data-ke-size="size16"><span style="color: #000000;">python -m venv langgraph_env </span></p>
+<p id="SE-bfafd0fc-7f4b-466d-925a-fc2497f75c67" data-ke-size="size16">&nbsp;</p>
+<p id="SE-22aaa595-bc73-4668-b0e2-453478e68e7b" data-ke-size="size16"><span style="color: #000000;"><b>(3) 가상 환경 활성화</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-da418897-7299-4562-bf93-7fb45c645e66" data-ke-size="size16"><span style="color: #000000;">Windows: langgraph_env\\\\Scripts\\\\activate</span></p>
+<p id="SE-f88a27a8-d7d2-44c4-a628-89fbdb45fc39" data-ke-size="size16"><span style="color: #000000;">macOS/Linux: source langgraph_env/bin/activate</span></p>
+<p id="SE-66fa3040-6950-4d95-b858-f8dbd74074b4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5e4414a7-8808-450f-b2ee-bb6106780adc" data-ke-size="size16"><span style="color: #000000;"><b>1.2 LangGraph 설치</b></span></p>
+<p id="SE-2389692b-29c0-441b-b3a9-8d039bb97e64" data-ke-size="size16">&nbsp;</p>
+<p id="SE-42665c72-3042-4f30-8716-f26d9c2219af" data-ke-size="size16"><span style="color: #000000;"><b>(1) pip를 통한 설치</b></span><span style="color: #000000;">: 다음 명령어로 LangGraph를 설치합니다.</span></p>
+<p id="SE-877dcf80-50fe-49c9-a459-d36e54de170c" data-ke-size="size16"><span style="color: #000000;">pip install langgraph </span></p>
+<p id="SE-e0cdc236-e8d5-454f-a125-4acc87cdb8ab" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1f157685-9aa7-4269-a17f-b212b7be18d3" data-ke-size="size16"><span style="color: #000000;"><b>(2) 의존성 확인</b></span><span style="color: #000000;">: LangChain과 기타 필요한 라이브러리가 자동으로 설치되는지 확인합니다.</span></p>
+<p id="SE-e0614f54-c001-4561-a524-30ff3b585f18" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4f5d1697-1da2-4fcc-8ab4-e0c1d10b88a9" data-ke-size="size16"><span style="color: #000000;"><b>2. 기본 개념 이해</b></span></p>
+<p id="SE-6cfcb879-8c62-4c83-917c-42701773007c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ea96ae30-7fb7-4fc7-8ba3-8a05862cbbef" data-ke-size="size16"><span style="color: #000000;"><b>(1) 그래프 구조</b></span><span style="color: #000000;">: LangGraph는 노드와 엣지로 구성된 그래프 구조를 사용합니다.</span></p>
+<p id="SE-3d1e62ba-0f5f-4bff-b373-ebd3bc83d349" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cc06ed5f-422f-4502-8f6d-5850056297b5" data-ke-size="size16"><span style="color: #000000;"><b>(2) 상태 관리</b></span><span style="color: #000000;">: 각 노드는 상태를 유지하고 업데이트할 수 있습니다.</span></p>
+<p id="SE-86ee1a57-f9d3-4d9a-82f5-6929880faa75" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a8e4fed6-0d39-4038-9e4d-84432e68f9d6" data-ke-size="size16"><span style="color: #000000;"><b>(3) 순환 그래프</b></span><span style="color: #000000;">: 복잡한 워크플로우를 위한 순환 그래프를 지원합니다.</span></p>
+<p id="SE-b4677248-e2a9-4857-b495-ea5a4960c4b1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c4534896-dc2d-44e3-8af2-ef1f92388079" data-ke-size="size16"><span style="color: #000000;"><b>3. 첫 번째 LangGraph 애플리케이션 만들기</b></span></p>
+<p id="SE-1e7f3c7f-97db-470d-bc8a-726f04ee5515" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c3b03a5a-065b-4386-8d83-b4dd06341406" data-ke-size="size16"><span style="color: #000000;"><b>3.1 기본 구조 설정</b></span></p>
+<p id="SE-4bcaa1c0-9ed2-4c87-ab01-fcfe253567ce" data-ke-size="size16">&nbsp;</p>
+<p id="SE-38be3af8-bba5-428b-bf70-fbac44da4c07" data-ke-size="size16"><span style="color: #000000;"><b>(1) 필요한 모듈 임포트</b></span><span style="color: #000000;">:</span></p>
+<p id="SE-ca48a62c-a57e-4086-a82c-34d97fb72731" data-ke-size="size16"><span style="color: #000000;">from langgraph.graph import StateGraph, END </span></p>
+<p id="SE-7ffc207f-b95d-47e7-9d6b-5ecc9dec4460" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6533a3ff-e3c0-462a-88f6-8d7831330d05" data-ke-size="size16"><span style="color: #000000;"><b>(2) 상태 정의</b></span><span style="color: #000000;">: TypedDict를 사용하여 그래프의 상태를 정의합니다.</span></p>
+<p id="SE-73a604d0-bfaa-4341-89cb-e736958e0ff7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1cb47407-c899-47a3-b738-1383f088141e" data-ke-size="size16"><span style="color: #000000;"><b>(3) 그래프 객체 생성</b></span><span style="color: #000000;">: StateGraph 클래스를 사용하여 그래프를 생성합니다.</span></p>
+<p id="SE-7aef2eef-7014-478d-a1a7-ae656fbc086a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-549ddf43-db58-4a80-876e-e698f4d8ef2e" data-ke-size="size16"><span style="color: #000000;"><b>3.2 노드 정의</b></span></p>
+<p id="SE-d7a2b649-723a-47a6-9159-d5c3155d46c5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9048e7a8-ac82-44f0-ad8e-793e8473d7a8" data-ke-size="size16"><span style="color: #000000;"><b>(1) 노드 함수 작성</b></span><span style="color: #000000;">: 각 노드의 동작을 정의하는 함수를 작성합니다.</span></p>
+<p id="SE-0fad189d-d21f-48a5-8f20-d32b182ce301" data-ke-size="size16">&nbsp;</p>
+<p id="SE-869f6962-47e9-4f51-a2c7-f7600421e9c8" data-ke-size="size16"><span style="color: #000000;"><b>(2) 노드 추가</b></span><span style="color: #000000;">: add_node 메서드를 사용하여 그래프에 노드를 추가합니다.</span></p>
+<p id="SE-341a999c-35d6-45a8-bc6c-2e546d68ae5f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d84d15a4-8ae8-4eee-9460-8ed54c76ae37" data-ke-size="size16"><span style="color: #000000;"><b>3.3 엣지 설정</b></span></p>
+<p id="SE-f9c00d23-5128-49a8-a3c7-329ef8344457" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b0d9f128-e40a-4e56-80e7-d3cfa04c4c81" data-ke-size="size16"><span style="color: #000000;"><b>(1) 엣지 정의</b></span><span style="color: #000000;">: add_edge 메서드를 사용하여 노드 간 연결을 설정합니다.</span></p>
+<p id="SE-02010be9-67a0-4dc6-b8eb-6ad76d0f55fa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-71bcdf60-a671-4b9d-9778-b5b124c68a3d" data-ke-size="size16"><span style="color: #000000;"><b>(2) 조건부 엣지</b></span><span style="color: #000000;">: 조건에 따라 다른 노드로 이동하는 엣지를 설정합니다.</span></p>
+<p id="SE-7a04d3bd-b112-44f9-b33a-78b4d5bbbae6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ef53c203-91e3-4267-a6b6-51fefb1ef4e4" data-ke-size="size16"><span style="color: #000000;"><b>4. 고급 기능 활용</b></span></p>
+<p id="SE-ed07fd75-57c2-4384-a854-69a52f4018d0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-17448975-fea6-431a-b99b-a21443f209ea" data-ke-size="size16"><span style="color: #000000;"><b>4.1 다중 에이전트 설정</b></span></p>
+<p id="SE-871bb94a-06ab-4031-887a-e33bf28bfbdc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1ae9da81-ce01-4583-bc00-4f1b287458e1" data-ke-size="size16"><span style="color: #000000;"><b>(1) 에이전트 정의</b></span><span style="color: #000000;">: 여러 에이전트를 정의하고 각각의 역할을 설정합니다.</span></p>
+<p id="SE-cf8a0812-a2b8-4444-b0f5-c5839aecb4bb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-39f45ad3-c079-4e07-aed3-a120fca9b2c5" data-ke-size="size16"><span style="color: #000000;"><b>(2) 에이전트 간 통신</b></span><span style="color: #000000;">: 에이전트 간 메시지 전달 방식을 구현합니다.</span></p>
+<p id="SE-65080590-b3cf-422e-b6a2-17de3642d071" data-ke-size="size16">&nbsp;</p>
+<p id="SE-acf820e7-1256-4760-a28e-84f7c43be278" data-ke-size="size16"><span style="color: #000000;"><b>4.2 외부 도구 통합</b></span></p>
+<p id="SE-8d4f3f38-0186-4444-8e8f-8a0c681dbc1c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9b8b14f3-8571-477b-8e30-f786a26eb31e" data-ke-size="size16"><span style="color: #000000;"><b>(1) API 연동</b></span><span style="color: #000000;">: 외부 API를 LangGraph 워크플로우에 통합합니다.</span></p>
+<p id="SE-822324bb-5022-449e-84ea-3b7cebeb57e0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f7c06cec-9849-4c7e-bbc6-a9bbb0510053" data-ke-size="size16"><span style="color: #000000;"><b>(2) 데이터베이스 연결</b></span><span style="color: #000000;">: 상태 저장을 위한 데이터베이스 연결을 구현합니다.</span></p>
+<p id="SE-f9c73da3-94c8-4aa2-a400-2a19f108daac" data-ke-size="size16">&nbsp;</p>
+<p id="SE-855a9bb0-33ba-48e7-bc20-027436a9c6dc" data-ke-size="size16"><span style="color: #000000;"><b>5. 디버깅 및 최적화</b></span></p>
+<p id="SE-e5ecd716-94a2-4a39-9834-9e577db7e1a7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cde47943-ceb4-46fa-9f42-189f91737d80" data-ke-size="size16"><span style="color: #000000;"><b>(1) 로깅 설정</b></span><span style="color: #000000;">: 그래프 실행 과정을 로깅하여 디버깅에 활용합니다.</span></p>
+<p id="SE-fda63695-6c4d-43e7-ab11-e71b3256cb8d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fe93cb97-64d3-4279-9291-a03be379f100" data-ke-size="size16"><span style="color: #000000;"><b>(2) 성능 모니터링</b></span><span style="color: #000000;">: 각 노드의 실행 시간과 리소스 사용을 모니터링합니다.</span></p>
+<p id="SE-68e9e1cb-59cc-4569-a5d3-7a03befba87b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-680bebd7-552f-4575-9bc5-c58c26c0c616" data-ke-size="size16"><span style="color: #000000;"><b>(3) 병목 지점 식별</b></span><span style="color: #000000;">: 성능 저하의 원인이 되는 병목 지점을 찾아 최적화합니다.</span></p>
+<p id="SE-a004840a-ab84-45dc-9efd-aa69fa1aebde" data-ke-size="size16">&nbsp;</p>
+<p id="SE-56379f46-79c2-4c53-81e2-88ad508e6b31" data-ke-size="size16"><span style="color: #000000;"><b>6. 실제 사용 사례</b></span></p>
+<p id="SE-c4b5a386-9137-4bb3-901a-6a49f88832a0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2815a6f1-a86d-4993-b265-4afd12d5cb3e" data-ke-size="size16"><span style="color: #000000;"><b>6.1 대화형 AI 어시스턴트</b></span></p>
+<p id="SE-96361a13-047c-4b69-a0ba-64e917bd68b7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a251d1ef-8e63-4b9d-8fd2-81b8087e07db" data-ke-size="size16"><span style="color: #000000;"><b>(1) 대화 상태 관리</b></span><span style="color: #000000;">: 사용자와의 대화 히스토리를 상태로 관리합니다.</span></p>
+<p id="SE-43b87fd6-e2b8-4960-a9b6-2e48f0b50251" data-ke-size="size16">&nbsp;</p>
+<p id="SE-79fbaf5a-23b5-453a-a20e-8b9a95403cf6" data-ke-size="size16"><span style="color: #000000;"><b>(2) 컨텍스트 유지</b></span><span style="color: #000000;">: 여러 턴에 걸친 대화의 컨텍스트를 유지합니다.</span></p>
+<p id="SE-6830f42b-67ed-4986-83fd-f788a3396a67" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2c6f4212-fccb-411a-a7be-c64879501c08" data-ke-size="size16"><span style="color: #000000;"><b>6.2 복잡한 작업 자동화</b></span></p>
+<p id="SE-039c2d5a-68f8-457a-b03e-fd0a787e7ddf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c896678f-e1a8-46eb-8dcf-7d98f7111f13" data-ke-size="size16"><span style="color: #000000;"><b>(1) 작업 분할</b></span><span style="color: #000000;">: 복잡한 작업을 여러 단계로 나누어 그래프로 표현합니다.</span></p>
+<p id="SE-20a678b2-ec3f-4e7f-a25f-6b2e7d46f252" data-ke-size="size16">&nbsp;</p>
+<p id="SE-81bd0b2d-0be7-4910-96b3-553405a1053a" data-ke-size="size16"><span style="color: #000000;"><b>(2) 조건부 실행</b></span><span style="color: #000000;">: 이전 단계의 결과에 따라 다음 단계를 조건부로 실행합니다.</span></p>
+<p id="SE-a362050f-b247-49f0-8cd7-11bf4f4d612c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f6715360-d718-4e9d-a4de-9ac20a913e93" data-ke-size="size16"><span style="color: #000000;"><b>7. 배포 및 유지보수</b></span></p>
+<p id="SE-08c83c0e-0c63-4e2d-af59-be0efa53e12d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-08e73100-1574-4068-bd22-b475c9c6c117" data-ke-size="size16"><span style="color: #000000;"><b>(1) Docker 컨테이너화</b></span><span style="color: #000000;">: LangGraph 애플리케이션을 Docker 컨테이너로 패키징합니다.</span></p>
+<p id="SE-f3508560-8c22-4ec5-bd05-4e47f32ce344" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6ee85b72-0a6e-4dbf-bf0c-caa6a839bce7" data-ke-size="size16"><span style="color: #000000;"><b>(2) CI/CD 파이프라인</b></span><span style="color: #000000;">: 지속적 통합 및 배포 파이프라인을 구축합니다.</span></p>
+<p id="SE-28c3ddad-9dc3-432f-b77f-ef21a17a920b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f4d1ccad-e832-46d0-b5ff-654cfee55fd8" data-ke-size="size16"><span style="color: #000000;"><b>(3) 모니터링 시스템</b></span><span style="color: #000000;">: 프로덕션 환경에서의 성능과 오류를 모니터링합니다.</span></p>
+<p id="SE-784570e4-6737-4acd-b781-a2f0daea768f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c431cd96-8dae-4133-b5b8-d4c8726d9ff2" data-ke-size="size16"><span style="color: #000000;"><b>(4) 버전 관리</b></span><span style="color: #000000;">: LangGraph와 의존성 라이브러리의 버전을 체계적으로 관리합니다.</span></p>
+<p id="SE-cd97bdb1-d233-429b-bb8a-a6129dd45370" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c1af1cdc-9053-4f80-8d80-ee010a2eb48b" data-ke-size="size16"><span style="color: #000000;"><b>마무리 </b></span></p>
+<p id="SE-8aaa2e0e-9ed1-4cdd-a5ed-b1aefa1943eb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ea3d7fa3-2b16-4318-8fb2-0d0fe4a717e6" data-ke-size="size16"><span style="color: #000000;">LangGraph를 활용하면 복잡한 AI 워크플로우를 효과적으로 구현할 수 있습니다. 이 가이드를 따라 단계별로 진행하면서 프로젝트에 맞게 조정하고 최적화하세요. LangGraph의 강력한 기능을 통해 상태 유지가 필요한 다중 에이전트 시스템을 쉽게 구축할 수 있습니다. 지속적인 실험과 개선을 통해 최상의 결과를 얻을 수 있을 것입니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

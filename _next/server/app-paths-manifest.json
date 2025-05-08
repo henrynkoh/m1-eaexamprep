@@ -1,0 +1,10 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/daily-challenge/page": "app/daily-challenge/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/daily-challenge/todays-task/page": "app/daily-challenge/todays-task/page.js",
+  "/simulated-exam/page": "app/simulated-exam/page.js",
+  "/practice/page": "app/practice/page.js",
+  "/resources/page": "app/resources/page.js"
+}

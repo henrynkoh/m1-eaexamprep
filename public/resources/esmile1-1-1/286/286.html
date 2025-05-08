@@ -1,0 +1,164 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Google Cloud, n8n, Cloudflare를 활용한 무료 자동화 워크플로 구축 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Google Cloud, n8n, Cloudflare를 활용한 무료 자동화 워크플로 구축 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-12 16:45:10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-89f9dc17-f637-4e4a-a578-dad2eaa9fa06" data-ke-size="size16"><span style="color: #000000;">IT 분야에서 자동화 워크플로를 구축하는 것은 매우 중요합니다. 이 글에서는 Google Cloud, n8n, Cloudflare를 사용하여 무료로 자동화 워크플로를 구축하는 방법을 단계별로 설명하겠습니다.</span></p>
+<p id="SE-0e3f9b44-bed8-4853-8123-e13c21aa7ac2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-695637f8-5709-49d3-b0a0-f30fcb1c4a5e" data-ke-size="size16"><span style="color: #000000;"><b>1. 배경 및 개요</b></span></p>
+<p id="SE-78109f3c-a66d-4892-af30-ca6b700ac8d5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-503fe115-c4df-4e62-9455-da4617a229f4" data-ke-size="size16"><span style="color: #000000;"><b>1.1 n8n 소개</b></span></p>
+<p id="SE-03262e2c-8f4b-40f6-8160-e8e8221351b7" data-ke-size="size16"><span style="color: #000000;">n8n은 오픈소스 워크플로 자동화 도구로, Make나 Zapier와 유사하지만 직접 서버를 구축할 수 있습니다[1].</span></p>
+<p id="SE-b1f24225-e11a-406e-840c-2a50fdd79575" data-ke-size="size16"><span style="color: #000000;"><b>1.2 로컬 사용의 한계</b></span></p>
+<p id="SE-80c47753-557c-43ab-875c-9147520e3676" data-ke-size="size16"><span style="color: #000000;">로컬에서 n8n을 사용할 경우, 24시간 실행이 어려워 예약 작업 등의 기능을 제대로 활용하기 힘듭니다[1].</span></p>
+<p id="SE-98602508-9b96-4f8c-8d69-95f29870b66e" data-ke-size="size16"><span style="color: #000000;"><b>1.3 클라우드 호스팅의 필요성</b></span></p>
+<p id="SE-75f3b49a-21f5-4710-8a33-ceff09d04c78" data-ke-size="size16"><span style="color: #000000;">지속적인 실행을 위해 클라우드 호스팅이 필요하지만, 비용 문제가 있습니다[1].</span></p>
+<p id="SE-ad307dc4-9b84-4659-a2e8-3c676c53c942" data-ke-size="size16">&nbsp;</p>
+<p id="SE-170c27b8-b678-4305-9a42-64ae85b99a0e" data-ke-size="size16"><span style="color: #000000;"><b>2. 클라우드 서비스 비교</b></span></p>
+<p id="SE-98b8e4ae-ab2a-4410-8b55-90b3d02a7174" data-ke-size="size16">&nbsp;</p>
+<p id="SE-afd28887-0c6e-4148-aea9-c27aa44b1726" data-ke-size="size16"><span style="color: #000000;"><b>2.1 클라우드타입</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">장점: 쉬운 설치</span></li>
+<li><span style="color: #000000;">단점: 버전 고정, 유료[1]</span></li>
+</ul>
+<p id="SE-eee8bb05-66a5-42cb-baa9-5b200a649448" data-ke-size="size16"><span style="color: #000000;"><b>2.2 Render</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">장점: 일부 무료 사용 가능</span></li>
+<li><span style="color: #000000;">단점: 지속적 사용 시 유료[1]</span></li>
+</ul>
+<p id="SE-5e3f0700-a811-4285-99c3-88514e136935" data-ke-size="size16"><span style="color: #000000;"><b>2.3 DigitalOcean, Heroku</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">단점: 무료 요금제 없음[1]</span></li>
+</ul>
+<p id="SE-bd6e6430-2a5c-4d36-935d-7931043bcd1c" data-ke-size="size16"><span style="color: #000000;"><b>2.4 Google Cloud</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">장점: 무기한 무료 티어 제공[1]</span></li>
+</ul>
+<p id="SE-209495a4-48c0-4d2d-9550-fd9e2328ee9a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a157545d-0bc8-4422-827a-0b2d71326766" data-ke-size="size16"><span style="color: #000000;"><b>3. Google Cloud에 n8n 호스팅하기</b></span></p>
+<p id="SE-bd8fd98d-ebda-4efe-a002-0fe8b49e4b89" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e99726af-d7bf-47dc-af5e-79a5605d1cb5" data-ke-size="size16"><span style="color: #000000;"><b>3.1 Google Cloud 프로젝트 생성</b></span></p>
+<p id="SE-5e815816-d979-498a-b407-4eea74f7441c" data-ke-size="size16"><span style="color: #000000;">Google Cloud Console에 접속하여 새 프로젝트를 생성합니다[1].</span></p>
+<p id="SE-b5090d3b-98ee-45ed-8499-2be4329882a0" data-ke-size="size16"><span style="color: #000000;"><b>3.2 VM 인스턴스 생성</b></span></p>
+<p id="SE-9de0171d-c082-4c7f-bdcb-ec9fde1af73e" data-ke-size="size16"><span style="color: #000000;">Compute Engine에서 "VM 인스턴스 만들기"를 선택합니다[1].</span></p>
+<p id="SE-3e2de628-c70c-42c9-9108-399e4a6bb185" data-ke-size="size16"><span style="color: #000000;"><b>3.3 인스턴스 설정</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">이름: 원하는 이름 입력</span></li>
+<li><span style="color: #000000;">리전: 무료 티어 지원 지역 선택 (예: us-west1)</span></li>
+<li><span style="color: #000000;">머신 유형: e2-micro (무료 티어)[1]</span></li>
+</ul>
+<p id="SE-b8ff8734-f7e7-451b-b934-8a22ed1f7223" data-ke-size="size16"><span style="color: #000000;"><b>3.4 방화벽 설정</b></span></p>
+<p id="SE-5c5ab349-b886-4c6b-9c60-c0b2eaa13e62" data-ke-size="size16"><span style="color: #000000;">HTTP 트래픽 허용을 체크합니다[1].</span></p>
+<p id="SE-ba41dccd-b92d-4fa9-9917-a31ebb6c1382" data-ke-size="size16"><span style="color: #000000;"><b>3.5 부팅 디스크 설정</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">운영체제: Ubuntu</span></li>
+<li><span style="color: #000000;">유형: 표준 영구 디스크</span></li>
+<li><span style="color: #000000;">크기: 30GB (무료 티어 최대)[1]</span></li>
+</ul>
+<p id="SE-dc799871-5ac7-413b-86eb-9e12c31b8133" data-ke-size="size16"><span style="color: #000000;"><b>3.6 SSH 접속</b></span></p>
+<p id="SE-b6e1ca36-6ce8-4f49-a314-ac1b9312a34c" data-ke-size="size16"><span style="color: #000000;">생성된 인스턴스의 SSH 버튼을 클릭하여 접속합니다[1].</span></p>
+<p id="SE-b5e21911-b068-4c81-ad0a-68acd4f6ca7f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9af270f1-5967-4224-9c54-fa2cb4562773" data-ke-size="size16"><span style="color: #000000;"><b>4. n8n 설치 및 설정</b></span></p>
+<p id="SE-c01b0328-3e89-4218-9d5d-07bb2f45cece" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d0014493-11c0-4042-a5b1-5f70b2fcf20e" data-ke-size="size16"><span style="color: #000000;"><b>4.1 Docker 설치</b></span></p>
+<p id="SE-7f301d8d-542d-4e4f-8eeb-bce1c6c46b2a" data-ke-size="size16"><span style="color: #000000;">SSH 터미널에서 Docker 설치 스크립트를 실행합니다[1].</span></p>
+<p id="SE-77741597-e602-49e7-ab2d-499b93fd6abb" data-ke-size="size16"><span style="color: #000000;"><b>4.2 n8n Docker 이미지 실행</b></span></p>
+<p id="SE-c731f17c-89a0-4287-acc5-5329891d0649" data-ke-size="size16"><span style="color: #000000;">n8n 공식 문서의 Docker 설치 명령어를 실행합니다[1].</span></p>
+<p id="SE-7b3762ae-294a-44bb-b062-f1bcc48eed39" data-ke-size="size16"><span style="color: #000000;"><b>4.3 n8n 데이터 볼륨 생성</b></span></p>
+<p id="SE-58d5e984-4b5c-4405-a9a7-f8e71cddb89b" data-ke-size="size16"><span style="color: #000000;">데이터 저장을 위한 Docker 볼륨을 생성합니다[1].</span></p>
+<p id="SE-349cccdf-7fc7-432a-9ced-58dec6a4b6e3" data-ke-size="size16"><span style="color: #000000;"><b>4.4 n8n 컨테이너 실행</b></span></p>
+<p id="SE-31aafa66-1845-45e6-9841-08c5951459cd" data-ke-size="size16"><span style="color: #000000;">Docker run 명령어로 n8n 컨테이너를 실행합니다[1].</span></p>
+<p id="SE-34c78c54-2f67-4e21-bcfd-8311c3ea19fe" data-ke-size="size16">&nbsp;</p>
+<p id="SE-aa7a6242-7861-4146-906c-e47ccf4603f1" data-ke-size="size16"><span style="color: #000000;"><b>5. 방화벽 및 보안 설정</b></span></p>
+<p id="SE-4468a31a-8b58-46d4-8d02-d599615b5871" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5fa2cddd-8f16-4944-811e-267d766d4498" data-ke-size="size16"><span style="color: #000000;"><b>5.1 VPC 네트워크 설정</b></span></p>
+<p id="SE-95703ec3-a8b6-4fba-aaee-92e4d82dc285" data-ke-size="size16"><span style="color: #000000;">Google Cloud Console의 VPC 네트워크 섹션으로 이동합니다[1].</span></p>
+<p id="SE-1258b91f-79e0-4be1-aaba-d8e25f2db715" data-ke-size="size16"><span style="color: #000000;"><b>5.2 방화벽 규칙 생성</b></span></p>
+<p id="SE-d7ec6de8-99dc-4fdc-856e-910dec6ac709" data-ke-size="size16"><span style="color: #000000;">n8n이 사용하는 포트(기본 5678)에 대한 인바운드 트래픽을 허용하는 규칙을 생성합니다[1].</span></p>
+<p id="SE-f3695a54-0a5f-40cd-bf49-3dd3f35c9583" data-ke-size="size16"><span style="color: #000000;"><b>5.3 n8n 보안 설정</b></span></p>
+<p id="SE-f14f0f74-ee40-4c41-a421-e6418c5070e8" data-ke-size="size16"><span style="color: #000000;">n8n의 기본 보안 설정을 해제하여 외부 접속을 허용합니다[1].</span></p>
+<p id="SE-0ad78684-b5cb-45c1-8f36-3f1621ec19c0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c196313c-d724-41e8-98e1-2e516c3bc989" data-ke-size="size16"><span style="color: #000000;"><b>6. 도메인 및 SSL 설정</b></span></p>
+<p id="SE-192aba0d-9f69-4734-b7a5-6b3bd8373b0b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-237e2971-528d-4369-a5e5-9567daa0dd1e" data-ke-size="size16"><span style="color: #000000;"><b>6.1 도메인 구매</b></span></p>
+<p id="SE-e038fae7-89d4-4587-a3f5-9b24002dcdb3" data-ke-size="size16"><span style="color: #000000;">원하는 도메인 등록 서비스에서 도메인을 구매합니다.</span></p>
+<p id="SE-770e6913-810c-465c-9eba-9f342b1fadbc" data-ke-size="size16"><span style="color: #000000;"><b>6.2 Cloudflare 계정 생성</b></span></p>
+<p id="SE-c36885d3-d308-43a8-9d1b-c6220131d500" data-ke-size="size16"><span style="color: #000000;">Cloudflare 웹사이트에서 무료 계정을 생성합니다.</span></p>
+<p id="SE-71df9849-3031-466f-a939-92ac402ed6c4" data-ke-size="size16"><span style="color: #000000;"><b>6.3 도메인 Cloudflare 추가</b></span></p>
+<p id="SE-701b2938-ad03-41f3-bd7f-4e8292b05d17" data-ke-size="size16"><span style="color: #000000;">구매한 도메인을 Cloudflare에 추가합니다.</span></p>
+<p id="SE-0f6a8942-f889-48c7-ac1b-8c0e65210b5d" data-ke-size="size16"><span style="color: #000000;"><b>6.4 네임서버 변경</b></span></p>
+<p id="SE-696e6e8f-d69d-4485-a958-141fb5c266ec" data-ke-size="size16"><span style="color: #000000;">도메인 등록 대행사의 네임서버를 Cloudflare에서 제공하는 네임서버로 변경합니다.</span></p>
+<p id="SE-1302341d-7abf-4e16-becb-c586012cac5e" data-ke-size="size16"><span style="color: #000000;"><b>6.5 SSL 인증서 발급</b></span></p>
+<p id="SE-592b7c05-1746-4f7e-a4c9-cc9d3edcc892" data-ke-size="size16"><span style="color: #000000;">Cloudflare의 SSL/TLS 섹션에서 Full (Strict) 모드를 선택하여 SSL 인증서를 발급받습니다.</span></p>
+<p id="SE-3371e49d-a8f5-4ad6-b55a-bd9470cbc03b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-58da5dc9-6c36-4aff-828c-74c1c8359d20" data-ke-size="size16"><span style="color: #000000;"><b>7. Nginx 설정</b></span></p>
+<p id="SE-cc7e1933-f3d7-4d66-86aa-26fd2cf9ea55" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dec3d3b8-baa5-43e6-b8ab-4d75ae6515c1" data-ke-size="size16"><span style="color: #000000;"><b>7.1 Nginx 설치</b></span></p>
+<p id="SE-2d2887ca-17fb-4417-ab77-e0a79b7b52f2" data-ke-size="size16"><span style="color: #000000;">SSH 터미널에서 Nginx를 설치합니다.</span></p>
+<p id="SE-bf452116-3937-42d5-b994-f003c01d5638" data-ke-size="size16"><span style="color: #000000;"><b>7.2 Nginx 설정 파일 생성</b></span></p>
+<p id="SE-4663808a-ac14-47a7-9990-e7c707b22be1" data-ke-size="size16"><span style="color: #000000;">n8n을 위한 Nginx 설정 파일을 생성하고 편집합니다.</span></p>
+<p id="SE-9a7904af-795c-4f66-9156-4fb3bdd71160" data-ke-size="size16"><span style="color: #000000;"><b>7.3 리버스 프록시 설정</b></span></p>
+<p id="SE-15f712c7-453a-4ac1-ab6a-b85ad2bcddf4" data-ke-size="size16"><span style="color: #000000;">Nginx 설정에 n8n으로의 리버스 프록시를 추가합니다.</span></p>
+<p id="SE-ef0510e9-d3c1-473e-a4e8-5cdb780e1b29" data-ke-size="size16">&nbsp;</p>
+<p id="SE-848db289-631c-404d-a7f1-c4912e0835ff" data-ke-size="size16"><span style="color: #000000;"><b>8. Webhook URL 설정</b></span></p>
+<p id="SE-bd51e79f-0fc5-4c72-a29e-64c32500d729" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ae97d4a5-4171-4a68-bad3-1ff075800325" data-ke-size="size16"><span style="color: #000000;"><b>8.1 n8n Webhook URL 설정</b></span></p>
+<p id="SE-7d704354-41b8-4bcb-a229-2d78a1e9ac4a" data-ke-size="size16"><span style="color: #000000;">n8n 설정에서 Webhook URL을 도메인 주소로 변경합니다.</span></p>
+<p id="SE-db137c25-9fcf-4d12-8654-e476d290013e" data-ke-size="size16"><span style="color: #000000;"><b>8.2 Cloudflare DNS 설정</b></span></p>
+<p id="SE-b8f33640-94ee-4b4a-9cef-c24d6c5a0a48" data-ke-size="size16"><span style="color: #000000;">Cloudflare DNS 설정에서 A 레코드를 추가하여 도메인을 Google Cloud 인스턴스 IP와 연결합니다.</span></p>
+<p id="SE-0d9d3769-36c6-4a7a-abb2-7a6c8d5dbab8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bda2b707-090b-4696-b8c6-21a6fdfb7068" data-ke-size="size16"><span style="color: #000000;"><b>9. 유동 IP 및 DDNS 설정</b></span></p>
+<p id="SE-b67abb72-332f-4d35-98c6-ea9fd239b4b1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b6af02fb-4dc1-4c5a-9b87-493b127715da" data-ke-size="size16"><span style="color: #000000;"><b>9.1 유동 IP 확인</b></span></p>
+<p id="SE-334358a1-fcc2-4ebc-973f-024cd2a1ddc1" data-ke-size="size16"><span style="color: #000000;">Google Cloud 인스턴스의 외부 IP가 유동적인지 확인합니다.</span></p>
+<p id="SE-c09da53e-34e6-4648-87cc-abf4f139ce00" data-ke-size="size16"><span style="color: #000000;"><b>9.2 DDNS 서비스 선택</b></span></p>
+<p id="SE-96bd6b5f-5360-4226-a9e1-5a64c70e28a7" data-ke-size="size16"><span style="color: #000000;">무료 DDNS 서비스를 선택합니다 (예: NoIP, DuckDNS).</span></p>
+<p id="SE-98567375-aa47-4f6b-abdc-e75238028811" data-ke-size="size16"><span style="color: #000000;"><b>9.3 DDNS 클라이언트 설정</b></span></p>
+<p id="SE-edae38f8-3616-4515-9bf9-4c2e0e322e96" data-ke-size="size16"><span style="color: #000000;">선택한 DDNS 서비스의 클라이언트를 Google Cloud 인스턴스에 설치하고 설정합니다.</span></p>
+<p id="SE-c1c376b9-801e-4745-8ddd-50b327bff506" data-ke-size="size16">&nbsp;</p>
+<p id="SE-631d1ec8-b554-416d-b630-10e566c8c6f4" data-ke-size="size16"><span style="color: #000000;"><b>10. 마무리 및 라이선스 확인</b></span></p>
+<p id="SE-e4d1890d-75b6-446e-a557-6531985a9b4c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e9a9018d-a2a3-4778-b1d3-8b74930ae3cd" data-ke-size="size16"><span style="color: #000000;"><b>10.1 설정 검토</b></span></p>
+<p id="SE-89bf2805-ac94-475b-9a26-a90813d3b066" data-ke-size="size16"><span style="color: #000000;">모든 설정이 올바르게 되었는지 최종 검토합니다.</span></p>
+<p id="SE-4485d0bc-7f2d-4dd3-94bb-33b5367baf58" data-ke-size="size16"><span style="color: #000000;"><b>10.2 n8n 접속 확인</b></span></p>
+<p id="SE-25f01d53-165b-4cb2-8d47-3b3c9bc76664" data-ke-size="size16"><span style="color: #000000;">브라우저에서 설정한 도메인으로 n8n에 접속하여 정상 작동을 확인합니다.</span></p>
+<p id="SE-ce20661c-d446-4d4f-9500-61647eaf2b59" data-ke-size="size16"><span style="color: #000000;"><b>10.3 라이선스 확인</b></span></p>
+<p id="SE-c3f66c82-7944-4cc9-8cc9-be4987724f3d" data-ke-size="size16"><span style="color: #000000;">n8n의 Fair-code 라이선스를 확인하고 사용 조건을 숙지합니다[1].</span></p>
+<p id="SE-d6002f2c-6afe-4ff9-9330-8c13f3b8800c" data-ke-size="size16"><span style="color: #000000;">이 가이드를 따라 Google Cloud, n8n, Cloudflare를 활용하여 무료로 자동화 워크플로를 구축할 수 있습니다. 각 단계를 주의 깊게 따라하면 비용 효율적이고 강력한 자동화 시스템을 구축할 수 있습니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

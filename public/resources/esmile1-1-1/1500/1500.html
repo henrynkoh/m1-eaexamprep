@@ -1,0 +1,528 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AI 에이전트 구축: Phidata와 Groq 모델을 활용한 초보자 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AI 에이전트 구축: Phidata와 Groq 모델을 활용한 초보자 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-05 06:07:52</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">AI 에이전트 구축: Phidata와 Groq 모델을 활용한 초보자 가이드</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">(약 100 페이지, 텍스트 기반 e-Book)</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">서문 (약 7 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">AI 에이전트의 부상과 미래:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">AI 패러다임 변화:&nbsp;AI의 진화 (초기 규칙 기반 -&gt; 심층 학습), 강화 학습, 진화 알고리즘, 신경망 구조 (Transformer, CNN) 소개.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;초기 체스 AI는 규칙 기반, 오늘날 AlphaZero는 강화 학습으로 스스로 학습.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">AI 에이전트의 영향:&nbsp;자동화, 의사 결정 지원, 정보 검색 역할 강조.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오:&nbsp;개인 건강 모니터링 AI 에이전트, 병원 재입원율 감소.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">2025년 AI 트렌드:&nbsp;멀티모달 에이전트, 에이전트 RAG (검색 기반 생성) 기술 소개.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시 (RAG):&nbsp;연구 논문 작성 AI, 검색 결과 기반으로 생성.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">예시 (멀티모달):&nbsp;텍스트+카메라 입력으로 날씨 질문 응답.</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">본 e-Book의 목표와 구성:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">학습 목표:&nbsp;Phidata, Groq 이해, 웹 검색/금융 정보/멀티 에이전트 개발.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오 (학습 목표):&nbsp;웹 정보 검색, 금융 데이터 분석, 멀티 에이전트 시스템 구축.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">학습 방법:&nbsp;이론 + 실습, 단계별 가이드, 코드 예시 제공.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;AI 에이전트를 직접 만들며 배우는 실습 중심 학습.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">독자 대상:&nbsp;초보 개발자, Python 기본 지식 필요.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;AI 에이전트 개발 기초 습득 및 추가 학습 발판 마련.</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">e-Book 사용 전 주의 사항:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">최신 기술 동향 반영 필요, 라이브러리 버전 업데이트 유의.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오 (버전 문제):&nbsp;최신 라이브러리 버전 확인 및 코드 조정 필요.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">실습 중 오류 발생 시 디버깅 및 커뮤니티 활용.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오 (디버깅):&nbsp;오류 메시지 확인 및 문서 참고, 커뮤니티에 도움 요청.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">API 키 보안 및 요금 정책 확인.</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">1장. AI 에이전트의 세계로 (약 10 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">AI 에이전트란 무엇인가?</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">정의:&nbsp;환경 인지, 행동, 목표 달성 강조.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;온도 조절기는 환경(온도) 인지 후, 목표(설정 온도)를 위해 행동.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">일반 소프트웨어와 차이:&nbsp;자율성, 적응성, 학습 능력 강조.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;고정 규칙 소프트웨어 vs 데이터 학습 AI 에이전트</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">유형:&nbsp;단순, 복잡, 멀티 에이전트 설명.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;챗봇 (단순), 자율주행 (복잡), 로봇 협업 (멀티)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">Phidata 프레임워크 소개:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">디자인:&nbsp;모듈화 (Agent, Model, Tool, Storage).</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;고객 서비스 챗봇, Agent (대화 관리), Model (의도 파악), Tools (주문 확인 API), Storage (채팅 로그)</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">구성:&nbsp;Agent, Model, Tool, Storage 등.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">장점:&nbsp;유연성, 확장성, 개발 생산성 향상.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;Phidata 사용 시 코드 유지보수성 및 확장성 향상.</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">Groq 모델 소개:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">특징:&nbsp;빠른 추론 속도, 낮은 지연 시간.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;Groq 모델, 실시간 가상 비서에 적합.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">종류:&nbsp;llama2-70b-4096 등 다양한 모델 제공.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">유의 사항:&nbsp;Groq API 키 발급 필요.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;Groq.com에서 API 키 발급, 이 키는 모델 접근에 사용.</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">AI 에이전트 개발의 윤리적 고려 사항:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">데이터 보안, 개인 정보 보호 중요성 강조.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">AI 편향성, 공정성 확보 노력 필요.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오 (편향):&nbsp;남성 데이터 기반 AI, 여성에게 불리하게 반응할 가능성.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">책임 소재, 투명성 문제 제기.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오 (책임):&nbsp;자율주행 사고 책임 소재 논의.</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">2장. 개발 환경 구축 (약 10 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">Python 3.12 설치:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">python.org에서 다운로드 및 설치.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">설치 확인:&nbsp;python --version&nbsp;출력 확인.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">프로젝트 폴더 생성:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">agenti_ai&nbsp;폴더 생성.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">터미널 명령:mkdir agenti_ai</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">UV (가상 환경) 설치 및 초기화:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">pip install uv&nbsp;설치.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">가상 환경 초기화:&nbsp;uv init --name agenti_phidata --python 3.12.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">가상 환경 활성화 (macOS/Linux):&nbsp;source .venv/bin/activate.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">가상 환경 활성화 (Windows):&nbsp;.venv\Scripts\activate.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">필요한 패키지 설치:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">uv add phidata uv add groq uv add duckduckgo-search&nbsp;명령 실행.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">.env 파일 생성 및 설정:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">.env&nbsp;파일 생성 후 Groq API 키 설정.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;GROQ_API_KEY=your_api_key_here</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">환경 변수 로드:&nbsp;from dotenv import load_dotenv; load_dotenv().</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">환경 변수 사용:&nbsp;import os; api_key = os.getenv('GROQ_API_KEY').</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">3장. 웹 검색 에이전트 구현 (약 18 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">DuckDuckGo 도구 소개:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">DuckDuckGo API 사용하여 검색 결과 반환.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">API 복잡성 숨기고 검색 기능 제공.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시:&nbsp;AI 에이전트가 검색어 &ldquo;파리의 수도는?&rdquo;을 DuckDuckGo Tool에 전달.</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">웹 검색 에이전트 코드 작성:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">설명:&nbsp;Agent, 모델, 도구, 지침, 설명 설정.</span></li>
+</ul>
+</li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code>from phidata import Agent
+from phidata.model import Groq
+from phidata.tools.duckduckgo import DuckDuckGoTool
+from dotenv import load_dotenv
+load_dotenv()
+web_search_agent = Agent(
+    name="웹 검색 에이전트",
+    model=Groq("llama2-70b-4096"),
+    tools=[DuckDuckGoTool()],
+    instructions="항상 출처를 포함하고 마크다운 형식으로 답변하세요.",
+    description="웹에서 콘텐츠를 검색하는 에이전트입니다.",
+    debug_mode=True
+)</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.Python</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">웹 검색 에이전트 실행 및 테스트:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오:&nbsp;"네팔의 수도" 검색 후 출처 포함하여 답변.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">텍스트 예시:</span></li>
+</ul>
+<div style="color: #000000;">
+<div>
+<pre class="prolog"><code>네팔의 수도는 카트만두입니다.
+ [출처: 위키백과]</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></div>
+</li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code>print(web_search_agent.run("네팔의 수도는 어디인가요?"))</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.Python</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">코드 리뷰 및 개선:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">재사용 위한 함수로 코드 캡슐화 권장.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">오류 발생 시 지침 확인 또는 API 키 확인.</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">4장. 금융 정보 에이전트 구현 (약 18 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">YFinance 도구 소개:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">Yahoo Finance API 활용, 주식 정보 제공.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">티커 심볼 (AAPL, NVDA) 사용, 데이터 접근.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">금융 정보 에이전트 코드 작성:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">설명:&nbsp;YFinance 도구 설정 (주가, 애널리스트 추천 등), 표 형식 출력 지시.</span></li>
+</ul>
+</li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code>from phidata import Agent
+from phidata.model import Groq
+from phidata.tools.yfinance import YFinanceTool
+from dotenv import load_dotenv
+load_dotenv()
+finance_agent = Agent(
+    name="금융 정보 에이전트",
+    model=Groq("llama2-70b-4096"),
+    tools=[YFinanceTool(
+        stock_price=True,
+        analyst_recommendations=True,
+        company_info=True,
+        company_news=True
+    )],
+    instructions="데이터를 표 형식으로 표시하세요.",
+    description="금융 정보를 찾는 에이전트입니다.",
+    debug_mode=True
+)</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.Python</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">금융 정보 에이전트 실행 및 테스트:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오:&nbsp;NVDA 애널리스트 추천 요약.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">텍스트 예시:</span></li>
+</ul>
+<div style="color: #000000;">
+<div>
+<pre class="gherkin"><code>| 애널리스트 | 추천 등급  |
+|--------|------|
+| Analyst A | 매수   |
+| Analyst B | 중립   |
+| Analyst C | 매도   |</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></div>
+</li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code>print(finance_agent.run("NVDA의 애널리스트 추천을 요약해주세요."))</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.Python</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">코드 리뷰 및 개선:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">구체적인 질문으로 결과 맞춤 설정 권장.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">표 형식 출력 안 될 경우, 지침 및 모델 확인.</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">5장. 멀티 에이전트 구현 (약 18 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">멀티 에이전트 개념 소개:&nbsp;여러 에이전트 협력으로 복잡한 작업 처리.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오:&nbsp;여행 플래너 (항공, 호텔, 활동).</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">웹 검색 &amp; 금융 정보 에이전트 결합:&nbsp;각 에이전트 역할 분담 (뉴스 검색, 금융 정보 분석).</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오:&nbsp;뉴스 + 애널리스트 추천 결합, 기업 정보 종합.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">멀티 에이전트 코드 작성:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">설명:&nbsp;기존 에이전트 결합, 멀티 에이전트 생성.</span></li>
+</ul>
+</li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code>from phidata import Agent
+from phidata.model import Groq
+from dotenv import load_dotenv
+from phidata.tools.yfinance import YFinanceTool
+from phidata.tools.duckduckgo import DuckDuckGoTool
+load_dotenv()
+web_search_agent = Agent(
+    name="웹 검색 에이전트",
+    model=Groq("llama2-70b-4096"),
+    tools=[DuckDuckGoTool()],
+    instructions="항상 출처를 포함하고 마크다운 형식으로 답변하세요.",
+    description="웹에서 콘텐츠를 검색하는 에이전트입니다.",
+    debug_mode=True
+)
+finance_agent = Agent(
+    name="금융 정보 에이전트",
+    model=Groq("llama2-70b-4096"),
+    tools=[YFinanceTool(
+        stock_price=True,
+        analyst_recommendations=True,
+        company_info=True,
+        company_news=True
+    )],
+    instructions="데이터를 표 형식으로 표시하세요.",
+    description="금융 정보를 찾는 에이전트입니다.",
+    debug_mode=True
+)
+team = Agent(
+    name="멀티 에이전트 팀",
+    agents=[web_search_agent, finance_agent],
+    model=Groq("llama2-70b-4096"),
+    instructions=["항상 출처를 포함하세요.", "데이터를 표 형식으로 표시하세요."],
+    debug_mode=True
+)</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.Python</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">멀티 에이전트 실행 및 테스트:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">시나리오:&nbsp;NVIDIA 뉴스 및 애널리스트 추천 요청.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">텍스트 예시:</span></li>
+</ul>
+<div style="color: #000000;">
+<div>
+<pre class="gherkin"><code>## NVIDIA 뉴스
+
+    [출처: 뉴스 웹사이트]
+    NVIDIA announces a new AI superchip, expected to increase the speed of AI models by 20%.
+
+    ## NVIDIA 애널리스트 추천
+     | 애널리스트 | 추천 등급  |
+    |--------|------|
+    | Analyst A | 매수   |
+    | Analyst B | 중립   |
+    | Analyst C | 매도   |</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.</span></div>
+</li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code>print(team.run("NVIDIA의 애널리스트 추천을 요약하고 최신 뉴스를 공유해주세요."))</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.Python</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">코드 리뷰 및 개선:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">에이전트별 구체적 지침 설정.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">결과 결합 위한 후처리 함수 활용.</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">6장. Phidata 플레이그라운드 UI 활용 (약 15 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">Phidata 플레이그라운드 소개:&nbsp;웹 UI로 에이전트 테스트 및 디버깅.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">텍스트 스크린샷:&nbsp;드롭다운 메뉴 (에이전트 선택), 텍스트 입력 상자, 결과 출력 창.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">API 키 설정 및 필요 패키지 설치:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">uv add sqlalchemy uv add fastapi&nbsp;명령 실행.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">API 키 로드:&nbsp;from dotenv import load_dotenv; load_dotenv(); phidata_api_key=os.getenv('PHIDATA_API_KEY')</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">playground.py&nbsp;파일 생성 및 설정:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">설명:&nbsp;SQLite DB 설정, 에이전트 인스턴스 생성, 플레이그라운드 연결.</span></li>
+</ul>
+</li>
+<li style="color: #000000;">
+<div>
+<pre class="routeros"><code>from phidata import Agent, Playground
+from phidata.model import Groq
+from phidata.tools.duckduckgo import DuckDuckGoTool
+from phidata.tools.yfinance import YFinanceTool
+from sqlalchemy import create_engine
+from dotenv import load_dotenv
+load_dotenv()
+import os
+engine = create_engine("sqlite:///playground.db")
+phidata_api_key = os.getenv('PHIDATA_API_KEY')
+
+web_search_agent = Agent(
+    name="웹 검색",
+    model=Groq("llama2-70b-4096"),
+    tools=[DuckDuckGoTool()],
+    instructions=["항상 출처를 포함하세요."],
+    description="웹에서 콘텐츠를 검색하는 에이전트입니다."
+)
+finance_agent = Agent(
+    name="금융 정보",
+    model=Groq("llama2-70b-4096"),
+    tools=[YFinanceTool(
+        stock_price=True,
+        analyst_recommendations=True,
+        company_info=True,
+        company_news=True
+    )],
+    instructions=["데이터를 표 형식으로 표시하세요."],
+    description="금융 정보를 찾는 에이전트입니다."
+)
+playground = Playground(
+    agents=[web_search_agent, finance_agent],
+    storage=engine,
+)
+app = playground.app</code></pre>
+</div>
+<div><span style="background-color: #ffffff; color: #000000;"><span aria-hidden="true">content_copy</span><span aria-hidden="true">download</span></span></div>
+<span style="background-color: #ffffff; color: #000000;">Use code&nbsp;<a style="background-color: #ffffff; color: #000000;" href="https://support.google.com/legal/answer/13505487">with caution</a>.Python</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">플레이그라운드 실행 및 웹 인터페이스 접근:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">uv run playground.py&nbsp;실행 후 브라우저에서&nbsp;http://localhost:7777&nbsp;접근.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">텍스트 스크린샷:&nbsp;드롭다운 메뉴, 텍스트 입력 상자, 결과 출력 창 표시.</span></li>
+</ul>
+</li>
+<li><span style="background-color: #ffffff; color: #000000;">플레이그라운드 UI 활용 팁:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">다양한 프롬프트 실험, 에이전트 동작 확인.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">오류 발생 시 코드 수정 및 디버깅.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">캐싱 등 고급 기능 탐색.</span></li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">7장. 주요 내용 요약 및 활용 방법 30단계 상세 설명 (약 12 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">주요 내용 요약:&nbsp;AI 에이전트 생성, 웹 데이터/금융 정보 검색, 멀티 에이전트 시스템 구축 학습. 플레이그라운드 디버깅 및 테스트 방법 제공.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">30단계 상세 설명:</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">각 단계별 명령, 코드, 예상 결과 포함.</span>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">예시 (4단계): "UV로 가상 환경 초기화: 터미널에서&nbsp;uv init --name agenti_phidata --python 3.12&nbsp;실행,&nbsp;.venv&nbsp;폴더 생성. 활성화: macOS/Linux&nbsp;source .venv/bin/activate&nbsp;, Windows&nbsp;.venv\Scripts\activate"</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">예시 (12단계): "YFinance 도구 설치: 활성 터미널에서&nbsp;uv add yfinance&nbsp;실행 후 yfinance 라이브러리 및 의존성 설치."</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">예시 (27단계): "로컬호스트 접속: 브라우저에서&nbsp;http://localhost:7777&nbsp;접속, 드롭다운 및 텍스트 박스 확인."</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">예시 (28단계): "UI에서 에이전트 선택: 드롭다운에서&nbsp;웹 검색&nbsp;또는&nbsp;금융 정보&nbsp;등 에이전트 선택."</span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">결론 (약 5페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">AI 에이전트 개발의 미래:&nbsp;AI 에이전트의 발전 방향, 멀티모달 AI 에이전트 전망 제시.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">추가 학습 방향:&nbsp;Phidata (<a style="background-color: #ffffff; color: #000000;" href="https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fwww.phidata.dev">phidata.dev</a>) 및 Groq (<a style="background-color: #ffffff; color: #000000;" href="https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fwww.groq.com">groq.com</a>) 공식 문서, 관련 학습 자료 추천.</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">독자를 위한 격려:&nbsp;프로젝트 직접 생성 권장, 지속적인 학습과 실험 권장.</span><br /><span style="background-color: #ffffff; color: #000000;">*&nbsp;예시:&nbsp;매일 수행하는 작업을 자동화하는 AI 에이전트 생성으로 시작.</span></li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">참고 자료 (약 2 페이지)</span></p>
+<ul style="list-style-type: disc; background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-list-type="disc">
+<li><span style="background-color: #ffffff; color: #000000;">Phidata 공식 문서</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">Groq 모델 문서</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">DuckDuckGo API 문서</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">YFinance 문서</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">Python 스타일 가이드</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">커뮤니티 포럼 링크</span></li>
+<li><span style="background-color: #ffffff; color: #000000;">연구 논문 링크</span></li>
+</ul>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">Note:</span></p>
+<p style="background-color: #1a1c1e; color: #e2e2e5; text-align: start;" data-ke-size="size16"><span style="background-color: #ffffff; color: #000000;">This version combines detailed explanations, practical examples, code snippets, and textual screenshots, providing a hands-on learning experience within the constraints of a 100-page e-book. I have focused on providing a comprehensive guide while making it easily understandable for beginners.</span></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

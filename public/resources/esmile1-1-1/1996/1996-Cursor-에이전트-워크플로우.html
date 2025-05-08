@@ -1,0 +1,166 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Cursor 에이전트 워크플로우</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Cursor 에이전트 워크플로우</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-13 05:21:41</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Discover the Cursor Agent Workflow Nobody Is Talking About (Yet!)</h1>
+<p data-ke-size="size16">I have analyzed the provided YouTube transcript about using Cursor, an AI-powered code editor, and its agent features to build a transcription web app. Here's a breakdown of the implied prompts, presented in an orderly manner, along with a 30-step guide based on the tutorial, prompts, and related information, adhering to the constraints you've specified.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<h2 data-ke-size="size26">Cursor 에이전트 워크플로우 살펴보기: 단계별 가이드 및 팁</h2>
+<p data-ke-size="size16">이 튜토리얼에서는 Cursor라는 AI 기반 코드 편집기와 에이전트 기능을 활용하여 음성 텍스트 변환 웹 앱을 구축하는 과정을 안내합니다. 숙련된 개발자가 아니더라도 Cursor를 사용하면 앱을 훨씬 쉽게 구축할 수 있습니다. 이 가이드에서는 앱을 더 효과적으로 구축하고 오류를 줄이기 위해 테스트를 거친 명확한 프레임워크를 공유합니다.</p>
+<h3 data-ke-size="size23">프레임워크 개요</h3>
+<p data-ke-size="size16">Cursor를 효과적으로 사용하기 위한 주요 프레임워크는 다음과 같습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>PRD(프로세스 요구 사항 문서) 작성:</b> 앱의 요구 사항, 기능, 아키텍처를 상세히 기술하는 마크다운 파일을 만듭니다.</li>
+<li><b>Cursor 에이전트와 협업:</b> PRD를 참조하여 에이전트에게 단계별로 앱을 구축하도록 지시합니다.</li>
+<li><b>Supabase 통합:</b> 백엔드 데이터 저장 및 관리를 위해 Supabase와 연결합니다.</li>
+<li><b>UI 개선:</b> 필요에 따라 사용자 인터페이스를 조정하고 개선합니다.</li>
+<li><b>Llm 모니터링 플랫폼 연결:</b> Llm 출력을 보다 효과적으로 제어하고 개선하기 위해 Lsmith와 같은 모니터링 플랫폼을 연결합니다 (선택 사항).</li>
+</ol>
+<h3 data-ke-size="size23">30단계 사용 방법 가이드</h3>
+<p data-ke-size="size16">다음은 튜토리얼의 주요 내용을 기반으로 Cursor를 사용하여 앱을 구축하는 방법을 30단계로 세분화한 것입니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>초안 PRD 작성:</b> ChatGPT-4와 같은 도구를 사용하여 앱의 개요, 주요 기능, 기술 스택을 설명하는 초안 PRD를 작성합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "나는 $$앱 설명]을 만들고 싶습니다. 응용 프로그램의 범위를 작성하십시오(프로젝트 요구 사항 문서)."</li>
+</ul>
+</li>
+<li><b>필요한 패키지 조사:</b> 핵심 기능을 구축하는 데 사용할 수 있는 패키지를 조사합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "$$앱]의 핵심 기능을 구축하는 데 사용할 수 있는 패키지는 무엇입니까?"</li>
+</ul>
+</li>
+<li><b>O1을 사용하여 프로젝트 구조 설계:</b> 초안 PRD를 O1에 전달하여 프로젝트 구조를 설계하고 PRD를 구체화합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 PRD(V2)를 기반으로 프로젝트 구조 설계를 도와주세요."</li>
+</ul>
+</li>
+<li><b>O1에서 요구 사항 상세화:</b> O1에서 요구 사항의 완전하고 상세한 버전을 얻습니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "프로젝트 구조를 기반으로 $$앱]에 필요한 사항에 대한 완전한 버전을 알려주세요."</li>
+</ul>
+</li>
+<li><b>Cursor 웹사이트 방문 및 계정 생성:</b> Cursor 웹사이트로 이동하여 계정을 만들고 소프트웨어를 다운로드합니다.</li>
+<li><b>Cursor 실행:</b> 다운로드한 Cursor 편집기를 엽니다.</li>
+<li><b>프로젝트 폴더 생성:</b> 새 프로젝트를 위한 빈 폴더를 만듭니다.</li>
+<li><b>instructions.md 파일 생성:</b> 프로젝트 폴더에 instructions.md라는 마크다운 파일을 만듭니다.</li>
+<li><b>PRD 구조 정의:</b> instructions.md 파일에 프로젝트 개요, 핵심 기능, 문서, 현재 파일 구조 섹션을 추가합니다.</li>
+<li><b>프로젝트 개요 작성:</b> 앱의 목적, 주요 워크플로우, 사용 기술 스택을 간략하게 설명합니다.</li>
+<li><b>핵심 기능 상세 설명:</b> 사용자 상호 작용을 따라 각 단계를 최대한 자세하게 설명합니다. 로그인, 녹음 시작, 녹음 중지 등과 같은 기능을 포함합니다.</li>
+<li><b>(선택 사항) 패키지 문서 추가:</b> 필요한 경우, 사용할 특정 API 또는 도구에 대한 문서를 포함합니다.</li>
+<li><b>Next.js 프로젝트 초기화:</b> Cursor 터미널에서 다음 명령을 실행하여 Next.js 프로젝트를 초기화합니다.</li>
+<li>npx create-next-app@latest</li>
+<li><b>Shadcn UI 설정:</b> npx shadcn-ui@latest init 명령을 사용하여 Shadcn UI를 설정하고 필요한 UI 구성 요소를 선택합니다.</li>
+<li><b>Brew 유틸리티 설치:</b> 다음 명령을 사용하여 파일 트리 구조를 시각화하기 위한 Brew 유틸리티를 설치합니다.</li>
+<li>brew install tree</li>
+<li><b>파일 트리 생성:</b> tree -L 2 명령을 사용하여 프로젝트의 파일 트리를 생성합니다.</li>
+<li>tree /L 2</li>
+<li><b>현재 프로젝트 구조 업데이트:</b> 파일 트리 출력을 복사하여 instructions.md 파일의 "현재 프로젝트 구조" 섹션에 붙여넣습니다.</li>
+<li><b>상세한 PRD 작성을 위해 o1 채봇 활용</b> o1과 같은 채봇을 활용하여 모든 세부 사항을 포함하도록 original PRD를 수정하십시오.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "내가 만들고 싶어하는 모든 프로젝트에 대해 이 지침 파일을 어떻게 구성해야 합니까? 가능한 가장 적은 파일을 만들어 주세요"</li>
+<li><b>(암시적 프롬프트):</b> "프로젝트를 구현하는 개발자에게 명확한 지침을 제공할 수 있도록 original PRD에 세부 정보를 추가할 수 있도록 도와주세요. 실제 코드를 만들지 말고 PRD를 만들고 파일을 포함하세요."</li>
+</ul>
+</li>
+<li><b>클로드 활용:</b> PRD에서 텍스트를 markdown으로 변환하는 데 도움이 되도록 클로드를 활용하십시오.</li>
+</ol>
+<pre class="asciidoc"><code>*   **(암시적 프롬프트):** "이 텍스트를 마크다운으로 변환하는 것을 도와주세요"
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>Cursor 에이전트 활성화:</b> 커서 편집기에서 에이전트 모드를 활성화합니다.</li>
+<li><b>에이전트에게 초기 프롬프트 제공:</b> instructions.md 파일을 기반으로 웹 앱을 구축하도록 에이전트에게 지시합니다. 에이전트가 사용해야 하는 특정 기술(예: Next.js 14, Clerk)을 지정합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "instructions.MD에 따라 웹 기반 텍스트 변환 앱을 구축해 보겠습니다. 가입 페이지와 작업 공간을 빌드해 보겠습니다. MPN을 사용하여 프런트 엔드를 실행하면 먼저 CLERK OFF 페이지가 표시되고 폴더와 레코딩이 모두 포함된 주 대시보드 페이지가 표시되기를 바랍니다. Nextjs NEXTJS 14와 NextJS 14에서 작동하는 CLERK uh uh CLERK 라이브러리를 사용하고 있는지 확인합니다."</li>
+</ul>
+</li>
+<li><b>에이전트의 제안 수락:</b> 에이전트가 제안하는 파일 추가, 편집, 삭제를 검토하고 수락합니다.</li>
+<li><b>프런트엔드 실행:</b> npm run dev 명령을 사용하여 프런트엔드를 실행하고 앱이 올바르게 표시되는지 확인합니다.</li>
+<li><b>문제 해결 및 디버깅:</b> 오류가 발생하면 콘솔 로그를 검사하고 에이전트에게 명확한 설명과 함께 문제를 보고합니다. 스크린샷을 제공하여 컨텍스트를 추가합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "프런트엔드를 실행할 때 흰색 페이지만 표시됩니다. 이 문제를 해결하십시오."</li>
+<li><b>(암시적 프롬프트):</b> "대시보드 페이지에 있지만 완전히 흰색입니다. 터미널에 다음이 표시됩니다(터미널 출력 제공)."</li>
+</ul>
+</li>
+<li><b>지침에 따라 기능 구현:</b> instructions.md 파일의 단계별 지침에 따라 녹음, 텍스트 변환, 데이터 관리와 같은 핵심 기능을 구현합니다.</li>
+<li><b>에이전트에게 특정 작업 지시:</b> 사용자 인터페이스에 녹음 시작/중지 버튼 추가와 같은 특정 작업을 에이전트에게 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "로그인 및 대시보드가 멋지게 보입니다. 시작 녹음 및 중지 녹음 버튼이 없으므로 <a href="http://instructions.md/">instructions.MD</a> 2.3 및 2.4 섹션을 확인하십시오."</li>
+</ul>
+</li>
+<li><b>오류 및 예외 처리:</b> 오류 메시지를 검사하고 스크린샷을 제공하여 에이전트에게 오류를 보고합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "텍스트 변환 버튼에 문제가 있습니다. 텍스트 변환 버튼을 클릭할 때 발생하는 오류를 보여주는 이미지를 확인하십시오."</li>
+<li><b>(암시적 프롬프트):</b> "오디오를 성공적으로 녹음했지만 텍스트 변환을 누르면 비디오와 오디오가 약 13초 동안 진행되는데 오디오가 0.1초 미만이라고 합니다. 이유가 무엇이라고 생각하며 이 문제를 해결해 주세요."</li>
+</ul>
+</li>
+<li><b>코드 품질 유지:</b> 에이전트가 깨끗하고 효율적인 코드를 생성하도록 지시합니다. 필요한 경우 코드 스타일 및 모범 사례에 대한 추가 프롬프트를 제공합니다.</li>
+<li><b>GitHub 저장소 생성:</b> GitHub에 새 저장소를 만들어 프로젝트 파일을 저장합니다.</li>
+<li><b>프로젝트를 GitHub에 푸시:</b> 다음 명령을 사용하여 로컬 코드를 GitHub 저장소에 푸시합니다.</li>
+<li>git init git add . git commit -m "Initial commit" git remote add origin [저장소 URL] git branch -M main git push -u origin main</li>
+</ol>
+<h3 data-ke-size="size23">참고: GitHub에 저장하는 방법</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>GitHub</b>에 저장하기 전에 README.md 파일을 만들어 사람이나 자신이 이 저장소에 저장하는 방법을 기억하도록 돕습니다.</li>
+<li><b>GitHub</b>에 저장하기 전에 git init를 합니다.</li>
+<li>모든 파일을 추가하기 위해 git add .을 합니다.</li>
+<li>git commit -m "메시지"를 통해 메시지를 커밋합니다.</li>
+<li>git remote add origin {repo 주소}를 통해 원격 저장소를 추가합니다.</li>
+<li>git branch -M main을 통해 기본 브랜치를 main으로 바꿉니다.</li>
+<li>git push origin main을 통해 저장소에 저장합니다.</li>
+</ol>
+<h3 data-ke-size="size23">추가 팁</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>명확하고 구체적인 프롬프트 사용:</b> Cursor 에이전트에게 지시할 때 명확하고 구체적인 프롬프트를 사용하면 더 나은 결과를 얻을 수 있습니다.</li>
+<li><b>점진적으로 작업:</b> 한 번에 모든 기능을 구축하려고 하지 말고 점진적으로 기능을 추가하고 테스트합니다.</li>
+<li><b>피드백 루프 활용:</b> 에이전트의 출력을 지속적으로 검토하고 피드백을 제공하여 개선합니다.</li>
+<li><b>다양한 도구 활용:</b> 필요에 따라 ChatGPT, O1, Claude와 같은 다른 도구를 활용하여 PRD를 개선하고 문제 해결에 도움을 받습니다.</li>
+<li><b>문서 참조:</b> 사용하는 프레임워크, 라이브러리, API에 대한 공식 문서를 참조하여 올바르게 활용합니다.</li>
+</ul>
+<h3 data-ke-size="size23">Prompt 예시</h3>
+<p data-ke-size="size16">다음은 위 설명에 언급되었거나 암시된 Prompt의 예시입니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>(초기 앱 정의)</b> "나는 $$앱 설명]을 만들고 싶습니다. 응용 프로그램의 범위를 작성하십시오(프로젝트 요구 사항 문서)."</li>
+<li><b>(패키지 조사)</b> "$$앱]의 핵심 기능을 구축하는 데 사용할 수 있는 패키지는 무엇입니까?"</li>
+<li><b>(프로젝트 구조 설계)</b> "이 PRD(V2)를 기반으로 프로젝트 구조 설계를 도와주세요."</li>
+<li><b>(요구사항 상세화)</b> "프로젝트 구조를 기반으로 $$앱]에 필요한 사항에 대한 완전한 버전을 알려주세요."</li>
+<li><b>(불량 수정)</b> "프런트엔드를 실행할 때 흰색 페이지만 표시됩니다. 이 문제를 해결하십시오."</li>
+<li><b>(추가 기능)</b> "녹음 시작 및 중지 버튼이 없으므로 <a href="http://instruction.md/">instruction.MD</a> 2.3 및 2.4 섹션을 확인하십시오."</li>
+<li><b>(오류 보고)</b> "텍스트 변환 버튼에 문제가 있습니다. 텍스트 변환 버튼을 클릭할 때 발생하는 오류를 보여주는 이미지를 확인하십시오."</li>
+</ol>
+<p data-ke-size="size16">이 가이드라인과 팁을 활용하면 Cursor 에이전트 워크플로우를 더 잘 이해하고 자신만의 혁신적인 앱을 더 쉽고 효율적으로 구축할 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Perplexity AI를 활용한 블로그 자동화 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Perplexity AI를 활용한 블로그 자동화 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-12-20 00:40:11</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Perplexity AI를 활용한 블로그 자동화 가이드</h1>
+<p data-ke-size="size16">안녕하세요, 오늘은 Perplexity AI를 활용하여 블로그 콘텐츠를 자동으로 생성하고 Tistory 블로그에 업로드하는 과정을 Google Apps Script를 사용하여 완전히 자동화하는 방법에 대해 알아보겠습니다. 이 방법을 통해 여러분은 최신 정보를 바탕으로 한 고품질 콘텐츠를 효율적으로 생성하고 관리할 수 있습니다.</p>
+<h2 data-ke-size="size26">Perplexity AI 소개</h2>
+<p data-ke-size="size16">Perplexity AI는 인공지능과 실시간 웹 검색을 결합한 혁신적인 '앤서 엔진(Answer Engine)'입니다[1]. 이 플랫폼은 사용자의 질문을 정확히 이해하고, 웹에서 관련 정보를 실시간으로 수집하여 AI가 분석한 후 종합적인 답변을 제공합니다[1].</p>
+<h3 data-ke-size="size23">Perplexity AI의 주요 특징</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>실시간 웹 검색</b>: 최신 정보를 반영한 답변 제공[1]</li>
+<li><b>신뢰성 있는 정보</b>: 모든 답변에 명확한 출처 제시[1]</li>
+<li><b>맥락 이해</b>: 복잡한 질문에 대해서도 관련성 높은 답변 제공[1]</li>
+<li><b>추가 탐구 방향 제시</b>: 사용자의 후속 질문을 예측하여 제안[1]</li>
+</ol>
+<h2 data-ke-size="size26">Perplexity AI 활용 블로그 자동화 과정</h2>
+<h3 data-ke-size="size23">1. Perplexity AI를 이용한 콘텐츠 생성</h3>
+<p data-ke-size="size16">Perplexity AI를 활용하여 블로그 콘텐츠를 생성하는 과정은 다음과 같습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>주제 선정</b>: 관심 있는 주제나 키워드를 선정합니다.</li>
+<li><b>질문 작성</b>: 선정한 주제에 대한 구체적인 질문을 Perplexity AI에 입력합니다.</li>
+<li><b>답변 분석</b>: Perplexity AI가 제공한 답변을 검토하고 필요한 정보를 선별합니다.</li>
+<li><b>콘텐츠 구조화</b>: 얻은 정보를 바탕으로 블로그 포스트의 구조를 잡습니다.</li>
+<li><b>추가 정보 요청</b>: 필요한 경우 Perplexity AI에 추가 질문을 하여 콘텐츠를 보완합니다.</li>
+</ol>
+<h3 data-ke-size="size23">2. Google Apps Script 설정</h3>
+<p data-ke-size="size16">Google Apps Script를 사용하여 Perplexity AI와 Tistory 블로그를 연동하는 자동화 스크립트를 작성합니다. 주요 단계는 다음과 같습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>Google Apps Script 프로젝트 생성</b>: Google Drive에서 새 Apps Script 프로젝트를 만듭니다.</li>
+<li><b>Perplexity AI API 연동</b>: Perplexity AI의 API를 스크립트에 연동합니다.</li>
+<li><b>Tistory API 연동</b>: Tistory 블로그 API를 스크립트에 연동합니다.</li>
+<li><b>자동화 로직 구현</b>: 콘텐츠 생성부터 포스팅까지의 과정을 자동화하는 로직을 구현합니다.</li>
+</ol>
+<h3 data-ke-size="size23">3. 자동화 스크립트 작성</h3>
+<pre class="reasonml"><code>function generateAndPostBlogContent() {
+  // Perplexity AI API를 통한 콘텐츠 생성
+  var topic = "인공지능의 미래";
+  var content = generateContentWithPerplexity(topic);
+
+  // 생성된 콘텐츠를 Tistory 블로그에 포스팅
+  postToTistory(content);
+}
+
+function generateContentWithPerplexity(topic) {
+  // Perplexity AI API 호출 로직
+  // ...
+}
+
+function postToTistory(content) {
+  // Tistory API를 통한 포스팅 로직
+  // ...
+}
+
+// 주기적으로 실행되도록 트리거 설정
+function setUpTrigger() {
+  ScriptApp.newTrigger('generateAndPostBlogContent')
+      .timeBased()
+      .everyDays(1)
+      .create();
+}
+
+</code></pre>
+<p data-ke-size="size16">이 스크립트는 Perplexity AI를 사용하여 콘텐츠를 생성하고, 생성된 콘텐츠를 Tistory 블로그에 자동으로 포스팅하는 기본 구조를 보여줍니다.</p>
+<h2 data-ke-size="size26">Perplexity AI 활용의 장점</h2>
+<p data-ke-size="size16">Perplexity AI를 블로그 콘텐츠 생성에 활용하면 다음과 같은 장점이 있습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>최신 정보 반영</b>: 실시간 웹 검색을 통해 항상 최신 정보를 콘텐츠에 반영할 수 있습니다[1].</li>
+<li><b>신뢰성 있는 콘텐츠</b>: 모든 정보에 대한 출처가 명확히 제시되어 콘텐츠의 신뢰성을 높일 수 있습니다[1].</li>
+<li><b>다양한 주제 커버</b>: 광범위한 주제에 대해 깊이 있는 정보를 제공받을 수 있습니다[1].</li>
+<li><b>시간 절약</b>: 수동으로 정보를 검색하고 정리하는 시간을 크게 줄일 수 있습니다.</li>
+<li><b>일관된 콘텐츠 품질</b>: AI의 도움으로 일정 수준 이상의 콘텐츠 품질을 유지할 수 있습니다.</li>
+</ol>
+<h2 data-ke-size="size26">주의사항 및 팁</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>콘텐츠 검토</b>: AI가 생성한 콘텐츠라도 반드시 사람이 검토하고 필요한 경우 수정해야 합니다.</li>
+<li><b>저작권 준수</b>: 인용된 정보의 저작권을 반드시 확인하고 준수해야 합니다.</li>
+<li><b>개인화</b>: AI가 생성한 콘텐츠에 개인의 견해나 경험을 추가하여 독창성을 높이세요.</li>
+<li><b>SEO 최적화</b>: 키워드 배치, 메타 설명 등 SEO 요소를 추가로 최적화하세요.</li>
+<li><b>일정 관리</b>: 자동 포스팅의 빈도와 시간을 적절히 조절하여 블로그 운영의 일관성을 유지하세요.</li>
+</ol>
+<h2 data-ke-size="size26">Perplexity AI와 ChatGPT의 차이점</h2>
+<p data-ke-size="size16">Perplexity AI와 ChatGPT는 모두 강력한 AI 도구이지만, 블로그 콘텐츠 생성에 있어 몇 가지 중요한 차이점이 있습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>정보의 최신성</b>: Perplexity AI는 실시간 웹 검색을 통해 항상 최신 정보를 제공하는 반면, ChatGPT는 특정 시점까지의 데이터로 학습되어 있어 최신 정보를 반영하지 못할 수 있습니다[1][3].</li>
+<li><b>출처 제공</b>: Perplexity AI는 모든 정보에 대해 명확한 출처를 제시하여 신뢰성을 높이는 반면, ChatGPT는 일반적으로 정보의 출처를 직접적으로 제시하지 않습니다[1][3].</li>
+<li><b>특화 영역</b>: Perplexity AI는 최신 정보의 정확한 검색과 요약에 특화되어 있고, ChatGPT는 다양한 형태의 텍스트 생성과 복잡한 작업 수행에 강점을 가지고 있습니다[1][3].</li>
+</ol>
+<p data-ke-size="size16">이러한 차이점을 고려하여, 블로그 콘텐츠 생성 시 Perplexity AI는 최신 트렌드나 시사 이슈에 관한 포스트 작성에 더 적합할 수 있으며, ChatGPT는 창의적인 글쓰기나 복잡한 주제에 대한 심층 분석에 더 유용할 수 있습니다.</p>
+<h2 data-ke-size="size26">자동화 시나리오 상세 설명</h2>
+<p data-ke-size="size16">이제 Perplexity AI를 활용한 블로그 자동화 시나리오를 더 자세히 살펴보겠습니다. 이 시나리오는 [Make 자동화] 상위 1%들의, 퍼플렉시티 블로그 자동화 영상에서 소개된 방법을 바탕으로 구성되었습니다[2].</p>
+<h3 data-ke-size="size23">1. 주제 선정 및 정보 수집</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>트렌드 분석</b>: Perplexity AI를 사용하여 현재 인기 있는 주제나 키워드를 파악합니다.</li>
+<li><b>정보 수집</b>: 선정된 주제에 대해 Perplexity AI에 다양한 질문을 던져 포괄적인 정보를 수집합니다.</li>
+</ol>
+<h3 data-ke-size="size23">2. 콘텐츠 구조화</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>아웃라인 생성</b>: 수집된 정보를 바탕으로 블로그 포스트의 기본 구조를 Perplexity AI에 요청합니다.</li>
+<li><b>섹션 별 상세화</b>: 각 섹션에 대해 추가적인 정보나 예시를 요청하여 콘텐츠를 풍부하게 만듭니다.</li>
+</ol>
+<h3 data-ke-size="size23">3. 이미지 생성</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>이미지 프롬프트 작성</b>: Perplexity AI에 콘텐츠에 맞는 이미지 생성을 위한 프롬프트 작성을 요청합니다.</li>
+<li><b>AI 이미지 생성</b>: 작성된 프롬프트를 사용하여 AI 이미지 생성 도구(예: DALL-E, Midjourney)로 관련 이미지를 생성합니다.</li>
+</ol>
+<h3 data-ke-size="size23">4. SEO 최적화</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>키워드 분석</b>: Perplexity AI를 사용하여 선정된 주제에 대한 주요 키워드와 관련 검색어를 파악합니다.</li>
+<li><b>메타 데이터 생성</b>: 제목, 메타 설명, 태그 등 SEO에 중요한 요소들을 Perplexity AI의 도움을 받아 최적화합니다.</li>
+</ol>
+<h3 data-ke-size="size23">5. 콘텐츠 검토 및 편집</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>AI 검토</b>: 생성된 콘텐츠를 Perplexity AI에 다시 입력하여 정확성, 일관성, 가독성 등을 검토합니다.</li>
+<li><b>인간 검토</b>: AI의 검토 결과를 바탕으로 최종적으로 사람이 콘텐츠를 검토하고 필요한 부분을 수정합니다.</li>
+</ol>
+<h3 data-ke-size="size23">6. Tistory 블로그 포스팅</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>포맷팅</b>: Markdown 형식으로 작성된 콘텐츠를 Tistory 블로그에 적합한 HTML 형식으로 변환합니다.</li>
+<li><b>이미지 업로드</b>: 생성된 이미지를 Tistory 서버에 업로드합니다.</li>
+<li><b>포스트 발행</b>: 완성된 콘텐츠를 Tistory API를 통해 블로그에 발행합니다.</li>
+</ol>
+<h3 data-ke-size="size23">7. 소셜 미디어 공유</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>공유 문구 생성</b>: Perplexity AI를 사용하여 블로그 포스트를 홍보할 수 있는 간결하고 매력적인 소셜 미디어 공유 문구를 생성합니다.</li>
+<li><b>자동 공유</b>: 생성된 공유 문구와 함께 블로그 포스트 링크를 주요 소셜 미디어 플랫폼에 자동으로 공유합니다.</li>
+</ol>
+<h2 data-ke-size="size26">Google Apps Script를 활용한 자동화 구현</h2>
+<p data-ke-size="size16">이제 Google Apps Script를 사용하여 위의 시나리오를 자동화하는 방법을 더 자세히 살펴보겠습니다.</p>
+<h3 data-ke-size="size23">1. 프로젝트 설정</h3>
+<p data-ke-size="size16">먼저 Google Drive에서 새로운 Google Apps Script 프로젝트를 생성합니다.</p>
+<h3 data-ke-size="size23">2. 필요한 라이브러리 추가</h3>
+<p data-ke-size="size16">Perplexity AI와 Tistory API를 사용하기 위한 라이브러리를 추가합니다. (실제 라이브러리 ID는 각 서비스 제공자의 문서를 참조하세요)</p>
+<pre class="actionscript"><code>function getPerplexityService() {
+  return OAuth2.createService('Perplexity')
+      // 설정 정보 추가
+}
+
+function getTistoryService() {
+  return OAuth2.createService('Tistory')
+      // 설정 정보 추가
+}
+
+</code></pre>
+<h3 data-ke-size="size23">3. 주요 함수 구현</h3>
+<h3 data-ke-size="size23">주제 선정 및 정보</h3>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&lt; 퍼플렉시티 AI와 블로그 자동화에 관련된 유용한 영상 링크 세 가지를 소개 &gt;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>"How to Automate Blog Generation using Perplexity AI" <a href="https://www.youtube.com/watch?v=mxvxuzZrC4s">https://www.youtube.com/watch?v=mxvxuzZrC4s</a></li>
+<li>"Generate Automated Blogs using Perplexity AI (Google Sheets + ...)" <a href="https://www.youtube.com/watch?v=pUO1qPHdJrU">https://www.youtube.com/watch?v=pUO1qPHdJrU</a></li>
+<li>"Get SEO posts with SOURCES (using Perplexity Pages) on autopilot [AI Automation]" <a href="https://www.youtube.com/watch?v=uHV261-nlkU">https://www.youtube.com/watch?v=uHV261-nlkU</a></li>
+</ol>
+<p data-ke-size="size16">이 영상들은 퍼플렉시티 AI를 활용한 블로그 콘텐츠 자동 생성 및 SEO 최적화에 대한 유용한 정보를 제공합니다. 각 영상은 퍼플렉시티 AI의 다양한 기능과 자동화 도구를 활용하여 블로그 작성 프로세스를 효율적으로 개선하는 방법을 다루고 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">Perplexity AI의 이미지 생성 기능은 사용자의 검색 경험을 향상시키고 복잡한 주제를 시각적으로 이해하기 쉽게 만들어주는 유용한 도구입니다. 이 기능을 사용하는 방법은 다음과 같습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>검색 수행: 먼저 원하는 주제나 질문에 대해 Perplexity AI에 검색을 수행합니다.</li>
+<li>이미지 생성 옵션 찾기: Perplexity가 검색에 대한 답변을 제공한 후, 인터페이스 오른쪽에 있는 "이미지 생성" 옵션을 찾습니다[6].</li>
+<li>이미지 생성 요청: "이미지 생성" 옵션을 선택하여 검색 결과와 관련된 맞춤형 이미지를 생성하도록 요청합니다.</li>
+<li>이미지 확인 및 활용: 생성된 이미지를 확인하고, 필요에 따라 검색 결과를 보완하는 데 활용합니다.</li>
+</ol>
+<p data-ke-size="size16">Perplexity AI의 이미지 생성 기능은 다음과 같은 특징을 가지고 있습니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>검색 결과 보완: 생성된 이미지는 검색 응답을 시각적으로 보완하여 복잡한 주제를 더 쉽게 이해할 수 있게 해줍니다[6].</li>
+<li>맞춤형 이미지: 사용자의 검색 쿼리와 결과에 맞춘 이미지를 생성하여 관련성 높은 시각 자료를 제공합니다.</li>
+<li>제한된 기능: Perplexity AI의 이미지 생성 기능은 ChatGPT, Bard, Midjourney 등 다른 전문 이미지 생성 AI 플랫폼과는 다르게 작동합니다[10]. 주로 검색 결과를 보완하는 용도로 사용됩니다.</li>
+<li>Pro 버전 혜택: Perplexity AI의 Pro 버전 사용자는 Playground AI, DALL-E 등을 이용한 더 다양한 이미지 생성 기능을 활용할 수 있습니다[8].</li>
+</ul>
+<p data-ke-size="size16">이미지 생성 외에도 Perplexity AI는 이미지 업로드 기능을 제공하여 사용자가 직접 이미지를 업로드하고 분석할 수 있게 해줍니다. 이를 통해 이미지 식별, 그래픽 해석, 소셜 미디어 캡션 생성 등 다양한 작업을 수행할 수 있습니다[7].</p>
+<p data-ke-size="size16">Perplexity AI의 이미지 관련 기능은 계속 발전하고 있으며, 향후 더 다양하고 강력한 이미지 생성 및 분석 기능이 추가될 것으로 예상됩니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&lt; Perplexity AI의 이미지 생성 기능은 다양한 방식으로 활용될 수 있습니다. 몇 가지 실제 예시 &gt;</p>
+<h2 data-ke-size="size26">콘텐츠 시각화</h2>
+<p data-ke-size="size16">Perplexity AI를 사용하여 블로그 포스트나 기사에 들어갈 이미지를 생성할 수 있습니다. 예를 들어, "인공지능의 미래"라는 주제의 글을 작성한다면 관련된 시각적 이미지를 요청할 수 있습니다[5].</p>
+<h2 data-ke-size="size26">제품 디자인 아이디어</h2>
+<p data-ke-size="size16">제품 디자이너는 Perplexity AI에게 새로운 제품 컨셉에 대한 이미지를 생성하도록 요청할 수 있습니다. "미래지향적인 스마트워치 디자인"과 같은 프롬프트를 사용하여 아이디어를 시각화할 수 있습니다[6].</p>
+<h2 data-ke-size="size26">교육 자료 제작</h2>
+<p data-ke-size="size16">교육자들은 복잡한 개념을 설명하는 데 도움이 되는 이미지를 생성할 수 있습니다. 예를 들어, "광합성 과정을 보여주는 다이어그램"을 요청하여 학생들의 이해를 돕는 시각 자료를 만들 수 있습니다[9].</p>
+<h2 data-ke-size="size26">마케팅 자료 생성</h2>
+<p data-ke-size="size16">마케터들은 소셜 미디어 포스트나 광고 캠페인에 사용할 이미지를 빠르게 생성할 수 있습니다. "여름 세일을 홍보하는 밝고 화려한 배너"와 같은 프롬프트를 사용할 수 있습니다[10].</p>
+<h2 data-ke-size="size26">연구 데이터 시각화</h2>
+<p data-ke-size="size16">연구자들은 복잡한 데이터를 시각화하는 데 Perplexity AI를 활용할 수 있습니다. "글로벌 온도 변화 추세를 보여주는 그래프"와 같은 요청으로 데이터를 시각적으로 표현할 수 있습니다[9].</p>
+<h2 data-ke-size="size26">건축 및 인테리어 디자인</h2>
+<p data-ke-size="size16">건축가나 인테리어 디자이너는 "미니멀리스트 스타일의 거실 인테리어"와 같은 프롬프트를 사용하여 디자인 아이디어를 시각화할 수 있습니다[6].</p>
+<p data-ke-size="size16">이러한 예시들은 Perplexity AI의 이미지 생성 기능이 다양한 분야에서 창의적이고 실용적으로 활용될 수 있음을 보여줍니다. 사용자는 자신의 필요에 맞는 구체적인 프롬프트를 작성하여 원하는 이미지를 생성할 수 있습니다[5][6][9][10].</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&lt; Perplexity AI의 이미지 생성 기능은 다양한 분야에서 창의적이고 실용적으로 활용될 수 있습니다. 몇 가지 실제 프로젝트 예시 &gt;</p>
+<h2 data-ke-size="size26">콘텐츠 마케팅</h2>
+<p data-ke-size="size16">블로그 작성자나 마케터들은 Perplexity AI를 사용하여 글에 맞는 맞춤형 이미지를 생성할 수 있습니다. 예를 들어, "인공지능의 미래"라는 주제의 블로그 포스트를 작성할 때, 관련된 시각적 이미지를 요청하여 콘텐츠를 더욱 풍부하게 만들 수 있습니다[1][2].</p>
+<h2 data-ke-size="size26">제품 디자인 컨셉</h2>
+<p data-ke-size="size16">제품 디자이너들은 Perplexity AI를 활용하여 새로운 제품 아이디어를 시각화할 수 있습니다. "미래지향적인 스마트워치 디자인"과 같은 프롬프트를 사용하여 초기 컨셉 이미지를 생성하고, 이를 바탕으로 실제 디자인 작업을 진행할 수 있습니다[3].</p>
+<h2 data-ke-size="size26">교육 자료 제작</h2>
+<p data-ke-size="size16">교육자들은 복잡한 개념을 설명하는 데 도움이 되는 시각 자료를 Perplexity AI로 생성할 수 있습니다. 예를 들어, "광합성 과정을 보여주는 다이어그램"을 요청하여 학생들의 이해를 돕는 교육 자료를 만들 수 있습니다[3].</p>
+<h2 data-ke-size="size26">소셜 미디어 마케팅</h2>
+<p data-ke-size="size16">마케터들은 소셜 미디어 포스트나 광고 캠페인에 사용할 이미지를 빠르게 생성할 수 있습니다. "여름 세일을 홍보하는 밝고 화려한 배너"와 같은 프롬프트를 사용하여 시선을 사로잡는 비주얼을 만들 수 있습니다[3].</p>
+<h2 data-ke-size="size26">연구 데이터 시각화</h2>
+<p data-ke-size="size16">연구자들은 복잡한 데이터를 시각화하는 데 Perplexity AI를 활용할 수 있습니다. "글로벌 온도 변화 추세를 보여주는 그래프"와 같은 요청으로 연구 결과를 효과적으로 전달할 수 있는 시각 자료를 만들 수 있습니다[3].</p>
+<h2 data-ke-size="size26">건축 및 인테리어 디자인</h2>
+<p data-ke-size="size16">건축가나 인테리어 디자이너는 "미니멀리스트 스타일의 거실 인테리어"와 같은 프롬프트를 사용하여 디자인 아이디어를 시각화하고, 클라이언트에게 제안할 수 있습니다[3].</p>
+<h2 data-ke-size="size26">YouTube 썸네일 제작</h2>
+<p data-ke-size="size16">YouTube 크리에이터들은 Perplexity AI를 사용하여 영상의 썸네일 아이디어를 생성하고, 이를 바탕으로 실제 썸네일을 제작할 수 있습니다. 예를 들어, "AI 기능을 설명하는 비디오의 썸네일"과 같은 프롬프트를 사용하여 아이디어를 얻을 수 있습니다[10].</p>
+<p data-ke-size="size16">이러한 예시들은 Perplexity AI의 이미지 생성 기능이 다양한 분야에서 실제 프로젝트에 활용될 수 있음을 보여줍니다. 사용자는 자신의 필요에 맞는 구체적인 프롬프트를 작성하여 원하는 이미지를 생성하고, 이를 실제 작업에 활용할 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

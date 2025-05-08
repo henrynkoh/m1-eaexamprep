@@ -1,0 +1,318 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Cursor와 AI 도구로 풀스택 앱 만들기 (feat. Firebase, Vercel 배포)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Cursor와 AI 도구로 풀스택 앱 만들기 (feat. Firebase, Vercel 배포)</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-13 13:03:47</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">AI 앱 개발, 이제 코딩 없이! 커서(Cursor)와 AI 도구로 풀스택 앱 만들기 (feat. Firebase, Vercel 배포)</h2>
+<p data-ke-size="size16">최근 몇 년간 AI 기술의 눈부신 발전은 앱 개발의 패러다임을 완전히 바꾸고 있습니다. 과거에는 숙련된 개발자만이 앱을 만들 수 있었지만, 이제는 커서(Cursor)와 같은 AI 기반 도구를 활용하여 코딩 없이도 아이디어를 현실로 만들 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">이 글에서는 Riley Brown과 함께 커서(Cursor) 에이전트를 이용하여 AI 기반 이미지 생성 웹 앱을 만들고, Firebase와 연동하여 사용자 데이터를 저장하고, Vercel을 통해 인터넷에 배포하는 풀스택 앱 개발 과정을 자세히 소개합니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>핵심 내용:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>커서(Cursor) 에이전트:</b> 자연어 프롬프트를 기반으로 코드를 생성하고 수정하는 AI 코딩 도우미</li>
+<li><b>Firebase:</b> 사용자 인증, 데이터베이스, 스토리지 기능을 제공하는 클라우드 플랫폼</li>
+<li><b>Vercel:</b> 웹 애플리케이션을 쉽고 빠르게 배포할 수 있는 클라우드 플랫폼</li>
+</ul>
+<p data-ke-size="size16"><b>주요 단계:</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>프로젝트 설정:</b> 커서를 실행하고 새로운 프로젝트 폴더를 생성합니다.</li>
+<li><b>템플릿 활용:</b> Riley Brown의 GitHub 템플릿을 복제하여 기본 코드 구조를 빠르게 설정합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 Repo를 Fork하고 로컬에서 한 번에 실행하세요."</li>
+</ul>
+</li>
+<li><b>커서 에이전트 활성화:</b> 커서 에이전트를 활성화하고, 복제한 GitHub 저장소 링크를 입력합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 GitHub Repo를 Clone하고 로컬에서 실행하세요."</li>
+</ul>
+</li>
+<li><b>UI 확인:</b> npm run dev 명령어를 사용하여 로컬 서버를 실행하고, 웹 브라우저에서 앱의 기본 UI를 확인합니다.</li>
+<li><b>AI 이미지 생성 기능 추가:</b> 커서 에이전트에게 AI 이미지 생성 기능을 추가하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "AI 이미지 생성기를 만들어주세요."</li>
+</ul>
+</li>
+<li><b>API 키 설정:</b> Replicate와 같은 AI 모델 제공업체에서 API 키를 발급받고, 커서 에이전트에게 API 키를 올바른 위치에 삽입하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 API 토큰을 올바른 위치에 넣어주세요."</li>
+</ul>
+</li>
+<li><b>코드 수정:</b> 커서 에이전트가 생성한 코드를 검토하고, 필요에 따라 수정합니다.</li>
+<li><b>API 오류 해결:</b> API 호출 실패 시, 오류 메시지를 커서 에이전트에게 전달하고, Replicate 문서 링크를 제공하여 문제 해결을 지원합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "오류가 발생했습니다. 추가 문서를 참고하여 해결해 주세요."</li>
+</ul>
+</li>
+<li><b>모델 변경:</b> 더 나은 이미지 품질을 위해 다른 AI 모델로 변경하도록 커서 에이전트에게 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 모델 대신 다른 모델을 사용해 주세요."</li>
+</ul>
+</li>
+<li><b>모델 선택 UI 추가:</b> 사용자가 AI 모델을 선택할 수 있는 UI 요소를 추가하도록 커서 에이전트에게 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "어떤 모델을 사용할지 선택할 수 있는 UI를 추가해 주세요."</li>
+</ul>
+</li>
+<li><b>UI 디자인 개선:</b> 커서 에이전트에게 앱의 디자인을 개선하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "앱 디자인을 개선해 주세요."</li>
+</ul>
+</li>
+<li><b>Firebase 프로젝트 생성:</b> Firebase 콘솔에서 새로운 프로젝트를 생성합니다.</li>
+<li><b>Firebase API 키 설정:</b> Firebase 콘솔에서 API 키를 복사하여 커서 에이전트에게 전달하고, env.local 파일에 올바르게 설정하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "Firebase API 키를 올바른 위치에 넣어주세요."</li>
+</ul>
+</li>
+<li><b>Firebase 인증 설정:</b> Firebase 콘솔에서 Google 로그인 인증을 활성화합니다.</li>
+<li><b>Firebase 데이터베이스 설정:</b> Firebase 콘솔에서 Firestore 데이터베이스를 생성하고, 테스트 모드로 시작합니다.</li>
+<li><b>Firebase 스토리지 설정:</b> Firebase 콘솔에서 스토리지를 설정하고, 사용량 제한을 설정합니다.</li>
+<li><b>데이터베이스 연동:</b> 커서 에이전트에게 Firebase를 사용하여 사용자 인증 및 이미지 데이터를 저장하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "Firebase를 사용하여 사용자 인증 및 이미지 데이터를 저장하도록 해주세요."</li>
+</ul>
+</li>
+<li><b>로그인 기능 구현:</b> 사용자가 Google 계정으로 로그인할 수 있도록 기능을 구현합니다.</li>
+<li><b>이미지 저장 기능 구현:</b> 사용자가 생성한 이미지를 Firebase Storage에 자동으로 저장하는 기능을 구현합니다.</li>
+<li><b>"내 이미지" 페이지 구현:</b> 사용자가 생성한 이미지를 확인할 수 있는 "내 이미지" 페이지를 생성합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "사용자가 생성한 이미지를 확인할 수 있는 '내 이미지' 페이지를 만들어주세요."</li>
+</ul>
+</li>
+<li><b>이미지 정보 표시:</b> "내 이미지" 페이지에서 각 이미지에 대한 모델 정보 및 파라미터를 표시합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "각 이미지에 대한 모델 정보 및 파라미터를 표시해 주세요."</li>
+</ul>
+</li>
+<li><b>GitHub 저장소 생성:</b> GitHub에 새로운 저장소를 생성합니다.</li>
+<li><b>GitHub에 코드 저장:</b> 로컬 프로젝트 코드를 GitHub 저장소에 저장합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 앱을 GitHub에 저장해 주세요."</li>
+</ul>
+</li>
+<li><b>Vercel 배포 준비:</b> Vercel 계정을 생성하고, GitHub 저장소를 연결합니다.</li>
+<li><b>Vercel 프로젝트 생성:</b> Vercel에서 새로운 프로젝트를 생성하고, GitHub 저장소를 연결합니다.</li>
+<li><b>환경 변수 설정:</b> Vercel 프로젝트 설정에서 Firebase API 키를 환경 변수로 설정합니다.</li>
+<li><b>Vercel 배포:</b> Vercel을 통해 앱을 배포합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "Vercel에 배포해 주세요."</li>
+</ul>
+</li>
+<li><b>인증 도메인 설정:</b> Firebase 콘솔에서 Vercel 배포 URL을 인증 도메인으로 추가합니다.</li>
+<li><b>배포 확인:</b> Vercel 배포 URL을 통해 앱에 접속하고, 정상적으로 작동하는지 확인합니다.</li>
+<li><b>공유:</b> 배포된 앱 링크를 친구들과 공유하고, 피드백을 수렴합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>추가 팁:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>명확하고 구체적인 프롬프트:</b> 커서 에이전트에게 지시할 때 명확하고 구체적인 프롬프트를 사용하면 더 정확한 결과를 얻을 수 있습니다.</li>
+<li><b>반복적인 개선:</b> 처음부터 완벽한 앱을 만들려고 하지 말고, 기능을 하나씩 추가하고 테스트하면서 반복적으로 개선해 나갑니다.</li>
+<li><b>공식 문서 참고:</b> 사용하는 API 및 라이브러리의 공식 문서를 참고하여 올바르게 활용합니다.</li>
+<li><b>오류 메시지 활용:</b> 오류 메시지를 꼼꼼히 확인하고, 커서 에이전트에게 자세한 정보를 제공하여 문제 해결을 돕습니다.</li>
+<li><b>커뮤니티 활용:</b> 소프트웨어 컴포저와 같은 커뮤니티에 참여하여 다른 개발자들과 정보를 교환하고, 도움을 받습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>프롬프트 요약:</b></p>
+<p data-ke-size="size16"><b>(I) 일반 프롬프트</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Fork this repo하고 로컬에서 한 번에 실행하세요.</li>
+<li>이 API 토큰을 올바른 위치에 넣어주세요.</li>
+<li>이 모델 대신 다른 모델을 사용해 주세요.</li>
+<li>앱 디자인을 개선해 주세요.</li>
+<li>Firebase를 사용하여 사용자 인증 및 이미지 데이터를 저장하도록 해주세요.</li>
+<li>각 이미지에 대한 모델 정보 및 파라미터를 표시해 주세요.</li>
+<li>Vercel에 배포해 주세요.</li>
+</ol>
+<p data-ke-size="size16"><b>(II) 툴별 프롬프트 (암시적 포함)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>커서(Cursor):</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>(Firebase API 키 설정) "Firebase API 키를 올바른 위치에 넣어주세요."</li>
+<li>(AI 이미지 생성 기능 추가) "AI 이미지 생성기를 만들어주세요."</li>
+<li>(모델 선택 UI 추가) "어떤 모델을 사용할지 선택할 수 있는 UI를 추가해 주세요."</li>
+<li>(UI 디자인 개선) "앱 디자인을 개선해 주세요."</li>
+<li>"이 Repo를 Fork하고 로컬에서 한 번에 실행하세요."</li>
+</ul>
+</li>
+</ul>
+<p data-ke-size="size16"><b>(III) 추가 정보</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>본 튜토리얼에서 사용한 템플릿은 [GitHub 링크]에서 확인할 수 있습니다.</li>
+<li>커서 에이전트 및 Firebase에 대한 자세한 내용은 각 도구의 공식 문서를 참고하시기 바랍니다.</li>
+<li>Riley Brown의 소프트웨어 컴포저 커뮤니티에 참여하여 더 많은 정보를 얻고 다른 개발자들과 교류하세요.</li>
+</ul>
+<p data-ke-size="size16">이 튜토리얼을 통해 여러분도 AI 도구의 도움을 받아 멋진 풀스택 앱을 만들 수 있기를 바랍니다!</p>
+<p data-ke-size="size16">This blog post provides a detailed guide to building an AI image generation app with Cursor, Firebase, and Vercel, suitable for a Korean-speaking audience. The prompts are clearly identified, and the 30-step guide offers a practical roadmap for readers to follow.</p>
+<h2 data-ke-size="size26">AI 앱 개발, 이제 코딩 없이! 커서(Cursor)와 AI 도구로 풀스택 앱 만들기 (feat. Firebase, Vercel 배포)</h2>
+<p data-ke-size="size16">최근 몇 년간 AI 기술의 눈부신 발전은 앱 개발의 패러다임을 완전히 바꾸고 있습니다. 과거에는 숙련된 개발자만이 앱을 만들 수 있었지만, 이제는 커서(Cursor)와 같은 AI 기반 도구를 활용하여 코딩 없이도 아이디어를 현실로 만들 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">이 글에서는 Riley Brown과 함께 커서(Cursor) 에이전트를 이용하여 AI 기반 이미지 생성 웹 앱을 만들고, Firebase와 연동하여 사용자 데이터를 저장하고, Vercel을 통해 인터넷에 배포하는 풀스택 앱 개발 과정을 자세히 소개합니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>핵심 내용:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>커서(Cursor) 에이전트:</b> 자연어 프롬프트를 기반으로 코드를 생성하고 수정하는 AI 코딩 도우미</li>
+<li><b>Firebase:</b> 사용자 인증, 데이터베이스, 스토리지 기능을 제공하는 클라우드 플랫폼</li>
+<li><b>Vercel:</b> 웹 애플리케이션을 쉽고 빠르게 배포할 수 있는 클라우드 플랫폼</li>
+</ul>
+<p data-ke-size="size16"><b>주요 단계:</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>프로젝트 설정:</b> 커서를 실행하고 새로운 프로젝트 폴더를 생성합니다.</li>
+<li><b>템플릿 활용:</b> Riley Brown의 GitHub 템플릿을 복제하여 기본 코드 구조를 빠르게 설정합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 Repo를 Fork하고 로컬에서 한 번에 실행하세요."</li>
+</ul>
+</li>
+<li><b>커서 에이전트 활성화:</b> 커서 에이전트를 활성화하고, 복제한 GitHub 저장소 링크를 입력합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 GitHub Repo를 Clone하고 로컬에서 실행하세요."</li>
+</ul>
+</li>
+<li><b>UI 확인:</b> npm run dev 명령어를 사용하여 로컬 서버를 실행하고, 웹 브라우저에서 앱의 기본 UI를 확인합니다.</li>
+<li><b>AI 이미지 생성 기능 추가:</b> 커서 에이전트에게 AI 이미지 생성 기능을 추가하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "AI 이미지 생성기를 만들어주세요."</li>
+</ul>
+</li>
+<li><b>API 키 설정:</b> Replicate와 같은 AI 모델 제공업체에서 API 키를 발급받고, 커서 에이전트에게 API 키를 올바른 위치에 삽입하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 API 토큰을 올바른 위치에 넣어주세요."</li>
+</ul>
+</li>
+<li><b>코드 수정:</b> 커서 에이전트가 생성한 코드를 검토하고, 필요에 따라 수정합니다.</li>
+<li><b>API 오류 해결:</b> API 호출 실패 시, 오류 메시지를 커서 에이전트에게 전달하고, Replicate 문서 링크를 제공하여 문제 해결을 지원합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "오류가 발생했습니다. 추가 문서를 참고하여 해결해 주세요."</li>
+</ul>
+</li>
+<li><b>모델 변경:</b> 더 나은 이미지 품질을 위해 다른 AI 모델로 변경하도록 커서 에이전트에게 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 모델 대신 다른 모델을 사용해 주세요."</li>
+</ul>
+</li>
+<li><b>모델 선택 UI 추가:</b> 사용자가 AI 모델을 선택할 수 있는 UI 요소를 추가하도록 커서 에이전트에게 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "어떤 모델을 사용할지 선택할 수 있는 UI를 추가해 주세요."</li>
+</ul>
+</li>
+<li><b>UI 디자인 개선:</b> 커서 에이전트에게 앱의 디자인을 개선하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "앱 디자인을 개선해 주세요."</li>
+</ul>
+</li>
+<li><b>Firebase 프로젝트 생성:</b> Firebase 콘솔에서 새로운 프로젝트를 생성합니다.</li>
+<li><b>Firebase API 키 설정:</b> Firebase 콘솔에서 API 키를 복사하여 커서 에이전트에게 전달하고, env.local 파일에 올바르게 설정하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "Firebase API 키를 올바른 위치에 넣어주세요."</li>
+</ul>
+</li>
+<li><b>Firebase 인증 설정:</b> Firebase 콘솔에서 Google 로그인 인증을 활성화합니다.</li>
+<li><b>Firebase 데이터베이스 설정:</b> Firebase 콘솔에서 Firestore 데이터베이스를 생성하고, 테스트 모드로 시작합니다.</li>
+<li><b>Firebase 스토리지 설정:</b> Firebase 콘솔에서 스토리지를 설정하고, 사용량 제한을 설정합니다.</li>
+<li><b>데이터베이스 연동:</b> 커서 에이전트에게 Firebase를 사용하여 사용자 인증 및 이미지 데이터를 저장하도록 요청합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "Firebase를 사용하여 사용자 인증 및 이미지 데이터를 저장하도록 해주세요."</li>
+</ul>
+</li>
+<li><b>로그인 기능 구현:</b> 사용자가 Google 계정으로 로그인할 수 있도록 기능을 구현합니다.</li>
+<li><b>이미지 저장 기능 구현:</b> 사용자가 생성한 이미지를 Firebase Storage에 자동으로 저장하는 기능을 구현합니다.</li>
+<li><b>"내 이미지" 페이지 구현:</b> 사용자가 생성한 이미지를 확인할 수 있는 "내 이미지" 페이지를 생성합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "사용자가 생성한 이미지를 확인할 수 있는 '내 이미지' 페이지를 만들어주세요."</li>
+</ul>
+</li>
+<li><b>이미지 정보 표시:</b> "내 이미지" 페이지에서 각 이미지에 대한 모델 정보 및 파라미터를 표시합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "각 이미지에 대한 모델 정보 및 파라미터를 표시해 주세요."</li>
+</ul>
+</li>
+<li><b>GitHub 저장소 생성:</b> GitHub에 새로운 저장소를 생성합니다.</li>
+<li><b>GitHub에 코드 저장:</b> 로컬 프로젝트 코드를 GitHub 저장소에 저장합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "이 앱을 GitHub에 저장해 주세요."</li>
+</ul>
+</li>
+<li><b>Vercel 배포 준비:</b> Vercel 계정을 생성하고, GitHub 저장소를 연결합니다.</li>
+<li><b>Vercel 프로젝트 생성:</b> Vercel에서 새로운 프로젝트를 생성하고, GitHub 저장소를 연결합니다.</li>
+<li><b>환경 변수 설정:</b> Vercel 프로젝트 설정에서 Firebase API 키를 환경 변수로 설정합니다.</li>
+<li><b>Vercel 배포:</b> Vercel을 통해 앱을 배포합니다.
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>(암시적 프롬프트):</b> "Vercel에 배포해 주세요."</li>
+</ul>
+</li>
+<li><b>인증 도메인 설정:</b> Firebase 콘솔에서 Vercel 배포 URL을 인증 도메인으로 추가합니다.</li>
+<li><b>배포 확인:</b> Vercel 배포 URL을 통해 앱에 접속하고, 정상적으로 작동하는지 확인합니다.</li>
+<li><b>공유:</b> 배포된 앱 링크를 친구들과 공유하고, 피드백을 수렴합니다.</li>
+</ol>
+<p data-ke-size="size16"><b>추가 팁:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>명확하고 구체적인 프롬프트:</b> 커서 에이전트에게 지시할 때 명확하고 구체적인 프롬프트를 사용하면 더 정확한 결과를 얻을 수 있습니다.</li>
+<li><b>반복적인 개선:</b> 처음부터 완벽한 앱을 만들려고 하지 말고, 기능을 하나씩 추가하고 테스트하면서 반복적으로 개선해 나갑니다.</li>
+<li><b>공식 문서 참고:</b> 사용하는 API 및 라이브러리의 공식 문서를 참고하여 올바르게 활용합니다.</li>
+<li><b>오류 메시지 활용:</b> 오류 메시지를 꼼꼼히 확인하고, 커서 에이전트에게 자세한 정보를 제공하여 문제 해결을 돕습니다.</li>
+<li><b>커뮤니티 활용:</b> 소프트웨어 컴포저와 같은 커뮤니티에 참여하여 다른 개발자들과 정보를 교환하고, 도움을 받습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>프롬프트 요약:</b></p>
+<p data-ke-size="size16"><b>(I) 일반 프롬프트</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Fork this repo하고 로컬에서 한 번에 실행하세요.</li>
+<li>이 API 토큰을 올바른 위치에 넣어주세요.</li>
+<li>이 모델 대신 다른 모델을 사용해 주세요.</li>
+<li>앱 디자인을 개선해 주세요.</li>
+<li>Firebase를 사용하여 사용자 인증 및 이미지 데이터를 저장하도록 해주세요.</li>
+<li>각 이미지에 대한 모델 정보 및 파라미터를 표시해 주세요.</li>
+<li>Vercel에 배포해 주세요.</li>
+</ol>
+<p data-ke-size="size16"><b>(II) 툴별 프롬프트 (암시적 포함)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>커서(Cursor):</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>(Firebase API 키 설정) "Firebase API 키를 올바른 위치에 넣어주세요."</li>
+<li>(AI 이미지 생성 기능 추가) "AI 이미지 생성기를 만들어주세요."</li>
+<li>(모델 선택 UI 추가) "어떤 모델을 사용할지 선택할 수 있는 UI를 추가해 주세요."</li>
+<li>(UI 디자인 개선) "앱 디자인을 개선해 주세요."</li>
+<li>"이 Repo를 Fork하고 로컬에서 한 번에 실행하세요."</li>
+</ul>
+</li>
+</ul>
+<p data-ke-size="size16"><b>(III) 추가 정보</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>본 튜토리얼에서 사용한 템플릿은 [GitHub 링크]에서 확인할 수 있습니다.</li>
+<li>커서 에이전트 및 Firebase에 대한 자세한 내용은 각 도구의 공식 문서를 참고하시기 바랍니다.</li>
+<li>Riley Brown의 소프트웨어 컴포저 커뮤니티에 참여하여 더 많은 정보를 얻고 다른 개발자들과 교류하세요.</li>
+</ul>
+<p data-ke-size="size16">이 튜토리얼을 통해 여러분도 AI 도구의 도움을 받아 멋진 풀스택 앱을 만들 수 있기를 바랍니다!</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>ChatGPT, Claude, Replit을 하나로 통합한 Cursor 사용 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">ChatGPT, Claude, Replit을 하나로 통합한 Cursor 사용 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-18 14:24:23</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-493a72e0-817e-48a4-80f6-1f95a88b52ff" data-ke-size="size16"><span style="color: #000000;">Cursor는 AI 코딩 어시스턴트와 코드 편집 기능을 통합한 강력한 개발 도구입니다. 이 글에서는 Cursor의 주요 특징과 사용 방법을 20개의 세부 항목으로 나누어 설명합니다.</span></p>
+<p id="SE-13080958-f1ab-4de5-b84f-f12212a151cf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-561cc435-2db0-4ba3-ab28-19cd29490640" data-ke-size="size16"><span style="color: #000000;"><b>1. Cursor의 주요 특징</b></span></p>
+<p id="SE-c0e27738-72dd-44e0-95d8-1fae85ff6e11" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0166a265-dd19-45ca-ab57-6330c9ffd9d3" data-ke-size="size16"><span style="color: #000000;"><b>1) 통합 개발 환경</b></span><span style="color: #000000;">: ChatGPT, Claude, Replit의 기능을 하나의 프로그램에서 사용 가능</span></p>
+<p id="SE-3e254341-90b5-4671-b8c0-950d698188bc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9d05bade-0310-49d2-9987-debf59fb691c" data-ke-size="size16"><span style="color: #000000;"><b>2) 로컬 실행</b></span><span style="color: #000000;">: 인터넷 상태나 서버에 의존하지 않고 안정적인 성능 보장</span></p>
+<p id="SE-e14a1730-6aa0-4caf-b0cf-7e43577eb0e6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a5f8fec9-1924-4cd8-b421-1c2883a6bf67" data-ke-size="size16"><span style="color: #000000;"><b>3) 직관적인 인터페이스</b></span><span style="color: #000000;">: VS Code와 유사한 사용자 친화적 인터페이스</span></p>
+<p id="SE-a8ad9950-8cc0-43d6-960b-10a8d0f67e0e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-80366325-acd2-45ad-b89a-486c5709dc70" data-ke-size="size16"><span style="color: #000000;"><b>4) AI 기반 코드 자동 완성</b></span><span style="color: #000000;">: 강력한 코드 제안 및 자동 완성 기능</span></p>
+<p id="SE-be0f2edd-ce7f-4ee1-bcb7-0f567ba79528" data-ke-size="size16"><span style="color: #000000;"><b>다양한 프로그래밍 언어 지원</b></span><span style="color: #000000;">: 여러 언어에 대한 코딩 지원</span></p>
+<p id="SE-b0fcc3b3-f886-400a-aa96-4f788db9dd3a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4cd48782-4ac7-4172-a79e-ec0769c97f89" data-ke-size="size16"><span style="color: #000000;"><b>2. Cursor 설치 및 기본 설정</b></span></p>
+<p id="SE-43d1d336-a381-480b-ba54-14f0a783aa88" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5179769a-4461-4fce-b323-688629fbf940" data-ke-size="size16"><span style="color: #000000;"><b>1) Cursor 다운로드 및 설치</b></span></p>
+<p id="SE-442572a7-1b53-4fba-ae2e-18ff0a32369e" data-ke-size="size16"><span style="color: #000000;">공식 웹사이트에서 운영체제에 맞는 버전 다운로드</span></p>
+<p id="SE-3414d542-2b56-409d-9945-9410ef0ac3a8" data-ke-size="size16"><span style="color: #000000;">설치 파일 실행 및 지시에 따라 설치</span></p>
+<p id="SE-e4e4bc60-bedf-4443-be48-953fd2d00293" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5a251197-f954-455a-951b-147d991a3c4e" data-ke-size="size16"><span style="color: #000000;"><b>2) 초기 설정</b></span></p>
+<p id="SE-c977b6b8-f5a0-4677-93a7-aafd879b836c" data-ke-size="size16"><span style="color: #000000;">프로그램 첫 실행 시 작업 폴더 선택</span></p>
+<p id="SE-9dc08a12-8ca0-4b56-988f-c3e7f70765d6" data-ke-size="size16"><span style="color: #000000;">AI 서비스 연동을 위한 API 키 설정 (선택사항)</span></p>
+<p id="SE-6716a85d-7c40-4011-b284-68afb91047ad" data-ke-size="size16">&nbsp;</p>
+<p id="SE-608fde94-ec9a-4d7e-856a-6c4541c1c3cb" data-ke-size="size16"><span style="color: #000000;"><b>3) 인터페이스 익히기</b></span></p>
+<p id="SE-c46f6cbf-c8a0-4378-b4be-b0d1840257a4" data-ke-size="size16"><span style="color: #000000;">좌측 사이드바: 파일 탐색기</span></p>
+<p id="SE-7c65d61f-834c-47bc-b9d9-f5f675b27ae3" data-ke-size="size16"><span style="color: #000000;">중앙: 코드 편집 영역</span></p>
+<p id="SE-52690a44-6480-4ac5-94c8-9108793ab1c7" data-ke-size="size16"><span style="color: #000000;">우측 사이드바: AI 채팅 및 도구</span></p>
+<p id="SE-1a8df701-cdb8-477b-a100-554b30d1cb53" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b12082c2-177b-43bf-8dde-0b5ff25d16af" data-ke-size="size16"><span style="color: #000000;"><b>3. 기본 사용법</b></span></p>
+<p id="SE-1ed9ee53-5a63-43bf-8583-e91d9fb3bbfc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bcb0374f-11ae-4653-aaca-c0c2f18524f2" data-ke-size="size16"><span style="color: #000000;"><b>1) 파일 생성 및 편집</b></span></p>
+<p id="SE-fe51d8b8-8e39-4419-8737-dfcb79ff74ea" data-ke-size="size16"><span style="color: #000000;">새 파일 생성: 좌측 사이드바에서 우클릭 &gt; New File</span></p>
+<p id="SE-5984ac17-9a49-43ea-90b0-0b341c29ae7d" data-ke-size="size16"><span style="color: #000000;">파일 편집: 중앙 편집 영역에서 직접 코드 작성</span></p>
+<p id="SE-053f4595-0b87-406c-a9cd-cf5570b67379" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0a2209aa-abbb-45de-b417-f080708a0b75" data-ke-size="size16"><span style="color: #000000;"><b>2) 코드 자동 완성 활용</b></span></p>
+<p id="SE-0fb3964b-958c-4fb2-89de-ff144a1e0d07" data-ke-size="size16"><span style="color: #000000;">코드 작성 중 자동으로 제안되는 완성 옵션 확인</span></p>
+<p id="SE-85255d52-687f-4d80-a88c-f26318c1ac8b" data-ke-size="size16"><span style="color: #000000;">Tab 키로 제안된 코드 수락</span></p>
+<p id="SE-39ab380a-cc91-4348-85d5-44026cac45c7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2e849fea-3d7e-4af0-afef-cb676a193046" data-ke-size="size16"><span style="color: #000000;"><b>3) AI 채팅 기능 사용</b></span></p>
+<p id="SE-59fa56b8-b61e-435e-b842-acc104ca2e63" data-ke-size="size16"><span style="color: #000000;">Ctrl + L 단축키로 AI 채팅 창 열기</span></p>
+<p id="SE-b63afc99-fff2-4e54-88c1-25321c10666c" data-ke-size="size16"><span style="color: #000000;">코드에 대한 질문이나 수정 요청 입력</span></p>
+<p id="SE-bb44daaa-3af1-47c6-a007-b609f617275c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d5389207-be88-4608-9877-7a6c1cfd0ef0" data-ke-size="size16"><span style="color: #000000;"><b>4) 코드 실행 및 디버깅</b></span></p>
+<p id="SE-926c192b-812f-4a2a-a1a1-583efc6af391" data-ke-size="size16"><span style="color: #000000;">Ctrl + F5로 현재 파일 실행</span></p>
+<p id="SE-7b08df10-eb6e-4fe6-81a5-a18d4dd9dd71" data-ke-size="size16"><span style="color: #000000;">디버깅 도구를 활용한 코드 분석</span></p>
+<p id="SE-30223a84-a8e2-441c-be61-f1d825c830fb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-93074f41-7eca-480d-8627-1065c6d56e18" data-ke-size="size16"><span style="color: #000000;"><b>4. AI 기능 활용</b></span></p>
+<p id="SE-855bd448-0ea2-40a0-a6ec-6001835675ff" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dd7dfff4-de4d-4d37-9e02-9ac9bc46624d" data-ke-size="size16"><span style="color: #000000;"><b>1) AI 모델 선택</b></span></p>
+<p id="SE-dd9bc1e9-5bdb-474a-831c-2d134d54a91a" data-ke-size="size16"><span style="color: #000000;">좌측 하단에서 사용할 AI 모델 선택 (예: Claude 3.5, GPT-4)</span></p>
+<p id="SE-0151f474-ab1d-4fcf-9c08-9a9267d1f918" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a16092c5-f6e1-47ae-982f-afd465147cc1" data-ke-size="size16"><span style="color: #000000;"><b>2) 코드 생성 요청</b></span></p>
+<p id="SE-3a64c896-42e0-4f77-b23a-c45e0b03a71c" data-ke-size="size16"><span style="color: #000000;">AI 채팅창에 원하는 기능 설명 입력</span></p>
+<p id="SE-743cc473-c3e6-402e-80af-200cdead0fd6" data-ke-size="size16"><span style="color: #000000;">생성된 코드 검토 및 적용</span></p>
+<p id="SE-5939df0b-4466-4d56-9b9a-949a532eb7cc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-82d4081d-4cde-4acf-93d5-d6c7f72b6038" data-ke-size="size16"><span style="color: #000000;"><b>3) 코드 리팩토링</b></span></p>
+<p id="SE-93403783-0028-45d1-b3ca-a582c94f6819" data-ke-size="size16"><span style="color: #000000;">특정 코드 블록 선택 후 Ctrl + K, L로 리팩토링 요청</span></p>
+<p id="SE-f4296784-d789-4bc6-bb5d-d41158378ae8" data-ke-size="size16"><span style="color: #000000;">AI가 제안한 개선사항 검토 및 적용</span></p>
+<p id="SE-845d52ae-c4e6-4235-8442-0efbe43d343e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4a95adcc-8e22-43cf-a812-3dc4ea0e4242" data-ke-size="size16"><span style="color: #000000;"><b>4) 에러 해결 지원</b></span></p>
+<p id="SE-aab0574f-610b-46dc-8ef6-03742d2546e3" data-ke-size="size16"><span style="color: #000000;">에러 메시지를 AI에게 전달하여 해결 방법 요청</span></p>
+<p id="SE-bd0e1f20-3561-4bb6-9f9d-8c1598de9db9" data-ke-size="size16"><span style="color: #000000;">제안된 해결책 적용</span></p>
+<p id="SE-3b7bc4e1-6333-4bee-a999-0eef3232a3f4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-03069ec2-f014-4f24-8384-d5c95bc74bec" data-ke-size="size16"><span style="color: #000000;"><b>5. 고급 기능</b></span></p>
+<p id="SE-740b970c-6cd8-49ed-bd31-09c34d5a3f94" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8c03a515-99de-46f2-baec-587204b9ad15" data-ke-size="size16"><span style="color: #000000;"><b>1) 멘션 기능 활용</b></span></p>
+<p id="SE-97c845c1-e445-4781-8b12-7752c46f60b2" data-ke-size="size16"><span style="color: #000000;">@ 기호를 사용하여 특정 파일이나 폴더 참조</span></p>
+<p id="SE-55c48b27-f276-4723-92de-e156aa8e2b8d" data-ke-size="size16"><span style="color: #000000;">여러 파일의 내용을 고려한 AI 응답 받기</span></p>
+<p id="SE-1d17b9df-30bb-405f-8888-551fcc346bae" data-ke-size="size16">&nbsp;</p>
+<p id="SE-72d0c0d6-d791-4657-ac7d-5c1773278881" data-ke-size="size16"><span style="color: #000000;"><b>2) 플러그인 설치 및 사용</b></span></p>
+<p id="SE-0fb58f49-42e8-44e1-9267-0a02888cdbfa" data-ke-size="size16"><span style="color: #000000;">좌측 하단의 플러그인 메뉴에서 추가 기능 설치</span></p>
+<p id="SE-32e72fcd-eadc-42c2-a756-3670ed840838" data-ke-size="size16"><span style="color: #000000;">PDF 뷰어, 테마 등 다양한 플러그인 활용</span></p>
+<p id="SE-7e2df0fa-902f-44f7-86a7-39a6b4f12ad6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3f520f93-3de1-4311-9e65-7eca34a2b781" data-ke-size="size16"><span style="color: #000000;"><b>3) 커스텀 프롬프트 설정</b></span></p>
+<p id="SE-0b18a203-f103-4f5f-b54c-8a32a77e5f66" data-ke-size="size16"><span style="color: #000000;">자주 사용하는 AI 요청을 커스텀 프롬프트로 저장</span></p>
+<p id="SE-3cd4a2ff-feb9-4a54-b82f-20003d4b8cdb" data-ke-size="size16"><span style="color: #000000;">단축키를 통한 빠른 프롬프트 실행</span></p>
+<p id="SE-790f2599-4049-4faa-9d84-c7491d501a64" data-ke-size="size16">&nbsp;</p>
+<p id="SE-21e07619-bd4c-4b2b-83fe-d6e543e35d3c" data-ke-size="size16"><span style="color: #000000;"><b>4) 버전 관리 통합</b></span></p>
+<p id="SE-7df93bbf-9b21-4823-a515-d5aace386c0b" data-ke-size="size16"><span style="color: #000000;">Git 기능 활용으로 코드 버전 관리</span></p>
+<p id="SE-b6cf1fb0-120a-4362-9de4-63b6af3a3362" data-ke-size="size16"><span style="color: #000000;">커밋, 푸시, 풀 등의 작업 수행</span></p>
+<p id="SE-7fb3cb2c-3d65-4095-b911-8924aa0e9625" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2b03819f-00da-4468-ae1f-4f41c5468aba" data-ke-size="size16"><span style="color: #000000;"><b>6. 협업 및 생산성 향상</b></span></p>
+<p id="SE-b08fa4d4-1c86-4a68-ac6f-e489d56ac50c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c39367b6-6f15-4e2b-bc7b-5c7ce062f379" data-ke-size="size16"><span style="color: #000000;"><b>1) 실시간 협업</b></span></p>
+<p id="SE-51043a10-f36a-428f-9912-f9a1bce551c7" data-ke-size="size16"><span style="color: #000000;">공유 링크를 통한 실시간 코드 공유 및 편집</span></p>
+<p id="SE-182d09b1-ecab-4796-a1f3-4d073bcf4eb2" data-ke-size="size16"><span style="color: #000000;">팀원들과 동시 작업 가능</span></p>
+<p id="SE-1c9393d3-d203-4e1f-8ff6-078fb5396808" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e946845b-037e-484b-b7fa-b243121fb684" data-ke-size="size16"><span style="color: #000000;"><b>2) 프로젝트 관리</b></span></p>
+<p id="SE-7835f077-4012-486a-b746-a17bbd360fe2" data-ke-size="size16"><span style="color: #000000;">작업 폴더 구조를 활용한 효율적인 프로젝트 관리</span></p>
+<p id="SE-7072c7e6-cbd3-487a-92ff-c03657070349" data-ke-size="size16"><span style="color: #000000;">TODO 주석을 통한 작업 추적</span></p>
+<p id="SE-baa52f45-ceea-43be-b101-1c1ea7d224e0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cac8b12b-666e-4773-a100-3a89352f7515" data-ke-size="size16"><span style="color: #000000;"><b>3) 코드 스니펫 관리</b></span></p>
+<p id="SE-57b1c5d6-497c-4944-9676-4bccd8c30519" data-ke-size="size16"><span style="color: #000000;">자주 사용하는 코드 조각을 스니펫으로 저장</span></p>
+<p id="SE-d49d100e-20aa-43dd-af0a-78bdf98c77cb" data-ke-size="size16"><span style="color: #000000;">키워드로 빠르게 스니펫 삽입</span></p>
+<p id="SE-8eb56ec4-17fa-4bd9-aabe-e4fa8988cd25" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bc962740-5f1f-4087-890f-de7d1776eff5" data-ke-size="size16"><span style="color: #000000;"><b>4) 성능 최적화</b></span></p>
+<p id="SE-6eb355e0-bbb6-4824-946b-3dcf9c98b114" data-ke-size="size16"><span style="color: #000000;">대규모 프로젝트에서의 성능 설정 조정</span></p>
+<p id="SE-c78f4025-657a-4b50-9a97-e4626184b9f5" data-ke-size="size16"><span style="color: #000000;">불필요한 파일 분석 제외로 속도 향상</span></p>
+<p id="SE-d9846b0d-38af-432d-a8f1-4e7fef1468ad" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4645e6c7-e400-4e54-89a6-5da69fbdf0b8" data-ke-size="size16"><span style="color: #000000;"><b>5) 지속적인 학습과 업데이트</b></span></p>
+<p id="SE-76a26959-8f38-4f21-a2e9-ba5ce0951b93" data-ke-size="size16"><span style="color: #000000;">Cursor의 정기적인 업데이트 확인 및 적용</span></p>
+<p id="SE-fd81ac08-f658-48c6-9ca4-7ac2c74924d4" data-ke-size="size16"><span style="color: #000000;">새로운 AI 모델 및 기능 학습</span></p>
+<p id="SE-7fff61fe-0fe2-427d-8845-8af55c915e83" data-ke-size="size16">&nbsp;</p>
+<p id="SE-150043b9-3146-443a-adb2-0b37bc06bd73" data-ke-size="size16"><span style="color: #000000;">Cursor를 활용하면 ChatGPT, Claude, Replit의 장점을 하나의 환경에서 효율적으로 사용할 수 있습니다. 코드 작성부터 AI 지원, 실행 및 디버깅까지 통합된 환경에서 개발 생산성을 크게 향상시킬 수 있습니다. 다양한 기능을 익히고 활용하여 더욱 효율적인 개발 경험을 즐겨보세요.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

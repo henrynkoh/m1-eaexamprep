@@ -1,0 +1,142 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>DOCetl 사용 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">DOCetl 사용 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-30 16:12:59</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-83864f59-4775-4690-b36c-2f138a92893d" data-ke-size="size16"><span style="color: #000000;">DOCetl은 데이터 추출, 변환, 로드(ETL) 작업을 위한 강력한 오픈소스 도구입니다. 이 가이드에서는 DOCetl의 설치부터 고급 기능 활용까지 단계별로 설명하겠습니다.</span></p>
+<p id="SE-8bb2b7b5-288a-4bdf-9e49-95f46d94c0d7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bc9edc1b-de5f-49ed-9763-84eddc1c0f7b" data-ke-size="size16"><span style="color: #000000;"><b>1. 설치 및 환경 설정</b></span></p>
+<p id="SE-3e53cac5-0562-4fa2-9006-79b94577b9fa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eb6e2997-719c-4413-921b-26b14151beda" data-ke-size="size16"><span style="color: #000000;"><b>1.1 Python 설치</b></span></p>
+<p id="SE-9f79ff38-ac64-402e-8179-d7b58c29f373" data-ke-size="size16"><span style="color: #000000;">Python 3.7 이상 버전을 설치합니다.</span></p>
+<p id="SE-03b0c3d1-00d9-44c0-a471-aa6968c6ae7c" data-ke-size="size16"><span style="color: #000000;">공식 웹사이트(</span><span style="color: #000000;" data-href="http://python.org/">python.org</span><span style="color: #000000;">)에서 다운로드 후 설치합니다.</span></p>
+<p id="SE-11e02b7d-ffd1-4b08-8a1e-17f3b64b4a2b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6ed2b14d-3deb-43bd-9f58-f12c400ea641" data-ke-size="size16"><span style="color: #000000;"><b>1.2 가상 환경 생성</b></span></p>
+<p id="SE-7c78e466-b128-408f-a0c4-67d97faf632c" data-ke-size="size16"><span style="color: #000000;">python -m venv docetl_env source docetl_env/bin/activate # Windows: docetl_env\\\\Scripts\\\\activate </span></p>
+<p id="SE-f103aa11-9374-4f85-b877-b43e2f15902d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-643b3ffa-98cd-4d11-8ca4-92de07ededad" data-ke-size="size16"><span style="color: #000000;"><b>1.3 DOCetl 설치</b></span></p>
+<p id="SE-9f11558f-6451-4c1f-b552-3bf4ef839745" data-ke-size="size16"><span style="color: #000000;">pip install docetl </span></p>
+<p id="SE-391e54b5-23dd-49f7-b9c4-56ff4a92c4f7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d1d9d647-3df3-4e05-b058-1813b536f8e3" data-ke-size="size16"><span style="color: #000000;"><b>1.4 의존성 패키지 설치</b></span></p>
+<p id="SE-9b3fee83-3bae-4624-b124-bf4f6074eb61" data-ke-size="size16"><span style="color: #000000;">pip install pandas numpy sqlalchemy </span></p>
+<p id="SE-b9f464a1-b22f-40e7-9fea-8bdf4e623052" data-ke-size="size16">&nbsp;</p>
+<p id="SE-44ce281b-716d-491c-af31-fdfa6676d4b2" data-ke-size="size16"><span style="color: #000000;"><b>2. 기본 사용법</b></span></p>
+<p id="SE-615185fa-0d33-4464-9731-1fb2f2d0d493" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a52800be-2761-47a9-91ca-96ae979f61a0" data-ke-size="size16"><span style="color: #000000;"><b>2.1 프로젝트 구조 생성</b></span></p>
+<p id="SE-4d078fdd-0b2e-41bf-bc69-e6da0f23708b" data-ke-size="size16"><span style="color: #000000;">docetl init my_etl_project cd my_etl_project </span></p>
+<p id="SE-800e4966-93fa-4dfa-b18f-a0226ea96371" data-ke-size="size16">&nbsp;</p>
+<p id="SE-11020fa0-b65b-4a87-bf7e-6e532a431b05" data-ke-size="size16"><span style="color: #000000;"><b>2.2 설정 파일 편집</b></span></p>
+<p id="SE-07b303bf-7dad-41db-9cda-b7e8f0cbbdfe" data-ke-size="size16"><span style="color: #000000;">config.yaml 파일을 열어 데이터베이스 연결 정보를 입력합니다.</span></p>
+<p id="SE-044bd149-82ca-4eaf-a565-749fab109423" data-ke-size="size16"><span style="color: #000000;">database: type: postgresql host: localhost port: 5432 name: mydb user: myuser password: mypassword </span></p>
+<p id="SE-9d986636-17b6-4ba9-971b-db9ed554a198" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dba6e204-b953-40f4-b283-8a0caec2e373" data-ke-size="size16"><span style="color: #000000;"><b>2.3 첫 번째 ETL 작업 생성</b></span></p>
+<p id="SE-3ee7cad9-d37c-4f6a-a369-613179ac7253" data-ke-size="size16"><span style="color: #000000;">docetl create job my_first_job </span></p>
+<p id="SE-4dfaf872-c32e-4d82-b2c2-bba12248d87c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d7e278a8-dcbb-4d20-8cb4-19ad83919bfc" data-ke-size="size16"><span style="color: #000000;"><b>2.4 ETL 스크립트 작성</b></span></p>
+<p id="SE-acf56238-fb1c-4ccb-9ae1-14e00fe02671" data-ke-size="size16"><span style="color: #000000;">jobs/my_first_job.py 파일을 편집하여 ETL 로직을 구현합니다.</span></p>
+<p id="SE-a1f56810-8e63-4246-92de-ffb00df94971" data-ke-size="size16"><span style="color: #000000;">from docetl import Job class MyFirstJob(Job): def extract(self): # 데이터 추출 로직 pass def transform(self): # 데이터 변환 로직 pass def load(self): # 데이터 로드 로직 pass </span></p>
+<p id="SE-0227b07a-a5d7-4151-9dfc-8ea6d42fa169" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5dc95aa2-7fe7-44f6-b69b-7baa4f615e3f" data-ke-size="size16"><span style="color: #000000;"><b>2.5 작업 실행</b></span></p>
+<p id="SE-7d349576-0cf2-489b-93f7-39a7d274603a" data-ke-size="size16"><span style="color: #000000;">docetl run my_first_job </span></p>
+<p id="SE-fc4fa132-4e7d-4468-9de5-bf8a8d539df7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-933efd1a-3ae9-41a9-964e-6df347a9c193" data-ke-size="size16"><span style="color: #000000;"><b>3. 고급 기능</b></span></p>
+<p id="SE-b8e7cdb7-53c2-4773-9afa-cb153095f105" data-ke-size="size16">&nbsp;</p>
+<p id="SE-82c1f523-925a-4534-8739-0729a22b3844" data-ke-size="size16"><span style="color: #000000;"><b>3.1 데이터 소스 연결</b></span></p>
+<p id="SE-00fedeb4-4a4d-4796-88e2-d036a97ef8c9" data-ke-size="size16"><span style="color: #000000;">다양한 데이터 소스(CSV, Excel, 데이터베이스 등)에 연결하는 방법을 설명합니다.</span></p>
+<p id="SE-b4b06123-0e03-4032-9e75-7542ee7e8966" data-ke-size="size16"><span style="color: #000000;">import pandas as pd def extract(self): self.data = pd.read_csv('data.csv') </span></p>
+<p id="SE-499ff6f4-6be5-4fcf-9f30-647b361ba177" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e2270700-5547-4ec6-a9cd-ae37c65f0dce" data-ke-size="size16"><span style="color: #000000;"><b>3.2 데이터 변환</b></span></p>
+<p id="SE-3ba173f6-a88d-47a3-8d80-75f8f855bf3e" data-ke-size="size16"><span style="color: #000000;">Pandas를 사용한 데이터 변환 예시를 제공합니다.</span></p>
+<p id="SE-1ae16c34-db1b-4621-a2c5-8d375f0b856b" data-ke-size="size16"><span style="color: #000000;">def transform(self): self.data['new_column'] = self.data['old_column'] * 2 </span></p>
+<p id="SE-b280f2ce-2443-423d-8f1f-ae72ea3f8a59" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7a7cc93b-6816-4e9d-9d19-958264493f2b" data-ke-size="size16"><span style="color: #000000;"><b>3.3 데이터 로드</b></span></p>
+<p id="SE-33b4198e-6354-4fcc-99ce-caab2f9fcad0" data-ke-size="size16"><span style="color: #000000;">변환된 데이터를 데이터베이스에 저장하는 방법을 설명합니다.</span></p>
+<p id="SE-dcfcba29-170d-4629-b97f-437a663abb22" data-ke-size="size16"><span style="color: #000000;">from sqlalchemy import create_engine def load(self): engine = create_engine('postgresql://user:password@localhost/dbname') self.data.to_sql('table_name', engine, if_exists='replace') </span></p>
+<p id="SE-c0c1b772-df5b-4f0c-96c9-f3ecd2663cad" data-ke-size="size16">&nbsp;</p>
+<p id="SE-81190f1d-ee2a-480a-8046-661b88bc3da8" data-ke-size="size16"><span style="color: #000000;"><b>3.4 병렬 처리</b></span></p>
+<p id="SE-30ccf09d-bad3-4f4d-86e5-3dc832ff42a4" data-ke-size="size16"><span style="color: #000000;">여러 작업을 동시에 실행하는 방법을 소개합니다.</span></p>
+<p id="SE-d195b0c8-b875-43e4-9147-32c929a16acf" data-ke-size="size16"><span style="color: #000000;">docetl run job1 job2 job3 --parallel </span></p>
+<p id="SE-af9249ef-4a07-4e76-bb66-3e0111eb0338" data-ke-size="size16">&nbsp;</p>
+<p id="SE-792d5b42-263e-425f-afb9-cfe9833ffc8b" data-ke-size="size16"><span style="color: #000000;"><b>3.5 스케줄링</b></span></p>
+<p id="SE-60ba439a-3ab7-4fa0-82ab-5a936a06e224" data-ke-size="size16"><span style="color: #000000;">Cron을 사용하여 작업을 주기적으로 실행하는 방법을 설명합니다.</span></p>
+<p id="SE-3981e42c-911f-4195-b33d-bd60dfae7393" data-ke-size="size16"><span style="color: #000000;">crontab -e # 매일 오전 2시에 작업 실행 0 2 * * * /path/to/docetl run my_job </span></p>
+<p id="SE-2a90584d-4938-42c3-a47f-a904af596c0c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a04a7ada-7de7-4f7f-8715-edf02149af3c" data-ke-size="size16"><span style="color: #000000;"><b>4. 모니터링 및 로깅</b></span></p>
+<p id="SE-57fdc9a6-ad7f-43f6-b302-e8f85796426f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d2fe886f-0fbe-491c-ace6-4113344b2176" data-ke-size="size16"><span style="color: #000000;"><b>4.1 로그 설정</b></span></p>
+<p id="SE-7a493153-f91e-440c-836d-fa9f561b5aa5" data-ke-size="size16"><span style="color: #000000;">로깅 설정을 통해 작업 진행 상황을 추적하는 방법을 소개합니다.</span></p>
+<p id="SE-f38d86ac-9637-433c-945c-a81084246f38" data-ke-size="size16"><span style="color: #000000;">import logging logging.basicConfig(level=logging.INFO) logger = logging.getLogger(__name__) def extract(self): logger.info("Extracting data...") </span></p>
+<p id="SE-8d9267ea-d73c-4425-bfe4-92b257df3be7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cf094bed-58c6-4d79-a0f2-063a2a688dd8" data-ke-size="size16"><span style="color: #000000;"><b>4.2 성능 모니터링</b></span></p>
+<p id="SE-68f08b9f-0f46-43be-bec0-4b06fc1b19cf" data-ke-size="size16"><span style="color: #000000;">작업 실행 시간과 리소스 사용량을 측정하는 방법을 설명합니다.</span></p>
+<p id="SE-d4838993-ad5f-424a-9cb5-f309ea1814f2" data-ke-size="size16"><span style="color: #000000;">import time start_time = time.time() # 작업 실행 end_time = time.time() print(f"Job completed in {end_time - start_time} seconds") </span></p>
+<p id="SE-f87fb215-d0e4-4d2a-822e-26e5bc4a1740" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8eb577e2-ad4b-42c3-b918-99c25d44cacc" data-ke-size="size16"><span style="color: #000000;"><b>5. 오류 처리 및 복구</b></span></p>
+<p id="SE-b7858051-8d78-4df6-bc10-513f4fad251e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2bf57e8f-dc28-45f0-a46d-3c53b1feb727" data-ke-size="size16"><span style="color: #000000;"><b>5.1 예외 처리</b></span></p>
+<p id="SE-ed8c0fbb-0d0a-449d-8f60-0650f6181878" data-ke-size="size16"><span style="color: #000000;">ETL 프로세스 중 발생할 수 있는 오류를 처리하는 방법을 소개합니다.</span></p>
+<p id="SE-647ad23b-4836-4c99-a137-1c1072861d70" data-ke-size="size16"><span style="color: #000000;">try: # ETL 로직 except Exception as e: logger.error(f"An error occurred: {str(e)}") self.send_alert_email() </span></p>
+<p id="SE-87bce02c-5a4e-40ca-a867-ffd6b465f604" data-ke-size="size16">&nbsp;</p>
+<p id="SE-479c57b0-4a62-4a4a-9f48-18e484a309b5" data-ke-size="size16"><span style="color: #000000;"><b>5.2 재시도 메커니즘</b></span></p>
+<p id="SE-d33060bf-cd3d-4807-9695-8842bc8344b4" data-ke-size="size16"><span style="color: #000000;">일시적인 오류에 대처하기 위한 재시도 로직을 구현합니다.</span></p>
+<p id="SE-51e6a3bf-e215-4cbc-8057-0604a237099b" data-ke-size="size16"><span style="color: #000000;">from retrying import retry @retry(stop_max_attempt_number=3, wait_fixed=2000) def extract(self): # 데이터 추출 로직 </span></p>
+<p id="SE-13ae89cd-85c0-4f18-b35b-6227c0cff654" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9e52e51f-06c3-4539-88a0-480c81b68dac" data-ke-size="size16"><span style="color: #000000;"><b>6. 데이터 품질 관리</b></span></p>
+<p id="SE-a991f6ea-2c5d-45a3-8606-9f51fc781471" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ebcc0a19-608a-410b-8b35-210ec14dcacc" data-ke-size="size16"><span style="color: #000000;"><b>6.1 데이터 검증</b></span></p>
+<p id="SE-4106202c-1041-4b83-acfb-06783b6292ce" data-ke-size="size16"><span style="color: #000000;">입력 및 출력 데이터의 품질을 검증하는 방법을 설명합니다.</span></p>
+<p id="SE-248c8766-3354-4230-a317-0e2316605b7d" data-ke-size="size16"><span style="color: #000000;">def validate_data(self): assert self.data['column'].isnull().sum() == 0, "Missing values detected" </span></p>
+<p id="SE-99c92f27-1311-464e-acea-1de1b00e25e3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2e8acc3e-de58-404a-9e7c-85ec163d4adb" data-ke-size="size16"><span style="color: #000000;"><b>6.2 데이터 프로파일링</b></span></p>
+<p id="SE-03dc9610-ae08-4091-aea4-8c9352b56084" data-ke-size="size16"><span style="color: #000000;">데이터의 통계적 특성을 분석하는 방법을 소개합니다.</span></p>
+<p id="SE-caae19e3-365d-49f8-8134-906e7b227b3e" data-ke-size="size16"><span style="color: #000000;">from pandas_profiling import ProfileReport def profile_data(self): profile = ProfileReport(self.data) profile.to_file("data_profile.html") </span></p>
+<p id="SE-99e76554-6d84-4a6d-94a8-dbca3e7f8a89" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e3c8cb44-04b1-418e-bb25-bba3f0e1a560" data-ke-size="size16"><span style="color: #000000;"><b>7. 확장 및 커스터마이징</b></span></p>
+<p id="SE-54db0466-efa1-4d2c-8609-bc3d52052628" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8f64cd7a-4d8f-4879-a42b-7caa953a0e23" data-ke-size="size16"><span style="color: #000000;"><b>7.1 플러그인 개발</b></span></p>
+<p id="SE-2e4e40e8-97e3-45bd-b7da-4981c6c6431d" data-ke-size="size16"><span style="color: #000000;">DOCetl의 기능을 확장하는 플러그인을 개발하는 방법을 설명합니다.</span></p>
+<p id="SE-02d11259-6552-484a-be7d-083ad7715ad0" data-ke-size="size16"><span style="color: #000000;">from docetl import Plugin class MyCustomPlugin(Plugin): def process(self, data): # 커스텀 로직 return processed_data </span></p>
+<p id="SE-8bc70e3b-bed8-4650-82e0-8daf24407602" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9e280545-1831-4540-9d13-4f442045b2eb" data-ke-size="size16"><span style="color: #000000;"><b>7.2 템플릿 사용</b></span></p>
+<p id="SE-6a8978f1-2f2d-4160-a3a2-f79d1f878010" data-ke-size="size16"><span style="color: #000000;">반복적인 ETL 패턴을 위한 템플릿을 만들고 사용하는 방법을 소개합니다.</span></p>
+<p id="SE-0a7fd77e-8687-4149-b7e0-fa13ceb81ebb" data-ke-size="size16"><span style="color: #000000;">docetl create template my_template docetl use template my_template new_job </span></p>
+<p id="SE-04e0a7e2-68cb-43f4-b7ee-c53c007aa9ab" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b32ddb50-9d18-4077-aad3-7aa690a55bef" data-ke-size="size16"><span style="color: #000000;">이 가이드를 통해 DOCetl의 기본적인 사용법부터 고급 기능까지 다양한 측면을 살펴보았습니다. DOCetl을 활용하면 복잡한 ETL 프로세스를 효율적으로 관리하고 자동화할 수 있습니다. 지속적인 학습과 실험을 통해 더 나은 데이터 파이프라인을 구축할 수 있을 것입니다.</span></p>
+<p id="SE-f508b33c-598e-4acd-88e6-65f190601650" data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

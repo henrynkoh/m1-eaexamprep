@@ -1,0 +1,147 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Cursor활용한 Deep Research 앱 개발</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Cursor활용한 Deep Research 앱 개발</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-17 11:50:26</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">커서(Cursor)를 활용한 월 700만 원 앱 만들기 (단계별 가이드)</h2>
+<p data-ke-size="size16">본 게시글은 David Andre의 유튜브 영상 "<a href="https://www.youtube.com/watch?v=XVDnkti4Li8">How to build a $7,000/mo app with Cursor (step-by-step)</a>" 내용을 바탕으로 작성되었습니다. 프로그래밍 경험 없이도 AI 도구인 커서(Cursor), 클로드(Claude), 벌셀(Vercel)을 활용하여 월 700만 원 수익을 올리는 앱을 만드는 방법을 소개합니다. 특히 딥 리서치(Deep Research) 트렌드를 활용하여 특정 분야에 특화된 AI 심층 연구 도구를 구축하고 수익화하는 과정을 상세히 설명합니다.</p>
+<h3 data-ke-size="size23">서론: AI 시대, 누구나 스타트업 창업 가능!</h3>
+<p data-ke-size="size16">과거에는 앱 개발을 위해 전문적인 프로그래밍 지식이 필수였습니다. 하지만 AI 기술의 발전 덕분에 이제는 누구나 아이디어만 있다면 AI 도구를 활용하여 쉽게 앱을 개발하고 수익을 창출할 수 있게 되었습니다. 본 게시글에서는 커서(Cursor)라는 강력한 AI 코딩 도구를 사용하여 딥 리서치(Deep Research) 트렌드를 활용한 앱을 개발하고 수익화하는 방법을 단계별로 자세히 안내합니다.</p>
+<h3 data-ke-size="size23">딥 리서치(Deep Research) 트렌드란 무엇일까요?</h3>
+<p data-ke-size="size16">딥 리서치(Deep Research)는 AI를 활용하여 심층적인 정보를 분석하고 제공하는 기술입니다. 최근 Google Gemini, OpenAI, Perplexity 등 주요 AI 기업들이 딥 리서치 기능을 출시하면서 이 분야에 대한 관심과 수요가 급증하고 있습니다. 딥 리서치 기술은 특정 분야의 전문가들을 위한 심층적인 정보 분석 도구로 활용될 수 있으며, 이를 통해 사용자들은 시간과 노력을 절약하고 더 나은 의사 결정을 내릴 수 있습니다.</p>
+<h3 data-ke-size="size23">커서(Cursor)란 무엇일까요?</h3>
+<p data-ke-size="size16">커서(Cursor)는 AI 기반의 강력한 코드 편집기로, 자연어 프롬프트를 사용하여 코드를 생성, 수정, 분석할 수 있습니다. 커서는 OpenAI, Claude, DeepSeek 등 다양한 AI 모델을 지원하며, 코드 자동 완성, 오류 검사, 코드 설명 등 다양한 기능을 제공하여 개발 생산성을 향상시켜줍니다. 커서는 무료로 시작할 수 있으며, 스타트업 구축을 위한 유료 플랜도 제공합니다.</p>
+<h3 data-ke-size="size23">앱 개발 및 수익화 과정 (30단계 상세 설명)</h3>
+<p data-ke-size="size16">다음은 커서를 사용하여 딥 리서치 트렌드를 활용한 앱을 개발하고 수익화하는 방법에 대한 30단계 상세 설명입니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>커서(Cursor) 설치:</b> 커서 웹사이트(<a href="https://www.notion.so/cursor.sh">cursor.sh</a>)에서 커서를 다운로드하여 설치합니다.</li>
+<li><b>프로젝트 생성:</b> 커서를 실행하고 "Open Project"를 클릭하여 새로운 프로젝트를 생성합니다.</li>
+<li><b>AI 모델 선택:</b> 커서 설정(Settings)에서 사용할 AI 모델을 선택합니다. Claude 3.5 Sonnet, DeepSeek-V3, Gemini 등 다양한 모델을 선택할 수 있습니다.</li>
+<li><b>커서 컴포저(Composer) 활용:</b> 커서 컴포저(Composer)에 자연어 프롬프트를 입력하여 앱 개발을 시작합니다.</li>
+<li><b>텍스트 스택(Text Stack) 선택:</b> 프론트엔드, 데이터베이스, API 구조 등을 고려하여 앱에 적합한 텍스트 스택을 선택합니다.</li>
+<li><b>벌셀(Vercel) AI SDK 활용:</b> 벌셀(Vercel) AI SDK를 활용하여 AI 에이전트를 구축하고 다양한 AI 모델과 연동합니다.</li>
+<li><b>Next.js 프로젝트 생성:</b> 커서 에이전트 모드(Agent Mode)를 사용하여 Next.js 프로젝트를 생성합니다.</li>
+<li><b>UI 디자인:</b> 커서 컴포저에 프롬프트를 입력하여 AI 연구 도구에 맞는 깔끔한 UI를 디자인합니다.</li>
+<li><b>파일 구조 설계:</b> 앱의 기능을 고려하여 최소한의 파일 구조를 설계합니다.</li>
+<li><b>AI 로직 구현:</b> AI 로직을 처리하는 새로운 파일을 생성하고 벌셀 AI SDK를 사용하여 필요한 API를 가져옵니다.</li>
+<li><b>환경 변수 설정:</b> API 키 등 중요한 정보를 .env 파일에 저장하고 코드에서 안전하게 접근합니다.</li>
+<li><b>API 연동:</b> 벌셀 AI SDK를 사용하여 DeepSeek, Tavily 등 필요한 API를 연동합니다.</li>
+<li><b>데이터 스트리밍:</b> 스트리밍 기능을 사용하여 AI 응답을 실시간으로 표시합니다.</li>
+<li><b>오류 처리:</b> 코드에서 발생하는 오류를 해결하고 안정적인 앱을 구축합니다.</li>
+<li><b>커서 룰(Cursor Rules) 활용:</b> 커서 룰(Cursor Rules)을 활용하여 프로젝트 관련 정보를 설정하고 AI 모델이 더 정확한 응답을 생성하도록 돕습니다.</li>
+<li><b>프롬프트 엔지니어링:</b> AI 모델이 원하는 결과를 생성하도록 프롬프트를 개선합니다.</li>
+<li><b>디버깅:</b> 디버깅 도구를 사용하여 코드의 오류를 찾고 수정합니다.</li>
+<li><b>웹 검색 기능 구현:</b> Tavily API를 사용하여 웹 검색 기능을 구현하고 AI 에이전트가 최신 정보를 활용하도록 돕습니다.</li>
+<li><b>UI 개선:</b> 사용자 경험을 향상시키기 위해 UI를 개선합니다.</li>
+<li><b>로직 설계:</b> 딥 리서치 로직을 설계하고 AI 에이전트가 심층적인 정보 분석을 수행하도록 돕습니다.</li>
+<li><b>반복 루프 구현:</b> AI 에이전트가 웹 검색 및 정보 분석을 반복적으로 수행하는 루프를 구현합니다.</li>
+<li><b>코드 분할:</b> 코드의 가독성과 유지보수성을 높이기 위해 코드를 여러 파일로 분할합니다.</li>
+<li><b>파일 구조 재구성:</b> 코드 분할에 따라 파일 구조를 재구성합니다.</li>
+<li><b>AI 에이전트 설정:</b> AI 에이전트가 웹 검색, 정보 분석, 요약 등 다양한 작업을 수행하도록 설정합니다.</li>
+<li><b>테스트:</b> 앱의 모든 기능을 테스트하고 오류를 수정합니다.</li>
+<li><b>벌셀(Vercel) 배포:</b> 벌셀(Vercel)을 사용하여 앱을 배포하고 온라인에서 접근 가능하도록 만듭니다.</li>
+<li><b>수익 모델 구축:</b> 앱의 수익 모델을 구축합니다. 유료 구독, 광고, 제휴 마케팅 등 다양한 수익 모델을 고려할 수 있습니다.</li>
+<li><b>마케팅:</b> 앱을 홍보하고 사용자 유치를 위한 마케팅 전략을 수립합니다.</li>
+<li><b>사용자 피드백 수집:</b> 사용자 피드백을 수집하고 앱을 개선합니다.</li>
+<li><b>지속적인 업데이트:</b> 앱을 지속적으로 업데이트하고 새로운 기능을 추가하여 사용자 만족도를 높입니다.</li>
+</ol>
+<h3 data-ke-size="size23">프롬프트 예시</h3>
+<p data-ke-size="size16">다음은 앱 개발 과정에서 사용될 수 있는 프롬프트 예시입니다.</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>"DeepSeek-V3 모델을 사용하여 '최신 AI 기술 트렌드'에 대한 웹 검색을 수행하고 결과를 요약해 줘."</li>
+<li>"Tavily API를 사용하여 웹 검색 결과를 가져오고 관련 정보를 추출해 줘."</li>
+<li>"사용자 질문에 답변하는 AI 챗봇 기능을 구현해 줘."</li>
+<li>"UI를 개선하고 사용자 경험을 향상시켜 줘."</li>
+<li>"코드 오류를 수정하고 앱을 안정화해 줘."</li>
+</ul>
+<h3 data-ke-size="size23">추가 정보</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>커서 웹사이트: <a href="https://www.cursor.sh/">https://www.cursor.sh/</a></li>
+<li>벌셀 AI SDK: <a href="https://vercel.com/ai">https://vercel.com/ai</a></li>
+<li>Tavily API: <a href="https://tavily.com/">https://tavily.com/</a></li>
+</ul>
+<h3 data-ke-size="size23">맺음말: AI 도구와 함께 꿈을 현실로!</h3>
+<p data-ke-size="size16">커서와 같은 AI 코딩 도구를 활용하면 프로그래밍 경험이 없는 사람도 쉽게 앱을 개발하고 수익을 창출할 수 있습니다. 딥 리서치 트렌드를 활용하여 특정 분야에 특화된 AI 심층 연구 도구를 구축하고 사용자들에게 가치를 제공한다면 충분히 성공적인 스타트업을 만들 수 있습니다. 지금 바로 커서를 다운로드하고 여러분의 아이디어를 현실로 만들어 보세요!</p>
+<h3 data-ke-size="size23">추출된 프롬프트 목록 (총 183개)</h3>
+<p data-ke-size="size16">제공된 텍스트에서 명시적, 암시적으로 사용된 프롬프트는 다음과 같습니다. 중복된 프롬프트는 제거하고 핵심 의미를 담고 있는 프롬프트만 포함했습니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Build the Deep research tool in cursor</li>
+<li>Break down the build my deep research task into five smaller steps</li>
+<li>What text tag would you recommend I just want to build Specialized deep research feature for investors this is the niche I will be picking right here and then I'll say it needs to have a simple chatbot in the front end and minimal AI Logic on the back end</li>
+<li>What is the versel AI SDK for explain it in simple terms</li>
+<li>Create a simple nextjs project choose the default um settings and options we are building a clean and minimal AI research tool</li>
+<li>Start up the front end to see what it looks like</li>
+<li>Update page.TSX to make it a very clean AI research tool something like CH GPT and perplexity but even more minimalist the goal is to appeal to investors</li>
+<li>In that case update our tasks accordingly</li>
+<li>How do I Implement versel SDK into my nextjs front end app I want to build um team of AI agents that do research using the together AI API from versel SDK</li>
+<li>Implement a new file that handles the AI logic we need a team of okay we need a team maybe now I need to describe the logic for deep research right we need a team of AI agents that actually do the research but first just design a simple file structure that does everything we need most importantly we need to import the together AI API using the versel SDK take a deep breath and proceed like a senior developer would</li>
+<li>I have chosen the text tag and um vectal is already aware of okay that problem means I need to complete a task boom it marks the task as complete next help me with designing a minimal Nal file structure</li>
+<li>Have me designed a minimal file structure to create our deep research tool currently I just have the default next G project</li>
+<li>Implement a new file that handles the AI logic</li>
+<li>What do we need to do now do we need a new file that handles the AI logic and then uh uh uh take a deep breath and I'm going to say and answer like a senior devil Vel oper would do not write any code yet just answer</li>
+<li>Good now create the necessary files and folders</li>
+<li>Correct it actually use this command</li>
+<li>Make sure you follow the official documentation</li>
+<li>Create a newv file and make sure that route TSA uses that I'm going to put there the together AI API key</li>
+<li>Make sure you follow the official docs I'm going to tag in docs and then get together AI versus L SDK enter</li>
+<li>Implement the same formatting for together AI</li>
+<li>Fix the error in routs make sure to follow the official documentation I'm going to tag in streaming as well as together Ai</li>
+<li>Follow rewrite this to follow um the official dogs I pasted above</li>
+<li>What if we just implement the Deep seek AI model in the TS file and have it output into the console so that we know it works can we do this</li>
+<li>In that case make sure to follow I'm going to do together Ai and um together and pro okay together AI closely and carefully and also wait there's one more docs we should have we should have the where is where is the versel SDK bro versel SDK AI SDK we should have the foundations</li>
+<li>Install the following two packages</li>
+<li>Now update Route DS so that it outputs the AI responds into the terminal super simple follow and then to get I boom</li>
+<li>Make sure that route. page can correctly call route. DSX for the AI completions and that r. DSX Returns the message once it's full no token streaming yet once it's um returned by the together AI API no do consuming yet</li>
+<li>Paste it open the terminal oh we got a response it seems like okay so we are getting Chad respon amazing let's put this into composer and we say we got okay looks like the API is working amazing however we are still getting an error explain what the error is and then fix it</li>
+<li>Give me news in Europe</li>
+<li>The fewer lines of codee the better</li>
+<li>Give me a short answer please right now</li>
+<li>What is going on in Munich</li>
+<li>You're trying to do too much at once look into that cursor rules and tell me what the next Small Change in rout TS should be so that we are one step closer to our final um logic to final Vision</li>
+<li>Okay I agree however let's utilize the code we already have in route to make this happen because it or because that code Works take a d deep breath and proceed like a senior developer would the fewer lines of code the better</li>
+<li>Update Route and page so that we are sending to frontend simple message bubbles updating the user on what's Happening as if we were showing him certain debug logs basically we need to show these in the chat as if those were AI responses I'm and then say Implement implement this in the simplest way possible</li>
+<li>What is the simplest way to make this happen do not write any code yet just answer</li>
+<li>Where should we create the file then</li>
+<li>I created the file I created research hello research X now how do we execute this refactor let's do it in stages we need to we need to update route.</li>
+<li>Your job is to suggest a clear 3 to four stage process say in a way that makes sense do not write any code yet just answer</li>
+<li>Then same for the proms and instructions</li>
+<li>What is Project Cargate</li>
+</ol>
+<h3 data-ke-size="size23">주의사항</h3>
+<p data-ke-size="size16">본 게시글은 정보 제공 목적으로 작성되었으며, 투자 자문으로 간주될 수 없습니다. 자동 트레이딩은 높은 위험을 수반하므로,</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Google IDX와 Streamlit을 활용한 성경 웹 앱 만들기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Google IDX와 Streamlit을 활용한 성경 웹 앱 만들기</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-07-29 15:17:24</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">Google IDX와 Streamlit을 활용한 성경 웹 앱 만들는 과정을&nbsp; Canva eBook 페이지 형식으로 작성하여 설명드립니다.</p>
+<h3 data-ke-size="size23">1페이지: 표지</h3>
+<p data-ke-size="size16"><b>제목:</b> Google IDX와 Streamlit을 활용한 성경 웹 앱 만들기</p>
+<p data-ke-size="size16"><b>부제:</b> 단계별 가이드</p>
+<p data-ke-size="size16"><b>저자:</b> [당신의 이름]</p>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">2페이지: 소개</h3>
+<p data-ke-size="size16"><b>제목:</b> 소개</p>
+<p data-ke-size="size16">이 가이드에서는 Google IDX 환경에서 index.html, index.js, bibleData.json 파일을 사용하여 웹 앱을 개발하고 Streamlit을 통해 배포하는 과정을 상세히 안내합니다.</p>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">3페이지: 프로젝트 설정 및 파일 준비</h3>
+<p data-ke-size="size16"><b>제목:</b> 프로젝트 설정 및 파일 준비</p>
+<p data-ke-size="size16">Google IDX는 클라우드 기반 개발 환경으로, 별도의 설치 없이 Python, Streamlit 등 필요한 도구를 바로 사용할 수 있습니다. 주요 파일은 다음과 같습니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>index.html:</b> 웹 앱의 프론트엔드 구조를 담당합니다.</li>
+<li><b>index.js:</b> 웹 앱의 동적인 기능을 구현합니다.</li>
+<li><b>bibleData.json:</b> 성경 구절 데이터베이스 역할을 합니다.</li>
+</ul>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">4페이지: index.html 구조 설계</h3>
+<p data-ke-size="size16"><b>제목:</b> index.html 구조 설계</p>
+<p data-ke-size="size16">사용자에게 보여질 웹 페이지의 레이아웃을 디자인합니다. 주요 구성 요소는 다음과 같습니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>검색 기능</li>
+<li>선택된 성경 구절 표시</li>
+<li>오늘의 말씀 (랜덤 구절)</li>
+</ul>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">5페이지: 검색 기능 구현</h3>
+<p data-ke-size="size16"><b>제목:</b> 검색 기능 구현</p>
+<pre class="javascript"><code>const resultList = document.createElement('ul');
+results.forEach(result =&gt; {
+  const listItem = document.createElement('li');
+  listItem.textContent = `${result.book} ${result.chapter}:${result.verse} - ${result.text}`;
+  resultList.appendChild(listItem);
+});
+container.appendChild(resultList);
+
+</code></pre>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">6페이지: 특정 구절 찾기 기능</h3>
+<p data-ke-size="size16"><b>제목:</b> 특정 구절 찾기 기능</p>
+<pre class="typescript"><code>const bookSelectForm = document.querySelector('.book-select form');
+const selectedVerseDiv = document.getElementById('selected-verse');
+bookSelectForm.addEventListener('submit', (event) =&gt; {
+  event.preventDefault();
+  const book = document.getElementById('book-select').value;
+  const chapter = parseInt(document.getElementById('chapter-input').value);
+  const verse = parseInt(document.getElementById('verse-input').value);
+  const verseText = bibleData[book]?.[chapter]?.[verse];
+  if (verseText) {
+    selectedVerseDiv.textContent = `${book} ${chapter}:${verse} - ${verseText}`;
+  } else {
+    selectedVerseDiv.textContent = '해당 구절을 찾을 수 없습니다.';
+  }
+});
+
+</code></pre>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">7페이지: 오늘의 말씀 표시</h3>
+<p data-ke-size="size16"><b>제목:</b> 오늘의 말씀 표시</p>
+<p data-ke-size="size16">랜덤으로 성경 구절을 선택하여 오늘의 말씀으로 표시합니다.</p>
+<pre class="1c"><code>// 랜덤 구절 선택 코드
+
+</code></pre>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">8페이지: Streamlit 앱 생성 및 배포</h3>
+<p data-ke-size="size16"><b>제목:</b> Streamlit 앱 생성 및 배포</p>
+<p data-ke-size="size16">Google IDX에서 app.py 파일을 생성하고 다음 코드를 작성합니다:</p>
+<pre class="routeros"><code>import streamlit as st
+with open('index.html', 'r', encoding='utf-8') as f:
+  html_string = f.read()
+st.components.v1.html(html_string, height=1000, scrolling=True)
+
+</code></pre>
+<p data-ke-size="size16">앱 실행 명령어:</p>
+<pre class="dockerfile"><code>streamlit run app.py
+
+</code></pre>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">9페이지: Streamlit Cloud 배포</h3>
+<p data-ke-size="size16"><b>제목:</b> Streamlit Cloud 배포</p>
+<p data-ke-size="size16">Streamlit Cloud를 통해 앱을 배포하는 방법:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Streamlit Cloud 계정 생성</li>
+<li>GitHub 저장소에 프로젝트 코드 업로드</li>
+<li>Streamlit Cloud에서 새 앱 생성 및 GitHub 저장소 연결</li>
+<li>배포 설정 완료</li>
+</ol>
+<hr data-ke-style="style1" />
+<h3 data-ke-size="size23">10페이지: 결론</h3>
+<p data-ke-size="size16"><b>제목:</b> 결론</p>
+<p data-ke-size="size16">이 가이드를 따라 Google IDX와 Streamlit을 사용하여 성경 웹 앱을 만들고 배포할 수 있습니다. 이 프로젝트를 통해 웹 개발에 대해 배울 뿐만 아니라, 영감을 주는 성경 구절을 다른 사람들과 공유할 수 있습니다.</p>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16">이 형식은 eBook의 각 페이지가 프로젝트의 특정 부분에 초점을 맞추고 있어 독자들이 쉽게 따라할 수 있도록 구성되어 있습니다. Canva의 도구를 사용하여 각 페이지의 디자인과 레이아웃을 더욱 향상시킬 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

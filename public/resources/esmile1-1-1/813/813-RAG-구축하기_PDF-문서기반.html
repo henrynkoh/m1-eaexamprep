@@ -1,0 +1,197 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>RAG 구축하기_PDF 문서기반</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">RAG 구축하기_PDF 문서기반</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-11-20 14:40:42</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<div id="SE-0bb2c59d-f93d-4566-95af-5cd88748f590" data-a11y-title="본문" data-compid="SE-0bb2c59d-f93d-4566-95af-5cd88748f590">
+<div>
+<div data-direction="top" data-compid="SE-0bb2c59d-f93d-4566-95af-5cd88748f590" data-unitid="">
+<div>
+<div id="SE-84a33746-f570-49c6-ae62-3dbab4248953">
+<p id="SE-1af8811d-2bf6-43e0-81ac-1b572fd115ac" data-ke-size="size16">&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-822053fc-5901-459f-86b9-112a2f7d0d26" data-a11y-title="사진" data-compid="SE-822053fc-5901-459f-86b9-112a2f7d0d26">
+<div>
+<div data-direction="top" data-compid="SE-822053fc-5901-459f-86b9-112a2f7d0d26" data-unitid="">
+<div>
+<div id="SE-822053fc-5901-459f-86b9-112a2f7d0d26">
+<div data-direction="top" data-compid="" data-unitid="SE-822053fc-5901-459f-86b9-112a2f7d0d26">&nbsp;</div>
+</div>
+<div id="SE-acc37595-59e8-4958-8748-f66780198c8a">
+<p id="SE-6f37cd92-f340-409f-b310-6c2077cfdb58" data-ke-size="size16">&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-3520a753-5f73-4a1a-bdd6-089848e3e594" data-a11y-title="사진" data-compid="SE-3520a753-5f73-4a1a-bdd6-089848e3e594">
+<div>
+<div data-direction="top" data-compid="SE-3520a753-5f73-4a1a-bdd6-089848e3e594" data-unitid="">
+<div>
+<div id="SE-3520a753-5f73-4a1a-bdd6-089848e3e594">
+<div data-direction="top" data-compid="" data-unitid="SE-3520a753-5f73-4a1a-bdd6-089848e3e594"><figure class="imageblock alignCenter" width="500" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" width="500"  />
+    </span>
+    <figcaption></figcaption>
+</figure></div>
+<span></span><span></span></div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-ba301e98-53c0-4c95-acad-031aae70316d" data-a11y-title="본문" data-compid="SE-ba301e98-53c0-4c95-acad-031aae70316d">
+<div>
+<div data-direction="top" data-compid="SE-ba301e98-53c0-4c95-acad-031aae70316d" data-unitid="">
+<div>
+<div id="SE-e5e336e6-c6b7-499e-a1ed-be84ddf52193">
+<p id="SE-d6fbb863-2ba4-4775-b52e-97d941c8fc97" data-ke-size="size16">&nbsp;</p>
+<p id="SE-224dbf41-148f-410e-a8a8-af2509719447" data-ke-size="size16"><span style="color: #000000;">오늘은 RAG(Retrieval-Augmented Generation) 시스템 구축에 대해 알아보겠습니다. RAG는 대규모 언어 모델의 지식을 특정 도메인의 정보로 보강하는 혁신적인 기술입니다. 이 글에서는 PDF 문서를 기반으로 한 QA 시스템 구축 과정을 상세히 살펴볼 예정입니다. </span></p>
+<p id="SE-97a5fc67-8bda-42f6-9a53-0526bcd28755" data-ke-size="size16">&nbsp;</p>
+<p id="SE-83cb3116-cdf4-4eb8-83ed-6f78f154c50e" data-ke-size="size16"><span style="color: #000000;">문서 로드부터 벡터 저장소 생성, 그리고 최종적인 질의응답 단계까지 RAG의 전체 파이프라인을 다룰 것입니다. 특히 랭체인(LangChain) 라이브러리를 활용한 실제 구현 방법에 초점을 맞출 예정이니, 실무에 적용하고 싶으신 분들에게 유용한 정보가 될 것입니다. 함께 RAG의 세계로 빠져들어 보시죠!</span></p>
+<p id="SE-188f8b8c-7016-41a5-ae9a-6d424e1ea4d6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-aa2f0612-a03c-4dbe-80f4-76c475db0850" data-ke-size="size16"><span style="color: #000000;"><b>주요 내용 :</b></span></p>
+<p id="SE-6af724db-d60e-475c-a8aa-13ece81d11a7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cfd6847a-606f-416b-9cbf-083e273708d9" data-ke-size="size16"><span style="color: #000000;"><b>1. RAG 시스템의 기본 구조</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">RAG는 문서 로드, 분할, 임베딩, 저장의 4단계로 구성됨</span></li>
+<li><span style="color: #000000;">사용자 질문에 대해 관련 문단을 검색하고 답변 생성</span></li>
+<li><span style="color: #000000;">프롬프트 엔지니어링을 통해 맥락을 제공하고 답변 품질 향상</span></li>
+<li><span style="color: #000000;">다양한 모델(예: GPT)을 사용하여 최종 응답 생성 가능</span></li>
+<li><span style="color: #000000;">텍스트, JSON, 마크다운 등 다양한 형식으로 결과 출력 가능</span></li>
+</ul>
+<p id="SE-ac9215aa-3612-4056-a8c5-597278ad8ed7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c54e2f79-f467-4b58-a851-7dc1c0da0eae" data-ke-size="size16"><span style="color: #000000;"><b>2. PDF 문서 로딩 및 전처리</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">PyMuPDF 라이브러리를 사용하여 PDF 파일 로드</span></li>
+<li><span style="color: #000000;">페이지 단위로 문서 분할 및 메타데이터 추출</span></li>
+<li><span style="color: #000000;">문서 내용과 메타데이터를 Document 객체로 래핑</span></li>
+<li><span style="color: #000000;">페이지 번호, 총 페이지 수, 작성자 등 유용한 메타정보 활용</span></li>
+<li><span style="color: #000000;">로더 선택에 따라 추출되는 메타데이터가 달라질 수 있음</span></li>
+</ul>
+<p id="SE-14cf17f2-7fcf-4c41-8ffb-bd66d6f9ce82" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ee355952-0cf6-430f-ad8c-4af25e04f5e5" data-ke-size="size16"><span style="color: #000000;"><b>3. 텍스트 분할 기법</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">RecursiveCharacterTextSplitter를 사용하여 문서를 청크로 분할</span></li>
+<li><span style="color: #000000;">청크 크기와 오버랩 설정으로 문맥 유지 및 정보 손실 방지</span></li>
+<li><span style="color: #000000;">일반적으로 같은 맥락이 유지되는 단위로 청크 크기 설정</span></li>
+<li><span style="color: #000000;">청크 크기가 너무 크거나 작으면 성능에 영향을 줄 수 있음</span></li>
+<li><span style="color: #000000;">분할된 청크는 임베딩 및 벡터 저장소 생성의 기본 단위가 됨</span></li>
+</ul>
+<p id="SE-e9563e4c-e26f-4491-9af5-697446ac0801" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b8fb706a-6441-4137-aba8-1350e2823c44" data-ke-size="size16"><span style="color: #000000;"><b>4. 임베딩 프로세스</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">OpenAI의 임베딩 모델을 사용하여 텍스트를 벡터로 변환</span></li>
+<li><span style="color: #000000;">임베딩 과정에서 API 호출에 따른 비용 발생 주의</span></li>
+<li><span style="color: #000000;">다양한 임베딩 모델 중 태스크에 적합한 모델 선택 가능</span></li>
+<li><span style="color: #000000;">임베딩 결과는 벡터 저장소에 저장되어 빠른 검색에 활용</span></li>
+<li><span style="color: #000000;">무료 임베딩 모델 사용 옵션도 고려 가능</span></li>
+</ul>
+<p id="SE-6f17b27f-5d26-433c-98b5-25d79e484098" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ef4aa735-9ae0-4fc2-b37a-0ca3e79dc876" data-ke-size="size16"><span style="color: #000000;"><b>5. 벡터 저장소 구축</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">FAISS를 사용하여 임베딩된 문서 조각들을 효율적으로 저장</span></li>
+<li><span style="color: #000000;">벡터 저장소는 고차원 벡터의 빠른 유사도 검색을 지원</span></li>
+<li><span style="color: #000000;">메모리 내 저장 외에도 영구 저장 옵션 제공</span></li>
+<li><span style="color: #000000;">저장소 유형에 따라 검색 성능과 확장성이 달라질 수 있음</span></li>
+<li><span style="color: #000000;">벡터 저장소 선택 시 데이터 크기와 검색 속도 고려 필요</span></li>
+</ul>
+<p id="SE-5b6c4cc0-6d5b-41f4-a74a-0374636af2e0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b311487c-66ac-4855-9a3c-83733635c347" data-ke-size="size16"><span style="color: #000000;"><b>6. 리트리버 설정 및 최적화</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">VectorStoreRetriever를 사용하여 관련 문서 조각 검색</span></li>
+<li><span style="color: #000000;">검색 결과의 품질이 전체 시스템 성능에 큰 영향을 미침</span></li>
+<li><span style="color: #000000;">검색 알고리즘, k값 등 파라미터 조정으로 성능 최적화 가능</span></li>
+<li><span style="color: #000000;">다양한 리트리버 유형(예: TF-IDF, BM25) 중 적합한 것 선택</span></li>
+<li><span style="color: #000000;">검색 결과에 메타데이터 포함하여 추가 컨텍스트 제공 가능</span></li>
+</ul>
+<p id="SE-6fdcd5e1-fbf6-4b78-bd38-d6b55c82f4c5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0ddd6994-68f5-489d-8e50-407730e537bf" data-ke-size="size16"><span style="color: #000000;"><b>7. 프롬프트 엔지니어링</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">효과적인 프롬프트 설계로 모델의 응답 품질 향상</span></li>
+<li><span style="color: #000000;">컨텍스트, 질문, 지시사항을 명확하게 구조화</span></li>
+<li><span style="color: #000000;">다국어 지원, 페이지 번호 포함 등 세부 지시 가능</span></li>
+<li><span style="color: #000000;">프롬프트 템플릿을 사용하여 일관성 있는 응답 유도</span></li>
+<li><span style="color: #000000;">프롬프트 최적화를 통해 hallucination 감소 및 정확도 향상</span></li>
+</ul>
+<p id="SE-efddc568-c5c7-4e3d-9bf0-6556c6de3cbe" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b3c05d68-9566-4266-9749-a8eca02f550d" data-ke-size="size16"><span style="color: #000000;"><b>8. LLM 선택 및 통합</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">GPT-4, ChatGPT 등 다양한 언어 모델 중 선택 가능</span></li>
+<li><span style="color: #000000;">모델의 성능, 비용, API 제한 등을 고려하여 선택</span></li>
+<li><span style="color: #000000;">LangChain의 ChatOpenAI 클래스를 통해 모델 쉽게 통합</span></li>
+<li><span style="color: #000000;">스트리밍 옵션을 사용하여 실시간 응답 생성 가능</span></li>
+<li><span style="color: #000000;">모델 파라미터(온도, top_p 등) 조정으로 응답 특성 제어</span></li>
+</ul>
+<p id="SE-6917925b-da6d-4b8a-a029-157c292418dc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-05401869-f4cd-4bc3-9ee9-36ee79512645" data-ke-size="size16"><span style="color: #000000;"><b>9. 전체 파이프라인 구축</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">문서 로딩부터 최종 응답 생성까지 전체 과정 연결</span></li>
+<li><span style="color: #000000;">LangChain의 Chain 객체를 사용하여 각 단계 통합</span></li>
+<li><span style="color: #000000;">리트리버, 프롬프트 템플릿, LLM을 하나의 파이프라인으로 구성</span></li>
+<li><span style="color: #000000;">에러 핸들링 및 로깅 추가로 시스템 안정성 확보</span></li>
+<li><span style="color: #000000;">성능 모니터링 및 최적화를 위한 메트릭 수집 가능</span></li>
+</ul>
+<p id="SE-f64a5d8d-605f-4129-904a-65011e6c855a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2d5af75a-5e15-4991-a0ce-ec0ed0fa1392" data-ke-size="size16"><span style="color: #000000;"><b>10. 디버깅 및 성능 분석</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">LangSmith를 사용하여 각 단계의 동작 추적 및 분석</span></li>
+<li><span style="color: #000000;">검색 결과, 프롬프트, 모델 출력 등 중간 결과 확인 가능</span></li>
+<li><span style="color: #000000;">응답 품질 저하 시 문제 발생 단계 빠르게 식별</span></li>
+<li><span style="color: #000000;">A/B 테스팅을 통한 다양한 설정의 성능 비교 가능</span></li>
+<li><span style="color: #000000;">지속적인 모니터링 및 피드백을 통한 시스템 개선</span></li>
+</ul>
+<p id="SE-27c80406-114d-44a0-a235-ea1f6c50983e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-38db50e2-c1a2-4bd9-b01d-7d4926d3c764" data-ke-size="size16"><span style="color: #000000;"><b>마무리</b></span></p>
+<p id="SE-8e0bd092-5366-46ac-bf22-125d376302c9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-607d2aeb-27cc-4261-ac01-4474e74102d7" data-ke-size="size16"><span style="color: #000000;">지금까지 RAG 시스템 구축의 전체 과정을 살펴보았습니다. PDF 문서 로딩부터 최종 질의응답까지, 각 단계가 어떻게 연결되어 작동하는지 이해하셨나요? RAG는 단순히 기술적인 구현을 넘어, 사용자의 질문에 정확하고 맥락에 맞는 답변을 제공하는 강력한 도구입니다. </span></p>
+<p id="SE-2227ad56-7013-4071-afeb-8d68bd96b223" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eb6739e1-c869-4147-9563-cdf954f77cd2" data-ke-size="size16"><span style="color: #000000;">이 기술을 활용하면 기업 내부 문서 검색, 고객 서비스 개선, 교육 자료 제작 등 다양한 분야에서 혁신을 이룰 수 있습니다. 앞으로 RAG 기술은 더욱 발전하여, 멀티모달 데이터 처리, 실시간 정보 업데이트 등으로 확장될 것입니다. </span></p>
+<p id="SE-78f5fa71-b572-4306-bc98-b3f053671e10" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dbd1f245-8d87-49e9-a566-bb33663cf56a" data-ke-size="size16"><span style="color: #000000;">여러분도 이 글을 바탕으로 자신만의 RAG 시스템을 구축해 보시는 건 어떨까요? 끊임없이 학습하고 실험하며, AI 기술의 무한한 가능성을 함께 탐험해 나가길 바랍니다!</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

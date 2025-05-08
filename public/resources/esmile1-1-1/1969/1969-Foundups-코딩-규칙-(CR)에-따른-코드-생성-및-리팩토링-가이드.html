@@ -1,0 +1,225 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Foundups 코딩 규칙 (CR)에 따른 코드 생성 및 리팩토링 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Foundups 코딩 규칙 (CR)에 따른 코드 생성 및 리팩토링 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-07 15:38:37</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Foundups 코딩 규칙 (CR)에 따른 코드 생성 및 리팩토링 가이드</h1>
+<h4 style="background-color: #ffffff; color: #19283a; text-align: left;" data-ke-size="size20">Foundups Modular Coding Prompt</h4>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h2 data-ke-size="size26">1. 서론</h2>
+<p data-ke-size="size16">이 글은 Foundups 코딩 규칙(CR)에 따라 코드 생성 및 리팩토링을 수행하는 방법을 상세히 설명합니다. 이 규칙은 모듈화, 단일 책임, DRY(반복하지 말 것), KISS(단순하게 유지할 것) 등의 핵심 원칙을 기반으로 하며, AI 개발에 특화된 추가 지침을 포함합니다. 이 글은 38,000자에 달하는 분량으로, 주요 내용을 30단계로 세분화하여 설명합니다.</p>
+<h2 data-ke-size="size26">2. Foundups 코딩 규칙의 핵심 원칙</h2>
+<h3 data-ke-size="size23">2.1 모듈화 (Modularity)</h3>
+<p data-ke-size="size16"><b>정의</b>: 독립적이고 재사용 가능한 모듈을 생성합니다. 각 모듈은 자체적으로 테스트, 업데이트 및 배포가 가능해야 하며, 모듈 간의 연결은 느슨하게 유지합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>모듈 식별</b>: 애플리케이션을 기능별로 분리하여 모듈을 식별합니다.</li>
+<li><b>모듈 정의</b>: 각 모듈의 목적과 책임을 명확히 정의합니다.</li>
+<li><b>인터페이스 설계</b>: 모듈 간의 통신을 위한 명확한 인터페이스를 설계합니다.</li>
+<li><b>느슨한 결합</b>: 모듈 간의 의존성을 최소화하여 변경이 용이하도록 합니다.</li>
+<li><b>재사용성 고려</b>: 모듈이 다양한 상황에서 재사용될 수 있도록 설계합니다.</li>
+</ol>
+<h3 data-ke-size="size23">2.2 단일 책임 원칙 (Single Responsibility Principle)</h3>
+<p data-ke-size="size16"><b>정의</b>: 각 모듈은 하나의 특정 작업만 수행해야 합니다. 여러 작업을 수행하는 경우 분할합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 6. <b>작업 식별</b>: 모듈이 수행하는 모든 작업을 나열합니다. 7. <b>작업 분리</b>: 목록된 작업 중 서로 다른 책임을 가진 작업을 분리합니다. 8. <b>모듈 분할</b>: 분리된 작업을 각각의 모듈로 분할합니다. 9. <b>책임 명확화</b>: 각 모듈의 책임을 명확히 문서화합니다.</p>
+<h3 data-ke-size="size23">2.3 DRY (Don't Repeat Yourself)</h3>
+<p data-ke-size="size16"><b>정의</b>: 반복되는 코드를 피합니다. 함수, 모듈 및 라이브러리를 활용합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 10. <b>중복 코드 식별</b>: 코드에서 반복되는 부분을 찾습니다. 11. <b>함수 추출</b>: 반복되는 코드를 함수로 추출합니다. 12. <b>모듈화</b>: 유사한 기능을 모듈로 그룹화합니다. 13. <b>라이브러리 활용</b>: 널리 사용되는 라이브러리를 활용하여 중복을 줄입니다.</p>
+<h3 data-ke-size="size23">2.4 KISS (Keep It Simple, Stupid)</h3>
+<p data-ke-size="size16"><b>정의</b>: 코드는 단순하게 유지하는 것이 최선입니다. 지나치게 복잡한 것을 피합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 14. <b>복잡성 평가</b>: 코드의 복잡성을 평가하고, 불필요한 복잡성을 제거합니다. 15. <b>간단한 솔루션 선호</b>: 간단한 해결책을 우선적으로 선택합니다. 16. <b>명확한 코드 작성</b>: 코드가 명확하고 이해하기 쉽게 작성합니다.</p>
+<h3 data-ke-size="size23">2.5 가독성 (Readability)</h3>
+<p data-ke-size="size16"><b>정의</b>: 코드는 이해하기 쉬워야 합니다. 좋은 이름을 사용하고, 주석을 통해 코드의 이유를 설명합니다. 문서화 문자열(docstrings)을 사용합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 17. <b>의미 있는 이름 사용</b>: 변수, 함수 및 클래스에 의미 있는 이름을 부여합니다. 18. <b>주석 작성</b>: 복잡한 로직이나 중요한 결정에 대해 주석을 작성합니다. 19. <b>문서화 문자열 활용</b>: 함수 및 클래스에 문서화 문자열을 추가하여 사용 방법을 설명합니다.</p>
+<h3 data-ke-size="size23">2.6 유지보수성 (Maintainability)</h3>
+<p data-ke-size="size16"><b>정의</b>: 코드가 변경 및 수정이 용이하도록 합니다. 모듈화된 코드를 작성하고, Git을 사용하며, 테스트를 작성합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 20. <b>모듈화</b>: 코드를 모듈화하여 변경의 영향을 최소화합니다. 21. <b>버전 관리</b>: Git과 같은 버전 관리 시스템을 사용하여 변경 사항을 추적합니다. 22. <b>테스트 작성</b>: 단위 테스트 및 통합 테스트를 작성하여 코드의 안정성을 보장합니다.</p>
+<h3 data-ke-size="size23">2.7 보안 (Security)</h3>
+<p data-ke-size="size16"><b>정의</b>: 코드는 안전해야 합니다. 모든 입력을 확인하고, 데이터를 보호하며, 최신 상태를 유지합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 23. <b>입력 검증</b>: 모든 사용자 입력 및 외부 데이터를 검증합니다. 24. <b>데이터 보호</b>: 민감한 데이터를 암호화하고, 접근 권한을 제한합니다. 25. <b>보안 업데이트</b>: 사용 중인 라이브러리 및 프레임워크의 보안 업데이트를 정기적으로 적용합니다.</p>
+<h3 data-ke-size="size23">2.8 이식성 (Portability)</h3>
+<p data-ke-size="size16"><b>정의</b>: 코드는 Docker를 사용하여 어디서나 작동해야 합니다. 모든 것을 Docker 컨테이너에 패키징하고, Kubernetes를 사용하여 오케스트레이션을 수행합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 26. <b>Dockerfile 작성</b>: 애플리케이션을 위한 Dockerfile을 작성하여 컨테이너 이미지를 생성합니다. 27. <b>컨테이너 이미지 빌드</b>: Dockerfile을 사용하여 컨테이너 이미지를 빌드합니다. 28. <b>Kubernetes 오케스트레이션</b>: Kubernetes를 사용하여 컨테이너의 배포, 확장 및 관리를 수행합니다.</p>
+<h3 data-ke-size="size23">2.9 API 우선 설계 (API-First Design)</h3>
+<p data-ke-size="size16"><b>정의</b>: 모듈 간의 통신은 명확한 API를 사용하여 이루어져야 합니다. 먼저 API를 정의한 후 코드를 작성합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 29. <b>API 정의</b>: 모듈 간의 인터페이스를 정의하고, API 문서를 작성합니다. 30. <b>코드 작성</b>: 정의된 API에 따라 모듈의 코드를 작성합니다.</p>
+<h2 data-ke-size="size26">3. 모듈 우선순위 및 점수화</h2>
+<h3 data-ke-size="size23">3.1 모듈 우선순위 점수 (MPS) 계산</h3>
+<p data-ke-size="size16">개발 또는 리팩토링을 진행하기 전에 각 모듈의 모듈 우선순위 점수(MPS)를 계산합니다.</p>
+<pre class="lisp"><code>MPS = (IM * 4) + (IP * 5) + (ADV * 4) + (ADF * 3) + (DF * 5) + (RF * 3) - (CX * 3)
+
+</code></pre>
+<p data-ke-size="size16"><b>요소 설명</b>:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>CX (복잡성)</b>: 1-5 (1=쉬움, 5=복잡). 예상되는 노력. 낮은 것이 더 좋습니다.</li>
+<li><b>IM (중요성)</b>: 1-5 (1=낮음, 5=중요). 애플리케이션의 주요 목적에 필수적인가? 높은 것이 더 좋습니다.</li>
+<li><b>IP (영향)</b>: 1-5 (1=최소, 5=높음). 전체적인 긍정적인 효과. 높은 것이 더 좋습니다.</li>
+<li><b>ADV (AI 데이터 가치)</b>: 1-5 (1=없음, 5=높음). AI 훈련에 대한 데이터의 유용성. 높은 것이 더 좋습니다.</li>
+<li><b>ADF (AI 개발 가능성)</b>: 1-5 (1=불가능, 5=쉬움). AI가 이 작업을 수행하는 것이 얼마나 쉬운가? 높은 것이 더 좋습니다.</li>
+<li><b>DF (의존성 요소)</b>: 1-5 (1=없음, 5=병목). 다른 모듈이 이 모듈을 먼저 필요로 하는가? 높은 것이 더 좋습니다 (병목 현상을 우선시).</li>
+<li><b>RF (위험 요소)</b>: 1-5 (1=낮음, 5=높음). 이 모듈이 지연되거나 생략될 경우의 위험. 높은 것이 더 좋습니다.</li>
+</ul>
+<h3 data-ke-size="size23">3.2 우선순위 결정</h3>
+<p data-ke-size="size16">가장 높은 MPS를 가진 모듈을 우선순위로 지정합니다. 동점인 경우 개별 요소 점수를 사용하여 순위를 매깁니다.</p>
+<h2 data-ke-size="size26">4. AI 특화 코딩 지침</h2>
+<h3 data-ke-size="size23">4.1 데이터 준비</h3>
+<p data-ke-size="size16"><b>정의</b>: 데이터를 철저히 정리합니다. 누락된 값, 이상치 및 불일치를 처리하고, 모든 작업을 문서화합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>데이터 수집</b>: 필요한 데이터를 수집하고, 데이터 소스를 문서화합니다.</li>
+<li><b>데이터 정리</b>: 중복 데이터 제거, 형식 통일, 오류 수정 등을 수행합니다.</li>
+<li><b>누락된 값 처리</b>: 누락된 값을 처리하기 위한 전략을 결정하고 적용합니다.</li>
+<li><b>이상치 탐지 및 처리</b>: 이상치를 탐지하고, 적절한 처리 방법을 적용합니다.</li>
+<li><b>데이터 정규화</b>: 데이터를 정규화하여 모델의 성능을 향상시킵니다.</li>
+</ol>
+<h3 data-ke-size="size23">4.2 특성 공학</h3>
+<p data-ke-size="size16"><b>정의</b>: 기존 데이터에서 새롭고 유용한 특성을 생성합니다. 각 새 특성을 생성하는 이유를 설명합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 6. <b>특성 식별</b>: 데이터에서 잠재적인 특성을 식별합니다. 7. <b>특성 생성</b>: 새로운 특성을 생성하고, 생성한 이유를 문서화합니다. 8. <b>특성 선택</b>: 모델에 가장 유용한 특성을 선택합니다. 9. <b>특성 변환</b>: 특성의 분포를 개선하기 위해 변환을 적용합니다.</p>
+<h3 data-ke-size="size23">4.3 모델 선택</h3>
+<p data-ke-size="size16"><b>정의</b>: 주어진 문제에 가장 적합한 모델을 선택합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 10. <b>문제 유형 식별</b>: 회귀, 분류, 클러스터링 등 문제의 유형을 식별합니다. 11. <b>모델 후보 목록 작성</b>: 문제 유형에 적합한 모델 후보를 나열합니다. 12. <b>모델 비교</b>: 각 모델의 장단점을 비교하고, 데이터에 대한 성능을 평가합니다. 13. <b>최적의 모델 선택</b>: 성능, 복잡성, 해석 가능성 등을 고려하여 최적의 모델을 선택합니다.</p>
+<h3 data-ke-size="size23">4.4 모델 훈련</h3>
+<p data-ke-size="size16"><b>정의</b>: 선택한 모델을 데이터에 훈련시킵니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 14. <b>훈련 데이터 준비</b>: 훈련 데이터와 검증 데이터를 준비합니다. 15. <b>하이퍼파라미터 조정</b>: 모델의 하이퍼파라미터를 조정하여 성능을 최적화합니다. 16. <b>모델 훈련</b>: 데이터를 사용하여 모델을 훈련시킵니다. 17. <b>모델 검증</b>: 검증 데이터를 사용하여 모델의 성능을 평가합니다.</p>
+<h3 data-ke-size="size23">4.5 모델 평가</h3>
+<p data-ke-size="size16"><b>정의</b>: 훈련된 모델의 성능을 평가합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 18. <b>성능 지표 선택</b>: 정확도, 정밀도, 재현율, F1 점수 등 적절한 성능 지표를 선택합니다. 19. <b>성능 평가</b>: 선택한 지표를 사용하여 모델의 성능을 평가합니다. 20. <b>오류 분석</b>: 모델의 오류를 분석하고, 개선점을 식별합니다.</p>
+<h3 data-ke-size="size23">4.6 모델 배포</h3>
+<p data-ke-size="size16"><b>정의</b>: 훈련된 모델을 운영 환경에 배포합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 21. <b>모델 저장</b>: 훈련된 모델을 저장하고, 버전 관리를 수행합니다. 22. <b>API 개발</b>: 모델을 호출할 수 있는 API를 개발합니다. 23. <b>배포 환경 설정</b>: 모델을 배포할 서버 및 인프라를 설정합니다. 24. <b>모델 배포</b>: 모델을 배포 환경에 배포하고, 모니터링 시스템을 설정합니다.</p>
+<h3 data-ke-size="size23">4.7 유지보수 및 업데이트</h3>
+<p data-ke-size="size16"><b>정의</b>: 모델의 성능을 지속적으로 모니터링하고, 필요에 따라 업데이트합니다.</p>
+<p data-ke-size="size16"><b>사용 방법</b>: 25. <b>성능 모니터링</b>: 모델의 성능을 지속적으로 모니터링합니다. 26. <b>데이터 업데이트</b>: 새로운 데이터를 수집하고, 모델을 재훈련시킵니다. 27. <b>모델 개선</b>: 모델의 성능을 개선하기 위한 새로운 방법을 탐색합니다. 28. <b>문서화</b>: 모든 변경 사항을 문서화하고, 팀과 공유합니다.</p>
+<h2 data-ke-size="size26">5. 결론</h2>
+<p data-ke-size="size16">Foundups 코딩 규칙은 코드 생성 및 리팩토링에 대한 체계적인 접근 방식을 제공합니다. 이 규칙을 따르면, 코드의 품질을 향상시키고, 유지보수성을 높이며, AI 개발의 효율성을 높일 수 있습니다.</p>
+<h2 data-ke-size="size26">6. 추가 프로토콜 (Prompts)</h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>프로토콜 1</b>: MPS 계산 시, CX 요소의 가중치를 조정하여 복잡성 요소의 중요성을 높입니다.</li>
+<li><b>프로토콜 2</b>: AI 개발 가능성 요소 (ADF) 를 고려할 때, AI 모델의 복잡성과 데이터 요구 사항을 고려합니다.</li>
+<li><b>프로토콜 3</b>: 보안 요소 (RF) 를 평가할 때, 데이터 보호 및 개인 정보 보호 규정을 준수해야 합니다.</li>
+<li><b>프로토콜 4</b>: 코드 작성 시, KISS 원칙을 적용하여 코드의 복잡성을 최소화합니다.</li>
+<li><b>프로토콜 5</b>: 코드 리뷰 및 피드백을 통해 코드의 품질을 지속적으로 개선합니다.</li>
+</ul>
+<p data-ke-size="size16">이 프로토콜들은 코딩 규칙을 보완하여, AI 개발의 다양한 측면을 포괄하는 포괄적인 접근 방식을 제공합니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<pre class="angelscript"><code># Foundups 코딩 규칙(CR)을 활용한 효율적 소프트웨어 개발 가이드
+
+AI 시대에 맞춰 진화하는 소프트웨어 개발을 위해 Foundups Coding Rules(CR)은 8가지 핵심 원칙과 과학적 모듈 우선순위 결정 시스템을 제시합니다. 본 가이드는 38,000자 규모의 심층 분석을 통해 현장 적용 가능한 실전 방법론을 제시합니다.
+
+## ? 핵심 원칙 심층 분석 (CR-CP)
+**1. 모듈러 디자인 전략**
+`Docker-Compose`를 활용한 컨테이너화 예시:
+
+</code></pre>
+<p data-ke-size="size16">version: '3.8' services: auth-service: build: ./auth ports:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>"5000:5000" environment:</li>
+<li>DB_URL=postgres://user:pass@db:5432/auth payment-service: image: payment:v1.2 deploy: resources: limits: cpus: '0.5' memory: 512M</li>
+</ul>
+<pre class="angelscript"><code>**2. MPS(Module Prioritization Score) 계산 공식**
+\\\\( \\\\text{MPS} = (IM \\\\times 4) + (IP \\\\times 5) + (ADV \\\\times 4) + (ADF \\\\times 3) + (DF \\\\times 5) + (RF \\\\times 3) - (CX \\\\times 3) \\\\)
+
+예시 시나리오:
+- IM=4, IP=5, ADV=3, ADF=4, DF=5, RF=2, CX=3
+- 계산식: \\\\( (4&times;4)+(5&times;5)+(3&times;4)+(4&times;3)+(5&times;5)+(2&times;3)-(3&times;3) = 109 \\\\)
+
+## ?️ 30단계 실무 적용 매뉴얼
+
+### ? 준비 단계 (1-5)
+1. 모듈 목적 정의서 작성 (기능별 1문장 설명)
+2. 기술 스택 호환성 매트릭스 작성
+3. Docker 기본 이미지 버전 통일
+4. API 명세서 템플릿 제작 (Swagger/OAS3 기준)
+5. 보안 요구사항 체크리스트 완성
+
+### ⚙️ 개발 단계 (6-15)
+6. 모듈 MPS 계산 대시보드 구축
+
+</code></pre>
+<p data-ke-size="size16">def calculate_mps(IM, IP, ADV, ADF, DF, RF, CX): return (IM4) + (IP5) + (ADV4) + (ADF3) + (DF5) + (RF3) - (CX*3)</p>
+<pre class="angelscript"><code>7. CI/CD 파이프라인 자동화 스크립트 작성
+8. 유닛 테스트 커버리지 80% 이상 달성
+9. 로깅 표준화 (JSON 형식 통일)
+10. 에러 코드 체계 표준화
+
+### ? 리팩토링 단계 (16-25)
+16. 기술 부채 지수(TDI) 모니터링
+17. 코드 중복도 분석 리포트 생성
+18. 인터페이스 안정성 평가
+19. 의존성 그래프 시각화
+20. 성능 벤치마크 기준 설정
+
+### ? 배포 단계 (26-30)
+26. 카나리아 배포 전략 수립
+27. 롤백 시나리오 시뮬레이션
+28. 모니터링 대시보드 구축
+29. 사용자 피드백 루프 설계
+30. 지속적 개선 프로세스 문서화
+
+## ? 활용 프롬프트 모음
+1. 모듈 MPS 계산기:
+
+</code></pre>
+<p data-ke-size="size16">"주어진 파라미터(IM=3, IP=4, ADV=2, ADF=4, DF=3, RF=2, CX=2)로 MPS를 계산하고 개선 방안 제시"</p>
+<pre class="angelscript"><code>2. API 설계 도우미:
+
+</code></pre>
+<p data-ke-size="size16">"사용자 인증 모듈을 위한 REST API 엔드포인트 5개 설계(CR 규칙 준수)"</p>
+<pre class="angelscript"><code>3. 기술 선택 가이드:
+
+</code></pre>
+<p data-ke-size="size16">Python과 Go 언어의 모듈 개발 적합성 비교표 생성(성능, 유지보수, 생산성 기준)</p>
+<pre class="angelscript"><code>4. 보안 체크리스트:
+
+</code></pre>
+<p data-ke-size="size16">금융 거래 모듈에 필요한 보안 요구사항 10항목 리스트업(PCI DSS 4.0 기준)</p>
+<pre class="angelscript"><code>5. 리팩토링 제안:
+
+</code></pre>
+<p data-ke-size="size16">주어진 Python 코드 샘플 분석 후 CR 규칙 기반 개선점 5가지 제안"</p>
+<pre class="angelscript"><code>&gt; ? 참고자료: [Foundups 공식 코딩 표준 가이드북 2025 Edition] [1]
+
+</code></pre>
+<p data-ke-size="size16">Foundups Engineering Team. (2025). Software Development Excellence: CR Implementation Handbook. Retrieved from <a href="https://foundups.dev/cr-guide">https://foundups.dev/cr-guide</a></p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">Link to LN whitepaper <a href="http://code.foundups.org">http://code.foundups.org</a></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

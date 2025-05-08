@@ -1,0 +1,211 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AI-Powered YouTube Scraper (100% Automated)</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AI-Powered YouTube Scraper (100% Automated)</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-11-24 07:44:42</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">How to Build AI-Powered ScraperThe AI-Powered YouTube Scraper (100% Automated)에 대한 영상자료를 요약정리 하였습니다.&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>1. Google Sheet 준비:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>새로운 Google Sheet를 생성합니다.</li>
+<li>첫 번째 행에 "YouTube URL"이라는 헤더를 추가합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>2. <a href="http://Make.com">Make.com</a> 계정 생성:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에 가입합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>3. Google Sheet 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 새로운 Automation을 생성합니다.</li>
+<li>"Google Sheets" 모듈을 추가합니다.</li>
+<li>"Watch new rows" 트리거를 선택합니다.</li>
+<li>Google Sheet ID와 Sheet 이름을 입력합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>4. Coding Bot 생성:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Assistant" 모듈을 추가합니다.</li>
+<li>"Create new bot"을 클릭합니다.</li>
+<li>Bot 이름을 "YouTube Formatter"로 지정합니다.</li>
+<li>다음 Python 코드를 입력합니다:`import requests import jsonurl = input("Enter YouTube URL:") video_info = get_video_info(url) print(json.dumps(video_info, indent=4))`</li>
+<li>def get_video_info(url): # ... (YouTube Data API를 사용하여 비디오 정보 추출하는 코드) return video_info</li>
+<li><b>Python</b></li>
+<li>모델로 GPT-4 Turbo를 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>5. Coding Bot 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Assistant" 모듈을 다시 추가합니다.</li>
+<li>"YouTube Formatter" Bot을 선택합니다.</li>
+<li>메시지로 Google Sheet의 "YouTube URL" 셀을 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>6. Zero Code Kit 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Zero Code Kit" 모듈을 추가합니다.</li>
+<li>"Run Python Code" 액션을 선택합니다.</li>
+<li>Coding Bot의 출력을 입력으로 사용합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>7. YouTube Summarizer Bot 생성:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 새로운 Assistant Bot을 생성합니다.</li>
+<li>Bot 이름을 "YouTube Summarizer"로 지정합니다.</li>
+<li>다음 프롬프트를 입력합니다:</li>
+<li>"Given a YouTube video URL, provide a concise summary and key takeaways. Use clear and concise language."</li>
+<li>모델로 GPT-4 Turbo를 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>8. YouTube Summarizer Bot 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Assistant" 모듈을 추가합니다.</li>
+<li>"YouTube Summarizer" Bot을 선택합니다.</li>
+<li>메시지로 Zero Code Kit의 출력을 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>9. Google Doc 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Google Docs" 모듈을 추가합니다.</li>
+<li>"Create a new document" 액션을 선택합니다.</li>
+<li>문서 제목을 설정합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>10. 문서에 요약 추가:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Google Docs" 모듈을 다시 추가합니다.</li>
+<li>"Insert text" 액션을 선택합니다.</li>
+<li>YouTube Summarizer Bot의 출력을 텍스트로 입력합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>11. 이미지 생성 Bot 생성:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 새로운 Assistant Bot을 생성합니다.</li>
+<li>Bot 이름을 "Image Generator"로 지정합니다.</li>
+<li>다음 프롬프트를 입력합니다:</li>
+<li>"Generate a creative image based on the given text. Use a specific style and aspect ratio."</li>
+<li>모델로 DALL-E 2 또는 Midjourney를 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>12. 이미지 생성 Bot 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Assistant" 모듈을 추가합니다.</li>
+<li>"Image Generator" Bot을 선택합니다.</li>
+<li>메시지로 YouTube Summarizer Bot의 출력을 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>13. Google Doc에 이미지 추가:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Google Docs" 모듈을 다시 추가합니다.</li>
+<li>"Insert image" 액션을 선택합니다.</li>
+<li>Image Generator Bot의 출력을 이미지 URL로 입력합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>14. LinkedIn 게시물 생성 Bot 생성:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 새로운 Assistant Bot을 생성합니다.</li>
+<li>Bot 이름을 "LinkedIn Poster"로 지정합니다.</li>
+<li>다음 프롬프트를 입력합니다:</li>
+<li>"Create a LinkedIn post based on the given text and image. Use relevant hashtags and a strong call to action."</li>
+<li>모델로 GPT-4 Turbo를 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>15. LinkedIn 게시물 생성 Bot 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "Assistant" 모듈을 추가합니다.</li>
+<li>"LinkedIn Poster" Bot을 선택합니다.</li>
+<li>메시지로 YouTube Summarizer Bot의 출력과 Image Generator Bot의 출력을 선택합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>16. LinkedIn API 연결:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "LinkedIn API" 모듈을 추가합니다.</li>
+<li>LinkedIn Developer 계정을 생성하고 API 키를 얻습니다.</li>
+<li>API 키를 Make.com에 입력합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>17. LinkedIn 게시물 게시:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com에서 "LinkedIn API" 모듈을 다시 추가합니다.</li>
+<li>"Publish a post" 액션을 선택합니다.</li>
+<li>LinkedIn Poster Bot의 출력을 게시물 텍스트와 이미지 URL로 입력합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>18. 추가 플랫폼 (Instagram, Facebook 등)에 대한 동일한 과정 반복:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>각 플랫폼에 맞는 API 연결과 게시물 생성 Bot을 설정합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>19. 테스트:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Sheet에 YouTube URL을 입력합니다.</li>
+<li>Automation이 실행되고, 요약, 이미지, LinkedIn 게시물이 생성되는지 확인합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>20. 오류 처리:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com의 Error Handling 기능을 사용하여 오류를 모니터링하고 해결합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>21. 일정 설정:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com의 Scheduler 기능을 사용하여 Automation을 일정에 따라 실행합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>22. 조건 추가:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com의 Conditional Logic 기능을 사용하여 특정 조건에 따라 Automation의 흐름을 변경합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>23. 반복 및 루프:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com의 Loop 기능을 사용하여 여러 YouTube URL을 처리합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>24. 모니터링 및 로그:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Make.com의 Monitoring 기능을 사용하여 Automation의 상태를 모니터링합니다.</li>
+<li>로그를 확인하여 문제를 해결합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>25. 보안:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>API 키와 비밀 정보를 안전하게 보호합니다.</li>
+<li>Make.com의 Security Settings를 활용합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>26. 최적화:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Automation의 성능을 향상시키기 위해 불필요한 단계를 제거하고 병렬 처리를 활용합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>27. 확장:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>더 많은 기능을 추가하여 Automation을 더욱 강력하게 만듭니다.</li>
+<li>예를 들어, 감정 분석, 키워드 추출, 번역 등을 추가할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>28. 문서화:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Automation의 흐름과 각 단계의 역할을 문서화합니다.</li>
+<li>이를 통해 다른 사람들이 이해하고 유지보수할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>29. 백업 및 복구:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Automation의 설정과 데이터를 정기적으로 백업합니다.</li>
+<li>문제 발생 시 복구할 수 있는 계획을 수립합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>30. 지속적인 개선:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>새로운 기능과 기술을 활용하여 Automation을 지속적으로 개선합니다.</li>
+<li>사용자 피드백을 수렴하여 Automation을 더욱 효율적으로 만듭니다.</li>
+</ul>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

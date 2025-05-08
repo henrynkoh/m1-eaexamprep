@@ -1,0 +1,145 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AI 트레이딩 에이전트 구축: 브라우저 사용법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AI 트레이딩 에이전트 구축: 브라우저 사용법</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-17 05:50:28</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h2 data-ke-size="size26">AI 트레이딩 에이전트 구축: 브라우저 사용법 </h2>
+<p data-ke-size="size16">본 게시물은 유튜브 영상 "<a href="https://www.youtube.com/watch?v=qeSwQYX-sXo">AI Trading Agents with Browser Use</a>"의 내용을 기반으로 작성되었습니다. 해당 영상에서는 AI 에이전트가 웹 브라우저를 사용하여 자동 트레이딩 작업을 수행하는 방법을 소개합니다. 특히, Interactive Brokers 웹 API와 Browser Use라는 오픈소스 도구를 활용하여 사용자 정의 웹 애플리케이션을 제어하고, 주식 스캔, 주문 실행, 포트폴리오 관리 등의 작업을 자동화하는 방법을 시연합니다.</p>
+<h3 data-ke-size="size23">서론</h3>
+<p data-ke-size="size16">AI 기술의 발전은 금융 시장에도 큰 변화를 가져오고 있습니다. 특히, AI 에이전트를 활용한 자동 트레이딩 시스템은 개인 투자자뿐만 아니라 금융 기관에서도 효율적인 의사 결정 및 자동화된 작업 수행을 가능하게 합니다. 본 게시물에서는 Browser Use라는 도구를 사용하여 AI 에이전트가 웹 브라우저를 통해 트레이딩 작업을 자동화하는 방법을 상세히 설명합니다. Browser Use는 오픈 AI Operator와 유사한 기능을 제공하지만, 월 200달러의 프로 계정이 필요 없는 무료 도구입니다. 이를 통해 사용자는 로컬 환경에서 AI 에이전트를 실행하고, 웹 애플리케이션을 제어하여 다양한 트레이딩 작업을 자동화할 수 있습니다.</p>
+<h3 data-ke-size="size23">Browser Use 소개</h3>
+<p data-ke-size="size16">Browser Use는 AI 에이전트가 웹 브라우저를 제어할 수 있도록 하는 오픈소스 도구입니다. 이 도구를 사용하면 AI 에이전트가 웹 페이지를 탐색하고, 정보를 추출하고, 양식을 작성하고, 버튼을 클릭하는 등의 작업을 수행할 수 있습니다. Browser Use는 Langchain을 기반으로 하며, OpenAI, Anthropic, Google Gemini 등 다양한 언어 모델을 지원합니다. 또한, Playwright라는 브라우저 자동화 도구를 사용하여 웹 페이지의 구조를 이해하고, CSS 선택자를 활용하여 특정 요소를 찾을 수 있습니다.</p>
+<h3 data-ke-size="size23">AI 트레이딩 에이전트 구축 데모</h3>
+<p data-ke-size="size16">영상에서는 다음과 같은 두 가지 데모를 통해 AI 트레이딩 에이전트의 가능성을 보여줍니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>Interactive Brokers 웹 애플리케이션 제어:</b> AI 에이전트가 사용자 정의 Interactive Brokers 웹 애플리케이션을 사용하여 주식 스캔, 주문 실행 등의 작업을 자동화합니다. 에이전트는 "가장 활발한 주식 스캔"을 실행하고, 상위 3개 주식을 찾아 각 주식에 대해 2주씩 매수 주문을 실행합니다.</li>
+<li><b>Stocktwits 데이터 수집 및 워치리스트 생성:</b> AI 에이전트가 Stocktwits에서 특정 사용자의 게시물을 분석하여 주식 심볼을 추출하고, 추출된 심볼을 기반으로 워치리스트를 생성합니다.</li>
+</ol>
+<p data-ke-size="size16">또한, Perplexity AI Finance와 같은 리서치 도구와 연동하여 특정 주식에 대한 최신 정보 (실적 발표, SEC 보고서, 컨퍼런스 발표 등)를 수집하고, Reddit과 같은 커뮤니티에서 해당 주식에 대한 sentiment를 분석하는 방법도 소개합니다.</p>
+<h3 data-ke-size="size23">Browser Use 설정 및 사용법 (30단계 상세 설명)</h3>
+<p data-ke-size="size16">다음은 Browser Use를 설정하고 AI 트레이딩 에이전트를 구축하는 방법에 대한 30단계 상세 설명입니다.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>필수 조건 확인:</b> Python 3, Git, Docker Desktop이 설치되어 있는지 확인합니다.</li>
+<li><b>GitHub 저장소 복제:</b> GitHub에서 AI 트레이딩 에이전트 저장소(<a href="https://github.com/hackingthemarkets/ai_trading_agent">https://github.com/hackingthemarkets/ai_trading_agent</a>)를 복제합니다.</li>
+<li><b>가상 환경 생성:</b> python3 -m venv venv 명령어를 사용하여 가상 환경을 생성합니다.</li>
+<li><b>가상 환경 활성화:</b> source venv/bin/activate 명령어를 사용하여 가상 환경을 활성화합니다.</li>
+<li><b>필수 패키지 설치:</b> pip install -r requirements.txt 명령어를 사용하여 requirements.txt 파일에 정의된 필수 패키지를 설치합니다.</li>
+<li><b>Playwright 설치:</b> playwright install 명령어를 사용하여 Playwright를 설치합니다.</li>
+<li><b>.env 파일 생성:</b> .env 파일을 생성하고 OpenAI API 키를 OPENAI_API_KEY 변수에 저장합니다.</li>
+<li><b>Interactive Brokers 웹 API 설정 (선택 사항):</b> Interactive Brokers 웹 API를 사용하려면 해당 저장소를 복제하고 Docker Compose를 사용하여 컨테이너를 실행합니다.</li>
+<li><b>Interactive Brokers 계정 ID 설정:</b> Docker Compose 파일에서 ACCOUNT_ID 환경 변수를 Interactive Brokers 계정 ID로 설정합니다. 페이퍼 트레이딩 계정을 사용하는 것이 좋습니다.</li>
+<li><b>Interactive Brokers 웹 API 실행:</b> docker-compose up 명령어를 사용하여 Interactive Brokers 웹 API 컨테이너를 실행합니다.</li>
+<li><b>Interactive Brokers 웹 API 인증:</b> 웹 브라우저에서 http://localhost:5056에 접속하여 Interactive Brokers 계정으로 로그인합니다.</li>
+<li><b>Browser Use 코드 작성:</b> AI 에이전트 코드를 작성합니다. 예제 코드는 GitHub 저장소에서 확인할 수 있습니다.</li>
+<li><b>언어 모델 인스턴스화:</b> Langchain을 사용하여 OpenAI 언어 모델을 인스턴스화합니다.</li>
+<li><b>Browser Use 에이전트 생성:</b> Browser Use 에이전트를 생성하고 언어 모델을 전달합니다.</li>
+<li><b>작업 정의:</b> AI 에이전트가 수행할 작업을 정의합니다. 작업은 자연어 프롬프트로 작성할 수 있습니다.</li>
+<li><b>웹 애플리케이션 URL 지정:</b> AI 에이전트가 접근할 웹 애플리케이션의 URL을 지정합니다.</li>
+<li><b>웹 페이지 요소 찾기:</b> Playwright를 사용하여 웹 페이지의 특정 요소를 찾습니다. CSS 선택자를 활용할 수 있습니다.</li>
+<li><b>요소 클릭:</b> 웹 페이지의 요소를 클릭합니다.</li>
+<li><b>텍스트 입력:</b> 웹 페이지의 양식에 텍스트를 입력합니다.</li>
+<li><b>정보 추출:</b> 웹 페이지에서 필요한 정보를 추출합니다.</li>
+<li><b>조건 설정:</b> 특정 조건에 따라 다른 작업을 수행하도록 AI 에이전트를 구성합니다.</li>
+<li><b>반복 작업 설정:</b> AI 에이전트가 특정 작업을 반복하도록 설정합니다.</li>
+<li><b>오류 처리:</b> AI 에이전트가 오류 발생 시 적절하게 대응하도록 설정합니다.</li>
+<li><b>로그 기록:</b> AI 에이전트의 작업 기록을 로그 파일에 저장합니다.</li>
+<li><b>모니터링:</b> AI 에이전트의 작동 상태를 모니터링합니다.</li>
+<li><b>스케줄링:</b> AI 에이전트가 특정 시간에 자동으로 실행되도록 스케줄링합니다.</li>
+<li><b>테스트:</b> AI 에이전트가 예상대로 작동하는지 테스트합니다.</li>
+<li><b>개선:</b> 테스트 결과를 바탕으로 AI 에이전트의 성능을 개선합니다.</li>
+<li><b>배포:</b> AI 에이전트를 실제 환경에 배포합니다.</li>
+<li><b>유지보수:</b> AI 에이전트를 지속적으로 유지보수합니다.</li>
+</ol>
+<h3 data-ke-size="size23">결론</h3>
+<p data-ke-size="size16">Browser Use를 사용하면 AI 에이전트가 웹 브라우저를 통해 다양한 트레이딩 작업을 자동화할 수 있습니다. 이 도구를 활용하면 개인 투자자뿐만 아니라 금융 기관에서도 효율적인 의사 결정 및 자동화된 작업 수행이 가능합니다. 본 게시물에서 소개된 내용을 바탕으로 자신만의 AI 트레이딩 에이전트를 구축하고, 금융 시장에서 경쟁력을 확보하시기 바랍니다.</p>
+<h3 data-ke-size="size23">프롬프트 예시</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>"Interactive Brokers 웹 애플리케이션에서 '가장 활발한 주식 스캔'을 실행하고, 상위 3개 주식을 찾아 각 주식에 대해 2주씩 매수 주문을 실행해줘."</li>
+<li>"Stocktwits에서 'ripster47' 사용자의 게시물을 분석하여 주식 심볼을 추출하고, 추출된 심볼을 기반으로 'ripster47_watchlist'라는 워치리스트를 생성해줘."</li>
+<li>"Perplexity AI Finance에서 'Tesla' 주식에 대한 최신 실적 발표 정보를 추출해줘."</li>
+</ul>
+<h3 data-ke-size="size23">추가 정보</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Browser Use GitHub 저장소: <a href="https://github.com/browser-use/browser-use">https://github.com/browser-use/browser-use</a></li>
+<li>Interactive Brokers 웹 API GitHub 저장소: <a href="https://github.com/hackingthemarkets/interactive_brokers_web_api">https://github.com/hackingthemarkets/interactive_brokers_web_api</a></li>
+</ul>
+<h2 data-ke-size="size26">&nbsp;</h2>
+<h2 data-ke-size="size26">AI 트레이딩 에이전트 구축 및 프롬프트 분석 (초등학생 수준 설명)</h2>
+<p data-ke-size="size16">자, 오늘 우리는 컴퓨터에게 주식 거래를 도와달라고 부탁하는 방법을 배울 거예요! 마치 로봇 친구에게 "이것 좀 해줘"라고 말하는 것과 같아요. 하지만 로봇 친구는 우리가 시키는 대로 하려면 정확한 설명이 필요하겠죠? 그 설명이 바로 <b>프롬프트</b>랍니다!</p>
+<h3 data-ke-size="size23">1단계: 프롬프트란 무엇일까요?</h3>
+<p data-ke-size="size16">프롬프트는 컴퓨터에게 무엇을 해야 할지 알려주는 짧은 명령이나 질문이에요. 마치 숙제를 할 때 엄마가 "숙제 다 했니?"라고 물어보는 것과 같아요. 엄마의 질문이 프롬프트인 거죠!</p>
+<h3 data-ke-size="size23">2단계: 어떤 프롬프트들이 사용되었을까요? (개수 세기)</h3>
+<p data-ke-size="size16">이제 첨부된 파일에서 사용된 프롬프트들을 찾아볼 거예요. 마치 숨은 그림 찾기 놀이처럼요! 파일 내용을 살펴보니, 총 <b>10개의 프롬프트</b>가 사용되었네요!</p>
+<h3 data-ke-size="size23">3단계: 프롬프트 자세히 살펴보기 (예시)</h3>
+<p data-ke-size="size16">각 프롬프트는 컴퓨터에게 어떤 일을 시키는 걸까요? 몇 가지 예시를 살펴볼게요.</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>"visit the uh go to my web application I've created uh visit the stock scanner in the Navar uh in the sort by drop down of the scanner page select the most active option uh then click the scan button and wait for a new scan to run find the three top stocks that are not ETFs Ultra Longs or Ultra shorts click on the stock symbol to go to the order screen and if you can't find a particular symbol there's a stock lookup tool in the napar place and buy order for two shares of each of the top three stocks in the scanner you should use a price 20% below the most recent High"</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>설명:</b> 이 프롬프트는 컴퓨터에게 웹사이트에 접속해서 주식 스캔을 하고, 특정 조건에 맞는 주식을 찾아서 매수 주문을 넣으라고 지시하는 거예요. 마치 엄마가 "마트에 가서 사과 3개, 바나나 2개를 사 와"라고 말하는 것과 같아요.</li>
+</ul>
+</li>
+<li><b>"go to a particular user's Twitter account so let's say you follow Niche Twitter accounts Niche substacks I said go to this ripster guy I don't know who he is but I just said go to this guy's account cuz he was trending um I'm saying find the top few symbols that are in his first uh post here and I said create a watch list out of it"</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>설명:</b> 이 프롬프트는 컴퓨터에게 트위터에 접속해서 특정 사용자의 글을 분석하고, 주식 관련 정보를 찾아서 관심 목록에 추가하라고 지시하는 거예요. 마치 친구가 "나 저 친구가 올린 사진에 뭐가 있는지 궁금해. 같이 보자!"라고 말하는 것과 같아요.</li>
+</ul>
+</li>
+<li><b>"extract information about their most recent earnings"</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>설명:</b> 이 프롬프트는 컴퓨터에게 특정 주식의 최근 실적 정보를 찾아달라고 요청하는 거예요. 마치 선생님이 "오늘 배운 내용 중에서 가장 중요한 부분은 무엇이었지?"라고 질문하는 것과 같아요.</li>
+</ul>
+</li>
+</ol>
+<h3 data-ke-size="size23">4단계: 프롬프트 작성 연습 (나만의 프롬프트 만들기!)</h3>
+<p data-ke-size="size16">이제 여러분도 프롬프트를 직접 만들어 볼까요? 예를 들어, "컴퓨터야, 오늘 날씨가 어때?"라고 물어보는 프롬프트를 만들 수 있어요.</p>
+<h3 data-ke-size="size23">결론</h3>
+<p data-ke-size="size16">프롬프트는 컴퓨터와 대화하는 데 필요한 중요한 도구랍니다. 프롬프트를 잘 사용하면 컴퓨터에게 우리가 원하는 것을 정확하게 알려줄 수 있고, 컴퓨터는 우리의 좋은 친구가 되어줄 거예요!</p>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>Prompt List (총 10개):</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Visit the web application, go to the stock scanner, select the most active option, click the scan button, find the top three stocks, click on the stock symbol, and place a buy order for two shares of each stock at 20% below the most recent high.</li>
+<li>Go to a particular user's Twitter account (ripster47), find the top few symbols in his first post, and create a watch list out of it.</li>
+<li>Go to Perplexity AI Finance symbol (Tesla) and extract information about their most recent earnings.</li>
+<li>Go to Reddit search for browser use click the first post and return the first comment</li>
+<li>Find the scanner tool and go to it</li>
+<li>Find the sort by drop-down and select the high dividend yield option then click the scan button when the scan is when the scan is done capture the list of uh stocks uh on the screen</li>
+<li>Go to HTP Local Host 5056</li>
+<li>Call it use the username of the person and capture capture a watch list for each of these users</li>
+<li>extract the stock information on the page</li>
+<li>Call it ripster 47</li>
+</ol>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,166 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Llama Recipes 사용 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Llama Recipes 사용 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-30 16:05:29</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-3a9ba4eb-09a3-47c6-82eb-3405b192c3e4" data-ke-size="size16"><span style="color: #000000;">Llama Recipes는 Meta에서 제공하는 Llama 모델을 쉽게 사용할 수 있도록 도와주는 도구입니다. 이 가이드에서는 Llama Recipes의 설치부터 활용까지 단계별로 설명하겠습니다.</span></p>
+<p id="SE-509f1c7b-a2bf-4a9c-90c8-6600d09b8ac7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bdd83401-d3b3-476a-bf50-ed1492f26079" data-ke-size="size16"><span style="color: #000000;"><b>1. 환경 설정</b></span></p>
+<p id="SE-43517952-50ce-48dc-b9f1-206fa685d8a4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8529d7fe-ecee-4bcb-bcf9-3eb15e972ec9" data-ke-size="size16"><span style="color: #000000;"><b>1.1 Python 설치</b></span></p>
+<p id="SE-e1db278f-9b8a-4b58-b528-6575c0317b61" data-ke-size="size16"><span style="color: #000000;">Python 3.8 이상 버전을 설치합니다.</span></p>
+<p id="SE-f7878ded-c726-45ac-b08f-1c9572b3879b" data-ke-size="size16"><span style="color: #000000;">공식 웹사이트(</span><span style="color: #000000;" data-href="http://python.org/">python.org</span><span style="color: #000000;">)에서 다운로드 후 설치합니다.</span></p>
+<p id="SE-d26d391f-a58a-48e1-8453-cd1c468e5f6d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-70751ee2-db19-4d0e-8ff6-b1c2eeaf3e15" data-ke-size="size16"><span style="color: #000000;"><b>1.2 가상 환경 생성</b></span></p>
+<p id="SE-4d10063e-b7f5-4b79-8244-e9a52f0b3a14" data-ke-size="size16"><span style="color: #000000;">python -m venv llama_env source llama_env/bin/activate # Windows: llama_env\\\\Scripts\\\\activate </span></p>
+<p id="SE-c525fe17-927d-46ce-8b06-ebc87a0adfbd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-83bd5a63-a2f0-46d1-9413-559241fa706c" data-ke-size="size16"><span style="color: #000000;"><b>2. Llama Recipes 설치</b></span></p>
+<p id="SE-0a8a1f55-060c-4569-9623-ff030cb32e6e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-866f7136-33d6-4f47-9af9-8333afaac247" data-ke-size="size16"><span style="color: #000000;"><b>2.1 기본 설치</b></span></p>
+<p id="SE-78d8d077-4a8c-4ff8-837e-8b2c070cb1f3" data-ke-size="size16"><span style="color: #000000;">pip install llama-recipes </span></p>
+<p id="SE-fa06b237-a5fc-4fc8-8862-8055f7f1b316" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ced67015-b5d5-49ab-a685-72358448941f" data-ke-size="size16"><span style="color: #000000;"><b>2.2 추가 기능 설치</b></span></p>
+<p id="SE-abcf93cf-f6de-4102-a0c0-e273230979af" data-ke-size="size16"><span style="color: #000000;">pip install llama-recipes[tests,vllm,auditnlg,langchain] </span></p>
+<p id="SE-095b1d7a-cc26-4c39-8127-dcc624fe2d2f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8f1f0916-f1f2-44d8-ba49-df80d04c7a12" data-ke-size="size16"><span style="color: #000000;"><b>3. Llama 모델 다운로드</b></span></p>
+<p id="SE-12142654-71a1-4c35-9c67-17433592d37c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0bf3b226-35bc-4364-a483-cef56f1853b3" data-ke-size="size16"><span style="color: #000000;"><b>3.1 Meta AI 접근 권한 획득</b></span></p>
+<p id="SE-49120e81-08aa-4e0c-9251-5a52aa54c038" data-ke-size="size16"><span style="color: #000000;">Meta AI 웹사이트에서 Llama 모델 사용 신청을 합니다.</span></p>
+<p id="SE-01ad8db6-bf8b-42fb-b61a-dd951b555986" data-ke-size="size16"><span style="color: #000000;">승인 이메일을 받으면 다운로드 링크를 확인합니다.</span></p>
+<p id="SE-a87580eb-8651-4869-8762-661cac1a79a2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5e80bc9e-2626-4b6f-815e-d29f2eb45948" data-ke-size="size16"><span style="color: #000000;"><b>3.2 모델 파일 다운로드</b></span></p>
+<p id="SE-26bc3022-9ba4-4ac6-a5dd-459ee979fc46" data-ke-size="size16"><span style="color: #000000;">git clone &lt;<a href="https://github.com/facebookresearch/llama.git">https://github.com/facebookresearch/llama.git</a>&gt; cd llama bash download.sh </span></p>
+<p id="SE-fe501715-78f7-4be0-b6ec-ca25ddb8274b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e7c1fdc8-7553-4945-995b-6968c9c0f311" data-ke-size="size16"><span style="color: #000000;"><b>4. 모델 변환</b></span></p>
+<p id="SE-17e37f89-c7be-45b0-8f38-b624bfd5227f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9abb234d-b834-4abf-ac86-d48a4325bdd0" data-ke-size="size16"><span style="color: #000000;"><b>4.1 Hugging Face 형식으로 변환</b></span></p>
+<p id="SE-806c6378-260c-49b7-8dd6-edd4ff872750" data-ke-size="size16"><span style="color: #000000;">python convert_llama_weights_to_hf.py --input_dir llama-2-7b --model_size 7B --output_dir llama-2-7b/7B </span></p>
+<p id="SE-20c5da31-9972-4270-9803-a3c9180192cc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-025216d8-3dcb-4259-a179-b11ea7e4ce4e" data-ke-size="size16"><span style="color: #000000;"><b>5. 기본 사용법</b></span></p>
+<p id="SE-8cf9fe25-4e59-42b2-b6ea-2c5c0e2b42f9" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0e75053f-bb87-4bd0-82c3-4cba8a5e2512" data-ke-size="size16"><span style="color: #000000;"><b>5.1 대화형 모드 실행</b></span></p>
+<p id="SE-de19f73b-7eae-49a6-b360-67099fc083e1" data-ke-size="size16"><span style="color: #000000;">from llama_recipes import Llama model = Llama.from_pretrained("llama-2-7b/7B") response = model.chat("안녕하세요, 오늘의 날씨는 어떤가요?") print(response) </span></p>
+<p id="SE-07c09838-251c-4515-9d54-1186a8be5abc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a7abb9da-64e7-4a2d-b6a8-202f30285a57" data-ke-size="size16"><span style="color: #000000;"><b>6. 파인튜닝 준비</b></span></p>
+<p id="SE-30f253ab-2356-4ca0-a14c-8c8bb6236fef" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a1e7e51a-60cc-40e1-823e-1975f60f2364" data-ke-size="size16"><span style="color: #000000;"><b>6.1 데이터셋 준비</b></span></p>
+<p id="SE-4ce8187d-542f-41ce-a401-5737d92b20b8" data-ke-size="size16"><span style="color: #000000;">파인튜닝에 사용할 데이터셋을 준비합니다.</span></p>
+<p id="SE-b8797d5d-8444-4741-8f66-bd1d5d6acacd" data-ke-size="size16"><span style="color: #000000;">JSON 또는 CSV 형식으로 저장합니다.</span></p>
+<p id="SE-695a92d1-c0f8-4822-971f-4181113f40f2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e036610a-09f2-4cd3-afc3-5df0786fc2b6" data-ke-size="size16"><span style="color: #000000;"><b>6.2 설정 파일 생성</b></span></p>
+<p id="SE-316733cb-d7f4-40e5-a3c8-c3ff0d8af445" data-ke-size="size16"><span style="color: #000000;"># config.yaml model: name: "llama-2-7b" max_length: 512 training: epochs: 3 batch_size: 8 learning_rate: 2e-5 data: train_file: "path/to/train.json" validation_file: "path/to/val.json" </span></p>
+<p id="SE-74b463eb-b4dd-4be3-866d-07a3b17ea01a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c87b56c9-30b3-4ad6-9643-9f4f33590933" data-ke-size="size16"><span style="color: #000000;"><b>7. 파인튜닝 실행</b></span></p>
+<p id="SE-11dbb804-5066-4b3b-b39e-9354003da4fa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-30ed99f1-f70c-4566-8a7e-ac72535b929b" data-ke-size="size16"><span style="color: #000000;"><b>7.1 파인튜닝 스크립트 실행</b></span></p>
+<p id="SE-3eebae2a-75b7-4226-b7f5-519b8e2cfddd" data-ke-size="size16"><span style="color: #000000;">python -m llama_recipes.finetuning --config config.yaml </span></p>
+<p id="SE-bda0dbb8-9726-42a8-8956-22b91924a908" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f0175b01-5405-488a-92a4-5f8ef432af07" data-ke-size="size16"><span style="color: #000000;"><b>8. 결과 평가</b></span></p>
+<p id="SE-5788c5a1-fc28-45c1-bf08-645b78ee53d2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1652da3c-bd37-4d6e-a52f-9874e821003c" data-ke-size="size16"><span style="color: #000000;"><b>8.1 평가 메트릭 확인</b></span></p>
+<p id="SE-b3a1912c-0e65-4dd8-ae33-a5962cbdbac7" data-ke-size="size16"><span style="color: #000000;">학습 로그에서 loss, accuracy 등의 메트릭을 확인합니다.</span></p>
+<p id="SE-6e5ef000-1acf-4e6e-ad97-c60d11c69f82" data-ke-size="size16">&nbsp;</p>
+<p id="SE-974c8416-bf6e-4719-a180-321e8db0f559" data-ke-size="size16"><span style="color: #000000;"><b>8.2 테스트 데이터로 성능 평가</b></span></p>
+<p id="SE-2a7be5c9-a51b-433c-b1ee-4b34d55d1a34" data-ke-size="size16"><span style="color: #000000;">from llama_recipes import evaluate results = evaluate(model, "path/to/test.json") print(results) </span></p>
+<p id="SE-ae1cdaa1-5661-4f1c-a3d3-a709f3c139e1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b1225eaa-14be-433b-a6b8-8a0023cc2d84" data-ke-size="size16"><span style="color: #000000;"><b>9. 모델 저장 및 로드</b></span></p>
+<p id="SE-db2fcaf7-f3b0-4a44-9360-4faa6b61895d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e2767f85-e65f-4410-a59f-1737e8f4326a" data-ke-size="size16"><span style="color: #000000;"><b>9.1 파인튜닝된 모델 저장</b></span></p>
+<p id="SE-a41cf09a-1099-462f-b0fa-d14d6bced7c4" data-ke-size="size16"><span style="color: #000000;">model.save_pretrained("path/to/save/model") </span></p>
+<p id="SE-7a155d07-8920-4e0b-8ba3-f608246e288d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ff47cfa0-018c-4882-a3bd-dde7a016e9c0" data-ke-size="size16"><span style="color: #000000;"><b>9.2 저장된 모델 로드</b></span></p>
+<p id="SE-c99e8693-1541-4808-b10c-893e73a04c4a" data-ke-size="size16"><span style="color: #000000;">from llama_recipes import Llama model = Llama.from_pretrained("path/to/save/model") </span></p>
+<p id="SE-4275179c-17a7-4c5e-ba2b-4769071534ff" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ff7ad794-5a3c-4e92-9ff0-a1fac8ef99bd" data-ke-size="size16"><span style="color: #000000;"><b>10. 추론 최적화</b></span></p>
+<p id="SE-7caa8e02-3e5f-42d1-bc35-f8f11eddfa24" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e6804d5f-c33f-40d3-ae19-ec5494944150" data-ke-size="size16"><span style="color: #000000;"><b>10.1 양자화 적용</b></span></p>
+<p id="SE-e43e23c9-fb8e-455a-9883-cc2aa9237cc8" data-ke-size="size16"><span style="color: #000000;">from llama_recipes import quantize quantized_model = quantize(model, bits=8) </span></p>
+<p id="SE-68bb3028-d09f-406b-8792-ca3ae68e4c8e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3254a365-fb38-466c-86bc-be2e417220a7" data-ke-size="size16"><span style="color: #000000;"><b>11. API 서빙</b></span></p>
+<p id="SE-ae5456b3-d757-4446-99b9-d357407352ed" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7dcf368e-8b79-44e2-ad15-e57f829fbcda" data-ke-size="size16"><span style="color: #000000;"><b>11.1 FastAPI를 이용한 서버 구축</b></span></p>
+<p id="SE-82104438-5607-4816-966a-11d62ec3aa15" data-ke-size="size16"><span style="color: #000000;">from fastapi import FastAPI from llama_recipes import Llama app = FastAPI() model = Llama.from_pretrained("path/to/model") @app.post("/generate") async def generate(prompt: str): response = model.generate(prompt) return {"response": response} </span></p>
+<p id="SE-4e64af00-8403-4bf2-bd30-db0db184efd6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-de9d48fa-7fe0-4f8e-97c9-1e93b4005da6" data-ke-size="size16"><span style="color: #000000;"><b>12.1 대량 데이터 처리</b></span></p>
+<p id="SE-9b236f65-92b2-4877-89f9-38b2e1cb4edb" data-ke-size="size16"><span style="color: #000000;">from llama_recipes import batch_process results = batch_process(model, "path/to/input.json", batch_size=32) </span></p>
+<p id="SE-ad306efa-daf5-426a-bad2-cc18001e28e2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-95d176d6-e06c-4476-93b2-fc7f98d7ca97" data-ke-size="size16"><span style="color: #000000;"><b>13. 모니터링 및 로깅</b></span></p>
+<p id="SE-0db1094d-61c0-4b3f-a96d-a85153159202" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1d2417e1-308f-48f2-bedf-6f0f1f808dda" data-ke-size="size16"><span style="color: #000000;"><b>13.1 TensorBoard 설정</b></span></p>
+<p id="SE-7f4e1d32-26ac-4f0c-9689-2b8aa0217b92" data-ke-size="size16"><span style="color: #000000;">from torch.utils.tensorboard import SummaryWriter writer = SummaryWriter("logs") # 학습 중 로그 기록 writer.add_scalar("Loss/train", loss, global_step) </span></p>
+<p id="SE-a3e6f9a8-b7f6-4433-ba14-243eda4f0b1b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2ff43b13-64a7-4805-a423-cf256a5cd97b" data-ke-size="size16"><span style="color: #000000;"><b>14. 하이퍼파라미터 튜닝</b></span></p>
+<p id="SE-b5b90aa9-689e-48e1-8266-6d750c9e5def" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c51f4b02-728b-445c-85bd-ea4365e7177d" data-ke-size="size16"><span style="color: #000000;"><b>14.1 Optuna를 이용한 자동 튜닝</b></span></p>
+<p id="SE-32024d23-271c-458e-8b92-de4c93b5ff97" data-ke-size="size16"><span style="color: #000000;">import optuna def objective(trial): lr = trial.suggest_loguniform('lr', 1e-5, 1e-2) # 모델 학습 및 평가 return accuracy study = optuna.create_study(direction='maximize') study.optimize(objective, n_trials=100) </span></p>
+<p id="SE-a1e3d516-f017-4625-9b88-40540881c087" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4060ed8e-1476-4486-a3d8-2b03ec3a5368" data-ke-size="size16"><span style="color: #000000;"><b>15. 멀티 GPU 학습</b></span></p>
+<p id="SE-ce8fdf2c-8ebb-4deb-beb4-788409f3b112" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a43e3e19-9e9b-4dc0-b688-4611fc9dcff0" data-ke-size="size16"><span style="color: #000000;"><b>15.1 DistributedDataParallel 설정</b></span></p>
+<p id="SE-1ccd2e53-6581-4d3a-8166-2ac50eb53a5b" data-ke-size="size16"><span style="color: #000000;">import torch.distributed as dist from torch.nn.parallel import DistributedDataParallel as DDP dist.init_process_group(backend='nccl') model = DDP(model) </span></p>
+<p id="SE-567a1500-642e-4a54-abdf-f01fed03d299" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a2515288-5140-40f7-ad37-3951cb3b94fb" data-ke-size="size16"><span style="color: #000000;"><b>16. 커스텀 데이터셋 사용</b></span></p>
+<p id="SE-86407be3-1ad6-47db-b44e-b36bbd335293" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f255606f-8823-4201-96d1-b74d678c58bf" data-ke-size="size16"><span style="color: #000000;"><b>16.1 사용자 정의 데이터셋 클래스 생성</b></span></p>
+<p id="SE-eec2f742-1b10-4d58-acce-4953f89d26d5" data-ke-size="size16"><span style="color: #000000;">from torch.utils.data import Dataset class CustomDataset(Dataset): def __init__(self, data_file): # 데이터 로드 및 전처리 pass def __len__(self): return len(self.data) def __getitem__(self, idx): return self.data[idx] </span></p>
+<p id="SE-c8ebafa2-33b2-425e-bb4d-cc4846367093" data-ke-size="size16">&nbsp;</p>
+<p id="SE-32520669-4e6e-4882-8eff-7bdea324fd96" data-ke-size="size16"><span style="color: #000000;"><b>17. 프롬프트 엔지니어링</b></span></p>
+<p id="SE-0430b780-7cde-47bd-b56b-0a6561a72d77" data-ke-size="size16">&nbsp;</p>
+<p id="SE-10313391-3e66-48f7-ac59-9d4074482b7b" data-ke-size="size16"><span style="color: #000000;"><b>17.1 효과적인 프롬프트 설계</b></span></p>
+<p id="SE-c6362e02-4a86-4183-becf-ec69c8af7fd7" data-ke-size="size16"><span style="color: #000000;">명확하고 구체적인 지시사항을 포함합니다.</span></p>
+<p id="SE-0c10c748-9bfe-40f1-9698-7be4c17ceda4" data-ke-size="size16"><span style="color: #000000;">예시를 통해 원하는 출력 형식을 제시합니다.</span></p>
+<p id="SE-be55578e-75b4-42a4-b734-2275336c6202" data-ke-size="size16">&nbsp;</p>
+<p id="SE-beb89c8a-cd0d-49f3-8cc9-99f46fdeb233" data-ke-size="size16"><span style="color: #000000;"><b>18. 모델 해석</b></span></p>
+<p id="SE-44229794-11b4-41ec-bad8-025bf90c8a51" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5c6345d3-3193-4fec-8769-82e26f098394" data-ke-size="size16"><span style="color: #000000;"><b>18.1 어텐션 시각화</b></span></p>
+<p id="SE-128078b2-4e2f-4901-a5a2-a37505018ff2" data-ke-size="size16"><span style="color: #000000;">from llama_recipes import visualize_attention visualize_attention(model, "입력 텍스트") </span></p>
+<p id="SE-4317d9fe-f863-4264-8a4c-a84ccac051fa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-116e44de-0d57-433f-aec8-5fe936539d7d" data-ke-size="size16"><span style="color: #000000;"><b>19. 윤리적 고려사항</b></span></p>
+<p id="SE-e590e743-4f0a-42ad-9572-2a1a73a85ce5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fed30cca-9965-44b4-b667-5d4fb7c13425" data-ke-size="size16"><span style="color: #000000;"><b>19.1 편향성 검사</b></span></p>
+<p id="SE-ae77396f-03bb-4cc3-a8ca-f8f7a9693355" data-ke-size="size16"><span style="color: #000000;">다양한 인구 통계학적 그룹에 대한 모델 출력을 분석합니다.</span></p>
+<p id="SE-e0fbd722-6f47-426a-883b-3e7d74691ba4" data-ke-size="size16"><span style="color: #000000;">필요한 경우 데이터셋을 조정하여 편향성을 줄입니다.</span></p>
+<p id="SE-922835e9-b775-483f-9ba7-04c027fccf68" data-ke-size="size16">&nbsp;</p>
+<p id="SE-857595d6-d05b-4f61-8dac-e21e7dd0c720" data-ke-size="size16"><span style="color: #000000;"><b>20. 지속적인 학습 및 업데이트</b></span></p>
+<p id="SE-be8b2682-412c-46ef-9661-11e9e593f765" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2df1393c-94b9-4b47-9b7b-50d04f805818" data-ke-size="size16"><span style="color: #000000;"><b>20.1 증분 학습 설정</b></span></p>
+<p id="SE-b1b596fc-724b-4cc5-ae98-5efe8e3ad5e3" data-ke-size="size16"><span style="color: #000000;">from llama_recipes import incremental_learning incremental_learning(model, "path/to/new_data.json") </span></p>
+<p id="SE-118b338b-1fda-450b-875f-2d7f3f03914b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e9f74221-1b2b-4ca7-ae39-1b1126f171b1" data-ke-size="size16"><span style="color: #000000;">이 가이드를 통해 Llama Recipes의 기본적인 사용법부터 고급 기능까지 다양한 측면을 살펴보았습니다. Llama Recipes를 활용하면 강력한 언어 모델을 쉽게 다룰 수 있으며, 다양한 자연어 처리 작업에 적용할 수 있습니다. 지속적인 학습과 실험을 통해 더 나은 결과를 얻을 수 있을 것입니다.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

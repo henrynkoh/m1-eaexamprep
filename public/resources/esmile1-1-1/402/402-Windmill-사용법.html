@@ -1,0 +1,181 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Windmill 사용법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Windmill 사용법</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-30 16:21:38</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-8bd015b9-ba68-4bf8-bda9-81403e30364c" data-ke-size="size16"><span style="color: #000000;">Windmill은 강력한 워크플로우 자동화 및 스크립팅 플랫폼입니다. 이 가이드에서는 Windmill의 설치부터 고급 기능 활용까지 단계별로 설명하겠습니다.</span></p>
+<p id="SE-b9ec1662-b6b2-42ba-938c-6110df11600f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-78e6a2db-c8b6-4f93-9735-d2b158fbd606" data-ke-size="size16"><span style="color: #000000;"><b>1. 설치 및 환경 설정</b></span></p>
+<p id="SE-3b84beff-e4ff-47a7-b43f-db2c654f461a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0b78a1df-48d3-44d3-9b68-0bbf39b9e6a9" data-ke-size="size16"><span style="color: #000000;"><b>1.1 Docker 설치</b></span></p>
+<p id="SE-0a52eee6-0745-4640-940f-9f3340817abe" data-ke-size="size16"><span style="color: #000000;">Windmill은 Docker를 통해 쉽게 설치할 수 있습니다.</span></p>
+<p id="SE-1cd01b5e-f8e0-4300-bd4e-fda1f3fcd796" data-ke-size="size16"><span style="color: #000000;">sudo apt-get update sudo apt-get install docker.io </span></p>
+<p id="SE-317f7ec1-d068-41e3-b41f-4964886e9ff5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-70e1218f-efef-4c7e-aa37-e45631005644" data-ke-size="size16"><span style="color: #000000;"><b>1.2 Windmill 이미지 다운로드</b></span></p>
+<p id="SE-aa1ecb79-4ae0-40bd-8d33-4638d90ab613" data-ke-size="size16"><span style="color: #000000;">docker pull ghcr.io/windmill-labs/windmill:main </span></p>
+<p id="SE-b0698b11-c594-445b-9a66-c72231758d71" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2b9a5de5-56af-4a4a-8993-915cc6203ca8" data-ke-size="size16"><span style="color: #000000;"><b>1.3 Windmill 실행</b></span></p>
+<p id="SE-24f45763-f98f-4e2c-b5b0-b53791f1a151" data-ke-size="size16"><span style="color: #000000;">docker run -d --name windmill -p 8000:8000 ghcr.io/windmill-labs/windmill:main </span></p>
+<p id="SE-eef20ae1-afff-46b3-81c5-8adb69075625" data-ke-size="size16">&nbsp;</p>
+<p id="SE-46f14189-b879-465c-9321-7361127c0141" data-ke-size="size16"><span style="color: #000000;"><b>1.4 초기 설정</b></span></p>
+<p id="SE-ba6a1914-4fa5-4e87-9dd0-7f2362fc0a58" data-ke-size="size16"><span style="color: #000000;">브라우저에서 http://localhost:8000에 접속하여 관리자 계정을 생성합니다.</span></p>
+<p id="SE-f1295d78-fd9b-43da-84a9-0f8994e20dfa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9459faad-9028-49db-985f-2d5a46f3695b" data-ke-size="size16"><span style="color: #000000;"><b>2. 기본 사용법</b></span></p>
+<p id="SE-498d08f2-5a6e-4218-8012-42cdad42c707" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5554a2cd-98e9-40c5-81de-90da2efe43c6" data-ke-size="size16"><span style="color: #000000;"><b>2.1 워크스페이스 생성</b></span></p>
+<p id="SE-8bd7e8da-175a-40fc-83da-d42c2f9f501c" data-ke-size="size16"><span style="color: #000000;">대시보드에서 "Create Workspace" 클릭</span></p>
+<p id="SE-9795fe9b-7088-4a21-b967-90c9a5be3097" data-ke-size="size16"><span style="color: #000000;">워크스페이스 이름 입력</span></p>
+<p id="SE-9bac901b-3ec0-4547-be77-9f236b7b0274" data-ke-size="size16"><span style="color: #000000;">"Create" 버튼 클릭</span></p>
+<p id="SE-464fd2d8-46ab-400f-9cac-ea7fc0c17f37" data-ke-size="size16">&nbsp;</p>
+<p id="SE-157ee6ce-e895-4cb9-8844-8cba6caed367" data-ke-size="size16"><span style="color: #000000;"><b>2.2 첫 번째 스크립트 작성</b></span></p>
+<p id="SE-f4ecf4c1-d06f-4051-bef6-6a4056406e39" data-ke-size="size16"><span style="color: #000000;">"Scripts" 메뉴 선택</span></p>
+<p id="SE-1be9817c-c4ba-4a17-80d0-2d6ca2d26130" data-ke-size="size16"><span style="color: #000000;">"New Script" 클릭</span></p>
+<p id="SE-487938cb-6f33-4bec-a0e8-31a1ddeebc4d" data-ke-size="size16"><span style="color: #000000;">언어 선택 (예: Python)</span></p>
+<p id="SE-53700072-d6ba-4957-af1c-7c48eb18bcaa" data-ke-size="size16"><span style="color: #000000;">스크립트 작성:</span></p>
+<p id="SE-2d293da6-45a5-44a5-9bfc-824e2fecd956" data-ke-size="size16"><span style="color: #000000;">def main(name: str): return f"Hello, {name}!" </span></p>
+<p id="SE-45312409-edaa-4f43-aade-46ef7b103edb" data-ke-size="size16"><span style="color: #000000;">"Save" 버튼 클릭</span></p>
+<p id="SE-1e5c18fd-6593-4c0f-876b-807f38fe6a57" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5ea84408-91b3-42d0-aeb9-da9f00f737c9" data-ke-size="size16"><span style="color: #000000;"><b>2.3 스크립트 실행</b></span></p>
+<p id="SE-33fda866-fe69-4668-9341-55eb97397f94" data-ke-size="size16"><span style="color: #000000;">저장된 스크립트 선택</span></p>
+<p id="SE-e3f51375-b7b5-48e5-b127-d375f7def2f9" data-ke-size="size16"><span style="color: #000000;">"Run" 버튼 클릭</span></p>
+<p id="SE-59d865e9-9833-4846-88bf-78b522847a84" data-ke-size="size16"><span style="color: #000000;">필요한 매개변수 입력</span></p>
+<p id="SE-94088052-6b42-42db-8d71-43803e46062f" data-ke-size="size16"><span style="color: #000000;">실행 결과 확인</span></p>
+<p id="SE-fb7ab143-d8e3-4815-8ce8-6bb5296bda9c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-44819240-ceb2-4506-8b2f-78ca81a69815" data-ke-size="size16"><span style="color: #000000;"><b>3. 고급 기능</b></span></p>
+<p id="SE-912ee8b6-4166-486c-9df1-efddd9b77f26" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9170ca82-ab22-4484-a85a-0ae6647bec2f" data-ke-size="size16"><span style="color: #000000;"><b>3.1 변수 설정</b></span></p>
+<p id="SE-c470a92f-5487-4ded-a2f5-6568d9173364" data-ke-size="size16"><span style="color: #000000;">"Variables" 메뉴 선택</span></p>
+<p id="SE-184433ea-1eb5-4567-988f-ab56e33f185e" data-ke-size="size16"><span style="color: #000000;">"New Variable" 클릭</span></p>
+<p id="SE-1146cb05-e1ab-4987-96d9-7aec9b09eed7" data-ke-size="size16"><span style="color: #000000;">변수 이름과 값 입력</span></p>
+<p id="SE-c2e233de-be34-4d02-b3de-1aaaa08ffc83" data-ke-size="size16"><span style="color: #000000;">보안 수준 선택 (일반/비밀)</span></p>
+<p id="SE-bc134098-d042-48d2-85d0-f4815ddb31e0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ec822f03-a2cf-428a-8469-64780ee2f86b" data-ke-size="size16"><span style="color: #000000;"><b>3.2 리소스 연결</b></span></p>
+<p id="SE-b91ed8ba-1e50-49c7-bf9a-b6c69b5cc551" data-ke-size="size16"><span style="color: #000000;">"Resources" 메뉴 선택</span></p>
+<p id="SE-366481d1-99c5-4dd7-a090-6050c7021659" data-ke-size="size16"><span style="color: #000000;">원하는 리소스 유형 선택 (예: Database)</span></p>
+<p id="SE-91e40158-4076-4411-a045-b6d03a895728" data-ke-size="size16"><span style="color: #000000;">연결 정보 입력</span></p>
+<p id="SE-47ac66af-a99c-4d87-afd8-1325e4822e06" data-ke-size="size16"><span style="color: #000000;">"Test Connection" 후 저장</span></p>
+<p id="SE-54fba258-e096-4d1f-a42b-b070b019c4e0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-405a61d7-d4ea-41ed-b845-0ca10b6d4bf8" data-ke-size="size16"><span style="color: #000000;"><b>3.3 워크플로우 생성</b></span></p>
+<p id="SE-b43d6af2-685c-4d52-93ac-daf3ec5dfcc6" data-ke-size="size16"><span style="color: #000000;">"Flows" 메뉴 선택</span></p>
+<p id="SE-ff7a4f66-33be-4fc1-afe3-a91bc90c7de2" data-ke-size="size16"><span style="color: #000000;">"New Flow" 클릭</span></p>
+<p id="SE-d7fc57d4-43c0-4380-bed5-4aee7c586f0a" data-ke-size="size16"><span style="color: #000000;">플로우 이름 입력</span></p>
+<p id="SE-f1869cbb-a6da-4bfb-b83e-4cc3bc60ff18" data-ke-size="size16"><span style="color: #000000;">노드 추가 및 연결</span></p>
+<p id="SE-9eb516a5-7138-4505-b6ec-63fc880c3ab4" data-ke-size="size16"><span style="color: #000000;">"Save" 버튼 클릭</span></p>
+<p id="SE-ebad08bf-2bb6-421a-ac12-25cdaeb80faa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-74ee56c3-5730-4fa4-a910-21b1bd5a8a73" data-ke-size="size16"><span style="color: #000000;"><b>3.4 스케줄 설정</b></span></p>
+<p id="SE-734dd195-f0d8-4a2b-a76a-36743b330b2f" data-ke-size="size16"><span style="color: #000000;">워크플로우 또는 스크립트 선택</span></p>
+<p id="SE-902f3eec-95ce-4522-bb41-dbbf09605bc8" data-ke-size="size16"><span style="color: #000000;">"Schedule" 탭 클릭</span></p>
+<p id="SE-c25d862b-e8c0-47bf-a6de-d9b46a5c1cb1" data-ke-size="size16"><span style="color: #000000;">Cron 표현식 입력 또는 GUI 사용</span></p>
+<p id="SE-599fd3d1-3f05-4f12-a39d-4984ab4c0c6b" data-ke-size="size16"><span style="color: #000000;">"Save Schedule" 클릭</span></p>
+<p id="SE-325c6ad6-26b6-4d3c-bf3b-6b4bf565cf50" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2f85657c-06d8-402f-af3d-79d441232925" data-ke-size="size16"><span style="color: #000000;"><b>4. 통합 및 확장</b></span></p>
+<p id="SE-4030e9c0-62cc-4756-9f46-c1b13d927019" data-ke-size="size16">&nbsp;</p>
+<p id="SE-230531fd-3481-4fb9-86b9-16b54ee72211" data-ke-size="size16"><span style="color: #000000;"><b>4.1 API 연동</b></span></p>
+<p id="SE-8a194e2d-53df-4720-8084-8e64d01651e1" data-ke-size="size16"><span style="color: #000000;">"API" 메뉴 선택</span></p>
+<p id="SE-54e11f78-0b4d-4a19-9b58-ae91b1ea866c" data-ke-size="size16"><span style="color: #000000;">API 키 생성</span></p>
+<p id="SE-421a51fc-0dab-4248-a2d2-db83088a50fa" data-ke-size="size16"><span style="color: #000000;">외부 시스템에서 Windmill API 호출:</span></p>
+<p id="SE-fc84f49d-54ab-424d-98a0-8ca72b1024a2" data-ke-size="size16"><span style="color: #000000;">curl -H "Authorization: Bearer YOUR_API_KEY" \\\\ -H "Content-Type: application/json" \\\\ -X POST \\\\ -d '{"args": {"name": "World"}}' \\\\ &lt;http://localhost:8000/api/w/YOUR_WORKSPACE/jobs/run/script/YOUR_SCRIPT&gt; </span></p>
+<p id="SE-0b24a71a-0b19-4bf5-853e-8c0c562db127" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d05611bc-df3e-4c8b-9ef3-85c88e6ff4f8" data-ke-size="size16"><span style="color: #000000;"><b>4.2 커스텀 도커 이미지 사용</b></span></p>
+<p id="SE-8991ed51-7caf-42bf-9d5f-bb6e5ae949b7" data-ke-size="size16"><span style="color: #000000;">Dockerfile 생성:</span></p>
+<p id="SE-33597a77-0618-45af-b42a-d0e24e5aa0de" data-ke-size="size16"><span style="color: #000000;">FROM ghcr.io/windmill-labs/windmill:main RUN pip install your-custom-package </span></p>
+<p id="SE-d8a08b64-667a-4a68-b5b7-b4dbc5dbf363" data-ke-size="size16"><span style="color: #000000;">이미지 빌드 및 푸시</span></p>
+<p id="SE-221a4fb9-40a7-4ad6-b926-985112d4d63d" data-ke-size="size16"><span style="color: #000000;">Windmill 설정에서 커스텀 이미지 지정</span></p>
+<p id="SE-e1ac5b8d-2250-43ab-bb44-5d52128dc912" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9b5f90f1-a13e-4c60-b1a8-a3545fa5f414" data-ke-size="size16"><span style="color: #000000;"><b>4.3 버전 관리 연동</b></span></p>
+<p id="SE-905200d5-7d5e-4b43-a681-f8f29298f376" data-ke-size="size16"><span style="color: #000000;">"Settings" &gt; "Version Control" 선택</span></p>
+<p id="SE-0dabe4cb-9422-4b62-8bb6-8a922609da13" data-ke-size="size16"><span style="color: #000000;">Git 저장소 URL 입력</span></p>
+<p id="SE-d2d9465e-fae9-4269-8fc9-9d70e489227f" data-ke-size="size16"><span style="color: #000000;">인증 정보 설정</span></p>
+<p id="SE-3c070d4d-598d-459e-9f70-271dfd5a937e" data-ke-size="size16"><span style="color: #000000;">"Connect" 클릭</span></p>
+<p id="SE-2c66494e-d98a-4498-a393-88a529ae279c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f5e0f2fc-85a4-439a-b6ce-83659569ccca" data-ke-size="size16"><span style="color: #000000;"><b>5. 모니터링 및 로깅</b></span></p>
+<p id="SE-621ea1b6-81c0-4b39-83f4-c5b22c216fc7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d9685f4d-8b3f-47b6-a3f1-562c02ae6650" data-ke-size="size16"><span style="color: #000000;"><b>5.1 작업 이력 확인</b></span></p>
+<p id="SE-a4d18873-fad4-4676-9b49-dfaee0708507" data-ke-size="size16"><span style="color: #000000;">"Jobs" 메뉴 선택</span></p>
+<p id="SE-2b8851ec-b9d7-48e0-b5da-1296640a300f" data-ke-size="size16"><span style="color: #000000;">필터 적용하여 원하는 작업 조회</span></p>
+<p id="SE-802d2a5d-e685-4449-81cf-ac5cd3e34e85" data-ke-size="size16"><span style="color: #000000;">작업 상세 정보 및 로그 확인</span></p>
+<p id="SE-686bf903-ba65-403b-894c-40bd990d9db3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0b3b3446-b72e-4540-ae72-e9980e95f733" data-ke-size="size16"><span style="color: #000000;"><b>5.2 알림 설정</b></span></p>
+<p id="SE-7388a63c-0414-4bf8-ac3f-7353ca0f89b6" data-ke-size="size16"><span style="color: #000000;">"Settings" &gt; "Notifications" 선택</span></p>
+<p id="SE-63410a0b-1773-43a4-a2c6-eadd84d2b91f" data-ke-size="size16"><span style="color: #000000;">알림 채널 추가 (이메일, Slack 등)</span></p>
+<p id="SE-34209878-8d1d-4f2d-b9b5-2ad690adb08d" data-ke-size="size16"><span style="color: #000000;">알림 규칙 설정</span></p>
+<p id="SE-8b8b8271-6b84-4183-b46b-67e0de48dca1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4d0a9024-322b-412d-b90a-2f441a853579" data-ke-size="size16"><span style="color: #000000;"><b>6. 보안 및 권한 관리</b></span></p>
+<p id="SE-132f082c-b002-4f06-9457-95c79af3495a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5719f3a2-777d-4213-8099-f7778d526321" data-ke-size="size16"><span style="color: #000000;"><b>6.1 사용자 관리</b></span></p>
+<p id="SE-87d76ae3-1760-41ba-af6d-952f8457a8f7" data-ke-size="size16"><span style="color: #000000;">"Settings" &gt; "Users" 선택</span></p>
+<p id="SE-83009a52-4452-4b0f-858c-5dbd213c0181" data-ke-size="size16"><span style="color: #000000;">새 사용자 추가 또는 기존 사용자 편집</span></p>
+<p id="SE-06d04d93-13f6-4de3-bb63-16a18e352555" data-ke-size="size16"><span style="color: #000000;">역할 및 권한 할당</span></p>
+<p id="SE-a50e5b51-f2e7-4b96-bdb5-6f8068724749" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fd3f786c-2d13-4a93-9855-093e4d6ecce1" data-ke-size="size16"><span style="color: #000000;"><b>6.2 그룹 관리</b></span></p>
+<p id="SE-c9ee4e3c-4712-4c05-9815-bc7113e82b48" data-ke-size="size16"><span style="color: #000000;">"Settings" &gt; "Groups" 선택</span></p>
+<p id="SE-48d186d5-b07c-46fc-be1b-214ad0221bb2" data-ke-size="size16"><span style="color: #000000;">새 그룹 생성</span></p>
+<p id="SE-2b48d66a-e685-4b2a-92ad-304c133ce916" data-ke-size="size16"><span style="color: #000000;">사용자를 그룹에 할당</span></p>
+<p id="SE-fbeba44d-938f-467f-8b79-d96fb0c321f6" data-ke-size="size16"><span style="color: #000000;">그룹 단위 권한 설정</span></p>
+<p id="SE-ae71a815-3b08-4746-b838-39a17e77b88c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1a69e4bf-5102-4ea5-9f7c-26161162801f" data-ke-size="size16"><span style="color: #000000;"><b>7. 성능 최적화</b></span></p>
+<p id="SE-1b41020d-74f0-4e37-bb58-53411eeaafeb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dc12a2c0-8ac4-4c5d-9f0d-20aa68bf9310" data-ke-size="size16"><span style="color: #000000;"><b>7.1 캐시 설정</b></span></p>
+<p id="SE-b7ffb4ef-d014-432c-b0c4-b558cb5d282e" data-ke-size="size16"><span style="color: #000000;">스크립트 또는 워크플로우 선택</span></p>
+<p id="SE-75ccdc77-f2d8-4d54-9cd9-050f9385748f" data-ke-size="size16"><span style="color: #000000;">"Cache" 탭 클릭</span></p>
+<p id="SE-e3a67f90-c164-46b0-89f2-8bdbceacba45" data-ke-size="size16"><span style="color: #000000;">캐시 유효 기간 설정</span></p>
+<p id="SE-d3b0292a-285c-42e2-a304-1b09bc2305c9" data-ke-size="size16"><span style="color: #000000;">"Enable Caching" 체크</span></p>
+<p id="SE-6c4b123e-29f4-44c5-8fd1-d4812e518b77" data-ke-size="size16">&nbsp;</p>
+<p id="SE-85ddcd08-26b4-4635-b324-e763e47a3081" data-ke-size="size16"><span style="color: #000000;"><b>7.2 병렬 처리 구성</b></span></p>
+<p id="SE-54f72d19-5a8a-49af-9ee9-1967dc39160d" data-ke-size="size16"><span style="color: #000000;">워크플로우 편집</span></p>
+<p id="SE-a606c79e-5845-4fac-bea8-65e85ac49610" data-ke-size="size16"><span style="color: #000000;">병렬 실행 가능한 노드 그룹화</span></p>
+<p id="SE-fecef451-0f85-4fa9-9865-5f5c323309e9" data-ke-size="size16"><span style="color: #000000;">"Run in Parallel" 옵션 활성화</span></p>
+<p id="SE-a2980f8f-c3c6-4be0-a4dc-ba2d939463ef" data-ke-size="size16">&nbsp;</p>
+<p id="SE-07394540-082b-4e79-8870-3e3455b86b60" data-ke-size="size16"><span style="color: #000000;"><b>8. 문제 해결 및 디버깅</b></span></p>
+<p id="SE-ac10b1bd-258b-4579-8a85-11f83409979d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-20c496d5-c257-498b-84ac-8ca0d9a3e7a1" data-ke-size="size16"><span style="color: #000000;"><b>8.1 로그 분석</b></span></p>
+<p id="SE-fa75895b-5b82-4697-b1d4-3d0cb16a9ff9" data-ke-size="size16"><span style="color: #000000;">문제가 발생한 작업 선택</span></p>
+<p id="SE-51a23f7e-c517-4237-8f9b-3d4bbacaa375" data-ke-size="size16"><span style="color: #000000;">"Logs" 탭 확인</span></p>
+<p id="SE-42063537-0b6f-4c33-ab4f-42f8c5d447ba" data-ke-size="size16"><span style="color: #000000;">오류 메시지 및 스택 트레이스 분석</span></p>
+<p id="SE-f8dbf047-e71f-4546-936e-7777ff4cfee0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cc809cab-0b7e-4899-bd2a-a709af30856b" data-ke-size="size16"><span style="color: #000000;"><b>8.2 테스트 모드 사용</b></span></p>
+<p id="SE-a83f3f24-aad8-44ff-a2b7-9fc8b750c952" data-ke-size="size16"><span style="color: #000000;">스크립트 또는 워크플로우 선택</span></p>
+<p id="SE-c5713c7f-dadf-41b6-94f3-c735f3122aa0" data-ke-size="size16"><span style="color: #000000;">"Test" 버튼 클릭</span></p>
+<p id="SE-53d14ad5-7c38-4838-9b4f-1e50d1ed4bf9" data-ke-size="size16"><span style="color: #000000;">다양한 입력값으로 테스트 실행</span></p>
+<p id="SE-725c0729-a849-46ca-b05b-f7951f00cef8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dbca1722-a0d1-4f58-ab8f-63935aa26fdc" data-ke-size="size16"><span style="color: #000000;">결과 검증</span></p>
+<p id="SE-a8b6bd90-d265-4717-8b53-fa975601ad34" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eb0c2228-c525-4ad5-9242-2debcae3910b" data-ke-size="size16"><span style="color: #000000;">이 가이드를 통해 Windmill의 기본적인 사용법부터 고급 기능까지 다양한 측면을 살펴보았습니다. Windmill을 활용하면 복잡한 워크플로우를 쉽게 자동화하고 관리할 수 있으며, 다양한 시스템과의 통합을 통해 업무 효율성을 크게 향상시킬 수 있습니다. 지속적인 학습과 실험을 통해 Windmill의 잠재력을 최대한 활용해 보시기 바랍니다.</span></p>
+<p id="SE-d78fd6cd-c345-4e16-be0c-b1c6ffc35d61" data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

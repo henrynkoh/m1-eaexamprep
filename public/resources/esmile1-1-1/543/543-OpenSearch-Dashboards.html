@@ -1,0 +1,103 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>OpenSearch Dashboards</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">OpenSearch Dashboards</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-10-24 01:34:05</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-dc79064e-ab9f-4c8d-8a7c-7a039ef2403b" data-ke-size="size16"><span style="color: #000000;">OpenSearch Dashboards에 대한 검색자료를 요약정리 하였습니다. 이 글에서는 OpenSearch Dashboards의 로고 커스터마이징 기능, 일반적인 사용법, 그리고 관련된 주요 이슈들을 중심으로 하였습니다.</span></p>
+<p id="SE-fbca7b9b-b25f-436f-bf28-ba58ec52c8d3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-035e8434-fd08-4157-8c25-c05c625aa9de" data-ke-size="size16"><span style="color: #000000;"><b>OpenSearch Dashboards에서 로고 커스터마이징 및 주요 기능 가이드</b></span></p>
+<p id="SE-5d832e49-0e71-4c5b-91ca-0a82d0feb495" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fec00aec-e0fd-4ae4-94e2-5fdbfbd1dd01" data-ke-size="size16"><span style="color: #000000;"><b>1. OpenSearch Dashboards란?</b></span></p>
+<p id="SE-87a96df5-d69b-48e6-8e8c-4dd3086dcf28" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bee28d6e-ca78-4d46-9f97-10181c2ebd8b" data-ke-size="size16"><span style="color: #000000;">OpenSearch Dashboards는 OpenSearch 데이터의 시각화를 돕는 사용자 인터페이스입니다. 클러스터 관리, 데이터 모니터링, 분석, 그리고 대시보드 설정을 통해 데이터를 보다 쉽게 관리할 수 있습니다. OpenSearch Dashboards는 다양한 커스터마이징 옵션을 제공하며, 그 중에서도 로고 및 브랜딩 요소의 변경이 가능합니다 [</span><span style="color: #000000;" data-href="https://opensearch.org/docs/latest/dashboards/">1</span><span style="color: #000000;">].</span></p>
+<p id="SE-7f89bf74-7c8a-413a-8c97-a5617887b6fe" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9c2e7077-0dfb-4476-8062-b5cd22ec0bb1" data-ke-size="size16"><span style="color: #000000;"><b>2. 로고 커스터마이징이란?</b></span></p>
+<p id="SE-a315d792-ba24-4820-b90c-ce0e9038a903" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cfb9a725-2acf-4f70-8148-e21505d68722" data-ke-size="size16"><span style="color: #000000;">기본적으로 OpenSearch Dashboards는 OpenSearch 로고를 사용합니다. 그러나 로고 및 파비콘(favicon) 같은 브랜딩 요소를 변경하여, 사용자 맞춤형 대시보드를 만들 수 있습니다. 이를 통해 기업 로고나 프로젝트의 정체성을 더 잘 반영할 수 있는 대시보드를 구축할 수 있습니다. 커스터마이징은 주로 branding.customLogo 등의 설정을 통해 이루어집니다 [</span><span style="color: #000000;" data-href="https://opensearch.org/docs/latest/dashboards/branding/">1</span><span style="color: #000000;">].</span></p>
+<p id="SE-bbeeac04-bf3e-4f3e-b2c7-0f589c93d0c2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1371aa8c-5023-4e32-8ee8-aba271eda7ee" data-ke-size="size16"><span style="color: #000000;"><b>2.1 로고 변경 방법</b></span></p>
+<p id="SE-b704d0e8-0d32-41c9-a585-e62d09612eab" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5e3e30a2-ebaf-4061-8995-2cd68ac13e60" data-ke-size="size16"><span style="color: #000000;">로고를 변경하기 위해서는 OpenSearch Dashboards의 설정 파일을 수정해야 합니다. 기본적으로 OpenSearch는 설정 파일에서 사용자 지정 로고 경로를 제공하며, 이를 통해 로고를 업로드하면 됩니다. 예를 들어, 아래와 같은 설정을 추가할 수 있습니다:</span></p>
+<p id="SE-9262b4f9-04c6-4a8b-a94b-ee640db014c3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c64a0826-fda0-4016-9d8a-a3516e79fc4e" data-ke-size="size16"><span style="color: #000000;">branding: customLogo: /path/to/your/custom/logo.png favicon: /path/to/your/custom/favicon.ico </span></p>
+<p id="SE-a26ebdd7-62cf-4376-be04-937781e018a0" data-ke-size="size16"><span style="color: #000000;">이 설정을 적용한 후, Dashboards를 재시작하면 새로운 로고가 표시됩니다.</span></p>
+<p id="SE-201a5fe4-ad82-4429-8d57-1a6bd5497d89" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2b25f02a-250c-414b-a93c-c3afb3b11701" data-ke-size="size16"><span style="color: #000000;"><b>3. 커스터마이징 가능 요소들</b></span></p>
+<p id="SE-09e2db4b-f3e0-41ee-bb00-35e8c3fb444c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-dd2c2c49-fd1c-4733-9e90-a92260a53e17" data-ke-size="size16"><span style="color: #000000;">OpenSearch Dashboards에서 로고 외에도 다양한 요소를 커스터마이징할 수 있습니다. 예를 들어, 로그인 화면, 대시보드 제목, 사이드바 제목 등을 변경할 수 있습니다. 이는 주로 사용자의 필요에 맞춘 대시보드 환경을 구축하는 데 유용합니다 [</span><span style="color: #000000;" data-href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/5222">4</span><span style="color: #000000;">].</span></p>
+<p id="SE-00b5f15a-ce53-4b86-af44-90b34edd7595" data-ke-size="size16">&nbsp;</p>
+<p id="SE-663b71d8-afca-4d80-b6ee-1615eead540b" data-ke-size="size16"><span style="color: #000000;"><b>4. 로고 디자인 관련 이슈</b></span></p>
+<p id="SE-59dd6dee-4f7a-4fe3-85b9-6a4521aca2ae" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8ba964ac-4cde-484c-8f93-06ca3a4609ec" data-ke-size="size16"><span style="color: #000000;">OpenSearch 커뮤니티에서는 OpenSearch Dashboards의 기본 로고 디자인에 대해 의견이 갈린 바 있습니다. 일부 사용자들은 로고의 디자인이 직관적이지 않거나, 느낌이 어색하다는 피드백을 제공하기도 했습니다. 이처럼 디자인에 대한 반응은 매우 주관적일 수 있으며, 로고 커스터마이징 옵션을 통해 이를 쉽게 해결할 수 있습니다 [</span><span style="color: #000000;" data-href="https://forum.opensearch.org/t/opensearch-dashboards-logo-feels-wrong/6510">2</span><span style="color: #000000;">].</span></p>
+<p id="SE-c2edc65e-a7c2-4fd3-8a4c-4373bcf4d206" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b952c2de-2b62-4c0f-9446-efbea1dd33d7" data-ke-size="size16"><span style="color: #000000;"><b>5. AWS 관리형 서비스에서의 제한 사항</b></span></p>
+<p id="SE-18587b4f-ce02-4d49-bb52-0ad2c42b9199" data-ke-size="size16">&nbsp;</p>
+<p id="SE-1b370803-07bc-4955-a159-3bb4ef6b99ea" data-ke-size="size16"><span style="color: #000000;">AWS에서 제공하는 OpenSearch 관리형 서비스에서는 일부 브랜딩 요소를 커스터마이징하는 데 제한이 있습니다. 예를 들어, AWS에서 제공하는 기본 서비스에서는 로고를 마음대로 변경할 수 없는 제약이 있으며, 이는 AWS의 보안 및 유지 관리 정책에 기인합니다. 이러한 제한 사항을 염두에 두고 OpenSearch Dashboards를 사용할 때는 로컬 환경에서 더 많은 커스터마이징을 고려하는 것이 좋습니다 [</span><span style="color: #000000;" data-href="https://repost.aws/questions/QUBpFzAuj2QNaZyKmo-BsFrQ/aws-opensearch-dashboards-custom-branding">6</span><span style="color: #000000;">].</span></p>
+<p id="SE-90a33e99-4393-40d5-92cd-5f5913e0a413" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d16690a7-df17-4c78-8bbf-74e00aabd38e" data-ke-size="size16"><span style="color: #000000;"><b>6. OpenSearch Dashboards 활용 예시</b></span></p>
+<p id="SE-3f2fc830-2890-4f53-8b08-464a8d98e7c7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5af9e1e5-186b-4687-b4d7-b1cbe56d6699" data-ke-size="size16"><span style="color: #000000;">이제 실제로 OpenSearch Dashboards에서 로고를 커스터마이</span></p>
+<p id="SE-99236cdc-1749-49e6-a762-a0275afff74b" data-ke-size="size16"><span style="color: #000000;">징하는 과정을 단계별로 알아보겠습니다. 이를 통해 어떻게 기업 맞춤형 대시보드를 만들 수 있는지 쉽게 이해할 수 있을 것입니다.</span></p>
+<p id="SE-40d10fa7-5463-4a2e-bef0-84cc1028bcea" data-ke-size="size16">&nbsp;</p>
+<p id="SE-511f1342-648a-48e2-a72a-33372b45cbb4" data-ke-size="size16"><span style="color: #000000;"><b>6.1 단계별 가이드</b></span></p>
+<p id="SE-90eb572c-b99f-4d62-86f3-f85080a0c1d2" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>Dashboards 설치</b></span><span style="color: #000000;">: 우선 OpenSearch Dashboards를 설치해야 합니다. 이는 기본적으로 OpenSearch 클러스터와 연동되어 데이터를 시각화할 수 있는 환경을 제공합니다.</span></li>
+<li><span style="color: #000000;"><b>설정 파일 수정</b></span><span style="color: #000000;">: 위에서 언급한 설정 파일을 수정하여 로고와 파비콘 경로를 입력합니다.</span></li>
+<li><span style="color: #000000;"><b>Dashboards 재시작</b></span><span style="color: #000000;">: 설정 파일을 수정한 후, 대시보드를 재시작하여 변경 사항을 적용합니다.</span></li>
+<li><span style="color: #000000;"><b>변경 확인</b></span><span style="color: #000000;">: 로고가 정상적으로 적용되었는지 대시보드 화면에서 확인합니다.</span></li>
+</ol>
+<p id="SE-bf153677-5e2b-4133-a7d9-a0220a5139ca" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bf0e4bb7-f4d7-4b8b-9ea7-3ddcf8ab6ca8" data-ke-size="size16"><span style="color: #000000;"><b>7. 결론</b></span></p>
+<p id="SE-5a84c8d2-c1c2-4f3d-976c-351449aa80a8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-427d18e0-0ed6-4ed7-9820-68da7f4ef5b7" data-ke-size="size16"><span style="color: #000000;">OpenSearch Dashboards는 다양한 커스터마이징 옵션을 제공하여 사용자가 원하는 대로 대시보드를 꾸밀 수 있는 유연성을 제공합니다. 특히 로고 및 브랜딩 요소를 사용자 지정할 수 있는 기능은 기업이나 프로젝트의 정체성을 반영하는 데 매우 유용합니다. 또한, 커뮤니티에서는 로고 디자인에 대한 피드백과 함께 커스터마이징 관련 질문들이 계속해서 논의되고 있으며, 이를 통해 OpenSearch는 점점 더 발전하고 있습니다.</span></p>
+<p id="SE-e84ae28f-9294-40eb-b24e-4b4ce8d7b0a1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4e76d206-8b94-432a-bbbf-bab04e91e428" data-ke-size="size16">&nbsp;</p>
+<p id="SE-185ab290-d1a6-456a-b7b8-80d9ac77f250" data-ke-size="size16"><span style="color: #000000;"><b>&lt; 참고 자료 &gt;</b></span></p>
+<p id="SE-4349be75-d656-4e99-b85b-95af2f8931ac" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;" data-href="https://opensearch.org/docs/latest/dashboards/branding/">opensearch.org - Custom branding</span></li>
+<li><span style="color: #000000;" data-href="https://forum.opensearch.org/t/opensearch-dashboards-logo-feels-wrong/6510">forum.opensearch.org - OpenSearch Dashboards Logo feels wrong</span></li>
+<li><span style="color: #000000;" data-href="https://opensearch.org/docs/latest/dashboards/">opensearch.org - OpenSearch Dashboards</span></li>
+<li><span style="color: #000000;" data-href="https://github.com/opensearch-project/OpenSearch-Dashboards/issues/5222">github.com - Custom branding: OpenSearch dashboard overview</span></li>
+<li><span style="color: #000000;" data-href="https://www.youtube.com/watch?v=ouEIZbFTPuo">youtube.com - OpenSearch Dashboards -- Custom Branding Demo</span></li>
+<li><span style="color: #000000;" data-href="https://repost.aws/questions/QUBpFzAuj2QNaZyKmo-BsFrQ/aws-opensearch-dashboards-custom-branding">repost.aws - AWS Opensearch Dashboards custom branding</span></li>
+</ol>
+<p id="SE-e636b07f-849c-45f8-8059-1d208a1dcde7" data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

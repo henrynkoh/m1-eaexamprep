@@ -1,0 +1,247 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>SQL 소개</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">SQL 소개</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-15 03:31:34</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-7c2ecfc0-f38c-4ba3-bcd0-f4da3163e720" data-ke-size="size16">&nbsp;</p>
+<p id="SE-65eff062-63f8-41e2-8c63-c83782c5d42d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7ce96035-9203-4015-80f5-c18b0412fb95" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>1. SQL이란?:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-346e2fa7-2997-4666-8b69-16df00f9a45e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-53a96bcb-1c20-46e6-b3e6-01f60b6ffc99" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL, 또는 구조적 질의 언어,는 관계형 데이터베이스를 관리하고 조작하기 위한 표준 언어입니다. 데이터베이스와 상호작용하여 데이터를 검색, 업데이트, 조직하는 작업을 수행합니다.</span></p>
+<p id="SE-a0c16acd-9122-4f9d-a111-3d9247b4f3ed" data-ke-size="size16">&nbsp;</p>
+<p id="SE-78911aca-3a61-4d20-8ac2-4389554fd394" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>2. SQL의 핵심 개념</b></span></p>
+<p id="SE-760d6bf2-7c65-475e-953b-0c7860a327f5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e580d5f1-7457-4acc-87dc-3b736b519601" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>데이터베이스와 테이블:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-4aa65018-4149-403c-9769-a5b88307a451" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7714350f-410d-42ca-8fb8-f82f5f503f3a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL은 데이터베이스를 사용하며, 데이터베이스는 테이블로 구성됩니다. 테이블은 행(레코드)과 열(필드)로 조직됩니다.</span></p>
+<p id="SE-6f7d5b82-3fec-48ad-8dfb-c048f7b1cb4f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3b7a675b-4c7d-407d-812d-0e567ceb0248" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>기본 키:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-21a128b4-f139-43d9-8894-ec2180d41a7b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7e37f188-d1b6-4bdd-8f54-fd6b5ea50273" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">각 레코드에 대한 고유 식별자로, 데이터 무결성을 유지하는 데 필수적입니다.</span></p>
+<p id="SE-66376842-e92d-405f-a3fd-f17fc3117e6c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-aca9dcbe-9e1a-4d4b-a7ac-6fc5a243cb1a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>외래 키:</b></span></p>
+<p id="SE-92e97046-9f1b-4b29-87d5-e3bb916efdc2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-13c3daef-f446-4555-9ddf-a0de7af5802c" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b> </b></span><span style="background-color: #ffffff; color: #333333;">테이블 간의 관계를 설정하여 다른 테이블의 레코드와 연결합니다.</span></p>
+<p id="SE-28d9139a-f1dd-44b7-9a39-e5214df19dfb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c6415fe2-d5d7-49ca-a533-0fdecc04d7af" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>3. SQL 구문 및 명령어</b></span></p>
+<p id="SE-1988727c-a43f-4686-9304-03d190de6809" data-ke-size="size16">&nbsp;</p>
+<p id="SE-adbf33a6-caf9-4423-a366-94639e5768fc" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>1) 기본 CRUD 작업: </b></span></p>
+<p id="SE-c071c321-ab71-45fe-9705-cd0b56a80710" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a4e0cab5-e82a-443a-b913-676065b6538b" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>CREATE:</b></span><span style="background-color: #ffffff; color: #333333;"></span><span style="background-color: #ffffff; color: #333333;"> 데이터베이스와 테이블을 생성합니다.</span></p>
+<p id="SE-d9555049-e922-4cdb-b4fd-fc67935a9841" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0878e671-7ce0-4668-86ca-fd8b865054f1" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>READ: </b></span><span style="background-color: #ffffff; color: #333333;"></span><span style="background-color: #ffffff; color: #333333;">SELECT 문을 사용하여 데이터를 쿼리합니다.</span></p>
+<p id="SE-3018965f-79a4-4f1e-b2c6-a4927b70acc2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2b313c12-93a0-4d1c-ba25-82005fda3d76" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>UPDATE: </b></span><span style="background-color: #ffffff; color: #333333;"></span><span style="background-color: #ffffff; color: #333333;">기존 레코드를 수정합니다.</span></p>
+<p id="SE-d9e975ab-f20b-42d3-9a9f-d8bbe44c22e0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-473c6c77-fdd7-47c2-b7ef-0fb3c846f8f0" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>DELETE:</b></span><span style="background-color: #ffffff; color: #333333;"></span><span style="background-color: #ffffff; color: #333333;"> 레코드 또는 테이블을 제거합니다.</span></p>
+<p id="SE-628b6553-4127-443a-b478-dbc090d1616c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7920f0e0-0147-494e-bc62-296ffdcaa69e" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>SELECT 문:</b></span></p>
+<p id="SE-f23841ff-3b0b-4473-8851-ad7f34064643" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f9d18b28-b683-46fa-908a-265e4b097f3e" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"> 데이터를 검색하는 SQL의 핵심입니다. JOIN(내부, 왼쪽, 오른쪽, 전체), WHERE 절, GROUP BY, ORDER BY 등을 이해하는 것이 중요합니다.</span></p>
+<p id="SE-1bddc4de-3317-4049-8ac4-e797386b3d52" data-ke-size="size16">&nbsp;</p>
+<p id="SE-43f46d99-2972-40bb-a20c-8e2447e495c2" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>데이터 정의 언어(DDL):</b></span></p>
+<p id="SE-53d0dbc1-bc28-47b7-a6df-b994489ae412" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a6f4ab5b-232d-45ad-a467-3fde0dbde742" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"> CREATE, ALTER, DROP 등의 명령어로 데이터베이스 구조를 정의합니다.</span></p>
+<p id="SE-fcf08329-63ef-4b37-a216-47c71c48672f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7f0301ca-58f7-4992-941e-a0908597f46d" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>데이터 조작 언어(DML):</b></span><span style="background-color: #ffffff; color: #333333;"></span></p>
+<p id="SE-481e0ae9-fc17-45a9-be2a-3d612d862a41" data-ke-size="size16">&nbsp;</p>
+<p id="SE-045277e6-afe8-44ec-a811-0920f84dd7f7" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"> INSERT, UPDATE, DELETE로 데이터를 조작합니다.</span></p>
+<p id="SE-85703d80-ca8a-4b88-834a-72379f18af6c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2f1de87b-62ed-418d-a152-ba6998ba996b" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>데이터 제어 언어(DCL): </b></span></p>
+<p id="SE-dadafca3-0646-413f-a9e2-bda2d9d3499e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-111d76ef-0535-40ec-9b9e-81a0c6694383" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">GRANT, REVOKE로 권한을 관리합니다.</span></p>
+<p id="SE-00834a15-ca62-42fc-9ab4-4dda4a89d83e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f23ab648-0a75-4ad7-be8f-54c4e479e379" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>2) 고급 SQL 기능</b></span></p>
+<p id="SE-8a7d12e1-44b5-4c07-880e-b55fc16a2c37" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9fb9b285-90bd-401a-a599-60b8946b2295" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>서브쿼리: </b></span></p>
+<p id="SE-61931df0-e810-4de0-bad7-e540a3adfebf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-075eca68-4f0b-4704-add4-9a6dc750a27d" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">쿼리 내의 쿼리로, 복잡한 데이터 검색 또는 조작에 사용됩니다.</span></p>
+<p id="SE-acc41fbb-3365-4373-86fa-a5f3c81d8349" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5b6689c4-bf01-43bb-9d0f-3e639565c1ce" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>뷰: </b></span></p>
+<p id="SE-327745c7-5ea0-4031-a00b-5b4f17770cb2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-89042066-4e9d-4466-8099-c61a6d966ba8" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL 문의 결과 집합을 기반으로 하는 가상 테이블입니다.</span></p>
+<p id="SE-8b39a6e5-3682-4e3f-9bc8-6000c9cfe4c3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-acf1fc06-b749-4bd7-a4d8-2f3335f16bc6" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>저장 프로시저:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-2e0f237f-1c58-49f9-bc7b-579046457130" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e500c990-b7de-4c74-b6f5-f8989a7bfd62" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL 문과 선택적 제어 흐름 문으로 구성된 사전 컴파일된 집합입니다.</span></p>
+<p id="SE-2f74a2a7-6932-4e4b-886d-671bfe1ffb1c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e09923cc-074a-46be-a829-5355fe03e4d1" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>함수:</b></span></p>
+<p id="SE-e4468fbe-423a-48f7-bb81-65d7c14121c7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4a2c7b2b-389a-44be-8aa2-d96a4a2fa3d3" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"> 저장 프로시저와 유사하지만 값을 반환합니다.</span></p>
+<p id="SE-39f705ad-bef5-47fd-877a-0584fcdeecfd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e789f242-89df-4c0c-b876-554a9378cd33" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>트랜잭션:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-bd3cfd03-d7b9-46dc-9cef-4169af71965f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ff4d079c-0e06-4b64-b862-4820d1b6fd92" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">COMMIT, ROLLBACK, SAVEPOINT를 사용하여 데이터 무결성을 보장합니다.</span></p>
+<p id="SE-235e20db-5fe5-401e-9472-3dc8eec46057" data-ke-size="size16">&nbsp;</p>
+<p id="SE-307e89d6-6f8c-4012-a0d0-4963199021ad" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>3) SQL 최적화</b></span></p>
+<p id="SE-72e3b03e-1c19-4105-b5ad-f834499ff71a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9b0ea550-14f8-4fcf-b74d-80a9a5f05861" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>인덱스: </b></span><span style="background-color: #ffffff; color: #333333;"></span></p>
+<p id="SE-d2bc2003-447a-4842-a563-90fbbaaeea5f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a0ef5c0e-684c-437c-b985-328d0a605773" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">데이터베이스 테이블에서 데이터 검색 작업을 가속화하기 위해 빠른 검색 경로를 제공합니다.</span></p>
+<p id="SE-f07edb6d-9d93-4bdb-b255-045a41097fda" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d1ede420-5155-4319-9c88-82f8f2c346f3" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>쿼리 최적화:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-6e67aede-cd80-4042-ac8a-35e683212fbe" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3b79e93d-115d-42d3-a096-78be78340d0c" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SELECT *를 피하고 적절한 JOIN을 사용하며, 서브쿼리를 최소화하는 등의 기법이 성능을 크게 향상시킵니다.</span></p>
+<p id="SE-e3af4934-1dbd-4d41-a8de-c2b6798f4115" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cc398a0d-5070-480d-b2ac-0c8a77e77c9e" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>EXPLAIN 명령어:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-057df257-9892-4733-8555-e059044464d8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d1428a0e-c60c-41c3-8c49-c9a9c25ceee0" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">데이터베이스가 쿼리를 어떻게 실행하는지 보여주어 최적화에 도움을 줍니다.</span></p>
+<p id="SE-625485c3-2561-4110-be38-3e11f2c77625" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2f68e8cd-c32e-4645-9827-73f4444937b6" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>4) SQL과 데이터베이스 설계</b></span></p>
+<p id="SE-7d2d8bb9-cf80-43d8-8bfc-e9dfd3393120" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a64ba940-0a07-4b51-b1ce-665695177f8d" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>정규화: </b></span></p>
+<p id="SE-70a08f70-67c0-4e1f-a7d7-71adc3df51b6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eb4aae67-e211-4e4b-b3ee-7423fac54b7a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">데이터베이스에서 데이터를 효율적으로 조직하여 중복을 줄이고 데이터 무결성을 개선하는 과정입니다.</span></p>
+<p id="SE-b256c11d-e305-4422-80fa-9aa596a53333" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0dfeb838-3d92-4d08-ae84-48945d49cf6d" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>비정규화:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-e007c361-7fdb-4192-9aff-32166b244988" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2c52b26a-25fc-4261-a522-f341cb26a46c" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">성능을 위해 때때로 사용되며, 데이터 검색 속도를 위해 일부 중복을 허용합니다.</span></p>
+<p id="SE-0129c43a-ea5d-4211-9687-8742303e55fd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e19c816f-37f9-4f16-83d4-8980d563b8c5" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>엔티티-관계 모델(ERD):</b></span></p>
+<p id="SE-33988796-c65c-42e7-a3ee-24a57465c0d2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-47d7d78c-eeff-4ab1-882d-94841a4bcea4" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"> 데이터 구조의 시각적 표현으로, 데이터베이스 설계 계획에 유용합니다.</span></p>
+<p id="SE-387d622f-9b2a-440c-85f1-bbc88fe0927d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-681120ae-7fb5-4299-a36a-d77da1421bed" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>5) 현대 애플리케이션에서의 SQL</b></span></p>
+<p id="SE-aad7a2ad-06ad-45d5-93bd-5cc7e536321b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-581c9247-db57-4ced-8ccb-a5e0431a4fe8" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>NoSQL vs SQL:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-e334306a-97a7-4ee9-90fb-9ad65a363bc4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-99cbfa85-861c-4c53-b9d3-c08c701e6062" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL은 구조화된 데이터에 뛰어나지만, NoSQL 데이터베이스(예: MongoDB, Cassandra)는 비구조화 또는 반구조화 데이터를 더 효율적으로 처리합니다.</span></p>
+<p id="SE-57fea481-d21c-431f-931a-8b9903ad220c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9e0d6fe0-8be2-49f0-ae29-9d677f9c6c5f" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>SQL in Big Data</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-cafa4d8c-ddd1-4bd8-91cc-39f324a25614" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e03b7f09-0534-4b60-9086-cd80cfb4a173" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">Hadoop의 HiveQL과 같은 SQL 유사 언어는 SQL의 범위를 빅 데이터 분석으로 확장합니다.</span></p>
+<p id="SE-ea9b2389-291c-43c7-9ab6-8b32850de7f7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-56a9c2a9-a5a7-4d5f-a161-e9e825d7adba" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>4. 실용적 응용</b></span></p>
+<p id="SE-be246fca-b0e0-41a8-a51c-4c8e2d4e69ed" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a4f84dfc-e53b-49b4-a704-f89feb2aa9af" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>웹 개발: </b></span></p>
+<p id="SE-ffce0e85-bbcf-4072-bf38-1ea881511ac8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2760dab2-ec58-4f26-99cb-ad68e2dd4ddb" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL은 사용자 데이터, 거래 등을 관리하는 백엔드 개발에 필수적입니다.</span></p>
+<p id="SE-b5f2e9e5-310a-4036-a940-79e5ed5d88a2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-12d3a2c4-8a45-44c1-b134-486e782f36a3" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>데이터 분석:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-48184cc2-d9da-47fc-970c-b8b1d9db8918" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0a6a25b4-5fcf-43fe-ab93-3fe1f1203ecf" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL은 대규모 데이터셋을 처리할 수 있어 데이터 분석가 및 과학자에게 매우 유용합니다.</span></p>
+<p id="SE-c41f2fac-106d-434b-a3ce-b6bb202cdede" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9da11a5c-9dea-4847-8cae-13d06530f6d3" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>비즈니스 인텔리전스: </b></span></p>
+<p id="SE-11571342-d8b3-4586-a6e2-e9ee5fd22788" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ea7d7645-409d-4ae7-97da-b51a97cd3e47" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">Tableau나 Power BI와 같은 도구는 데이터 추출 및 보고서 작성에 SQL을 사용합니다.</span></p>
+<p id="SE-6b9a12bc-03fb-4123-bde4-f1593a07e45d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-330955d9-cecd-42db-870d-25148ce02272" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>5. 학습 및 도구</b></span></p>
+<p id="SE-11e0aefb-86c0-458a-812e-45d3cea5304a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-25dec1c8-67c0-4e8e-b17e-063e955172c0" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>SQL 학습:</b></span><span style="background-color: #ffffff; color: #333333;"> </span></p>
+<p id="SE-b4fa62dc-7c1b-4e7b-85b5-f316ff248517" data-ke-size="size16">&nbsp;</p>
+<p id="SE-981cb146-c1b2-49fb-816b-2550b5e87d2e" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">기본 SELECT 문으로 시작하여 JOIN, 서브쿼리, 최종적으로 저장 프로시저와 함수로 넘어갑니다.</span></p>
+<p id="SE-4ba10766-05b2-4fbb-8545-80e3ece47fa1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-048c2f56-5ab8-4c11-9ca5-91ac4eb01a20" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>도구: </b></span></p>
+<p id="SE-ef521717-3d8a-4a72-807b-708c5971ce38" data-ke-size="size16">&nbsp;</p>
+<p id="SE-889df4bb-7d35-4c54-8e2a-5e3def143c69" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">MySQL Workbench, SQL Server Management Studio 또는 명령 줄 인터페이스에서 연습할 수 있습니다.</span></p>
+<p id="SE-e5cca8fe-4cd1-4181-b82f-2734f6f8edf1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5a26057c-98af-4e2a-856e-d99b71f392c9" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>온라인 플랫폼:</b></span></p>
+<p id="SE-30dadff8-d23a-45e9-8c3c-826e28a7f7bc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3c60ad4b-cafb-418e-91dc-c431dde6430f" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"> SQLZoo, HackerRank, LeetCode와 같은 웹사이트에서 SQL 도전 과제를 제공합니다.</span></p>
+<p id="SE-35d57b99-38db-4b21-a739-03a5447c6abf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cac98fbf-bca3-477c-ade6-b9deb049e3cf" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>마무리</b></span></p>
+<p id="SE-191d1294-66c0-4530-8661-c90b53f1c299" data-ke-size="size16">&nbsp;</p>
+<p id="SE-10a1c091-1065-450a-a068-de7c37d9508c" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">SQL은 관계형 데이터베이스의 우수성, 유연성, 그리고 관계형 데이터베이스의 보편성으로 인해 여전히 데이터베이스 관리의 기초입니다. SQL을 깊이 이해하는 것은 데이터를 효과적으로 관리할 수 있는 능력을 향상시키며, 소프트웨어 개발, 데이터 과학, IT 관리 분야에서 많은 직업 기회를 엽니다. 작은 데이터셋을 쿼리하거나 대규모 데이터베이스 시스템을 관리하든, SQL의 원칙은 데이터 조작 및 분석에 필수적입니다.</span></p>
+<p id="SE-a30bd2b8-3eba-4b7d-83d6-e32322065cfa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2d6b5156-ffd2-4a73-97d2-110775732b23" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>&lt; 세부 단계적인 진행사항 &gt;</b></span></p>
+<p id="SE-158f0b2c-c73d-423b-8f2c-2df7f8efd2ed" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9468f861-7b40-4f7e-9c5c-9219fdf077bc" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Query Parsing</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-cd48adfe-6581-49ba-b300-e6d06fe6308a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The SQL statement is parsed to check for syntax errors. The database engine identifies the keywords, table names, and other elements.</span></p>
+<p id="SE-22ee92f4-6007-43aa-9bab-c91c8457e45b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-530fb199-21cc-4d0a-97db-baa8943360d0" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Semantic Analysis</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-9be75b1a-577a-49e2-9b78-7cc37cc4a3d7" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The query is analyzed for semantic correctness. This includes checking if the tables exist, if the user has permissions, and if the columns referenced are valid.</span></p>
+<p id="SE-1b69d341-6d35-498c-991a-067f3ab842d7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ced19475-5c22-452a-a57a-3934032015eb" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Query Optimization</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-fdd6bc6a-c40d-409d-b04d-bd5bd057977e" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The database's query optimizer kicks in. It transforms the query into a tree-like structure or a query plan.</span></p>
+<p id="SE-c66237a4-1ee8-4adf-88e5-289191cb468f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fd66dfe1-9d2c-45d9-b8a5-1e2957c46637" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Plan Generation</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-b44ce8d4-3047-4a92-baee-12398d129a43" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The optimizer generates multiple possible execution plans. Each plan represents a different way to execute the query.</span></p>
+<p id="SE-5a613fcf-0e60-4c5c-ac94-2e8b4c64d926" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7da8c7ff-6bea-40bc-a45c-fd6b86be2c42" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Cost Estimation</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-b9773bae-4517-4379-8aea-c7be716bb02e" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">Each plan is evaluated for its cost, which might include I/O operations, CPU usage, and memory requirements.</span></p>
+<p id="SE-7628552a-4b25-4a86-bb26-9e9fc5f66403" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fb60d702-f90f-4d7c-b623-f6d790522edd" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Plan Selection</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-c87cdc8b-25ce-4a52-9cc9-7927350772ce" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The optimizer selects the plan with the lowest estimated cost. This plan might involve using indexes, table scans, or joins in a particular order.</span></p>
+<p id="SE-c75c6f76-46fd-48cb-a677-4c99f30d1a35" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c726bf61-6a7f-4a41-9a21-e99c7a530831" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Execution Plan Compilation</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-3c1ab5a2-d109-4210-aca7-8ac0974acd6a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The chosen execution plan is compiled into machine code or bytecode that can be executed by the database engine.</span></p>
+<p id="SE-21b1ba6d-4c82-416d-945f-470e16aa22d8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-febd42fc-3e24-4733-b6e1-b217da8168c9" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Buffer Management</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-d5627635-caad-4e49-9988-0a13f3fd191c" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The database checks if the required data pages are already in memory (buffer pool). If not, it prepares to fetch them from disk.</span></p>
+<p id="SE-eb3db283-26dd-4677-8227-ee12ab6bda42" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8e32495f-b138-476b-bf61-55ff108190ad" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Data Access</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-d003026c-cb77-41de-bdef-fe56244c0a21" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">If data isn't in memory, the database reads the necessary data blocks from disk into the buffer pool.</span></p>
+<p id="SE-5f672cec-33b1-4696-887c-a568d2d6e8c8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fb9ad9b8-5749-4971-83a8-d790b5730d92" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Index Usage</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-92673b0a-da6f-4329-bcfe-315a29a624d1" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">If indexes are involved, the database uses these to locate rows more efficiently than scanning the entire table.</span></p>
+<p id="SE-a4a0b0a3-84f0-4e37-8837-d7e9a6f9663a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-65afcd52-ec8c-4b72-bb04-329fa30d6b93" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Table Scan or Index Scan</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-cadc9ec2-2a82-45e4-aeab-6c1f4307cee0" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">Depending on the plan, either a full table scan or an index scan is performed to retrieve the data.</span></p>
+<p id="SE-d5ed200b-2ddb-4eee-8f5c-46f7c21405ef" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ac6cfc3f-931a-4378-b34a-c0c5a91e1dc7" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Join Execution</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-e174da4c-930f-4cf8-85d5-a499c338fd90" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">If the query involves joins, the database executes these, potentially using hash joins, merge joins, or nested loop joins based on the plan.</span></p>
+<p id="SE-39ad054f-3ab7-4830-96e7-535689c6ea2c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2bb3f8cc-2c2d-434b-83c6-80a60b8b00fd" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Data Filtering</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-a11ffe9d-d0b9-490b-8a65-ad3c2ab9dd93" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">Any WHERE clauses are applied to filter out rows that don't meet the criteria.</span></p>
+<p id="SE-47f3f025-9479-4740-8662-a3f2a16a865a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6fc59ea8-dbbf-46f7-a675-b0c4041a773a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Aggregation</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-2313668d-fb48-461d-bfe2-ea45a2a6870a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">If GROUP BY or aggregate functions are involved, aggregation operations are performed.</span></p>
+<p id="SE-95522dfc-2c19-4533-b453-f048a4a89cce" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5e9b8cd5-2e5d-4f86-acf8-2470f7076fb0" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Sorting</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-e433a7f6-2e83-4ba1-878d-06509ba334da" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">If ORDER BY is specified, the data is sorted according to the specified criteria.</span></p>
+<p id="SE-68293758-b731-44e2-a479-fa19d677e7bc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8636b050-4d7f-4362-8bfa-b3c4c4cfadaf" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Result Set Construction</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-ea98121b-d072-4c72-9900-a8b785c35b43" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The final result set is constructed, which might involve selecting all columns (*).</span></p>
+<p id="SE-80ef3d0c-e67b-4025-ba20-1d6c678ab892" data-ke-size="size16">&nbsp;</p>
+<p id="SE-58660eaa-8f4d-43c9-9530-7c491c870699" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Data Conversion</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-4d72df89-5604-417e-a74b-985d4d4dd7ac" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">If necessary, data types are converted for output or for compatibility with client applications.</span></p>
+<p id="SE-125133de-e1c7-4100-a7df-e31139d7adf6" data-ke-size="size16">&nbsp;</p>
+<p id="SE-17815372-8905-48e9-9d4f-d123ea69214f" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Result Set Transmission</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-f955d609-5c91-44c8-ab4d-1936e32753d8" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">The result set is sent back to the client application. This might involve serialization for network transmission.</span></p>
+<p id="SE-629085fb-579f-423a-bd29-353b5e2be2d3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ef7856ad-497c-4462-9877-fb965ad6c27a" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Transaction Management</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-3f50ad0c-e657-4ac2-a217-38076e5fe6ab" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">If the query is part of a transaction, the transaction state is updated. This might involve logging for ACID compliance.</span></p>
+<p id="SE-ed3bf215-7414-44cc-9501-d521ad6345e4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ad16655c-414d-437a-8b61-f98120be0b83" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;"><b>Resource Release</b></span><span style="background-color: #ffffff; color: #333333;">: </span></p>
+<p id="SE-02d70607-c0a8-43f9-92d5-2841518fcf7f" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">After the query execution, resources like locks, cursors, or temporary tables might be released.</span></p>
+<p id="SE-e15e9f4a-5b88-419c-b01b-d100e465577f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8bb53561-c857-41f9-a5bf-7735ba3bd72e" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">These steps can vary slightly depending on the specific database management system (DBMS) and its architecture. For instance, some systems might perform just-in-time compilation of query plans, or use different optimization strategies. Also, in modern databases, many of these steps might be optimized or parallelized for performance.</span></p>
+<p id="SE-27212a4e-750a-41bc-976a-95dda49b2996" data-ke-size="size16">&nbsp;</p>
+<p id="SE-61e40bb8-2e00-4846-92e1-16beb1f05127" data-ke-size="size16"><span style="background-color: #ffffff; color: #333333;">Remember, SELECT * can be inefficient for large tables or in production environments due to the overhead of fetching all columns when only a few might be needed. It's often recommended to specify only the needed columns for performance reasons.</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

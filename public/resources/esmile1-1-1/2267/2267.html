@@ -1,0 +1,301 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>LangFlow를 활용한 고급 Python AI 에이전트 구축 튜토리얼: RAG, 멀티 에이전트 시스템까지</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">LangFlow를 활용한 고급 Python AI 에이전트 구축 튜토리얼: RAG, 멀티 에이전트 시스템까지</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-03-06 15:32:48</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">LangFlow를 활용한 Python AI 에이전트 구축 튜토리얼을 상세히 설명하고, 주요 내용의 사용 방법을 30단계로 세분화하여 순차적으로 설명합니다.</p>
+<hr data-ke-style="style1" />
+<h1><b>LangFlow를 활용한 고급 Python AI 에이전트 구축 튜토리얼: RAG, 멀티 에이전트 시스템까지</b></h1>
+<p data-ke-size="size16">안녕하세요, 여러분! 오늘은 AI 애플리케이션 개발에 관심이 있는 분들을 위해 멋진 튜토리얼을 준비했습니다. 이 글에서는 <b>LangFlow</b>라는 도구를 사용해 단 몇 분 만에 다중 AI 에이전트 애플리케이션을 구축하는 방법을 단계별로 알려드리겠습니다. 특히 <b>RAG(검색 증강 생성, Retrieval-Augmented Generation)</b>, 데이터베이스 조회, 그리고 여러 AI 에이전트를 결합한 시스템을 만드는 방법을 배우실 수 있습니다. 이 모든 과정은 실무에서 활용 가능한 수준으로 설계되었으며, 간단한 프론트엔드와 통합하는 방법까지 다룹니다.</p>
+<p data-ke-size="size16">이 튜토리얼은 아래 자료를 기반으로 작성되었으며, 영상과 자막을 참고하여 자세히 풀어 설명합니다.<b>아래 자료 참조</b>:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><a href="https://www.youtube.com/watch?v=QmUsG_3wHPg">(412) ADVANCED Python AI Agent Tutorial - Using RAG, Langflow &amp; Multi-Agents - YouTube</a></li>
+</ul>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>이 튜토리얼에서 배울 내용</b></p>
+<p data-ke-size="size16">이 글을 끝까지 읽고 따라 하시면 아래와 같은 기술을 익히실 수 있습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>RAG(검색 증강 생성)</b> 구현 방법</li>
+<li>데이터베이스에서 데이터를 조회하는 AI 시스템 구축</li>
+<li>여러 AI 에이전트를 결합하여 실무 문제를 해결하는 시스템 설계</li>
+<li>LangFlow의 드래그 앤 드롭 편집기를 활용한 AI 플로우 제작</li>
+<li>Streamlit을 사용한 간단한 Python 프론트엔드 개발</li>
+<li>API를 통해 LangFlow 플로우를 외부 애플리케이션과 통합</li>
+</ol>
+<p data-ke-size="size16">이 시스템은 단순한 장난감이 아닙니다. 고객 지원 에이전트와 같은 실제 비즈니스 문제를 해결할 수 있는 강력한 도구로, 여러분이 운영 중인 사업에 바로 적용하거나 수익 창출의 기회로 활용할 수도 있습니다.</p>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>데모: 우리가 만들어볼 고객 지원 에이전트</b></p>
+<p data-ke-size="size16">먼저, 우리가 만들 시스템이 어떤 기능을 하는지 간단히 살펴보겠습니다. 이 시스템은 다음과 같은 기능을 제공하는 <b>고객 지원 에이전트</b>입니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>주문 상태(배송 여부, 취소 여부) 확인</li>
+<li>제품 가격 및 상태 조회</li>
+<li>데이터베이스에서 제품 정보 검색</li>
+<li>자주 묻는 질문(FAQ)에 대한 답변 제공 (RAG 활용)</li>
+</ul>
+<p data-ke-size="size16">예를 들어, 사용자가 "주문 번호 1002에 대해 알려주세요"라고 물으면 시스템은 데이터베이스에서 해당 주문을 조회하고, 관련 정보를 요약해 보여줍니다. 또 "배송 시간이 어떻게 되나요?"라는 질문에는 FAQ 문서를 검색해 정확한 답변(예: "국내 주문은 35일, 해외 주문은 714일")을 제공합니다.</p>
+<p data-ke-size="size16">이 모든 기능은 LangFlow라는 도구를 통해 쉽게 구현되며, Python 기반의 Streamlit 프론트엔드로 사용자와 상호작용할 수 있도록 연결됩니다.</p>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>LangFlow란?</b></p>
+<p data-ke-size="size16"><b>LangFlow</b>는 AI 시스템을 구축하기 위한 직관적인 드래그 앤 드롭 편집기를 제공하는 도구입니다. 이 튜토리얼의 스폰서인 <b>DataStax</b>에서 지원하며, 무료로 사용할 수 있는 오픈소스 프로젝트입니다. GitHub에서 소스 코드를 확인하거나 로컬 환경에서 실행할 수도 있습니다.</p>
+<p data-ke-size="size16">LangFlow의 주요 특징:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>다양한 컴포넌트를 조합해 복잡한 AI 플로우 설계 가능</li>
+<li>API 호출을 통해 외부 애플리케이션과 통합</li>
+<li>RAG와 같은 고급 기능을 쉽게 구현</li>
+<li>초보자도 쉽게 접근 가능한 인터페이스</li>
+</ul>
+<p data-ke-size="size16">이제 본격적으로 시스템을 구축해보겠습니다!</p>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>시스템 구축 단계별 설명</b></p>
+<p data-ke-size="size16">아래는 LangFlow를 사용해 고객 지원 에이전트를 만드는 전체 과정을 단계별로 설명한 내용입니다. 이 과정은 영상 자막을 기반으로 하여, 초보자도 따라 할 수 있도록 상세히 풀어 썼습니다.</p>
+<p data-ke-size="size16"><b>1. LangFlow 계정 생성 및 초기 설정</b></p>
+<p data-ke-size="size16"><b>Markdown 코드</b></p>
+<p data-ke-size="size16">markdown</p>
+<pre class="markdown"><code>### LangFlow 계정 생성
+1. [LangFlow 공식 사이트](&lt;https://www.langflow.org/&gt;)에 접속하거나 구글에서 "LangFlow"를 검색하세요.
+2. "Get Started for Free" 버튼을 클릭해 무료 계정을 생성합니다.
+3. 로그인 후 LangFlow 홈페이지로 이동합니다.
+4. 새로운 플로우를 생성하려면 "New Flow"를 클릭하세요.
+</code></pre>
+<p data-ke-size="size16">LangFlow는 무료로 시작할 수 있으며, GitHub에서 오픈소스 코드를 확인해 로컬에서 실행할 수도 있습니다. 계정 생성 후, 우리는 "Blank Flow"를 선택해 처음부터 플로우를 만들어볼 것입니다.</p>
+<p data-ke-size="size16"><b>플로우 이름 설정</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>"Untitled Document"를 클릭하고 "Flow Settings"로 이동</li>
+<li>이름: Customer Support</li>
+<li>엔드포인트: customer</li>
+<li>설명: "고객 지원을 위한 AI 에이전트"</li>
+</ul>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>2. 간단한 RAG 기반 FAQ 에이전트 구축</b></p>
+<p data-ke-size="size16"><b>RAG란?</b></p>
+<p data-ke-size="size16">RAG(검색 증강 생성)은 데이터베이스나 문서에서 관련 정보를 검색한 뒤, 이를 기반으로 AI가 답변을 생성하는 기술입니다. 이번 튜토리얼에서는 FAQ PDF 문서를 활용해 질문에 답변하는 에이전트를 만듭니다.</p>
+<p data-ke-size="size16"><b>Markdown 코드</b></p>
+<p data-ke-size="size16">markdown</p>
+<pre class="markdown"><code>### RAG 기반 FAQ 에이전트 구축
+1. **채팅 입력(Chat Input)** 컴포넌트를 추가합니다.
+   - 사용자가 질문을 입력할 수 있는 시작점입니다.
+2. **에이전트(Agent)** 컴포넌트를 추가합니다.
+   - 모델: OpenAI (또는 오픈소스 모델 선택)
+   - API 키: [OpenAI 사이트](&lt;https://platform.openai.com/&gt;)에서 생성 후 입력
+3. **프롬프트(Prompt)** 컴포넌트를 추가합니다.
+   - 프롬프트 내용:
+     ```
+     당신의 주요 목표는 회사 데이터베이스의 정보를 활용해 사용자의 질문에 정확히 답하는 것입니다. 검색 증강 생성(RAG)을 사용해 가장 관련성 높은 데이터를 가져와 제시하세요.
+     질문: {question}
+     응답에 다음 데이터를 포함하세요: {results}
+     ```
+   - `{question}`: 사용자 질문
+   - `{results}`: 데이터베이스 검색 결과
+4. **벡터 스토어(Vector Store)** 컴포넌트를 추가합니다.
+   - Astra DB 선택
+   - 데이터베이스: `customer`
+   - 컬렉션: `faq`
+   - 임베딩 모델: `Astra Vectorize` (Nvidia 제공)
+5. **PDF 업로드**를 위한 별도 플로우 생성:
+   - `File` 컴포넌트로 FAQ PDF 업로드
+   - `Split Text`로 텍스트 분할
+   - `Astra DB`로 데이터 저장
+6. 연결:
+   - Chat Input &rarr; Prompt (question)
+   - Chat Input &rarr; Vector Store (search input)
+   - Vector Store &rarr; Parse Data &rarr; Prompt (results)
+   - Prompt &rarr; Agent &rarr; Chat Output
+</code></pre>
+<p data-ke-size="size16"><b>테스트</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Playground에서 "배송 시간이 어떻게 되나요?"를 입력</li>
+<li>결과: "국내 주문은 35일, 해외 주문은 714일" (PDF에서 추출)</li>
+</ul>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>3. 주문 조회 에이전트 구축</b></p>
+<p data-ke-size="size16">이제 FAQ 외에도 주문 정보를 조회할 수 있는 에이전트를 추가합니다.</p>
+<p data-ke-size="size16"><b>Markdown 코드</b></p>
+<p data-ke-size="size16">markdown</p>
+<pre class="markdown"><code>### 주문 조회 에이전트 구축
+1. **새로운 에이전트(Agent)** 추가:
+   - 이름: `Order Lookup Agent`
+   - Tool Mode 활성화
+   - 설명: "주문 및 제품 정보를 조회합니다."
+2. **도구(Tools)** 추가:
+   - `Astra DB` (Order Lookup)
+     - 데이터베이스: `customer`
+     - 컬렉션: `orders`
+     - 파라미터: `!order_number`
+   - `Astra DB` (Product Lookup)
+     - 데이터베이스: `customer`
+     - 컬렉션: `products`
+     - 파라미터: `!product_id`
+3. **에이전트 지침**:
+</code></pre>
+<p data-ke-size="size16">당신은 고객 주문을 분석하고 정확한 정보를 제공하는 전문가입니다. 주문 번호를 조회하고, 주문에 포함된 제품 ID를 사용해 제품 정보를 가져와 요약하세요.</p>
+<pre class="markdown"><code>4. 데이터베이스에 샘플 데이터 추가:
+- `orders` 컬렉션: CSV 파일 업로드
+- `products` 컬렉션: CSV 파일 업로드
+</code></pre>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>4. 매니저 에이전트로 통합</b></p>
+<p data-ke-size="size16">FAQ와 주문 조회 에이전트를 하나의 시스템으로 통합하려면 <b>매니저 에이전트</b>가 필요합니다.</p>
+<p data-ke-size="size16"><b>Markdown 코드</b></p>
+<p data-ke-size="size16">markdown</p>
+<pre class="markdown"><code>### 매니저 에이전트 구축
+1. **새로운 에이전트(Agent)** 추가:
+   - 이름: `Manager Agent`
+2. **도구 연결**:
+   - `FAQ Agent` &rarr; Tools
+   - `Order Lookup Agent` &rarr; Tools
+3. **에이전트 지침**:
+</code></pre>
+<p data-ke-size="size16">당신은 고객 서비스 매니저입니다. 사용자의 질문에 따라 적절한 도구(FAQ 또는 주문 조회)를 사용해 정확하고 상세한 답변을 제공하세요.</p>
+<pre class="markdown"><code>4. **연결**:
+- Chat Input &rarr; Manager Agent
+- Manager Agent &rarr; Chat Output
+</code></pre>
+<p data-ke-size="size16"><b>테스트</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>"주문 번호 1001에 대해 알려주세요" &rarr; 주문 정보 요약 반환</li>
+<li>"취소 정책이 뭔가요?" &rarr; FAQ에서 답변 반환</li>
+</ul>
+<hr data-ke-style="style1" />
+<p data-ke-size="size16"><b>5. Streamlit 프론트엔드 개발</b></p>
+<p data-ke-size="size16">마지막으로, Python의 Streamlit을 사용해 간단한 프론트엔드를 만듭니다.</p>
+<p data-ke-size="size16"><b>Markdown 코드</b></p>
+<p data-ke-size="size16">markdown</p>
+<pre class="clean"><code>### Streamlit 프론트엔드 개발
+1. **필요 모듈 설치**:
+</code></pre>
+<p data-ke-size="size16">pip install streamlit requests python-dotenv</p>
+<pre class="python"><code>2. **코드 작성** (main.py):
+```python
+import os
+import requests
+import streamlit as st
+from dotenv import load_dotenv
+
+load_dotenv()
+APP_TOKEN = os.environ.get("APP_TOKEN")
+ENDPOINT = "&lt;https://api.langflow.com/v1/flows/customer&gt;"
+
+def run_flow(message):
+    headers = {"Authorization": f"Bearer {APP_TOKEN}"}
+    data = {"input_value": message, "input_type": "chat", "output_type": "chat"}
+    response = requests.post(ENDPOINT, json=data, headers=headers)
+    return response.json()["outputs"][0]["outputs"][0]["results"]["message"]["text"]
+
+def main():
+    st.title("고객 지원 채팅")
+    message = st.text_area("질문 입력", placeholder="질문을 입력하세요...")
+    if st.button("실행"):
+        if not message.strip():
+            st.error("질문을 입력하세요!")
+            return
+        try:
+            with st.spinner("답변 생성 중..."):
+                response = run_flow(message)
+            st.markdown(response)
+        except Exception as e:
+            st.error(str(e))
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>실행</b>:</li>
+<li>streamlit run main.py</li>
+</ol>
+<pre class="markdown"><code>---
+
+## 사용 방법: 30단계 세분화
+
+아래는 이 튜토리얼의 주요 내용을 30단계로 세분화한 사용 방법입니다.
+
+1. **LangFlow 사이트 접속**: 브라우저에서 LangFlow 공식 사이트로 이동합니다.
+2. **계정 생성**: "Get Started for Free"를 클릭해 무료 계정을 만듭니다.
+3. **로그인**: 이메일과 비밀번호로 로그인합니다.
+4. **새 플로우 생성**: "New Flow"를 선택하고 "Blank Flow"를 클릭합니다.
+5. **플로우 이름 설정**: "Flow Settings"에서 이름을 "Customer Support"로 지정합니다.
+6. **Chat Input 추가**: 왼쪽 패널에서 "Chat Input"을 드래그해 캔버스에 놓습니다.
+7. **Agent 추가**: "Agents"에서 에이전트를 추가하고 OpenAI API 키를 입력합니다.
+8. **Prompt 추가**: "Prompt" 컴포넌트를 추가하고 FAQ용 지침을 작성합니다.
+9. **Vector Store 추가**: "Vector Store"에서 Astra DB를 선택합니다.
+10. **데이터베이스 생성**: Astra DB에서 "customer" 데이터베이스를 만듭니다.
+11. **FAQ 컬렉션 생성**: "faq"라는 벡터 지원 컬렉션을 생성합니다.
+12. **PDF 업로드 준비**: "File" 컴포넌트를 추가해 PDF를 업로드합니다.
+13. **텍스트 분할**: "Split Text"로 PDF를 작은 조각으로 나눕니다.
+14. **데이터 저장**: 분할된 데이터를 Astra DB에 저장합니다.
+15. **연결 설정**: Chat Input, Prompt, Vector Store, Agent를 연결합니다.
+16. **Playground 테스트**: "배송 시간" 질문을 입력해 결과를 확인합니다.
+17. **Order Lookup Agent 추가**: 새로운 에이전트를 추가하고 이름을 지정합니다.
+18. **Tool Mode 활성화**: Order Lookup Agent에서 Tool Mode를 켭니다.
+19. **도구 추가**: "Order Lookup"과 "Product Lookup" 도구를 설정합니다.
+20. **샘플 데이터 업로드**: Astra DB에 "orders"와 "products" 컬렉션을 추가합니다.
+21. **Manager Agent 추가**: 통합용 매니저 에이전트를 생성합니다.
+22. **도구 연결**: FAQ와 Order Lookup 에이전트를 Manager에 연결합니다.
+23. **최종 테스트**: "주문 번호 1001" 질문을 테스트합니다.
+24. **API 확인**: LangFlow의 "API" 탭에서 Python 코드를 복사합니다.
+25. **개발 환경 설정**: VS Code에서 새 프로젝트를 엽니다.
+26. **모듈 설치**: `pip install streamlit requests python-dotenv` 실행
+27. **환경 변수 설정**: `.env` 파일에 APP_TOKEN을 추가합니다.
+28. **Streamlit 코드 작성**: `main.py`에 프론트엔드 코드를 입력합니다.
+29. **앱 실행**: `streamlit run main.py`로 앱을 실행합니다.
+30. **결과 확인**: 브라우저에서 질문 입력 후 답변을 확인합니다.
+
+---
+
+## 결론
+
+이 튜토리얼을 통해 여러분은 LangFlow를 활용해 RAG와 멀티 에이전트를 결합한 고급 AI 시스템을 구축하는 방법을 배웠습니다. 이 시스템은 고객 지원뿐만 아니라 다양한 비즈니스 문제를 해결하는 데 활용할 수 있으며, Streamlit으로 간단한 UI를 추가해 실무 적용 가능성을 높였습니다.
+
+궁금한 점이 있거나 더 알고 싶다면 아래 자료를 참고해 주세요.
+**아래 자료 참조**:
+- [(412) ADVANCED Python AI Agent Tutorial - Using RAG, Langflow &amp; Multi-Agents - YouTube](&lt;https://www.youtube.com/watch?v=QmUsG_3wHPg&gt;)
+
+---
+
+## 추가 프롬프트 (Prompts)
+
+이 튜토리얼에서 사용된 주요 프롬프트는 다음과 같습니다:
+
+1. **FAQ 에이전트 프롬프트**:
+</code></pre>
+<p data-ke-size="size16">당신의 주요 목표는 회사 데이터베이스의 정보를 활용해 사용자의 질문에 정확히 답하는 것입니다. 검색 증강 생성(RAG)을 사용해 가장 관련성 높은 데이터를 가져와 제시하세요. 질문: {question} 응답에 다음 데이터를 포함하세요: {results}</p>
+<pre class="crmsh"><code>2. **Order Lookup 에이전트 프롬프트**:
+</code></pre>
+<p data-ke-size="size16">당신은 고객 주문을 분석하고 정확한 정보를 제공하는 전문가입니다. 주문 번호를 조회하고, 주문에 포함된 제품 ID를 사용해 제품 정보를 가져와 요약하세요.</p>
+<pre class="markdown"><code>3. **Manager 에이전트 프롬프트**:
+</code></pre>
+<p data-ke-size="size16">당신은 고객 서비스 매니저입니다. 사용자의 질문에 따라 적절한 도구(FAQ 또는 주문 조회)를 사용해 정확하고 상세한 답변을 제공하세요.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

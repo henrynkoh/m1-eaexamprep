@@ -1,0 +1,103 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Google Sheets와 Gemini API를 활용한 AI 기반 함수 생성 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Google Sheets와 Gemini API를 활용한 AI 기반 함수 생성 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-17 00:37:33</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1><span style="background-color: #ffffff; color: #0f0f0f; text-align: start;">Google Sheets with Gemini API: Create AI-Powered Functions Using App Script!</span></h1>
+<p data-ke-size="size16">Google Sheets에서 Gemini API를 활용하여 AI 기반 사용자 정의 함수를 만드는 방법을 상세히 알아보겠습니다. 이 방법을 통해 여러분만의 프롬프트로 함수를 만들어 Gemini의 강력한 기능을 활용할 수 있습니다.</p>
+<h2 data-ke-size="size26">준비 단계</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google Cloud 계정 설정</li>
+<li>Vertex AI API 활성화</li>
+<li>프로젝트 ID 확인</li>
+<li>App Script 설정</li>
+</ol>
+<h2 data-ke-size="size26">함수 생성 과정</h2>
+<h3 data-ke-size="size23">App Script 코드 작성</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google Sheets에서 '확장 프로그램' &gt; 'App Script' 선택</li>
+<li>프로젝트 설정에서 appscript.json 표시</li>
+<li>필요한 OAuth 스코프 추가</li>
+<li>메인 코드 (Code.js) 작성
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>프로젝트 ID 변수 설정</li>
+<li>인증 함수 구현</li>
+<li>Gemini API 호출 함수 구현</li>
+</ul>
+</li>
+</ol>
+<h3 data-ke-size="size23">스프레드시트에서 함수 사용</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>인증 버튼 생성</li>
+<li>함수 호출 테스트</li>
+<li>사용자 정의 함수 생성</li>
+</ol>
+<h2 data-ke-size="size26">단계별 구현 가이드</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google Cloud 계정 생성 및 로그인</li>
+<li>새 프로젝트 생성 또는 기존 프로젝트 선택</li>
+<li>Vertex AI API 페이지로 이동</li>
+<li>API 활성화 버튼 클릭</li>
+<li>프로젝트 ID 복사</li>
+<li>Google Sheets 문서 열기</li>
+<li>'확장 프로그램' 메뉴에서 'App Script' 선택</li>
+<li>프로젝트 설정으로 이동</li>
+<li>appscript.json 파일 표시 옵션 활성화</li>
+<li>에디터로 돌아가 appscript.json 파일 열기</li>
+<li>OAuth 스코프 추가 (예: "<a href="https://www.googleapis.com/auth/cloud-platform">https://www.googleapis.com/auth/cloud-platform</a>")</li>
+<li>프로젝트 저장</li>
+<li>Code.js 파일 생성 (없다면)</li>
+<li>프로젝트 ID 변수 설정 (예: const PROJECT_ID = 'your-project-id';)</li>
+<li>인증 함수 (authenticate) 구현</li>
+<li>Gemini API 호출 함수 (askGemini) 구현</li>
+<li>코드 저장</li>
+<li>Google Sheets로 돌아가기</li>
+<li>도형 삽입 도구를 사용해 버튼 생성</li>
+<li>버튼에 '인증' 텍스트 추가</li>
+<li>버튼에 스크립트 할당 (authenticate 함수)</li>
+<li>셀에 =askGemini("테스트 질문") 입력하여 함수 테스트</li>
+<li>성공 시, 원하는 셀에 질문 입력 후 askGemini 함수로 감싸기</li>
+<li>필요에 따라 함수를 다른 셀로 복사/붙여넣기</li>
+<li>Code.js로 돌아가 사용자 정의 함수 생성 (예: 번역 함수)</li>
+<li>프롬프트 변수 생성 및 API 호출 부분 수정</li>
+<li>새 함수 저장</li>
+<li>Sheets에서 새 함수 테스트 (예: =translateToSpanish("Hello"))</li>
+<li>필요에 따라 함수 수정 및 최적화</li>
+<li>최종 테스트 및 사용자에게 배포</li>
+</ol>
+<p data-ke-size="size16">이 과정을 통해 Google Sheets 내에서 Gemini API를 활용한 강력한 AI 기반 함수를 생성하고 사용할 수 있습니다. 사용자의 요구에 맞춰 다양한 기능을 구현할 수 있으며, 이를 통해 스프레드시트 작업의 효율성을 크게 향상시킬 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

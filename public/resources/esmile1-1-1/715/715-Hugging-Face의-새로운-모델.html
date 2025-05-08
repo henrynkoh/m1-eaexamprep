@@ -1,0 +1,117 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Hugging Face의 새로운 모델</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Hugging Face의 새로운 모델</h2>
+                                <div class="box-info">
+                                    <p class="category">성경말씀</p>
+                                    <p class="date">2024-11-11 13:41:14</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-42a8ba9d-4d83-42f9-85d4-570bbb495e68" data-ke-size="size16"><span style="color: #000000;">Hugging Face의 새로운 모델을 Mac Mini에서 활용하는 방법을 요약정리 하였습니다. 이 가이드는 Mac Mini에서 Python 환경을 설정하고 Hugging Face 모델을 실행하는 단계별 방법을 소개한 내용입니다. 최신 AI 모델을 직접 다루며 머신러닝의 강력함을 경험해 보세요!</span></p>
+<p id="SE-61bf6dca-1dcb-406d-8c6a-e7d861d1e564" data-ke-size="size16">&nbsp;</p>
+<p id="SE-df33a9b4-04d6-4929-9107-54f8ce94e318" data-ke-size="size16"><span style="color: #000000;"><b>Mac Mini에서 Hugging Face 모델 사용을 위한 단계별 가이드:</b></span></p>
+<p id="SE-e13d11bd-0c0b-4278-b78e-51dbeff826db" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>Homebrew 설치 (이미 설치된 경우 생략)</b></span></li>
+<li><span style="color: #000000;">터미널을 열고 다음 명령어 실행:</span></li>
+<li><span style="color: #000000;">/bin/bash -c "$(curl -fsSL &lt;<a href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>&gt;)" </span></li>
+<li><span style="color: #000000;"><b>Homebrew 업데이트</b></span></li>
+<li><span style="color: #000000;">brew update </span></li>
+<li><span style="color: #000000;"><b>Python 설치</b></span></li>
+<li><span style="color: #000000;">brew install python </span></li>
+<li><span style="color: #000000;"><b>Python 설치 확인</b></span></li>
+<li><span style="color: #000000;">python3 --version </span></li>
+<li><span style="color: #000000;"><b>pip 설치 (포함되지 않은 경우)</b></span></li>
+<li><span style="color: #000000;">curl &lt;<a href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a>&gt; -o get-pip.py python3 get-pip.py </span></li>
+<li><span style="color: #000000;"><b>가상 환경 생성</b></span></li>
+<li><span style="color: #000000;">python3 -m venv myenv source myenv/bin/activate </span></li>
+<li><span style="color: #000000;"><b>pip 업그레이드</b></span></li>
+<li><span style="color: #000000;">pip install --upgrade pip </span></li>
+<li><span style="color: #000000;"><b>Hugging Face Transformers 라이브러리 설치</b></span></li>
+<li><span style="color: #000000;">pip install transformers </span></li>
+<li><span style="color: #000000;"><b>PyTorch 설치 (Mac에 맞게)</b></span></li>
+<li><span style="color: #000000;">Apple Silicon용:</span></li>
+<li><span style="color: #000000;">pip install torch torchvision torchaudio </span></li>
+<li><span style="color: #000000;"><b>추가 종속성 설치</b></span></li>
+<li><span style="color: #000000;">pip install numpy pandas tqdm </span></li>
+<li><span style="color: #000000;"><b>GPU 가속 확인 (선택 사항)</b></span></li>
+<li><span style="color: #000000;">import torch print(torch.backends.mps.is_available()) </span></li>
+<li><span style="color: #000000;"><b>Hugging Face 모델 리포지토리 클론</b></span></li>
+<li><span style="color: #000000;">git clone &lt;<a href="https://huggingface.co/">https://huggingface.co/</a>&gt; </span></li>
+<li><span style="color: #000000;"><b>Python에서 모델 로드</b></span></li>
+<li><span style="color: #000000;">from transformers import AutoModelForCausalLM, AutoTokenizer model_name = "&lt;model-repo&gt;" tokenizer = AutoTokenizer.from_pretrained(model_name) model = AutoModelForCausalLM.from_pretrained(model_name) </span></li>
+<li><span style="color: #000000;"><b>샘플 텍스트 토크나이즈</b></span></li>
+<li><span style="color: #000000;">input_text = "Hello, how are you?" input_ids = tokenizer.encode(input_text, return_tensors="pt") </span></li>
+<li><span style="color: #000000;"><b>모델 출력 생성</b></span></li>
+<li><span style="color: #000000;">output = model.generate(input_ids, max_length=50) print(tokenizer.decode(output[0], skip_special_tokens=True)) </span></li>
+<li><span style="color: #000000;"><b>모델 로딩 최적화 (선택 사항)</b></span></li>
+<li><span style="color: #000000;">model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.float16) </span></li>
+<li><span style="color: #000000;"><b>가속화된 추론 사용</b></span></li>
+<li><span style="color: #000000;">device = torch.device("mps") model.to(device) </span></li>
+<li><span style="color: #000000;"><b>Jupyter Notebook 설치</b></span></li>
+<li><span style="color: #000000;">pip install notebook jupyter notebook </span></li>
+<li><span style="color: #000000;"><b>Jupyter Notebook에서 모델 로드</b></span></li>
+<li><span style="color: #000000;">노트북 셀에서 위와 비슷한 코드를 사용하여 상호작용합니다.</span></li>
+<li><span style="color: #000000;"><b>최신 모델 탐색</b></span></li>
+<li><span style="color: #000000;">Hugging Face의 모델 허브 확인:</span></li>
+<li><span style="color: #000000;">open &lt;<a href="https://huggingface.co/models">https://huggingface.co/models</a>&gt; </span></li>
+<li><span style="color: #000000;"><b>datasets 라이브러리 설치</b></span></li>
+<li><span style="color: #000000;">pip install datasets </span></li>
+<li><span style="color: #000000;"><b>데이터 로드 및 전처리</b></span></li>
+<li><span style="color: #000000;">from datasets import load_dataset dataset = load_dataset("imdb") </span></li>
+<li><span style="color: #000000;"><b>모델 파인튜닝 준비</b></span></li>
+<li><span style="color: #000000;">accelerate 모듈 설치:</span></li>
+<li><span style="color: #000000;">pip install accelerate </span></li>
+<li><span style="color: #000000;"><b>간단한 학습 루프 설정</b></span></li>
+<li><span style="color: #000000;">from transformers import Trainer, TrainingArguments training_args = TrainingArguments( output_dir="./results", num_train_epochs=3, per_device_train_batch_size=2, warmup_steps=500, weight_decay=0.01, logging_dir="./logs", ) </span></li>
+<li><span style="color: #000000;"><b>Trainer 초기화</b></span></li>
+<li><span style="color: #000000;">trainer = Trainer( model=model, args=training_args, train_dataset=dataset["train"], ) trainer.train() </span></li>
+<li><span style="color: #000000;"><b>파인튜닝된 모델 저장</b></span></li>
+<li><span style="color: #000000;">model.save_pretrained("./my_model") tokenizer.save_pretrained("./my_model") </span></li>
+<li><span style="color: #000000;"><b>Gradio로 데모 배포</b></span></li>
+<li><span style="color: #000000;">pip install gradio </span></li>
+<li><span style="color: #000000;"><b>Gradio 인터페이스 생성</b></span></li>
+<li><span style="color: #000000;">import gradio as gr def generate_text(prompt): input_ids = tokenizer.encode(prompt, return_tensors="pt").to(device) output = model.generate(input_ids, max_length=50) return tokenizer.decode(output[0], skip_special_tokens=True) gr.Interface(fn=generate_text, inputs="text", outputs="text").launch() </span></li>
+<li><span style="color: #000000;"><b>인터페이스 실행</b></span></li>
+<li><span style="color: #000000;">Gradio에서 제공된 로컬 URL을 통해 모델 테스트.</span></li>
+<li><span style="color: #000000;"><b>Hugging Face 커뮤니티 참여</b></span></li>
+<li><span style="color: #000000;">팁과 지원을 위해 포럼에 참여:</span></li>
+<li><span style="color: #000000;">open &lt;<a href="https://discuss.huggingface.co/">https://discuss.huggingface.co/</a>&gt; </span></li>
+</ol>
+<p id="SE-cee3212f-ac70-43cf-a1bd-68d1a79beb5a" data-ke-size="size16">&nbsp;</p>
+<p id="SE-28ecef55-1fc1-4fae-99d2-8e6015a81094" data-ke-size="size16"><span style="color: #000000;"><b>마무리</b></span></p>
+<p id="SE-1e2c41be-54a4-49c3-9e31-98fee076a618" data-ke-size="size16">&nbsp;</p>
+<p id="SE-030620ea-32ff-4878-823c-d75c0e4bbffe" data-ke-size="size16"><span style="color: #000000;">이 단계별 접근방법을 통해 Mac Mini에서 Hugging Face 모델을 활용하는 방법을 마스터할 수 있습니다. 직접 AI 모델을 실행하고 다양한 프로젝트에 활용해 보며 한 단계 성장한 개발 능력을 느껴보세요!</span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

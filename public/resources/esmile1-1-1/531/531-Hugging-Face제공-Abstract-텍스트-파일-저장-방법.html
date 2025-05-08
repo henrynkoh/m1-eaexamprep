@@ -1,0 +1,186 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Hugging Face제공 Abstract 텍스트 파일 저장 방법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Hugging Face제공 Abstract 텍스트 파일 저장 방법</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-10-22 07:45:01</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16"><span>이번 포스팅에서는 Hugging Face에서 제공하는 수많은 기계 학습 모델 중에서 추출한 요약(Abstract)을 텍스트 파일에 저장하는 방법을 단계별로 접근할 수 있도록 검색내용을 요약정리 하였습니다.</span></p>
+<p id="SE-08554ab0-4ad5-49e1-b3bb-bb18f9c3bf80" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-445d92f7-efc9-42bf-aa41-e127073da558" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>Hugging Face는 100,000개 이상의 모델을 보유하고 있으며, 특히 Transformer 기반의 자연어 처리(NLP) 모델로 잘 알려져 있습니다. </span></p>
+<p id="SE-2613f179-3c05-49e8-bdb2-daebfd030165" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-b09b4d76-d55e-4e2e-848e-bfc5df286ec4" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>&lt; 요약된 20단계 가이드 &gt;</b></span></p>
+<p id="SE-f346cb16-48a5-4c73-b5ab-d2effbfdc7d2" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<ol style="list-style-type: decimal; color: #333333; text-align: left;" data-ke-list-type="decimal">
+<li style="list-style-type: inherit;"><span>Hugging Face Hub 라이브러리 설치</span></li>
+<li style="list-style-type: inherit;"><span>필요한 Python 모듈 임포트</span></li>
+<li style="list-style-type: inherit;"><span>HfApi 인스턴스 생성</span></li>
+<li style="list-style-type: inherit;"><span>모델 리스트 가져오기</span></li>
+<li style="list-style-type: inherit;"><span>모델 메타데이터 확인</span></li>
+<li style="list-style-type: inherit;"><span>요약이 포함된 모델 필터링</span></li>
+<li style="list-style-type: inherit;"><span>텍스트 파일 생성</span></li>
+<li style="list-style-type: inherit;"><span>모델마다 요약 저장 반복문 작성</span></li>
+<li style="list-style-type: inherit;"><span>100개 이상 모델 처리 위해 페이지네이션 적용</span></li>
+<li style="list-style-type: inherit;"><span>페이지네이션으로 모델 순차 처리</span></li>
+<li style="list-style-type: inherit;"><span>텍스트 파일에 여러 모델의 요약 저장</span></li>
+<li style="list-style-type: inherit;"><span>파일 닫기</span></li>
+<li style="list-style-type: inherit;"><span>출력 확인</span></li>
+<li style="list-style-type: inherit;"><span>데이터 추출 필터링 최적화</span></li>
+<li style="list-style-type: inherit;"><span>특정 태스크에 맞는 모델 필터링</span></li>
+<li style="list-style-type: inherit;"><span>진행 상황 로깅</span></li>
+<li style="list-style-type: inherit;"><span>에러 핸들링 추가</span></li>
+<li style="list-style-type: inherit;"><span>Hugging Face 웹에서 추가 정보 확인</span></li>
+<li style="list-style-type: inherit;"><span>파일 포맷팅 개선</span></li>
+<li style="list-style-type: inherit;"><span>스크립트 실행 및 저장된 파일 확인</span></li>
+</ol>
+<p id="SE-d8430823-d083-4533-903b-021feec2f461" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-d6f6b38e-09e5-4ca0-9bd2-414ead2e07d3" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>Hugging Face는 기계 학습, 특히 자연어 처리(NLP) 분야에서 가장 널리 사용되는 플랫폼 중 하나로, 100,000개 이상의 모델을 제공합니다. 이 가이드에서는 Python과 Hugging Face의 라이브러리를 사용하여 모델의 요약을 다운로드하고, 이를 텍스트 파일로 저장하는 방법이 주 내용입니다.</span></p>
+<p id="SE-2740840a-1c45-4c09-b739-415c261b0a50" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-e58858dd-4b4e-4119-bce5-52f76c370c8b" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>1. Hugging Face 라이브러리 설치하기</b></span></p>
+<p id="SE-a5968ae0-baeb-4b28-a5bd-1b6416b1c5db" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-4d4b0033-a095-472e-82ad-87f616414112" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>먼저 Hugging Face에서 제공하는 huggingface_hub 라이브러리를 설치해야 합니다. 터미널 또는 명령 프롬프트에서 다음 명령어를 실행하세요:</span></p>
+<p id="SE-de2caf29-23a3-48d7-af15-56fab13a1193" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>pip install huggingface_hub transformers </span></p>
+<p id="SE-48c4b9e7-1d45-4ed0-8ffa-71d8057d5f55" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>이 명령어는 Hugging Face의 모델과 상호작용할 수 있는 모든 필수 패키지를 설치해 줍니다.</span></p>
+<p id="SE-38e4ab5b-a519-4ac2-8f1a-ba826e45050e" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-a73a37e8-b332-4ec5-aee4-a63944dd6058" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>2. Python 모듈 임포트하기</b></span></p>
+<p id="SE-afaa6196-a623-4bc4-a9a0-f5c5ebe3961c" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-427a88ff-50fe-4e49-9446-94cf7545b593" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>이제 Python 코드에서 필요한 모듈들을 불러옵니다. 우리는 Hugging Face Hub API와 그 외 몇 가지 기본 모듈을 사용할 것입니다.</span></p>
+<p id="SE-b2745395-150e-4966-83a6-9b2f452b3bd6" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>from huggingface_hub import HfApi </span></p>
+<p id="SE-031d57a8-8ea0-4cc4-b786-b8c3db52c450" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-b7c3c60b-ebe0-4725-ad94-929c51e4ce34" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>3. HfApi 인스턴스 생성하기</b></span></p>
+<p id="SE-abf421ee-e3d5-4bff-b53f-3987fbdb3521" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-6abbe28e-0513-466a-9e8e-cad7482c79ba" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>Hugging Face의 API 인스턴스를 생성하여 모델 데이터를 받아올 준비를 합니다. HfApi 객체는 Hugging Face 허브에 있는 모델 정보를 쉽게 불러올 수 있게 도와줍니다.</span></p>
+<p id="SE-b7681bfc-d1e1-4ce4-9f59-1f8961fcb1c5" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>api = HfApi() </span></p>
+<p id="SE-437e8cae-f907-4313-8430-bfaae5706807" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-030b53ce-1c23-454d-a00d-d0080205332a" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>4. 모델 리스트 가져오기</b></span></p>
+<p id="SE-48eb367e-a089-49ee-b2dc-cd79871617e0" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-72386159-a2df-40b6-81ea-cf3ed6348226" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>이제 Hugging Face에서 제공하는 모델 리스트를 불러옵니다. 이때 한 번에 100개의 모델 정보를 받아올 수 있습니다.</span></p>
+<p id="SE-c08bcb84-1e46-4f35-b5b4-c0cd7c5075af" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>models = api.list_models(limit=100) </span></p>
+<p id="SE-8aa5c0b4-7b5f-483b-aa9c-a096e3e23745" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-fa5b2f61-01ef-479e-af4b-17cf6784639b" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>5. 모델 메타데이터 확인하기</b></span></p>
+<p id="SE-bbce06ac-be1c-4b3c-92cf-b7825f07fe90" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-ad31ab89-9fa1-42a0-a4e5-38c0c30dff19" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>각 모델은 메타데이터를 포함하고 있으며, 여기서 모델의 요약(Abstract) 정보를 찾을 수 있습니다.</span></p>
+<p id="SE-5dbdccda-665d-4ce7-9f12-eb45aabc7092" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>for model in models: print(model.modelId, model.description) </span></p>
+<p id="SE-b36c3973-b822-4f10-bfb0-fcec521bf390" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-b5f87130-4e84-40fd-ade2-c8b1e4efe56b" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>6. 요약이 포함된 모델 필터링하기</b></span></p>
+<p id="SE-e41508b7-0387-4258-b544-639b7a62321a" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-1f82e5c3-2e2a-4fa4-a4f1-00d936e4826d" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>모델들 중에서 요약이 포함된 모델만 필터링하여 추출합니다. 모델 설명이 없는 경우도 있기 때문에 설명이 있는 모델만 선택해야 합니다.</span></p>
+<p id="SE-dea0b882-cc9b-4002-b349-6153164ec69c" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>abstracts = [(model.modelId, model.description) for model in models if model.description] </span></p>
+<p id="SE-5925b695-e52d-441b-bed6-35729973491d" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-6b38683e-8d9b-419b-bc58-63fa13fc6328" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>7. 텍스트 파일 생성하기</b></span></p>
+<p id="SE-8dee513b-04b0-4554-8a01-f50c291ec27e" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-2b00bace-4d76-4d47-9560-94b184cdf29e" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>요약을 저장할 텍스트 파일을 생성합니다. 파일을 쓰기 모드로 열어 데이터를 저장할 준비를 합니다.</span></p>
+<p id="SE-4ea72960-a27b-40ba-b80b-11d7df2a545f" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>with open("huggingface_abstracts.txt", "w") as file: </span></p>
+<p id="SE-c493a190-8188-4c1c-8201-db2942ad0992" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-e5364475-5ca2-4176-911e-09957f6a2f70" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>8. 모델마다 요약 저장 반복문 작성하기</b></span></p>
+<p id="SE-b079e585-cf23-44c5-ad03-2ffc23c04931" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-520bf950-fb6c-42ce-a553-0c2da7c7c764" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>각 모델의 요약을 텍스트 파일에 저장하는 코드를 작성합니다. 앞서 필터링한 모델 목록을 이용하여 파일에 차례로 저장합니다.</span></p>
+<p id="SE-99a96a30-2166-4eb6-bb02-f52c1a56d8fd" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>for model_id, description in abstracts: file.write(f"Model: {model_id}\\\\nAbstract: {description}\\\\n\\\\n") </span></p>
+<p id="SE-16ca5933-9044-4161-91e3-810367772d90" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-58383b53-bc6a-4990-b584-ef40c6eb4418" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>9. 100개 이상 모델 처리 위해 페이지네이션 적용하기</b></span></p>
+<p id="SE-635be4d0-3f07-4397-8cfa-24191e892b85" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-1b472ffb-3a66-43b3-91bc-852ca7e7eb46" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>한 번에 100개 이상의 모델을 가져와야 할 경우 페이지네이션을 적용하여 여러 페이지에서 데이터를 가져옵니다.</span></p>
+<p id="SE-dd0d6a39-7fac-4a6b-8e76-b68a8b686469" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>models = api.list_models(limit=100, page=page_num) </span></p>
+<p id="SE-39575b2b-a313-4059-a003-d309a7612c21" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-6e8ac60d-67cd-4952-93ca-0889bf13c2d8" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>10. 페이지네이션으로 모델 순차 처리하기</b></span></p>
+<p id="SE-c8fdeb6c-111c-411d-8d9b-9246e12ae03c" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-d488bc62-a886-48e0-8455-366ce3746355" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>여러 페이지에 걸쳐 있는 모델을 처리하기 위해 페이지 번호를 순차적으로 증가시키며 데이터를 가져옵니다.</span></p>
+<p id="SE-57e44185-9fb1-44bd-9908-4f482b3ef5f8" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>for page_num in range(1, total_pages): models = api.list_models(limit=100, page=page_num) # 모델 처리 코드 추가 </span></p>
+<p id="SE-f172e2cd-7a5a-48a0-ad53-a1f5b16ecd9f" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-a5f342a1-8046-4f48-bc22-c834a5f04016" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>11. 텍스트 파일에 여러 모델의 요약 저장하기</b></span></p>
+<p id="SE-7d929815-c24c-4191-abb4-15de0b286b25" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-cd946545-cfea-4e8e-9394-2809d1638c8a" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>페이지네이션을 통해 가져온 모델들의 요약을 텍스트 파일에 차례로 저장합니다.</span></p>
+<p id="SE-7a020229-4a36-49a7-b455-f4dff2a97b8d" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-933e8fc8-9bdb-489d-baee-099735420636" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>12. 파일 닫기</b></span></p>
+<p id="SE-d93fce8d-8e75-4eda-aee3-6e4816c78c7b" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-95aff380-6dbf-4411-b0c5-f9aea0e2ed7a" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>모든 요약 데이터를 저장한 후 파일을 닫아줍니다.</span></p>
+<p id="SE-c35395cd-40ec-46b8-a5cc-d49807190d8f" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>file.close() </span></p>
+<p id="SE-f534a2d6-7eb8-4c80-b2c4-8209d3c37c94" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-f0bb0a0b-0d92-4fe5-af0a-55938dc9dcb8" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>13. 출력 확인하기</b></span></p>
+<p id="SE-f1b7185c-2a57-4b5f-a714-05bd5e36b006" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-e8651731-4caa-4160-91e7-d6257ab59389" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>텍스트 파일이 잘 생성되었는지 확인한 후 파일의 내용을 살펴봅니다.</span></p>
+<p id="SE-988f21f6-305a-4419-bdad-7db50fb9e8b7" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-907701ec-44bb-4d73-a8de-adb8bc6283b8" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>14. 데이터 추출 필터링 최적화하기</b></span></p>
+<p id="SE-f0d48c3b-e9a0-492f-806b-6a32df80e420" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-33a874fa-a37c-4eaf-bc5c-b57a34ee836e" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>원하는 모델의 요약만을 효율적으로 저장할 수 있도록 데이터 추출 필터링을 최적화합니다. 예를 들어, 특정 키워드를 기준으로 필터링할 수 있습니다.</span></p>
+<p id="SE-a232f3c5-3359-4679-a9c5-99161510115f" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>abstracts = [(model.modelId, model.description) for model in models if "transformer" in model.tags] </span></p>
+<p id="SE-87c35b47-04c5-4daa-b575-be58eef5b826" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-542c1857-ed85-455f-bad2-ac1ff24f6386" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>15. 특정 태스크에 맞는 모델 필터링하기</b></span></p>
+<p id="SE-f037be2c-ff38-4ad8-8508-b020089bbc18" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-80478abf-aa7e-441b-a479-27c7d8782f57" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>자연어 처리(NLP) 모델만을 추출하고 싶다면 태그를 기반으로 필터링할 수 있습니다.</span></p>
+<p id="SE-01139ba0-e00c-4f7b-b5a6-35e40d99b271" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>abstracts = [(model.modelId, model.description) for model in models if "NLP" in model.tags] </span></p>
+<p id="SE-6543b8f0-224c-4f2e-accc-17bee13b135f" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-2a24cdf6-54aa-46a6-b94e-7c6cc75d1337" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>16. 진행 상황 로깅하기</b></span></p>
+<p id="SE-dacc9afb-e75d-4037-b6b4-0f0991b6e7c5" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-fc3e9d10-de61-4725-be99-7af429b2aab7" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>데이터 저장 과정을 모니터링하기 위해 진행 상황을 로그로 출력합니다.</span></p>
+<p id="SE-872e6555-88a9-4094-b481-d087235fc46f" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>print(f"Stored abstract for {model_id}") </span></p>
+<p id="SE-d64a8346-842d-4993-bb62-ce823b29d68f" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-e1615f30-98ec-40e6-bfc0-9b88b4114298" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>17. 에러 핸들링 추가하기</b></span></p>
+<p id="SE-39166176-b3e6-40d0-992a-875788c0b0d4" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-410eb453-f03f-48f5-b410-20098089ca90" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>모델 설명이 없는 경우 또는 기타 오류가 발생할 수 있으므로, 예외 처리를 추가하여 스크립트가 중단되지 않도록 합니다.</span></p>
+<p id="SE-d50b1d18-3b26-4a24-b4f8-b9cd844a9cac" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>try: # 모델 처리 코드 except Exception as e: print(f"Error processing model {model_id}: {e}") </span></p>
+<p id="SE-fc8e8400-4a6d-4f30-8797-ac95960858e1" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-65635be8-e4a2-4082-9c16-4752d042cec0" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>18. Hugging Face 허브에서 추가 정보 확인하기</b></span></p>
+<p id="SE-69316328-4b9e-41ed-826c-bcd843cadb34" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-b9c04419-7b52-484d-871c-f7f7eefe4a15" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>각 모델에 대한 추가 정보를 Hugging Face 웹사이트에서 직접 확인할 수 있습니다.</span></p>
+<p id="SE-8b53ab64-4b28-4247-817e-f8f986777af1" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>url = f"&lt;<a href="https://huggingface.co/">https://huggingface.co/</a>{model_id}&gt;" </span></p>
+<p id="SE-4d728d21-9c0c-4b3a-be94-3c87c8fbf6f4" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-491358d5-d35a-49db-89a6-923908d7092d" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>19. 파일 포맷팅 개선하기</b></span></p>
+<p id="SE-9d3b40b7-7dd1-4ca9-9878-6786b9a5470c" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-b0439783-5199-489c-b725-e2ec043eb07d" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>파일의 가독성을 높이기 위해 요약 간에 구분선을 추가하거나 날짜 등 추가 정보를 넣을 수 있습니다.</span></p>
+<p id="SE-3cc709db-11e0-422d-a749-dea1c2e9b1f4" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>file.write(f"Model: {model_id}\\\\nAbstract: {description}\\\\n{'-'*40}\\\\n") </span></p>
+<p id="SE-42ac863f-6d8c-480e-b2a0-6b3c0a0d0154" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-b4109056-701b-49d7-a674-5427b591f93d" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>20. 스크립트 실행하기</b></span></p>
+<p id="SE-dc77c0ae-c688-4001-8b4a-5da5ad928fe8" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-74eb7717-379c-4058-9dd6-43011d356497" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>최종적으로 스크립트를 실행하여 모든 모델의 요약을 텍스트 파일에 저장합니다.</span></p>
+<p id="SE-7ac01512-ae89-4644-9c54-7c6b7b6c5896" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-8e501c46-4dc9-42e1-a809-babe878706d4" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>마무리</b></span></p>
+<p id="SE-5c589d64-f8e5-4496-bffe-3eabdc007978" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>​</b></span></p>
+<p id="SE-cda9e3ba-3ecd-41eb-b942-a80c73605161" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>이와 같은 방법으로 Hugging Face에서 제공하는 다양한 모델의 요약을 손쉽게 텍스트 파일로 저장할 수 있습니다. 이를 통해 필요한 모델들의 정보를 효율적으로 정리하고 관리할 수 있을 것입니다.</span></p>
+<p id="SE-baa099e2-fd0e-4a06-a975-b618c3f687df" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span>​</span></p>
+<p id="SE-ba7b01bb-eb6e-4bc6-bd6a-c1f8d2141bfd" style="color: #5f5e42; text-align: left;" data-ke-size="size16"><span><b>? Sources</b></span></p>
+<ol style="list-style-type: decimal; color: #333333; text-align: left;" data-ke-list-type="decimal">
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://huggingface.co/docs/transformers/ko/tasks/summarization">huggingface.co - 요약</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://huggingface.co/docs/huggingface_hub/main/ko/guides/download">huggingface.co - Hub에서 파일 다운로드하기</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://www.youtube.com/watch?v=xbQ0DIJA0Bc">YouTube - HuggingFace 처음이라면?</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://datasciencebeehive.tistory.com/72">datasciencebeehive.tistory.com - Hugging Face 설치하기</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://www.youtube.com/watch?v=nQBAvkxo0wU">YouTube - 인공지능 친해지기</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://huggingface.co/docs/transformers/ko/quicktour">huggingface.co - 둘러보기</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://huggingface.co/docs/huggingface_hub/en/guides/download">huggingface.co - Download files from the Hub</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://huggingface.co/docs/hub/models-downloading">huggingface.co - Downloading models</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://huggingface.co/learn/nlp-course/en/chapter5/4">huggingface.co - Big data? ? Datasets to the rescue!</a></span></li>
+<li style="list-style-type: inherit;"><span><a style="color: #608cba;" href="https://github.com/huggingface/datasets">huggingface/datasets - GitHub Repository</a></span></li>
+</ol>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

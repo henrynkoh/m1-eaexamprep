@@ -1,0 +1,224 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Cloud Function 설정하기: YouTube 동영상 텍스트 추출 가이드</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Cloud Function 설정하기: YouTube 동영상 텍스트 추출 가이드</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-16 09:46:21</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>Cloud Function 설정하기: YouTube 동영상 텍스트 추출 가이드</h1>
+<p data-ke-size="size16">안녕하세요! 오늘은 Cloud Function을 설정하여 YouTube 동영상에서 텍스트를 추출하는 방법을 상세히 알아보겠습니다. 초보자분들도 쉽게 따라할 수 있도록 단계별로 설명해드리겠습니다.</p>
+<h2 data-ke-size="size26">기본 정보</h2>
+<p data-ke-size="size16">작업에 사용할 URL 정보입니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Cloud Function URL:</li>
+</ol>
+<pre class="groovy"><code>&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;
+
+</code></pre>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>텍스트 추출할 YouTube 동영상:</li>
+</ol>
+<pre class="xml"><code>&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;
+
+</code></pre>
+<h2 data-ke-size="size26">Cloud Function 설정하기</h2>
+<h3 data-ke-size="size23">기본 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google Cloud Console에 로그인합니다.</li>
+<li>좌측 메뉴에서 "Cloud Functions"를 선택합니다.</li>
+<li>"CREATE FUNCTION" 버튼을 클릭합니다.</li>
+</ol>
+<h3 data-ke-size="size23">런타임 환경 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Runtime 드롭다운에서 "Python 3.10"을 선택합니다.</li>
+<li>Source Code 옵션에서 "Inline editor"를 선택합니다.</li>
+<li>Entry Point를 "transcribe_audio"로 변경합니다.</li>
+</ol>
+<h3 data-ke-size="size23">코드 작성</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><a href="http://main.py/">main.py</a> 파일을 열고 기존 코드를 모두 삭제합니다.</li>
+<li>다음 코드를 main.py에 붙여넣습니다:</li>
+</ol>
+<pre class="python"><code>import yt_dlp
+import whisper
+import tempfile
+import os
+import json
+from flask import jsonify
+
+def transcribe_audio(request):
+    # CORS 헤더 설정
+    if request.method == 'OPTIONS':
+        headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Max-Age': '3600'
+        }
+        return ('', 204, headers)
+
+    headers = {
+        'Access-Control-Allow-Origin': '*'
+    }
+
+    # POST 요청 처리
+    request_json = request.get_json()
+
+    if not request_json or 'url' not in request_json:
+        return jsonify({'error': 'No URL provided'}), 400, headers
+
+    video_url = request_json['url']
+
+    # YouTube 동영상 다운로드 설정
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
+
+    try:
+        # 임시 파일 생성
+        with tempfile.TemporaryDirectory() as temp_dir:
+            ydl_opts['outtmpl'] = os.path.join(temp_dir, '%(title)s.%(ext)s')
+
+            # 동영상 다운로드
+            with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                info = ydl.extract_info(video_url, download=True)
+                audio_file = os.path.join(temp_dir, f"{info['title']}.mp3")
+
+            # Whisper 모델 로드 및 텍스트 추출
+            model = whisper.load_model("base")
+            result = model.transcribe(audio_file)
+
+            return jsonify(result), 200, headers
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500, headers
+
+</code></pre>
+<h3 data-ke-size="size23">requirements.txt 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>requirements.txt 파일을 열고 기존 내용을 삭제합니다.</li>
+<li>다음 내용을 붙여넣습니다:</li>
+</ol>
+<pre class="ebnf"><code>yt-dlp
+openai-whisper
+google-cloud-functions
+
+</code></pre>
+<h3 data-ke-size="size23">배포 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>"DEPLOY" 버튼을 클릭하기 전에 모든 설정을 다시 확인합니다.</li>
+<li>Entry Point가 "transcribe_audio"로 설정되어 있는지 확인합니다.</li>
+<li>Runtime이 "Python 3.10"으로 설정되어 있는지 확인합니다.</li>
+<li>requirements.txt 파일 내용이 정확한지 확인합니다.</li>
+<li>"DEPLOY" 버튼을 클릭하여 함수를 배포합니다.</li>
+</ol>
+<h2 data-ke-size="size26">테스트하기</h2>
+<h3 data-ke-size="size23">브라우저에서 테스트</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Chrome 브라우저를 엽니다.</li>
+<li>F12를 눌러 개발자 도구를 엽니다.</li>
+<li>Console 탭을 선택합니다.</li>
+<li>다음 코드를 입력합니다:</li>
+</ol>
+<pre class="javascript"><code>fetch('&lt;https://us-central1-youtube-data-sheet.cloudfunctions.net/youtubetranscriber1&gt;', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    url: '&lt;https://www.youtube.com/watch?v=cQk5BJwy1Xw&gt;'
+  })
+})
+.then(response =&gt; response.json())
+.then(data =&gt; console.log(data))
+.catch(error =&gt; console.error('Error:', error));
+
+</code></pre>
+<h3 data-ke-size="size23">결과 확인</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Network 탭에서 요청이 성공적으로 전송되었는지 확인합니다.</li>
+<li>응답 데이터에 추출된 텍스트가 포함되어 있는지 확인합니다.</li>
+</ol>
+<h2 data-ke-size="size26">문제 해결</h2>
+<h3 data-ke-size="size23">CORS 오류 발생 시</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><a href="http://main.py/">main.py</a> 코드의 CORS 헤더 설정이 올바른지 확인합니다.</li>
+<li>브라우저의 개발자 도구에서 오류 메시지를 확인합니다.</li>
+</ol>
+<h3 data-ke-size="size23">배포 오류 발생 시</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Cloud Console의 로그를 확인합니다.</li>
+<li>requirements.txt 파일의 내용이 정확한지 다시 확인합니다.</li>
+<li>Python 버전이 3.10으로 설정되어 있는지 확인합니다.</li>
+</ol>
+<h3 data-ke-size="size23">실행 오류 발생 시</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>YouTube URL이 올바른지 확인합니다.</li>
+<li>Cloud Function의 메모리 할당이 충분한지 확인합니다.</li>
+<li>실행 시간 제한이 적절한지 확인합니다.</li>
+<li>모든 설정이 올바른지 다시 한 번 검토합니다.</li>
+</ol>
+<h2 data-ke-size="size26">주의사항</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>보안</b>: API 키나 민감한 정보는 절대 공개하지 마세요.</li>
+<li><b>리소스 관리</b>: Cloud Function의 리소스 사용량을 모니터링하세요.</li>
+<li><b>비용 관리</b>: 사용량에 따른 비용이 발생할 수 있으니 주의하세요.</li>
+<li><b>오류 처리</b>: 모든 가능한 오류 상황에 대비한 처리 로직을 구현하세요.</li>
+</ol>
+<h2 data-ke-size="size26">추가 팁</h2>
+<h3 data-ke-size="size23">성능 최적화</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>동영상 길이가 긴 경우 메모리 할당을 늘리세요.</li>
+<li>실행 시간 제한을 적절히 설정하세요.</li>
+<li>필요한 경우 더 강력한 Whisper 모델을 사용하세요.</li>
+</ul>
+<h3 data-ke-size="size23">모니터링</h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Cloud Console에서 함수의 실행 상태를 주기적으로 확인하세요.</li>
+<li>오류 로그를 모니터링하여 문제를 조기에 발견하세요.</li>
+<li>사용량 통계를 확인하여 비용을 관리하세요.</li>
+</ul>
+<h2 data-ke-size="size26">결론</h2>
+<p data-ke-size="size16">이 가이드를 따라하면 Cloud Function을 사용하여 YouTube 동영상에서 텍스트를 추출할 수 있습니다. 처음에는 복잡해 보일 수 있지만, 단계별로 차근차근 진행하면 충분히 구현할 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">문제가 발생하면 당황하지 말고, 제시된 문제 해결 방법을 하나씩 시도해보세요. 대부분의 문제는 설정이나 코드의 작은 오류에서 발생하므로, 꼼꼼히 확인하면 해결할 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">이 기술을 활용하면 다양한 YouTube 동영상의 내용을 텍스트로 변환하여 활용할 수 있습니다. 화이팅!</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

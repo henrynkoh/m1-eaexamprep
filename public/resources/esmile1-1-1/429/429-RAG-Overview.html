@@ -1,0 +1,276 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>RAG Overview</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">RAG Overview</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-10-03 20:21:45</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-84b22512-df53-4714-bcef-15b419200c6e" data-ke-size="size16"><span style="color: #000000;">다음은 RAG(Retrieval-Augmented Generation)에 대한 Lance Martin의 강의 내용을 요약한 것입니다.</span></p>
+<p id="SE-13f25bcd-076c-40b6-b5bb-b2747c60e08d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-133f0ab8-d009-4439-b845-d3eb17d95eca" data-ke-size="size16"><span style="color: #000000;"><b>1. RAG의 개념과 중요성</b></span></p>
+<p id="SE-1b748553-34ad-4021-924d-db0ce44b7264" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ee5fa0b4-da12-48fd-a39d-c4d78e70a036" data-ke-size="size16"><span style="color: #000000;">RAG(Retrieval-Augmented Generation)는 사용자 지정 데이터와 대규모 언어 모델(LLM)을 결합하는 기술입니다. Lance Martin은 LangChain의 소프트웨어 엔지니어로, RAG의 구현 방법을 상세히 설명합니다.</span></p>
+<p id="SE-80a74b1b-005f-494d-be9a-c869828384bd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-266ba7c8-fa67-4749-9eba-cbef95b62c7c" data-ke-size="size16"><span style="color: #000000;"><b>RAG의 필요성</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">대부분의 중요한 데이터는 비공개입니다.</span></li>
+<li><span style="color: #000000;">LLM은 주로 공개 데이터로 훈련됩니다.</span></li>
+<li><span style="color: #000000;">RAG를 통해 비공개 데이터를 LLM과 결합할 수 있습니다.</span></li>
+</ul>
+<p id="SE-fb1ea961-08e2-4541-8666-9edf3a6ce5aa" data-ke-size="size16">&nbsp;</p>
+<p id="SE-67b08944-3d8a-40df-bc94-7ce1e5fbbad0" data-ke-size="size16"><span style="color: #000000;"><b>컨텍스트 윈도우의 진화</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">1년 전: 4,000-8,000 토큰</span></li>
+<li><span style="color: #000000;">현재: 최대 100만 토큰까지 확장</span></li>
+<li><span style="color: #000000;">이는 수천 페이지의 텍스트를 LLM에 입력할 수 있음을 의미합니다.</span></li>
+</ul>
+<p id="SE-bc9ede74-ec57-43d6-9784-b64f6767314d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4ca0a38e-8a2b-406a-b1bf-cf8bb7723360" data-ke-size="size16"><span style="color: #000000;"><b>2. RAG의 기본 구조</b></span></p>
+<p id="SE-470ac67b-c79b-4145-88f3-22f5606e345f" data-ke-size="size16"><span style="color: #000000;">RAG는 크게 세 단계로 구성됩니다:</span></p>
+<p id="SE-4a86a85a-edd9-4d9f-b2fb-853a492f8c22" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>인덱싱(Indexing)</b></span><span style="color: #000000;">: 외부 데이터를 검색 가능한 형태로 저장</span></li>
+<li><span style="color: #000000;"><b>검색(Retrieval)</b></span><span style="color: #000000;">: 입력 쿼리와 관련된 문서 검색</span></li>
+<li><span style="color: #000000;"><b>생성(Generation)</b></span><span style="color: #000000;">: 검색된 문서를 기반으로 답변 생성</span></li>
+</ol>
+<p id="SE-45f0887b-4b02-4611-8802-b7066abeacda" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a4669c29-cc7f-40d3-a04f-40b681f4b028" data-ke-size="size16"><span style="color: #000000;"><b>3. RAG 구현의 주요 구성 요소</b></span></p>
+<p id="SE-4b5ba4b4-3133-4c56-9bba-34ee2ac26cbe" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fbd93a3d-7675-485f-b198-8b31a692a8e2" data-ke-size="size16"><span style="color: #000000;"><b>3.1 쿼리 변환(Query Translation)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">쿼리 재작성(Query Rewriting)</span></li>
+<li><span style="color: #000000;">쿼리 분해(Query Decomposition)</span></li>
+</ul>
+<p id="SE-0adbf01e-4d72-46cb-90f5-cc5370c9f476" data-ke-size="size16"><span style="color: #000000;"><b>3.2 라우팅(Routing)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">적절한 데이터 소스로 쿼리 전달 (예: 벡터 저장소, 관계형 DB)</span></li>
+</ul>
+<p id="SE-38c7209c-b4ad-4621-80bb-098ea55f6c12" data-ke-size="size16"><span style="color: #000000;"><b>3.3 쿼리 구성(Query Construction)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">자연어를 특정 데이터 소스에 맞는 형식으로 변환</span></li>
+</ul>
+<p id="SE-f4ac1c0e-85e0-45b9-8bfc-ca6a79593368" data-ke-size="size16"><span style="color: #000000;"><b>3.4 인덱싱(Indexing)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">문서를 쉽게 검색할 수 있도록 처리</span></li>
+<li><span style="color: #000000;">다양한 임베딩 방법 사용</span></li>
+</ul>
+<p id="SE-7d5636b0-f3a1-411e-b508-e825604125f5" data-ke-size="size16"><span style="color: #000000;"><b>3.5 검색 후 처리(Post-Retrieval Processing)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">검색된 문서의 재순위화 또는 필터링</span></li>
+</ul>
+<p id="SE-8a8a09a2-4c1a-474e-bfc3-987aef53b19b" data-ke-size="size16"><span style="color: #000000;"><b>3.6 생성(Generation)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">검색된 문서를 기반으로 답변 생성</span></li>
+</ul>
+<p id="SE-98855e48-e849-435d-a7e8-754029a9ee0c" data-ke-size="size16"><span style="color: #000000;"><b>3.7 액티브 RAG(Active RAG)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">검색 및 생성 단계에서 피드백을 통한 개선</span></li>
+<li><span style="color: #000000;">문서 및 답변의 관련성 평가</span></li>
+<li><span style="color: #000000;">환각(Hallucination) 체크</span></li>
+</ul>
+<p id="SE-022f5f1a-3970-4237-8914-79cb26734415" data-ke-size="size16">&nbsp;</p>
+<p id="SE-583c3da3-7da2-4c3a-8fa3-1b56349a94e7" data-ke-size="size16"><span style="color: #000000;"><b>4. 인덱싱(Indexing) 상세 설명</b></span></p>
+<p id="SE-e93edf36-3ffc-4cb0-b0d9-18e959150822" data-ke-size="size16">&nbsp;</p>
+<p id="SE-efd93e2a-8999-4ae5-b8a6-80b1ff227003" data-ke-size="size16"><span style="color: #000000;"><b>4.1 문서 처리 과정</b></span></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">외부 문서 로드</span></li>
+<li><span style="color: #000000;">문서 분할</span></li>
+<li><span style="color: #000000;">임베딩 생성</span></li>
+<li><span style="color: #000000;">벡터 저장소에 저장</span></li>
+</ol>
+<p id="SE-1603bc79-e82b-4a18-87aa-2a81e3304d54" data-ke-size="size16">&nbsp;</p>
+<p id="SE-bd333cef-da12-424b-8616-4124b838ed87" data-ke-size="size16"><span style="color: #000000;"><b>4.2 임베딩의 중요성</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">텍스트를 숫자 벡터로 변환</span></li>
+<li><span style="color: #000000;">의미적 유사성 검색 가능</span></li>
+</ul>
+<p id="SE-b9c7e027-6c90-494d-9723-157f7d52ab85" data-ke-size="size16">&nbsp;</p>
+<p id="SE-863daf08-dfb9-4867-9573-ce3175755066" data-ke-size="size16"><span style="color: #000000;"><b>4.3 코드 예시</b></span></p>
+<p id="SE-60367c7a-c2cf-4b84-aa34-b6c4bfbd09ce" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4f936dc0-209a-479c-a5c2-4eedfa2e25a0" data-ke-size="size16"><span style="color: #000000;">from langchain.embeddings import OpenAIEmbeddings from langchain.vectorstores import Chroma embeddings = OpenAIEmbeddings() question = "What is task decomposition?" document = "Task decomposition is..." question_embedding = embeddings.embed_query(question) document_embedding = embeddings.embed_documents([document]) vectorstore = Chroma.from_documents([document], embeddings) </span></p>
+<p id="SE-9e3dff05-43d1-4f99-8e09-b0f665bd5a9c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ba141dbd-c2c7-4411-9692-c3d728186772" data-ke-size="size16"><span style="color: #000000;"><b>5. 검색(Retrieval) 과정</b></span></p>
+<p id="SE-14fe59e0-3234-44aa-9b5c-a98978a2d1b1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-fc21b9d0-fc5b-4299-8d6a-57dd96a1983e" data-ke-size="size16"><span style="color: #000000;"><b>5.1 검색 원리</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">쿼리와 문서를 동일한 벡터 공간에 투영</span></li>
+<li><span style="color: #000000;">유사성 검색을 통해 관련 문서 찾기</span></li>
+</ul>
+<p id="SE-842b18f4-2974-4ef8-a20e-ef348272e486" data-ke-size="size16"><span style="color: #000000;"><b>5.2 K-Nearest Neighbors (KNN) 검색</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">K 값: 검색할 이웃 문서의 수 지정</span></li>
+</ul>
+<p id="SE-c41a3362-ca4e-4802-bbe1-f92c5fdf03b5" data-ke-size="size16"><span style="color: #000000;"><b>5.3 코드 예시</b></span></p>
+<p id="SE-aabd57ff-2d93-4d73-b4ee-47111ea0bc01" data-ke-size="size16"><span style="color: #000000;">retriever = vectorstore.as_retriever(search_kwargs={"k": 1}) relevant_docs = retriever.get_relevant_documents("What is task decomposition?") </span></p>
+<p id="SE-f59efa6f-024a-4d9a-b432-0fb6c662ca38" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a789714b-75b0-498a-baf2-a8f0bde02377" data-ke-size="size16"><span style="color: #000000;"><b>6. 생성(Generation) 단계</b></span></p>
+<p id="SE-b77e7683-7169-40a7-b8bc-4eba7efd64a5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-545dcef5-d197-4eed-a366-c4a4cd188074" data-ke-size="size16"><span style="color: #000000;"><b>6.1 프롬프트 구성</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">검색된 문서와 질문을 결합하여 프롬프트 생성</span></li>
+</ul>
+<p id="SE-30f22d6b-b8a4-48e6-9bbb-0dcf60f9deb5" data-ke-size="size16"><span style="color: #000000;"><b>6.2 LLM을 통한 답변 생성</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">구성된 프롬프트를 LLM에 입력하여 답변 생성</span></li>
+</ul>
+<p id="SE-d0c8afab-2067-4b1c-bbf9-1eada7e4ee66" data-ke-size="size16"><span style="color: #000000;"><b>6.3 코드 예시</b></span></p>
+<p id="SE-ec62d30b-4d20-4999-88b0-5fe506f8f20a" data-ke-size="size16"><span style="color: #000000;">from langchain.chains import RetrievalQA from langchain.llms import OpenAI llm = OpenAI() qa_chain = RetrievalQA.from_chain_type(llm, retriever=retriever) result = qa_chain({"query": "What is task decomposition?"}) print(result["result"]) </span></p>
+<p id="SE-af107945-658b-477e-8669-5954ebde869f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-542bb473-dc3b-4dc9-8fed-10e7f7d0a1e5" data-ke-size="size16"><span style="color: #000000;"><b>7. 고급 RAG 기법</b></span></p>
+<p id="SE-691c2ee2-6b0f-47a3-91a9-b9434dc85e2d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c8f5c6ae-fae9-46cf-a530-d310ad5b3f98" data-ke-size="size16"><span style="color: #000000;"><b>7.1 멀티 쿼리 접근법</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">하나의 질문을 여러 관점에서 재구성</span></li>
+<li><span style="color: #000000;">검색 성능 향상</span></li>
+</ul>
+<p id="SE-8a9fb5e3-5a0e-4d22-9b06-b7314457895f" data-ke-size="size16"><span style="color: #000000;"><b>7.2 RAG Fusion</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">여러 쿼리 결과를 결합하여 최종 결과 도출</span></li>
+</ul>
+<p id="SE-03faa7a9-69ad-42fd-8d76-0023d8cd55e4" data-ke-size="size16"><span style="color: #000000;"><b>7.3 쿼리 분해</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">복잡한 질문을 하위 질문으로 분해</span></li>
+<li><span style="color: #000000;">각 하위 질문에 대해 독립적으로 검색 및 답변 생성</span></li>
+</ul>
+<p id="SE-3d938fe2-940b-473e-abd6-c2c916fff3f4" data-ke-size="size16"><span style="color: #000000;"><b>7.4 Step-back 프롬프팅</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">더 추상적인 상위 수준의 질문 생성</span></li>
+<li><span style="color: #000000;">광범위한 컨텍스트 파악에 유용</span></li>
+</ul>
+<p id="SE-410b873d-c175-456a-860a-4642898a6419" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7fe9d731-7558-4b77-951e-6a3ecf0570ff" data-ke-size="size16"><span style="color: #000000;"><b>8. RAG의 미래와 장기 컨텍스트 LLM</b></span></p>
+<p id="SE-78469db2-eb5c-4653-8d12-480a329e40c3" data-ke-size="size16"><span style="color: #000000;"><b>8.1 장기 컨텍스트 LLM의 등장</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">100만 토큰 이상의 컨텍스트 처리 가능</span></li>
+<li><span style="color: #000000;">전체 문서를 한 번에 처리할 수 있는 능력</span></li>
+</ul>
+<p id="SE-eddee2c7-fa44-43af-8f30-3369e8e013b0" data-ke-size="size16"><span style="color: #000000;"><b>8.2 RAG의 변화 방향</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">정확한 청크 검색에서 전체 문서 처리로 전환</span></li>
+<li><span style="color: #000000;">문서 수준의 인덱싱 및 검색 중요성 증가</span></li>
+</ul>
+<p id="SE-98925212-2941-4f5e-9479-26777c9ffeb9" data-ke-size="size16"><span style="color: #000000;"><b>8.3 새로운 인덱싱 접근법</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">다중 표현 인덱싱(Multi-representation Indexing)</span></li>
+<li><span style="color: #000000;">계층적 인덱싱(Hierarchical Indexing)</span></li>
+</ul>
+<p id="SE-850295ec-609b-4b6d-8021-3415b63579df" data-ke-size="size16"><span style="color: #000000;"><b>8.4 장기 컨텍스트 임베딩 모델</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">32,000+ 토큰 용량의 임베딩 모델 사용</span></li>
+<li><span style="color: #000000;">전체 문서의 효과적인 임베딩 가능</span></li>
+</ul>
+<p id="SE-b5632453-212a-420a-a22d-1cfacf9f58a0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f0747bd6-7f1f-4781-b986-4e6a05652c6d" data-ke-size="size16"><span style="color: #000000;"><b>9. 액티브 RAG와 자기 반영적 시스템</b></span></p>
+<p id="SE-57a6c5ee-491a-469b-9346-9f6576d5a504" data-ke-size="size16"><span style="color: #000000;"><b>9.1 Self-RAG</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">검색 결과의 관련성 평가</span></li>
+<li><span style="color: #000000;">필요시 쿼리 재작성 및 재검색</span></li>
+</ul>
+<p id="SE-84c7f0ec-65fd-4474-9fe3-749bd2a3ffc1" data-ke-size="size16"><span style="color: #000000;"><b>9.2 Corrective RAG (C-RAG)</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">인덱스에 없는 정보에 대한 웹 검색 통합</span></li>
+<li><span style="color: #000000;">검색 결과의 다양성 및 정확성 향상</span></li>
+</ul>
+<p id="SE-8459c0cf-87e4-431d-a27c-80b2696b22da" data-ke-size="size16"><span style="color: #000000;"><b>9.3 LangGraph를 이용한 구현</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">복잡한 RAG 워크플로우 구축</span></li>
+<li><span style="color: #000000;">상태 기계(State Machine) 개념 적용</span></li>
+</ul>
+<p id="SE-0695a159-73e3-4946-a61e-e1e59086c7ab" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7de4d11b-2a7b-4dc3-a142-569abeb1dab7" data-ke-size="size16"><span style="color: #000000;"><b>10. RAG 시스템 최적화</b></span></p>
+<p id="SE-f4df5574-eedf-4461-a0db-59f527d1fa4b" data-ke-size="size16"><span style="color: #000000;"><b>10.1 문서 그레이딩 시스템</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">검색된 문서의 관련성 평가</span></li>
+<li><span style="color: #000000;">낮은 관련성 문서 필터링</span></li>
+</ul>
+<p id="SE-d556e313-8fea-4591-bfdb-9283c27c71e0" data-ke-size="size16"><span style="color: #000000;"><b>10.2 환각 체크</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">생성된 답변의 사실성 검증</span></li>
+<li><span style="color: #000000;">필요시 재생성 또는 추가 정보 검색</span></li>
+</ul>
+<p id="SE-f822aba8-ec23-4237-a497-13ba759cc58f" data-ke-size="size16"><span style="color: #000000;"><b>10.3 답변 관련성 확인</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">생성된 답변이 원래 질문에 적절한지 평가</span></li>
+</ul>
+<p id="SE-6d83e239-7076-4ff8-9bb0-522a461d7614" data-ke-size="size16"><span style="color: #000000;"><b>10.4 웹 검색 통합</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">인덱스 내 정보가 불충분할 경우 웹 검색 수행</span></li>
+</ul>
+<p id="SE-260a3749-a6ec-48c1-8721-8569c39c81ad" data-ke-size="size16">&nbsp;</p>
+<p id="SE-4b1dcbbd-4160-4887-afd6-37c896888314" data-ke-size="size16"><span style="color: #000000;"><b>11. RAG 구현 시 고려사항</b></span></p>
+<p id="SE-2ccc58cb-25d2-4bd6-83c5-fbc7d76a93bf" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0106cdf7-ea8e-4f14-85b6-030197c2c27b" data-ke-size="size16"><span style="color: #000000;"><b>11.1 성능과 지연 시간의 균형</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">작은 모델을 사용한 빠른 그레이딩</span></li>
+<li><span style="color: #000000;">필요에 따라 더 큰 모델로 최종 생성</span></li>
+</ul>
+<p id="SE-b62bee7a-faba-4b91-9de4-795aac749bed" data-ke-size="size16"><span style="color: #000000;"><b>11.2 보안 및 인증</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">문서 접근 권한 관리</span></li>
+<li><span style="color: #000000;">사용자별 맞춤형 검색 범위 설정</span></li>
+</ul>
+<p id="SE-0d40a2f2-a7b5-4f16-8c89-9ac52a91a0b6" data-ke-size="size16"><span style="color: #000000;"><b>11.3 로깅 및 모니터링</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">RAG 프로세스의 각 단계 추적</span></li>
+<li><span style="color: #000000;">LangSmith 등의 도구를 이용한 시각화 및 디버깅</span></li>
+</ul>
+<p id="SE-3b25f044-ec12-40be-b376-a30c08a16ca0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0d5879f7-0283-453e-adb3-15a29cab2d8d" data-ke-size="size16"><span style="color: #000000;"><b>12. RAG vs 에이전트</b></span></p>
+<p id="SE-dfb6aa5d-c07d-419c-b9cb-cedda05749d8" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b4d11553-eacc-477d-a78e-0db13a58b653" data-ke-size="size16"><span style="color: #000000;"><b>12.1 RAG의 장점</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">정의된 워크플로우에 적합</span></li>
+<li><span style="color: #000000;">더 작고 빠른 모델 사용 가능</span></li>
+<li><span style="color: #000000;">높은 신뢰성</span></li>
+</ul>
+<p id="SE-ffec0b55-a74b-4a3f-8216-e68cba86b582" data-ke-size="size16"><span style="color: #000000;"><b>12.2 에이전트의 장점</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">더 유연한 워크플로우</span></li>
+<li><span style="color: #000000;">개방형 의사 결정 가능</span></li>
+<li><span style="color: #000000;">장기 계획 문제에 적합</span></li>
+</ul>
+<p id="SE-6b41cf96-ffb6-427a-aade-f545d063d368" data-ke-size="size16"><span style="color: #000000;"><b>12.3 선택 기준</b></span></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><span style="color: #000000;">문제의 성격에 따라 RAG 또는 에이전트 선택</span></li>
+<li><span style="color: #000000;">때로는 두 접근법의 결합이 최적</span></li>
+</ul>
+<p id="SE-72a66750-85d7-4f89-b068-f1f33a1152d5" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e11e3dc8-e6b0-4ffa-97a6-72969ae74e2c" data-ke-size="size16"><span style="color: #000000;"><b>결론</b></span></p>
+<p id="SE-be4588ba-ba6c-4d17-9b72-017b4d3f9ba2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9516c626-b4e7-400d-a602-5707e9acd9b2" data-ke-size="size16"><span style="color: #000000;">RAG는 계속 진화하고 있으며, 장기 컨텍스트 LLM의 등장으로 새로운 가능성이 열리고 있습니다. 문서 중심의 접근법, 자기 반영적 시스템, 그리고 유연한 워크플로우 구성은 RAG의 미래를 형성할 중요한 요소들입니다. 개발자들은 이러한 트렌드를 주시하며, 각 사용 사례에 가장 적합한 RAG 구현 방식을 선택해야 할 것입니다.</span></p>
+<p id="SE-9adae5a8-4cb9-4a6f-abc7-f563ee5a52c0" data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

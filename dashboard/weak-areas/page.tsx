@@ -60,7 +60,7 @@ export default function WeakAreasPage() {
   ];
 
   // Function to determine color based on mastery level
-  const getMasteryColor = (mastery) => {
+  const getMasteryColor = (mastery: number) => {
     if (mastery < 40) return 'bg-red-500';
     if (mastery < 60) return 'bg-yellow-500';
     if (mastery < 80) return 'bg-blue-500';

@@ -1,10 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Configure only what's needed, remove any deprecated options
-  experimental: {
-    // Set to true for better client component detection
-    serverActions: true,
+  // Configure to handle static files with special characters
+  distDir: '_next',
+  // Allow static files to be requested with spaces and special characters in filenames  
+  async headers() {
+    return [
+      {
+        source: '/pdfs/:path*',
+        headers: [
+          {
+            key: 'Content-Disposition',
+            value: 'inline',
+          },
+        ],
+      },
+    ];
   }
 };
 

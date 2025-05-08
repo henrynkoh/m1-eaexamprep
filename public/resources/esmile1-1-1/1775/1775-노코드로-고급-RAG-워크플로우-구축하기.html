@@ -1,0 +1,142 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>노코드로 고급 RAG 워크플로우 구축하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">노코드로 고급 RAG 워크플로우 구축하기</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-22 06:54:36</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>노코드로 고급 RAG 워크플로우 구축하기</h1>
+<p data-ke-size="size16">안녕하세요, 여러분! 2025년 새해를 맞이하여 첫 번째 콘텐츠를 준비했습니다. 오늘은 노코드로 고급 RAG 워크플로우를 구축하는 데모를 보여드리려고 합니다. 이 콘텐츠는 시리즈물로 제작될 예정이며, 오늘은 전체적인 개요와 데모를 중심으로 진행하겠습니다.</p>
+<h2 data-ke-size="size26">배경 및 목적</h2>
+<p data-ke-size="size16">작년 12월 23일, 패스트캠퍼스에서 "RAG 비법 노트"라는 70시간 분량의 온라인 강의를 촬영했습니다. 7개월간의 노력 끝에 완성된 이 강의는 많은 분들에게 도움이 되었지만, 동시에 몇 가지 문제점도 발견되었습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>이론은 이해할 수 있으나 코드 이해가 어렵다는 의견</li>
+<li>LangChain이나 LangGraph 코드의 높은 진입 장벽</li>
+<li>프로젝트 급한 상황에서 학습 시간 부족</li>
+</ol>
+<p data-ke-size="size16">이러한 피드백을 바탕으로, 더 쉽고 빠르게 RAG 파이프라인을 구축할 수 있는 방법을 고민하게 되었고, 그 결과물을 오늘 여러분께 소개하고자 합니다.</p>
+<h2 data-ke-size="size26">사용할 오픈소스 도구</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>OpenWebUI</b>: 55k 스타를 받은 유명한 라이브러리로, GUI 인터페이스를 제공합니다.</li>
+<li><b>Flowise</b>: 58k 스타를 받은 라이브러리로, 다양한 워크플로우와 에이전트를 GUI로 구축할 수 있게 해줍니다.</li>
+</ol>
+<p data-ke-size="size16">이 두 도구를 활용하여 클라우드 상에서뿐만 아니라 100% 무료 모델 또는 온프레미스 환경에서도 구축이 가능한 솔루션을 만들어보겠습니다.</p>
+<h2 data-ke-size="size26">주요 특징</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>1시간 만에 구축 가능</li>
+<li>웹상에서 바로 사용 가능한 높은 품질의 서비스</li>
+<li>프롬프트 작성을 제외하면 대부분 마우스 클릭으로 구축 가능</li>
+<li>GPTs보다 더 직관적인 흐름 설계 가능</li>
+<li>템플릿 공유 기능</li>
+<li>다양한 벡터 DB 지원</li>
+<li>검색 알고리즘 튜닝 가능</li>
+<li>다양한 서드파티 도구 지원 (예: Perplexity 검색, Google 검색 등)</li>
+<li>LangChain이나 LangGraph 코드와의 연동 가능성</li>
+</ol>
+<h2 data-ke-size="size26">구축 과정 개요</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Docker Desktop 설치</li>
+<li>OpenWebUI와 Flowise 연동</li>
+<li>에이전트 및 워크플로우 설계</li>
+<li>파이프라인 구축</li>
+<li>로컬 환경에서 100% 무료로 구동</li>
+</ol>
+<h2 data-ke-size="size26">상세 구축 과정</h2>
+<h3 data-ke-size="size23">1. Docker Desktop 설치</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Google에서 "Docker Desktop" 검색</li>
+<li>Docker 공식 웹사이트 방문</li>
+<li>"Get Docker" 버튼 클릭</li>
+<li>Docker Desktop 다운로드 및 설치</li>
+</ol>
+<h3 data-ke-size="size23">2. OpenWebUI 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Docker Desktop 실행</li>
+<li>제공된 컨테이너 구동 파일 실행</li>
+<li>OpenWebUI 로컬호스트(<a href="http://localhost:3000">http://localhost:3000</a>) 접속</li>
+<li>관리자 설정 진행</li>
+<li>OpenAI API 키 입력 (설정 &gt; 연결 &gt; OpenAI API Connections)</li>
+</ol>
+<h3 data-ke-size="size23">3. Flowise 설정</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Flowise 웹사이트(<a href="https://flowiseai.com">https://flowiseai.com</a>) 방문</li>
+<li>"시작하기" 버튼 클릭</li>
+<li>클라우드 또는 로컬 환경 선택</li>
+</ol>
+<h3 data-ke-size="size23">4. 에이전트 구축</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Flowise 스튜디오에서 새 프로젝트 생성</li>
+<li>에이전트 노드 추가</li>
+<li>프롬프트 작성</li>
+<li>필요한 도구 활성화 (예: 웹 검색, 콘텐츠 스크래핑)</li>
+<li>에이전트 설정 저장</li>
+</ol>
+<h3 data-ke-size="size23">5. 워크플로우 구축</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Flowise 스튜디오에서 새 워크플로우 생성</li>
+<li>질문 분류기 노드 추가</li>
+<li>웹 검색, 일반 질문, RAG 노드 추가</li>
+<li>각 노드 간 연결 설정</li>
+<li>지식 검색을 위한 파일 업로드</li>
+</ol>
+<h3 data-ke-size="size23">6. 파이프라인 연결</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>OpenWebUI 관리자 패널 접속</li>
+<li>설정 &gt; 파이프라인 메뉴 선택</li>
+<li>Flowise API 키 입력</li>
+<li>에이전트 또는 워크플로우 선택</li>
+<li>설정 저장</li>
+</ol>
+<h3 data-ke-size="size23">7. 로컬 환경 구축</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Docker 컨테이너 실행</li>
+<li>OpenWebUI 로컬호스트 접속</li>
+<li>Flowise 로컬 서비스 API 키 설정</li>
+<li>인터넷 연결 해제 (테스트용)</li>
+<li>로컬 모델 (예: Llama) 설정</li>
+</ol>
+<h3 data-ke-size="size23">8. 테스트 및 최적화</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>새 채팅 시작</li>
+<li>다양한 유형의 질문 테스트</li>
+<li>GPU 사용량 모니터링</li>
+<li>응답 시간 및 정확도 확인</li>
+<li>필요시 워크플로우 조정</li>
+</ol>
+<h2 data-ke-size="size26">결론</h2>
+<p data-ke-size="size16">이렇게 구축한 시스템은 사용자에게 미려한 인터페이스를 제공하면서도, 백엔드에서 복잡한 로직을 쉽게 구현하고 수정할 수 있는 장점이 있습니다. 특히 보안이 중요한 기업 환경에서도 온프레미스로 구축이 가능하여 활용도가 높습니다.</p>
+<p data-ke-size="size16">더 자세한 내용은 1월 23일 목요일에 진행되는 패스트캠퍼스의 월간 프라이빗 세미나에서 다룰 예정입니다. 관심 있으신 분들은 참여해 주시기 바랍니다.</p>
+<p data-ke-size="size16">앞으로도 이러한 노코드 RAG 워크플로우 구축에 대한 다양한 콘텐츠를 준비할 예정이니 많은 관심 부탁드립니다. 새해 복 많이 받으시고, 다음 영상에서 다시 뵙겠습니다. 감사합니다!</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

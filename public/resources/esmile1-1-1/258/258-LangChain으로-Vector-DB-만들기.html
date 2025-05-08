@@ -1,0 +1,125 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>LangChain으로 Vector DB 만들기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">LangChain으로 Vector DB 만들기</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-01 07:10:31</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">LangChain, <span style="color: #333333; text-align: start;">Pinecone, Large Language Models (LLMs)</span>을 이용한&nbsp; PDF and JSON files이&nbsp; Vector DB로 변화되는 과정을 정리하였습니다.&nbsp;</p>
+<h3 data-ke-size="size23">1. <b>Setup Environment</b></h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>Install Dependencies</b>: Ensure you have Python installed. Install necessary libraries:</li>
+<li>pip install langchain pinecone-client openai transformers sentence-transformers</li>
+<li><b>Pinecone API Key</b>: Get an API key from Pinecone and initialize it.</li>
+<li>import pinecone pinecone.init(api_key="YOUR_PINECONE_API_KEY", environment="YOUR_ENVIRONMENT")</li>
+</ul>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<p data-ke-size="size16">pip install langchain pinecone-client openai transformers sentence-transformers</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">import pinecone pinecone.init(api_key="YOUR_PINECONE_API_KEY", environment="YOUR_ENVIRONMENT")</p>
+<h3 data-ke-size="size23">2. <b>Loading Documents</b></h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>PDF Files</b>: Use LangChain's document loaders for PDFs.</li>
+<li>from langchain.document_loaders import PyPDFLoader loader = PyPDFLoader("path_to_your_pdf.pdf") documents = loader.load()</li>
+<li><b>JSON Files</b>: For structured data like JSON, you might need to convert it into a format LangChain can process, or directly use it if your JSON contains text data.</li>
+<li>import json with open('kjv_bible_verses.json', 'r') as file: data = json.load(file) # Convert JSON to documents if needed documents = [{"page_content": str(item), "metadata": {"source": "kjv_bible_verses"}} for item in data]</li>
+</ul>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h3 data-ke-size="size23">3. <b>Text Splitting</b></h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Split documents into chunks if they're too large.</li>
+<li>from langchain.text_splitter import RecursiveCharacterTextSplitter text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200) texts = text_splitter.split_documents(documents)</li>
+</ul>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h3 data-ke-size="size23">4. <b>Embedding</b></h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Use an embedding model to convert text into vectors.</li>
+<li>from langchain.embeddings import SentenceTransformerEmbeddings embeddings = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")</li>
+</ul>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h3 data-ke-size="size23">5. <b>Creating Pinecone Index</b></h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>If not already created, create a Pinecone index.</li>
+<li>index_name = "your-index-name" if index_name not in pinecone.list_indexes(): pinecone.create_index(index_name, dimension=1536, metric='cosine')</li>
+</ul>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_4.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h3 data-ke-size="size23">6. <b>Adding Documents to Pinecone</b></h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Use LangChain's Pinecone integration.</li>
+<li>from langchain.vectorstores import Pinecone pinecone_index = Pinecone.from_documents(texts, embeddings, index_name=index_name)</li>
+</ul>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_5.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<h3 data-ke-size="size23">7. <b>Querying with LLMs</b></h3>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Set up an LLM (like from Hugging Face or OpenAI).</li>
+<li>from langchain.llms import HuggingFacePipeline from transformers import AutoModelForCausalLM, AutoTokenizer model_name = "gpt2" model = AutoModelForCausalLM.from_pretrained(model_name) tokenizer = AutoTokenizer.from_pretrained(model_name) pipe = pipeline("text-generation", model=model, tokenizer=tokenizer) llm =</li>
+</ul>
+<p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_6.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>Model Context Protocol (MCP) 설명 및 사용 방법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">Model Context Protocol (MCP) 설명 및 사용 방법</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-03-25 23:47:27</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p><figure class="imageblock alignCenter" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png"  />
+    </span>
+    <figcaption></figcaption>
+</figure></p>
+<div>
+<div>
+<h2 data-ke-size="size26">Model Context Protocol (MCP) 설명 및 사용 방법</h2>
+<p data-ke-size="size16">MCP는 인공지능(AI) 모델이 다양한 도구와 데이터를 쉽게 접근할 수 있도록 하는 프로토콜입니다. 이 프로토콜은 <b>도구(Tools)</b>, <b>리소스(Resources)</b>, **프롬프트(Prompts)**의 세 가지 주요 구성 요소를 가지고 있습니다.</p>
+<h2 data-ke-size="size26">MCP의 주요 구성 요소</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>도구(Tools)</b>: AI 모델이 외부 시스템과 상호작용할 수 있도록 하는 실행 가능한 기능입니다. 예를 들어, GitHub의 "list_issues"나 "create_issue" 같은 도구가 있습니다<a href="https://devblogs.microsoft.com/semantic-kernel/integrating-model-context-protocol-tools-with-semantic-kernel-a-step-by-step-guide/" data-state="closed"><span><span>3</span></span></a><span><a href="https://dev.to/aftabbuddy/mcp-revolutionizing-how-ai-interacts-with-your-tools-and-data-2poi" data-state="closed"><span><span>4</span></span></a>.</span></li>
+<li><b>리소스(Resources)</b>: AI 모델이 참조할 수 있는 데이터나 파일입니다. 예를 들어, CSV 파일이나 JSON 객체가 될 수 있습니다<a href="https://dev.to/aftabbuddy/mcp-revolutionizing-how-ai-interacts-with-your-tools-and-data-2poi" data-state="closed"><span><span>4</span></span></a><span><a href="https://www.digitalocean.com/community/tutorials/model-context-protocol" data-state="closed"><span><span>5</span></span></a>.</span></li>
+<li><b>프롬프트(Prompts)</b>: 사용자가 선택할 수 있는 미리 정의된 템플릿으로, 특정 작업을 쉽게 수행할 수 있도록 돕습니다. 예를 들어, IDE에서 코드 설명을 생성하는 프롬프트가 있을 수 있습니다<a href="https://dev.to/aftabbuddy/mcp-revolutionizing-how-ai-interacts-with-your-tools-and-data-2poi" data-state="closed"><span><span>4</span></span></a><span><a href="https://spec.modelcontextprotocol.io/specification/draft/server/prompts/" data-state="closed"><span><span>7</span></span></a>.</span></li>
+</ol>
+<h2 data-ke-size="size26">MCP 사용 방법</h2>
+<p data-ke-size="size16">MCP를 사용하기 위해서는 다음 단계를 따르면 됩니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>MCP 호스트 및 클라이언트 설정</b>: AI 서비스를 제공하는 호스트와 MCP 서버에 연결하는 클라이언트를 설정합니다<span><a href="https://www.digitalocean.com/community/tutorials/model-context-protocol" data-state="closed"><span><span>5</span></span></a>.</span></li>
+<li><b>MCP 서버 준비</b>: 도구, 리소스, 프롬프트를 제공하는 서버를 준비합니다. 예를 들어, GitHub MCP 서버는 다양한 Git 관련 도구를 제공합니다<a href="https://devblogs.microsoft.com/semantic-kernel/integrating-model-context-protocol-tools-with-semantic-kernel-a-step-by-step-guide/" data-state="closed"><span><span>3</span></span></a><span><a href="https://www.digitalocean.com/community/tutorials/model-context-protocol" data-state="closed"><span><span>5</span></span></a>.</span></li>
+<li><b>도구 및 리소스 등록</b>: 클라이언트가 MCP 서버의 도구와 리소스를 등록하고 사용할 수 있도록 합니다<a href="https://devblogs.microsoft.com/semantic-kernel/integrating-model-context-protocol-tools-with-semantic-kernel-a-step-by-step-guide/" data-state="closed"><span><span>3</span></span></a><span><span data-state="closed"><span><span>6<span></span></span></span></span>.</span></li>
+<li><b>프롬프트 사용</b>: 사용자가 프롬프트를 선택하여 특정 작업을 수행합니다<span><a href="https://spec.modelcontextprotocol.io/specification/draft/server/prompts/" data-state="closed"><span><span>7</span></span></a>.</span></li>
+</ol>
+<h2 data-ke-size="size26">30단계로 세분화된 MCP 사용 방법</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>MCP 호스트 및 클라이언트 설치</b>: 클로드 데스크탑이나 AIEXE 같은 호스트 프로그램을 설치합니다.</li>
+<li><b>MCP 서버 준비</b>: GitHub MCP 서버 등 다양한 서버를 준비합니다.</li>
+<li><b>도구 및 리소스 목록 확인</b>: MCP 서버가 제공하는 도구와 리소스를 확인합니다.</li>
+<li><b>프롬프트 목록 확인</b>: 사용 가능한 프롬프트를 확인합니다.</li>
+<li><b>도구 등록</b>: 클라이언트에 도구를 등록합니다.</li>
+<li><b>리소스 등록</b>: 클라이언트에 리소스를 등록합니다.</li>
+<li><b>프롬프트 사용</b>: 사용자가 프롬프트를 선택하여 작업을 수행합니다.</li>
+<li><b>AI 모델과의 상호작용</b>: AI 모델이 도구와 리소스를 사용하여 작업을 처리합니다.</li>
+<li><b>결과 확인</b>: 작업 결과를 확인합니다.</li>
+<li><b>도구 및 리소스 추가</b>: 새로운 도구와 리소스를 추가합니다.</li>
+<li><b>프롬프트 추가</b>: 새로운 프롬프트를 추가합니다.</li>
+<li><b>MCP 서버 관리</b>: MCP 서버를 관리하고 업데이트합니다.</li>
+<li><b>클라이언트 설정 관리</b>: 클라이언트 설정을 관리합니다.</li>
+<li><b>도구 및 리소스 테스트</b>: 도구와 리소스를 테스트합니다.</li>
+<li><b>프롬프트 테스트</b>: 프롬프트를 테스트합니다.</li>
+<li><b>AI 모델 훈련</b>: AI 모델을 훈련합니다.</li>
+<li><b>MCP 프로토콜 업데이트</b>: MCP 프로토콜을 업데이트합니다.</li>
+<li><b>보안 설정</b>: 보안 설정을 구성합니다.</li>
+<li><b>사용자 교육</b>: 사용자를 교육합니다.</li>
+<li><b>피드백 수집</b>: 사용자 피드백을 수집합니다.</li>
+<li><b>문제 해결</b>: 문제를 해결합니다.</li>
+<li><b>도구 및 리소스 최적화</b>: 도구와 리소스를 최적화합니다.</li>
+<li><b>프롬프트 최적화</b>: 프롬프트를 최적화합니다.</li>
+<li><b>AI 모델 성능 개선</b>: AI 모델의 성능을 개선합니다.</li>
+<li><b>MCP 서버 확장</b>: MCP 서버를 확장합니다.</li>
+<li><b>클라이언트 확장</b>: 클라이언트를 확장합니다.</li>
+<li><b>도구 및 리소스 통합</b>: 도구와 리소스를 통합합니다.</li>
+<li><b>프롬프트 통합</b>: 프롬프트를 통합합니다.</li>
+<li><b>MCP 프로토콜 확장</b>: MCP 프로토콜을 확장합니다.</li>
+<li><b>지속적인 모니터링</b>: 시스템을 지속적으로 모니터링합니다.</li>
+</ol>
+<h2 data-ke-size="size26">프롬프트 예시</h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>/summarize-pr [PR-ID]: 지정된 풀 리퀘스트(PR)를 요약합니다.</li>
+<li>/explain-code: 선택된 코드를 설명합니다.</li>
+<li>/optimize: 선택된 함수의 최적화를 제안합니다<a href="https://dev.to/aftabbuddy/mcp-revolutionizing-how-ai-interacts-with-your-tools-and-data-2poi" data-state="closed"><span><span>4</span></span></a><span><a href="https://spec.modelcontextprotocol.io/specification/draft/server/prompts/" data-state="closed"><span><span>7</span></span></a>.</span></li>
+</ul>
+<p data-ke-size="size16">이러한 MCP의 기능과 사용 방법을 통해 AI 모델이 다양한 도구와 데이터를 쉽게 활용할 수 있습니다. MCP는 AI 시스템의 확장성과 유연성을 높이는 데 중요한 역할을 합니다.</p>
+<h2 data-ke-size="size26">프롬프트</h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>사용자 프롬프트</b>: 사용자가 특정 작업을 수행할 때 사용하는 미리 정의된 템플릿입니다.</li>
+<li><b>예시 프롬프트</b>: /summarize-pr [PR-ID], /explain-code, /optimize 등이 있습니다<a href="https://dev.to/aftabbuddy/mcp-revolutionizing-how-ai-interacts-with-your-tools-and-data-2poi" data-state="closed"><span><span>4</span></span></a><span><a href="https://spec.modelcontextprotocol.io/specification/draft/server/prompts/" data-state="closed"><span><span>7</span></span></a>.</span></li>
+</ul>
+<p data-ke-size="size16">이러한 프롬프트는 사용자가 AI 모델과 상호작용할 때 유용하게 사용됩니다.</p>
+</div>
+</div>
+<p data-ke-size="size16">&nbsp;</p>
+<div>
+<div>
+<h2 data-ke-size="size26"><a href="https://www.perplexity.ai/search/pplx.ai/share">MCP를 사용하여 AI와 데이터 소스를 연결하는 방법</a></h2>
+<p data-ke-size="size16"><a href="https://www.perplexity.ai/search/pplx.ai/share">MCP(Model Context Protocol)는 AI 모델이 외부 데이터 소스와 도구에 쉽게 연결될 수 있도록 하는 개방형 표준입니다. 이를 통해 AI 모델은 실시간으로 데이터를 가져오거나 외부 프로그램을 실행할 수 있습니다. MCP를 사용하여 AI와 데이터 소스를 연결하는 방법은 다음과 같습니다:</a></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><a href="https://www.perplexity.ai/search/pplx.ai/share"><b>MCP 서버 구축</b>: AI 모델이 접근해야 하는 데이터 소스나 도구에 대해 MCP 서버를 구축합니다. MCP 서버는 표준화된 인터페이스를 제공하여 AI 모델이 해당 데이터나 기능에 접근할 수 있도록 합니다<span></span></a><a href="https://blog.pages.kr/3321" data-state="closed"><span><span>8</span></span></a>.</li>
+<li><b>MCP 클라이언트 설정</b>: AI 모델이 MCP 서버와 상호작용할 수 있도록 클라이언트를 설정합니다. 클라이언트는 MCP 서버와 1:1 연결을 유지하며, AI 모델이 MCP 서버를 통해 데이터나 기능에 접근할 수 있도록 합니다<span><a href="https://blog.pages.kr/3321" data-state="closed"><span><span>8</span></span></a>.</span></li>
+<li><b>AI 모델과 MCP 통합</b>: AI 모델이 MCP 클라이언트를 통해 MCP 서버에 접근할 수 있도록 통합합니다. 이를 통해 AI 모델은 필요한 데이터를 실시간으로 가져오거나 특정 프로그램을 직접 실행할 수 있습니다<span><a href="https://blog.pages.kr/3321" data-state="closed"><span><span>8</span></span></a>.</span></li>
+</ol>
+<h2 data-ke-size="size26">MCP를 활용한 실제 사례</h2>
+<p data-ke-size="size16">MCP는 다양한 분야에서 활용될 수 있습니다. 몇 가지 구체적인 사례는 다음과 같습니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>최신 정보 검색</b>: AI 모델이 웹 검색을 통해 최신 정보를 찾을 수 있도록 BraveSearch MCP와 같은 도구를 활용합니다<span><a href="https://tilnote.io/pages/67e003492a14e2a1ab33e732" data-state="closed"><span><span>13</span></span></a>.</span></li>
+<li><b>엔지니어링 업무 자동화</b>: Claude의 MCP를 활용하여 README 파일 생성, Git 제어, Slack 채널 분석 및 메시지 전송 등을 자동화할 수 있습니다<span><a href="https://tilnote.io/pages/67e003492a14e2a1ab33e732" data-state="closed"><span><span>13</span></span></a>.</span></li>
+<li><b>AI 기반 지능형 코드 편집기 (IDE)</b>: MCP를 통해 개발 도구와 연결하여 코드 추천 및 자동화 실행이 가능합니다<span><a href="https://tilnote.io/pages/67e003492a14e2a1ab33e732" data-state="closed"><span><span>13</span></span></a>.</span></li>
+</ol>
+<h2 data-ke-size="size26">MCP와 Semantic Kernel의 차이점</h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>MCP</b>: AI 모델과 다양한 데이터 소스 및 도구 간의 연결을 표준화하는 프로토콜입니다. 이는 AI 모델이 외부 데이터에 접근하고, 다양한 도구를 활용할 수 있도록 돕습니다<a href="https://aiwithayushman.com/blog/anthropic-s-model-context-protocol-(mcp)-i-am-not-convinced-yet" data-state="closed"><span><span>6</span></span></a><span><a href="https://devblogs.microsoft.com/semantic-kernel/integrating-model-context-protocol-tools-with-semantic-kernel-a-step-by-step-guide/" data-state="closed"><span><span>14</span></span></a>.</span></li>
+<li><b>Semantic Kernel</b>: AI 모델이 외부 도구와 상호작용할 수 있도록 하는 프레임워크로, MCP와 함께 사용될 수 있습니다. Semantic Kernel은 AI 모델이 도구를 호출하는 논리적 흐름을 관리하는 데 중점을 둡니다<span><a href="https://devblogs.microsoft.com/semantic-kernel/integrating-model-context-protocol-tools-with-semantic-kernel-a-step-by-step-guide/" data-state="closed"><span><span>14</span></span></a>.</span></li>
+</ul>
+<h2 data-ke-size="size26">MCP를 사용할 때 주의해야 할 점</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>보안</b>: MCP는 보안을 강조하며, 연결된 시스템 간의 보안을 유지하기 위해 적절한 인증 및 권한 설정이 필요합니다<span><a href="https://aiwithayushman.com/blog/anthropic-s-model-context-protocol-(mcp)-i-am-not-convinced-yet" data-state="closed"><span><span>6</span></span></a>.</span></li>
+<li><b>성능</b>: MCP를 사용할 때 도구 호출의 빈도가 높으면 지연이 발생할 수 있으므로, 적절한 성능 최적화가 필요합니다<span><a href="https://aiwithayushman.com/blog/anthropic-s-model-context-protocol-(mcp)-i-am-not-convinced-yet" data-state="closed"><span><span>6</span></span></a>.</span></li>
+<li><b>표준화</b>: MCP는 표준 프로토콜이므로, 다양한 시스템 간의 호환성을 유지하기 위해 표준을 준수하는 것이 중요합니다<span><a href="https://aiwithayushman.com/blog/anthropic-s-model-context-protocol-(mcp)-i-am-not-convinced-yet" data-state="closed"><span><span>6</span></span></a>.</span></li>
+</ol>
+<h2 data-ke-size="size26">MCP를 구현할 때 필요한 도구</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>Python SDK</b>: MCP 구현에 필요한 Python SDK를 사용하여 MCP 서버와 클라이언트를 구축할 수 있습니다<span><a href="https://www.magicaiprompts.com/docs/claude/mcp/" data-state="closed"><span><span>7</span></span></a>.</span></li>
+<li><b>Flask 또는 Django</b>: Python 웹 프레임워크를 사용하여 MCP 서버를 구현할 수 있습니다<span><a href="https://blog.pages.kr/3321" data-state="closed"><span><span>8</span></span></a>.</span></li>
+<li><b>JSON-RPC 2.0</b>: MCP는 JSON-RPC 2.0을 통해 데이터를 전송하므로, 이를 지원하는 라이브러리가 필요합니다<span><a href="https://aiwithayushman.com/blog/anthropic-s-model-context-protocol-(mcp)-i-am-not-convinced-yet" data-state="closed"><span><span>6</span></span></a>.</span></li>
+<li><b>Semantic Kernel</b>: MCP와 함께 사용할 수 있는 Semantic Kernel 프레임워크를 활용하여 AI 모델의 논리적 흐름을 관리할 수 있습니다<span><a href="https://devblogs.microsoft.com/semantic-kernel/integrating-model-context-protocol-tools-with-semantic-kernel-a-step-by-step-guide/" data-state="closed"><span><span>14</span></span></a>.</span></li>
+</ol>
+<h2 data-ke-size="size26">프롬프트</h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li><b>MCP 서버 구축 프롬프트</b>: "MCP 서버를 구축하여 AI 모델이 외부 데이터 소스에 접근할 수 있도록 설정해 주세요."</li>
+<li><b>MCP 클라이언트 설정 프롬프트</b>: "AI 모델과 MCP 서버를 연결하기 위해 클라이언트를 설정해 주세요."</li>
+<li><b>Semantic Kernel 통합 프롬프트</b>: "Semantic Kernel을 사용하여 AI 모델의 논리적 흐름을 관리하고 MCP 도구를 호출해 보세요."</li>
+</ul>
+</div>
+</div>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,213 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>구글 설문지와 앱스스크립트를 활용한 창업 상담 신청 자동화 시스템 구축하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">구글 설문지와 앱스스크립트를 활용한 창업 상담 신청 자동화 시스템 구축하기</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-12-22 16:20:44</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>구글 설문지와 앱스스크립트를 활용한 창업 상담 신청 자동화 시스템 구축하기</h1>
+<p data-ke-size="size16">안녕하세요, 여러분! 오늘은 구글 설문지와 앱스스크립트를 활용하여 창업 상담 신청을 자동화하는 시스템을 구축하는 방법에 대해 알아보겠습니다. 이 시스템을 통해 상담 신청서를 자동으로 생성하고, 구글 시트에 정보를 저장하며, PDF 문서를 만들어 이메일로 발송하는 과정을 자동화할 수 있습니다.</p>
+<h2 data-ke-size="size26">프로젝트 개요</h2>
+<p data-ke-size="size16">우리가 만들 시스템은 다음과 같은 기능을 수행합니다:</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 설문지를 통해 창업 상담 신청 정보를 받습니다.</li>
+<li>받은 정보를 구글 시트에 자동으로 저장합니다.</li>
+<li>저장된 정보를 바탕으로 PDF 형식의 상담 신청서를 생성합니다.</li>
+<li>생성된 PDF를 신청자의 이메일로 자동 발송합니다.</li>
+</ol>
+<p data-ke-size="size16">이 모든 과정을 구글 앱스스크립트를 이용해 자동화할 것입니다.</p>
+<h2 data-ke-size="size26">시스템 구축 단계</h2>
+<h3 data-ke-size="size23">1. 구글 시트 템플릿 만들기</h3>
+<p data-ke-size="size16">먼저, 상담 신청 정보를 저장할 구글 시트 템플릿을 만들어야 합니다. 이 템플릿은 신청자의 정보를 깔끔하게 정리하고 시각화하는 역할을 합니다.</p>
+<pre class="reasonml"><code>function createConsultationForm() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getActiveSheet();
+
+  // 시트 초기화
+  sheet.clear();
+
+  // 헤더 설정
+  var headers = [
+    "창업 상담 신청서",
+    "신청일자",
+    "신청자명",
+    "연락처",
+    "이메일",
+    "희망 업종/아이템",
+    "창업 준비 단계",
+    "상담 희망 일자",
+    "문의 사항"
+  ];
+
+  // 헤더 스타일 설정
+  var headerRange = sheet.getRange(1, 1, headers.length, 1);
+  headerRange.setValues(headers.map(function(header) { return [header]; }));
+  headerRange.setFontWeight("bold");
+  headerRange.setBackground("#4a86e8");
+  headerRange.setFontColor("white");
+
+  // 입력 필드 설정
+  var inputRange = sheet.getRange(1, 2, headers.length, 1);
+  inputRange.setBorder(true, true, true, true, true, true);
+
+  // 셀 크기 조정
+  sheet.setColumnWidth(1, 150);
+  sheet.setColumnWidth(2, 300);
+
+  // 전체 테두리 설정
+  var fullRange = sheet.getRange(1, 1, headers.length, 2);
+  fullRange.setBorder(true, true, true, true, true, true, "black", SpreadsheetApp.BorderStyle.SOLID);
+}
+
+</code></pre>
+<p data-ke-size="size16">이 코드는 구글 시트에 창업 상담 신청서 템플릿을 생성합니다. 헤더와 입력 필드를 설정하고, 스타일을 적용하여 보기 좋은 형태로 만듭니다.</p>
+<h3 data-ke-size="size23">2. 구글 설문지 만들기</h3>
+<p data-ke-size="size16">다음으로, 신청자로부터 정보를 받을 구글 설문지를 만들어야 합니다. 앱스스크립트를 사용하여 자동으로 설문지를 생성할 수 있습니다.</p>
+<pre class="pf"><code>function createGoogleForm() {
+  var form = FormApp.create("창업 상담 신청서");
+
+  form.setDescription("창업 상담을 신청하기 위한 양식입니다. 모든 항목을 정확히 작성해 주세요.");
+
+  form.addTextItem()
+    .setTitle("신청자명")
+    .setRequired(true);
+
+  form.addTextItem()
+    .setTitle("연락처")
+    .setRequired(true)
+    .setValidation(FormApp.createTextValidation()
+                   .setHelpText("올바른 전화번호 형식으로 입력해주세요. (예: 010-1234-5678)")
+                   .requireTextMatchesPattern("^010-\\\\\\\\d{4}-\\\\\\\\d{4}$")
+                   .build());
+
+  form.addTextItem()
+    .setTitle("이메일")
+    .setRequired(true);
+
+  form.addTextItem()
+    .setTitle("희망 업종/아이템")
+    .setRequired(true);
+
+  var preparationItem = form.addMultipleChoiceItem()
+    .setTitle("창업 준비 단계")
+    .setRequired(true);
+  preparationItem.setChoices([
+    preparationItem.createChoice("아이디어 구상 중"),
+    preparationItem.createChoice("사업계획 수립 중"),
+    preparationItem.createChoice("자금 준비 중"),
+    preparationItem.createChoice("창업 직전 단계")
+  ]);
+
+  form.addDateItem()
+    .setTitle("상담 희망 일자")
+    .setRequired(true);
+
+  form.addParagraphTextItem()
+    .setTitle("문의 사항");
+
+  Logger.log("설문지 URL: " + form.getPublishedUrl());
+  Logger.log("설문지 수정 URL: " + form.getEditUrl());
+}
+
+</code></pre>
+<p data-ke-size="size16">이 코드는 창업 상담 신청을 위한 구글 설문지를 생성합니다. 신청자명, 연락처, 이메일 등 필요한 정보를 입력받는 항목들을 추가하고, 일부 항목에 대해서는 유효성 검사를 설정합니다.</p>
+<h3 data-ke-size="size23">3. 설문지 응답 처리하기</h3>
+<p data-ke-size="size16">설문지에 응답이 제출되면, 이를 자동으로 처리하여 구글 시트에 저장하고 PDF를 생성하는 함수를 만들어야 합니다.</p>
+<pre class="reasonml"><code>function onFormSubmit(e) {
+  var responses = e.response.getItemResponses();
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+  // 응답 데이터 추출
+  var data = responses.map(function(response) {
+    return response.getResponse();
+  });
+
+  // 시트에 데이터 입력
+  sheet.getRange(2, 2, data.length, 1).setValues(data.map(function(item) { return [item]; }));
+
+  // PDF 생성
+  var pdfFile = createPDF(data);
+
+  // 이메일 발송
+  sendEmail(data[2], pdfFile);
+}
+
+function createPDF(data) {
+  // PDF 생성 로직
+  // ...
+}
+
+function sendEmail(email, pdfFile) {
+  // 이메일 발송 로직
+  // ...
+}
+
+</code></pre>
+<p data-ke-size="size16">이 코드는 설문지 응답을 처리하는 onFormSubmit 함수를 정의합니다. 응답 데이터를 추출하여 시트에 저장하고, PDF를 생성한 후 이메일로 발송하는 과정을 자동화합니다.</p>
+<h2 data-ke-size="size26">시스템 사용 방법 (20단계)</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>구글 드라이브에 로그인합니다.</li>
+<li>새 구글 시트를 생성합니다.</li>
+<li>도구 &gt; 스크립트 편집기를 선택합니다.</li>
+<li>스크립트 편집기에 앞서 제시한 코드를 붙여넣습니다.</li>
+<li>파일 &gt; 저장을 선택하여 스크립트를 저장합니다.</li>
+<li>실행 &gt; 함수 실행 &gt; createConsultationForm을 선택하여 시트 템플릿을 생성합니다.</li>
+<li>실행 &gt; 함수 실행 &gt; createGoogleForm을 선택하여 구글 설문지를 생성합니다.</li>
+<li>콘솔 로그에서 생성된 설문지의 URL을 확인합니다.</li>
+<li>설문지 수정 URL로 이동하여 필요한 경우 설문지를 수정합니다.</li>
+<li>설문지 설정에서 '응답' 탭으로 이동합니다.</li>
+<li>'응답 저장 위치'를 방금 생성한 구글 시트로 설정합니다.</li>
+<li>스크립트 편집기로 돌아갑니다.</li>
+<li>리소스 &gt; 현재 프로젝트의 트리거를 선택합니다.</li>
+<li>'트리거 추가'를 클릭합니다.</li>
+<li>실행할 함수로 'onFormSubmit'을 선택합니다.</li>
+<li>이벤트 소스로 '스프레드시트에서'를 선택합니다.</li>
+<li>이벤트 유형으로 '양식 제출 시'를 선택합니다.</li>
+<li>저장을 클릭하여 트리거를 설정합니다.</li>
+<li>필요한 권한을 부여합니다.</li>
+<li>이제 시스템이 완성되었습니다. 설문지 URL을 공유하여 상담 신청을 받을 수 있습니다.</li>
+</ol>
+<p data-ke-size="size16">이렇게 구축된 시스템을 통해 창업 상담 신청 프로세스를 효율적으로 자동화할 수 있습니다. 신청자는 간편하게 온라인 설문지를 통해 상담을 신청할 수 있고, 관리자는 자동으로 정리된 정보를 쉽게 확인할 수 있습니다. 또한 PDF 문서 생성과 이메일 발송까지 자동화되어 업무 효율성을 크게 높일 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">이 시스템은 창업 상담뿐만 아니라 다양한 분야의 신청 프로세스에 응용할 수 있습니다. 예를 들어, 학교에서의 상담 신청, 회사의 휴가 신청, 세미나 참가 신청 등 다양한 상황에 맞게 커스터마이징하여 사용할 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">앱스스크립트의 강력한 기능을 활용하면, 더 복잡한 로직도 구현할 수 있습니다. 예를 들어, 신청 내용에 따라 자동으로 담당자를 배정하거나, 신청 통계를 자동으로 생성하는 등의 기능을 추가할 수 있습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">마지막으로, 이러한 자동화 시스템을 구축할 때는 항상 보안과 개인정보 보호에 주의를 기울여야 합니다. 민감한 정보를 다루는 경우, 적절한 보안 조치를 취하고 관련 법규를 준수해야 합니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">여러분도 이 예제를 바탕으로 자신의 업무에 맞는 자동화 시스템을 구축해 보세요. 반복적이고 시간 소모적인 작업들을 자동화함으로써, 더 중요하고 창의적인 일에 집중할 수 있을 것입니다. 화이팅!</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

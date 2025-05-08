@@ -1,0 +1,194 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>AI 에이전트 팀으로 업무 자동화하기</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">AI 에이전트 팀으로 업무 자동화하기</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-05 01:20:32</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h1>AI 에이전트 팀으로 업무 자동화하기</h1>
+<p data-ke-size="size16">이 글에서는 20개 이상의 AI 에이전트로 구성된 팀을 만들어 거의 모든 업무와 워크플로우를 자동화하는 방법을 소개합니다. 이는 현재까지 구축한 가장 복잡한 에이전트 시스템 중 하나로, AI 에이전트와 자동화의 미래가 될 것으로 보입니다.</p>
+<h2 data-ke-size="size26">시스템 개요</h2>
+<p data-ke-size="size16">이 에이전트 팀은 다음과 같은 기능을 갖추고 있습니다:</p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>모든 커뮤니케이션 채널(WhatsApp, LinkedIn, 이메일, 캘린더, Slack, 음성 통화 등) 접근</li>
+<li>프로젝트 관리 도구(CRM, Notion, Google Docs, Google Drive) 접근</li>
+<li>주제 및 리드 조사를 위한 3개의 리서치 에이전트</li>
+<li>소셜 미디어와 블로그에 콘텐츠를 작성하고 게시할 수 있는 전문 콘텐츠 에이전트</li>
+</ul>
+<p data-ke-size="size16">사용자는 WhatsApp 음성 메시지로 에이전트와 상호작용할 수 있습니다. 이 시스템의 강점은 간단한 영어 문장으로 여러 소프트웨어에 걸친 복잡한 워크플로우를 자동화할 수 있다는 점입니다.</p>
+<h2 data-ke-size="size26">주요 기능 예시</h2>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>항공편 옵션 찾기, Google Docs에 추가, WhatsApp으로 전송</li>
+<li>친구에게 전화해 점심 일정 변경 후 캘린더 업데이트</li>
+<li>새로운 리드 조사, CRM에 추가, 자격 있는 경우 Slack으로 팀에 알림</li>
+<li>최신 AI 뉴스로 블로그 및 LinkedIn 게시물 작성 및 게시</li>
+</ul>
+<h2 data-ke-size="size26">시스템 구조</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>트리거: WhatsApp 또는 예약된 메시지</li>
+<li>디렉터 에이전트: 전체 워크플로우 조정</li>
+<li>매니저 에이전트:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>커뮤니케이션 매니저</li>
+<li>프로젝트 매니저</li>
+<li>리서치 매니저</li>
+<li>콘텐츠 매니저</li>
+</ul>
+</li>
+<li>서브 에이전트: 각 매니저 아래 특정 작업 수행</li>
+<li>도구: 각 에이전트가 사용하는 API 및 기능</li>
+</ol>
+<h2 data-ke-size="size26">구현 단계</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Relevance AI 계정 생성</li>
+<li>디렉터 에이전트 설정</li>
+<li>매니저 에이전트 설정 (4개)</li>
+<li>서브 에이전트 설정 (총 15개)</li>
+<li>각 에이전트에 필요한 도구 연결</li>
+<li>WhatsApp 트리거 설정</li>
+<li>반복 작업 예약 설정</li>
+</ol>
+<h2 data-ke-size="size26">상세 구현 가이드</h2>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li>Relevance AI 계정 생성</li>
+<li>템플릿 복제 (커뮤니티 또는 제공된 링크 사용)</li>
+<li>디렉터 에이전트 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>에이전트 프로필 작성</li>
+<li>코어 지침 설정 (역할, 목표, 책임)</li>
+<li>서브 에이전트 컨텍스트 제공</li>
+<li>도구 연결 (WhatsApp 메시지 전송, 현재 날짜 확인)</li>
+</ul>
+</li>
+<li>커뮤니케이션 매니저 에이전트 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>6개 서브 에이전트 연결 (WhatsApp, LinkedIn, Slack, 이메일, 캘린더, 음성)</li>
+<li>각 서브 에이전트에 필요한 도구 연결</li>
+</ul>
+</li>
+<li>프로젝트 매니저 에이전트 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>CRM, Google Docs, Notion 서브 에이전트 연결</li>
+</ul>
+</li>
+<li>리서치 매니저 에이전트 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>여행 에이전트, 일반 리서치 에이전트 연결</li>
+<li>Google 검색, 웹 스크래핑, LinkedIn 스크래퍼 도구 연결</li>
+</ul>
+</li>
+<li>콘텐츠 매니저 에이전트 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>블로그 작성, LinkedIn 포스팅, 기타 소셜 미디어 에이전트 연결</li>
+<li>콘텐츠 게시 도구 연결</li>
+</ul>
+</li>
+<li>각 서브 에이전트 상세 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>WhatsApp 에이전트: 메시지 검색, 전송 도구 연결</li>
+<li>LinkedIn 에이전트: 메시지 검색, 전송, 초대장 전송 도구 연결</li>
+<li>이메일 및 캘린더 에이전트: 관련 API 연결</li>
+<li>HubSpot 에이전트: CRM 작업 도구 연결</li>
+<li>Notion 에이전트: 데이터베이스 작업 도구 연결</li>
+<li>Google Drive/Docs 에이전트: 문서 생성 및 관리 도구 연결</li>
+</ul>
+</li>
+<li>파인튜닝된 모델 적용 (예: LinkedIn 포스팅용)</li>
+<li>Make.com에서 워크플로우 자동화 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>HTTP 요청 설정</li>
+<li>헤더 및 바디 구성</li>
+<li>스케줄링 설정</li>
+</ul>
+</li>
+<li>WhatsApp Business API 설정 (선택사항):
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>API 키 발급</li>
+<li>Webhook 설정</li>
+<li>미디어 처리 로직 구현</li>
+</ul>
+</li>
+<li>음성 메시지 처리 로직 구현:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>음성을 텍스트로 변환</li>
+<li>텍스트 쿼리를 에이전트로 전달</li>
+</ul>
+</li>
+<li>이미지 및 문서 처리 로직 구현:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>OCR 및 이미지 인식 기능 연결</li>
+<li>추출된 정보를 에이전트로 전달</li>
+</ul>
+</li>
+<li>보안 설정:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>API 키 관리</li>
+<li>데이터 암호화 설정</li>
+</ul>
+</li>
+<li>에러 핸들링 및 로깅 구현</li>
+<li>테스트 실행 및 디버깅</li>
+<li>성능 최적화:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>응답 시간 개선</li>
+<li>리소스 사용 최적화</li>
+</ul>
+</li>
+<li>사용자 인터페이스 개선 (선택사항):
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>대시보드 구현</li>
+<li>사용 통계 시각화</li>
+</ul>
+</li>
+<li>다국어 지원 설정 (선택사항)</li>
+<li>백업 및 복구 전략 수립</li>
+<li>확장성 고려:
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>새로운 에이전트 추가 프로세스 정의</li>
+<li>새로운 도구 연결 프로세스 정의</li>
+</ul>
+</li>
+<li>사용자 피드백 수집 및 개선 사항 식별</li>
+<li>정기적인 시스템 점검 및 업데이트 일정 수립</li>
+<li>사용자 매뉴얼 작성</li>
+<li>팀원 교육 자료 준비</li>
+<li>법적 및 윤리적 고려사항 검토</li>
+<li>개인정보 보호 정책 수립</li>
+<li>시스템 사용 모니터링 및 분석 도구 설정</li>
+<li>장기적인 유지보수 계획 수립</li>
+<li>지속적인 개선 및 혁신 프로세스 구축</li>
+</ol>
+<p data-ke-size="size16">이 복잡한 시스템을 구축하고 관리하는 것은 쉽지 않은 작업이지만, 제대로 구현된다면 업무 프로세스를 혁신적으로 개선할 수 있는 강력한 도구가 될 것입니다. 지속적인 학습, 실험, 그리고 개선을 통해 AI 에이전트 팀의 잠재력을 최대한 활용할 수 있을 것입니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

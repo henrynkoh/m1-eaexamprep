@@ -1,0 +1,115 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>n8n 소개</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">n8n 소개</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-09-05 23:42:36</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<p id="SE-04a82598-e25b-4666-bcf0-a89397f29dc1" data-ke-size="size16"><span style="color: #000000;">n8n은 데이터 통합과 자동화의 강력한 도구입니다. 이 글에서는 n8n의 두 가지 주요 사용 사례, 데이터 통합 및 ETL(Extract, Transform, Load)과 자동화된 보고 및 분석에 대해 소개하겠습니다. </span></p>
+<p id="SE-8bdea3e0-fe8b-4ca6-b549-a6383c05213e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f079b167-ca03-4c43-b6e1-a2e73552e620" data-ke-size="size16"><span style="color: #000000;"><b>1. 개요</b></span></p>
+<p id="SE-a38dc4ba-f577-4e05-a46e-362d6d802141" data-ke-size="size16">&nbsp;</p>
+<p id="SE-46d80e5e-df96-4581-939c-1068c2a0305f" data-ke-size="size16"><span style="color: #000000;"> n8n은 오픈소스 워크플로우 자동화 도구로, 다양한 서비스 통합과 반복적인 작업 자동화를 돕기 위해 설계되었습니다. </span></p>
+<p id="SE-78133705-0778-4e08-b0fc-74985611ebd0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5c0d0beb-9371-4fb3-b1ca-22f41b328ae3" data-ke-size="size16"><span style="color: #000000;"><b>2. 사용사례</b></span></p>
+<p id="SE-5c5b0d9b-7aae-4bab-8e42-fde37e3f15da" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8535ea54-7fc6-4385-8520-8d15d6274515" data-ke-size="size16"><span style="color: #000000;"><b> (1) 데이터 통합 및 ETL</b></span></p>
+<p id="SE-983ac25c-f0af-439c-a558-935742b33351" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2923ea7a-7e23-45c5-ac79-220d24ca4d81" data-ke-size="size16"><span style="color: #000000;"><b>(1.1) 데이터 통합의 필요성:</b></span><span style="color: #000000;"> 현대 기업들은 다양한 데이터 소스를 사용합니다. CRM 시스템, 데이터베이스, API, 웹 스크래핑 등 다양한 출처에서 데이터를 얻을 수 있습니다. 하지만 이러한 데이터를 통합하고 유의미한 정보로 변환하는 과정은 복잡하고 시간이 많이 소요됩니다. 여기서 n8n이 등장합니다. </span></p>
+<p id="SE-f0f02087-1231-41bd-8bd9-68ffcf4e529c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-587c1f07-8245-422c-84eb-465d1d68e2dc" data-ke-size="size16"><span style="color: #000000;"><b>(1.2) n8n을 통한 ETL</b></span><span style="color: #000000;">: </span></p>
+<p id="SE-7b413f8c-c704-45ea-890f-8fdaba2e5e81" data-ke-size="size16">&nbsp;</p>
+<p id="SE-a5e8579d-5351-4d63-ab75-1e6c247ddb6e" data-ke-size="size16"><span style="color: #000000;"><b>데이터 추출(Extract): </b></span></p>
+<p id="SE-2714ea82-3815-4eb8-95e5-5bfdce9bc7ea" data-ke-size="size16">&nbsp;</p>
+<p id="SE-cd82f7dc-b677-4234-928d-e9c244a7e25a" data-ke-size="size16"><span style="color: #000000;">n8n은 다양한 데이터 소스에서 데이터를 추출할 수 있습니다. 예를 들어, MySQL, PostgreSQL, MongoDB와 같은 데이터베이스에서 데이터를 가져오거나, REST API를 통해 데이터를 수집할 수 있습니다. </span></p>
+<p id="SE-4f431602-57ac-4842-9f9d-3cf41ac9a98d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e9dc6ddd-4e34-4578-be47-ccec3c56ec63" data-ke-size="size16"><span style="color: #000000;"><b>데이터 변환(Transform): </b></span></p>
+<p id="SE-eea28f8f-0bdf-419c-bdd2-d4ef377747b4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-c55b9742-fa82-45fe-b351-1a60a1cebdfe" data-ke-size="size16"><span style="color: #000000;">추출된 데이터는 그대로 사용하기에 적합하지 않을 수 있습니다. n8n은 데이터를 변환하는 다양한 노드를 제공합니다. 이는 데이터 정제, 필터링, 병합, 분할 등의 작업을 포함합니다. </span></p>
+<p id="SE-4f088684-5e10-4b29-878f-6bc427515b3f" data-ke-size="size16">&nbsp;</p>
+<p id="SE-09a4e6fa-ef0e-48ff-b161-8bb9e32c203d" data-ke-size="size16"><span style="color: #000000;"><b>데이터 적재(Load):</b></span></p>
+<p id="SE-e602b9d3-3a15-4917-b46b-71490dab44dc" data-ke-size="size16">&nbsp;</p>
+<p id="SE-e5116c96-1ef7-4c68-8000-66a42366ccbc" data-ke-size="size16"><span style="color: #000000;"> 변환된 데이터는 다른 데이터베이스, 데이터 웨어하우스, 아니면 다른 시스템으로 적재될 수 있습니다. 예를 들어, Salesforce 데이터를 Google Sheets로 보내거나, AWS S3에 파일로 저장할 수 있습니다. </span></p>
+<p id="SE-f49ad18e-27ec-4d0f-8fd0-5557ea5712c7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f1532ff3-cb09-45da-883d-42f08e2d161b" data-ke-size="size16"><span style="color: #000000;"><b>(1.3) 실사례</b></span></p>
+<p id="SE-87a6cb3a-98a8-4da4-8e3e-fce83e0ca1fd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-8f60f5c3-5a63-4dd9-8d3f-2453161eaf64" data-ke-size="size16"><span style="color: #000000;"><b>다국적 기업의 데이터 통합:</b></span></p>
+<p id="SE-889859d9-45e9-4e2f-a5c5-dbb777149380" data-ke-size="size16">&nbsp;</p>
+<p id="SE-eff80631-bf43-47f3-b96c-16db6ad5fef2" data-ke-size="size16"><span style="color: #000000;"> 글로벌 기업이 각 지역의 판매 데이터를 중앙 데이터베이스로 통합해야 할 때, n8n을 사용하여 각 지역의 데이터베이스에서 데이터를 추출하고, 통합된 형식으로 변환한 후, 중앙 데이터 웨어하우스에 적재할 수 있습니다.</span></p>
+<p id="SE-772ff3fa-a919-4cc0-857c-2641572df3e4" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b3eab0dd-ffb2-4bc2-988c-4ced2af4c43f" data-ke-size="size16"><span style="color: #000000;"><b>마케팅 데이터 분석:</b></span></p>
+<p id="SE-b3fb1e6c-5127-4a23-b613-2bfd0e51f46c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-54a15485-62c7-429e-a7d1-08e34a6246b7" data-ke-size="size16"><span style="color: #000000;"> 다양한 마케팅 채널에서 수집된 데이터를 통합하여 분석할 때, n8n을 통해 Google Analytics, Mailchimp, HubSpot 등의 데이터를 한 곳으로 모아 분석할 수 있습니다.</span></p>
+<p id="SE-d1421783-70a5-4786-b6a0-4f69ca875bd3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-36342f96-28ee-422f-99c4-06b0c17cba9e" data-ke-size="size16"><span style="color: #000000;"><b>(2) 자동화된 보고 및 분석</b></span></p>
+<p id="SE-a73923ea-d2a6-4b8b-9ebb-49e6df3794bd" data-ke-size="size16">&nbsp;</p>
+<p id="SE-3637c3af-8bc6-4715-b989-72bdb5aa03dc" data-ke-size="size16"><span style="color: #000000;"><b>(2.1) 자동화 보고의 중요성 </b></span></p>
+<p id="SE-8868cd23-b1a4-47d4-a846-f66045a37735" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b0a1af57-50da-4acb-b5a8-5b7c0b4d441f" data-ke-size="size16"><span style="color: #000000;">기업에서는 주기적으로 데이터를 분석하고 보고서를 작성하여 의사 결정을 지원합니다. 그러나 이러한 과정이 매번 수동으로 이루어지면 비효율적입니다. n8n은 이러한 과정을 자동화하여 시간과 노력을 절약할 수 있습니다.</span></p>
+<p id="SE-65ef15ce-1f68-4571-abe2-7e9f24eecc6c" data-ke-size="size16">&nbsp;</p>
+<p id="SE-15b4a8ca-fcde-47ab-80e4-b7a06033552f" data-ke-size="size16"><span style="color: #000000;"><b>(2.2) n8n을 통한 자동화 보고</b></span></p>
+<p id="SE-805087cc-7dd7-41c2-a5c7-7b475bb020df" data-ke-size="size16">&nbsp;</p>
+<p id="SE-5174ae63-cf16-4a58-9630-5b76d2f01b91" data-ke-size="size16"><span style="color: #000000;"><b>데이터 수집: </b></span></p>
+<p id="SE-1920aea1-7563-478b-adbc-40ffc4253651" data-ke-size="size16">&nbsp;</p>
+<p id="SE-be1f1b5f-5dc8-44e1-baf4-5e11f6959c44" data-ke-size="size16"><span style="color: #000000;">매일, 매주, 매월 특정 시점에 데이터를 수집할 수 있습니다. 예를 들어, 매일 저녁 6시에 CRM 시스템에서 그날의 판매 데이터를 가져올 수 있습니다.</span></p>
+<p id="SE-27944916-28c0-41d4-b2a8-bdd38448573e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-7b3fa6c6-70a0-481a-ad1f-726bfdcda36c" data-ke-size="size16"><span style="color: #000000;"><b>데이터 분석: </b></span></p>
+<p id="SE-0e1e6b03-c615-4d42-874a-01cbb706c14b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-277095ec-1e6b-4d83-8036-714b1332e916" data-ke-size="size16"><span style="color: #000000;">수집된 데이터를 기반으로 분석을 자동화할 수 있습니다. 예를 들어, 판매 추세를 분석하거나, 고객 행동 패턴을 파악할 수 있습니다. </span></p>
+<p id="SE-b0733183-95a8-4e68-9dcc-7c8e77bfe5f0" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6c8890bd-d2ab-477c-937e-613bdaf1d406" data-ke-size="size16"><span style="color: #000000;"><b>보고서 생성: </b></span></p>
+<p id="SE-808df8ce-f62d-4b5b-a8f0-21795e8f998e" data-ke-size="size16">&nbsp;</p>
+<p id="SE-b6e90ec3-f765-4db9-ba0c-101e5dd26f8e" data-ke-size="size16"><span style="color: #000000;">분석된 데이터를 기반으로 자동으로 보고서를 생성할 수 있습니다. 이는 Google Sheets, Excel 파일, 아니면 PDF 형식으로 만들어질 수 있습니다. </span></p>
+<p id="SE-c59c31f5-73f6-4d10-aa3d-d9c4b9a41a07" data-ke-size="size16">&nbsp;</p>
+<p id="SE-ac69ef97-b1b3-4372-ab6d-7956c0fa6d5e" data-ke-size="size16"><span style="color: #000000;"><b>보고서 배포:</b></span><span style="color: #000000;"> </span></p>
+<p id="SE-59c49271-65eb-4c32-b865-1224f9bb0f15" data-ke-size="size16">&nbsp;</p>
+<p id="SE-59504a68-a670-4d01-887d-43b4109f8710" data-ke-size="size16"><span style="color: #000000;">생성된 보고서는 자동으로 이메일로 발송되거나, 특정 웹사이트에 업로드될 수 있습니다. </span></p>
+<p id="SE-924e82f2-beee-4ee9-b04f-708091f7b0f7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f8d37afb-dfe3-4223-9bc3-763fe53f073d" data-ke-size="size16"><span style="color: #000000;"><b>(2.3) 실사례</b></span><span style="color: #000000;"> </span></p>
+<p id="SE-51d32479-bfb0-4385-83f4-e534f002a6c7" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6ae55c25-4b96-48c8-bdef-e0bab5201372" data-ke-size="size16"><span style="color: #000000;"><b>일일 판매 보고서:</b></span></p>
+<p id="SE-09258ee0-a14d-4a7d-b727-c4a8647be1fb" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0d1ac434-7193-4084-ad13-65ca21fc7007" data-ke-size="size16"><span style="color: #000000;"> 매일 저녁 판매 데이터를 수집하고, 이를 기반으로 판매량, 매출, 주요 고객 통계 등을 포함한 보고서를 자동으로 생성하여 관리자에게 이메일로 발송합니다.</span></p>
+<p id="SE-2d07cef5-35c5-4af4-b078-e708777a85a2" data-ke-size="size16">&nbsp;</p>
+<p id="SE-d1295d4e-a96f-4e98-b3f8-c8d9ba1b65ea" data-ke-size="size16"><span style="color: #000000;"><b>주간 마케팅 성과 분석:</b></span></p>
+<p id="SE-86d22b9f-8b3f-4436-a3b6-256746fd673b" data-ke-size="size16">&nbsp;</p>
+<p id="SE-f2a82e66-cfcf-400b-89f5-2d0f7c7a74a8" data-ke-size="size16"><span style="color: #000000;"> 주간 마케팅 캠페인의 성과를 분석하여, 캠페인 효율성, ROI, 고객 참여도 등을 보고서로 만들어 팀에 배포합니다. </span></p>
+<p id="SE-56c325de-737c-4641-a758-ff36a252ac72" data-ke-size="size16">&nbsp;</p>
+<p id="SE-2077f476-0378-4dd8-a283-730fcafe5262" data-ke-size="size16"><span style="color: #000000;"><b>3. 결론</b></span></p>
+<p id="SE-002196e6-2242-49e3-ba1e-8b9a689dab8d" data-ke-size="size16">&nbsp;</p>
+<p id="SE-0ef169d8-46c7-4788-b995-e9c402abe8a8" data-ke-size="size16"><span style="color: #000000;"> n8n은 데이터 통합과 자동화된 보고를 통해 기업의 효율성을 극대화할 수 있는 강력한 도구입니다. 이 도구를 사용하면 데이터 관리와 분석의 복잡성을 줄이고, 더 많은 시간을 전략적 의사 결정에 할애할 수 있습니다. n8n의 오픈소스 특성은 커뮤니티의 혁신을 촉진하며, 사용자들이 자신만의 맞춤형 솔루션을 만들 수 있는 가능성을 제공합니다. 이제 n8n을 사용하여 데이터의 힘을 최대한 활용해보세요. 새로운 아이디어나 프로젝트가 있다면, n8n의 노드 기반 인터페이스를 활용하여 쉽게 구현할 수 있을 것입니다. 이 글은 n8n의 기본 개념과 두 가지 주요 사용 사례를 설명하며, 실제 적용 사례를 통해 n8n의 유용성을 강조했습니다. 앞으로도 n8n과 같은 도구들이 데이터 관리와 분석의 미래를 어떻게 변화시킬지 주목해볼 필요가 있습니다. </span></p>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

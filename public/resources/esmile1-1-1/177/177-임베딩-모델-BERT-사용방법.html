@@ -1,0 +1,145 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>임베딩 모델 BERT 사용방법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">임베딩 모델 BERT 사용방법</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2024-08-12 15:53:19</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <h3 data-ke-size="size23">개요</h3>
+<p data-ke-size="size16">BERT(Bidirectional Encoder Representations from Transformers)는 자연어 처리 분야에서 널리 사용되는 사전 학습된 언어 모델입니다. 이 글에서는 KJV Bible Verses를 기준으로, 특히 Apostle Paul's 13개 서신을 중심으로 은혜복음에 속하는 설교문서와 설교영상 자료를 벡터로 생성하는 방법을 단계적으로 소개합니다. 이 과정은 "rightly dividing the word of truth"를 기준으로 진행됩니다.</p>
+<h3 data-ke-size="size23">1단계: 데이터 수집 및 전처리</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>데이터 수집</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>KJV Bible Verses 중 Apostle Paul's 13개 서신을 포함한 설교문서와 설교영상 자료를 수집합니다.</li>
+<li>설교문서는 텍스트 형식으로, 설교영상은 자막이나 스크립트 형태로 준비합니다.</li>
+</ul>
+</li>
+<li><b>데이터 전처리</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>수집한 텍스트 데이터를 정규화하여 대소문자 변환, 특수 문자 제거 등을 수행합니다.</li>
+<li>문장 단위로 데이터를 분리하고, 불필요한 공백을 제거합니다.</li>
+</ul>
+</li>
+<li><b>데이터 구조화</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>각 문서나 구절에 메타데이터를 추가하여 구조화합니다. 예를 들어, 설교문서의 제목, 저자, 날짜, 관련 서신 등을 기록합니다.</li>
+</ul>
+</li>
+</ol>
+<h3 data-ke-size="size23">2단계: BERT 모델 준비</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>BERT 모델 및 토크나이저 로드</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Hugging Face의 Transformers 라이브러리를 사용하여 사전 학습된 BERT 모델과 토크나이저를 로드합니다.</li>
+</ul>
+<pre class="reasonml"><code>from transformers import BertModel, BertTokenizer
+
+model = BertModel.from_pretrained('bert-base-uncased', output_hidden_states=True)
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+
+</code></pre>
+</li>
+<li><b>토큰화 및 입력 데이터 준비</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>텍스트 데이터를 BERT 모델에 입력하기 위해 토큰화합니다. 각 문장에 [CLS]와 [SEP] 토큰을 추가합니다.</li>
+</ul>
+<pre class="routeros"><code>text = "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God."
+inputs = tokenizer.encode_plus(text, add_special_tokens=True, max_length=128, padding='max_length', truncation=True)
+
+</code></pre>
+</li>
+<li><b>어텐션 마스크 생성</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>실제 단어와 [PAD] 토큰을 구분하기 위해 어텐션 마스크를 생성합니다.</li>
+</ul>
+<pre class="ini"><code>attention_mask = inputs['attention_mask']
+
+</code></pre>
+</li>
+</ol>
+<h3 data-ke-size="size23">3단계: 벡터 생성</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>임베딩 벡터 추출</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>BERT 모델에 입력 데이터를 공급하여 각 토큰의 임베딩 벡터를 추출합니다.</li>
+</ul>
+<pre class="nix"><code>input_ids = torch.tensor(inputs['input_ids']).unsqueeze(0)
+attention_mask = torch.tensor(attention_mask).unsqueeze(0)
+
+with torch.no_grad():
+    outputs = model(input_ids, attention_mask=attention_mask)
+    hidden_states = outputs.hidden_states
+
+</code></pre>
+</li>
+<li><b>문장 벡터 생성</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>문장 전체를 대표하는 벡터를 생성하기 위해 [CLS] 토큰의 벡터를 사용하거나, 모든 토큰의 벡터를 평균화할 수 있습니다.</li>
+</ul>
+<pre class="angelscript"><code>sentence_embedding = torch.mean(hidden_states[-1], dim=1).squeeze()
+
+</code></pre>
+</li>
+</ol>
+<h3 data-ke-size="size23">4단계: 벡터 데이터베이스 구축</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>벡터 저장</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>생성된 벡터를 벡터 데이터베이스에 저장합니다. 각 벡터는 원본 문서와 연결되어야 하며, 메타데이터도 함께 저장합니다.</li>
+</ul>
+</li>
+<li><b>벡터 데이터베이스 선택</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Pinecone, Faiss, Milvus 등과 같은 벡터 데이터베이스 솔루션을 사용하여 벡터를 저장하고 관리합니다.</li>
+</ul>
+</li>
+</ol>
+<h3 data-ke-size="size23">5단계: 예시</h3>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>예시 1: 설교문서 벡터 생성</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>"For by grace are ye saved through faith; and that not of yourselves: it is the gift of God."라는 구절을 벡터로 변환하여 데이터베이스에 저장합니다.</li>
+</ul>
+</li>
+<li><b>예시 2: 설교영상 스크립트 벡터 생성</b>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>설교영상의 스크립트에서 "I can do all things through Christ which strengtheneth me."라는 구절을 벡터로 변환하여 데이터베이스에 저장합니다.</li>
+</ul>
+</li>
+</ol>
+<h3 data-ke-size="size23">결론</h3>
+<p data-ke-size="size16">BERT를 활용하여 KJV Bible Verses와 관련된 설교문서 및 설교영상 자료를 벡터로 변환하는 방법을 살펴보았습니다. 이러한 벡터는 벡터 데이터베이스에 저장되어, 검색 및 추천 시스템에서 활용될 수 있습니다. "rightly dividing the word of truth"를 기준으로 하여, 정확하고 관련성 높은 정보를 제공할 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

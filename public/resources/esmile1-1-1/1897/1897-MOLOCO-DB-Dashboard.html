@@ -1,0 +1,133 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>MOLOCO DB Dashboard</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">MOLOCO DB Dashboard</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-02-01 13:34:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <pre class="markdown"><code># 디지털 광고 플랫폼 MOLOCO의 데이터베이스 및 대시보드 기술 분석
+
+## 1. MOLOCO 개요
+머신러닝 기반 광고 최적화 솔루션으로 50억 건/일의 실시간 광고 입찰 처리[4][6]. Google Cloud Platform(GCP)을 기반으로 Cloud Bigtable, Dataflow, BigQuery 등 활용[4][6]. 주력 제품인 **Moloco Cloud DSP**는 첫 방문자 전환률을 300% 향상시키는 성과[7].
+
+**핵심 강점**:
+- 100ms 미만의 실시간 입찰 결정 시스템[4]
+- 550,000 QPS(초당 쿼리 처리량) 이상의 확장성[6]
+- 35개 광고 거래소 연동을 통한 글로벌 인벤토리 접근[13]
+
+## 2. 데이터베이스 아키텍처
+### 2.1 Google Cloud Bigtable 활용
+|특징|설명|
+|---|---|
+|처리량|5M QPS 이상의 실시간 입찰 처리[6]|
+|데이터 규모|50B+ 일간 페이지 뷰 처리[4]|
+|대기 시간|10ms 미만의 SSD 기반 저지연 설계[6]|
+
+`Cloud Dataflow`로 일일 수십 TB 데이터 변환 후 실시간 예측 모델 업데이트[4]. `BigQuery`를 통해 10초 내 분석 쿼리 처리[4].
+
+### 2.2 머신러닝 인프라
+
+</code></pre>
+<h1>전형적인 ML 파이프라인 예시</h1>
+<p data-ke-size="size16">from google.cloud import bigtable from apache_beam import Pipeline</p>
+<p data-ke-size="size16">with Pipeline() as p: raw_data = (p | 'ReadFromGCS' &gt;&gt; ReadFromText('gs://moloco-data/*.json') | 'Preprocess' &gt;&gt; ParDo(DataCleaner())) model_input = (raw_data | 'FeatureEngineering' &gt;&gt; ParDo(FeatureGenerator())) trained_model = (model_input | 'TrainModel' &gt;&gt; TFModelTrainer()) predictions = (trained_model | 'GeneratePredictions' &gt;&gt; Predict())</p>
+<pre class="markdown"><code>## 3. 대시보드 시스템 분석
+### 3.1 주요 기능
+- **실시간 성과 모니터링**: 캠페인별 ROAS, CTR, CPI 30+개 지표 시각화[16]
+- **자동화 리포트**: 사용자 정의 필터 기반 CSV 추출[10]
+- **다차원 분석**:
+
+</code></pre>
+<p data-ke-size="size16">SELECT campaign_id, country, device_type, SUM(revenue) AS total_revenue FROM moloco_analytics GROUP BY ROLLUP(campaign_id, country, device_type)</p>
+<pre class="markdown"><code>### 3.2 통합 데이터 소스 관리
+1. **Moloco SDK 연동**
+ - Android/iOS 앱에 `MolocoMediationAdapter` 구현[20]
+ - 광고 포맷별 콜백 리스너 설정[20]
+
+2. **타사 데이터 연결**
+
+</code></pre>
+<h1>Onvo AI 연동 예시</h1>
+<p data-ke-size="size16">curl -X POST "<a href="https://api.onvo.ai/datasources">https://api.onvo.ai/datasources</a>" \ -H "Authorization: Bearer {API_KEY}" \ -d '{ "name": "moloco_prod", "type": "moloco", "config": { "api_endpoint": "<a href="https://api.moloco.com/v1">https://api.moloco.com/v1</a>", "access_token": "xxxxxx" } }'</p>
+<pre class="angelscript"><code>## 4. 30단계 사용자 가이드
+### 4.1 초기 설정(1-10단계)
+1. [Moloco Ads 회원가입](&lt;https://www.moloco.com&gt;) &rarr; 이메일 인증 완료[11]
+2. 워크스페이스 생성 &rarr; `기업/개인` 계정 유형 선택[17]
+3. 결제 수단 등록(VISA/Mastercard)[11]
+4. Google Cloud 프로젝트 ID 입력[4]
+5. IP 허용 목록에 `35.209.78.5` 추가[1]
+6. Branch SDK 앱 통합 &rarr; `enableMoloco()` 호출[5]
+7. Adjust 이벤트 매핑 &rarr; `purchase` 이벤트 연결[2]
+8. 데이터 동기화 주기 설정(4-720시간)[5]
+9. 사용자 권한 그룹 생성(관리자/편집자/뷰어)[17]
+10. 대시보드 테마 커스터마이징(어두운 모드/라이트 모드)[9]
+
+### 4.2 캠페인 운영(11-20단계)
+11. 앱 등록 &rarr; Google Play/App Store 연결[17]
+12. 신규 캠페인 생성 &rarr; `CPI/ROAS` 목표 선택[12]
+13. 타겟 국가 설정 &rarr; 190개국 중 최대 5개 선택[13]
+14. 예산 할당 &rarr; 일일 $10-$50,000 범위 입력[11]
+15. 크리에이티브 업로드 &rarr; 1200x628 픽셀 권장[11]
+16. 자동 입찰 전략 선택 &rarr; `최대 전환` 모드 활성화[7]
+17. 실험 그룹 설정 &rarr; A/B 테스트 버전 2-5개[9]
+18. 제외 대상 추가 &rarr; 부정 클릭 IP 대역 입력[5]
+19. 퍼포먼스 알림 설정 &rarr; ROAS 20% 하회 시 SMS 발송[16]
+20. 캠페인 예약 &rarr; 특정 시간대 자동 활성화[18]
+
+### 4.3 분석 및 최적화(21-30단계)
+21. 사용자 정의 지표 추가 &rarr; LTV 계산식 입력[16]
+22. 다차원 필터링 &rarr; `기기 유형 + 국가` 조합 분석[9]
+23. Attribution Window 조정 &rarr; 클릭 유효기간 90일 설정[5]
+24. Lookalike 모델 생성 &rarr; 상위 5% 유저 패턴 학습[7]
+25. 자동 리포트 설정 &rarr; 주간 PDF 이메일 발송[10]
+26. API 키 생성 &rarr; Python SDK 연동[15]
+27. 실시간 입찰 로그 다운로드 &rarr; GCS 버킷 연동[6]
+28. 예산 재분배 &rarr; 저효과 캠페인 &rarr; 신규 타겟팅[12]
+29. 크리에이티브 A/B 테스트 &rarr; CTR 15% 이상 차이 시 자동 전환[11]
+30. 종합 보고서 생성 &rarr; 전 기간 데이터 CSV 내보내기[10]
+
+---
+
+## 추천 학습 자료
+1. **[Moloco Ads 시작하기](&lt;https://help.moloco.com/quick-start&gt;)** &rarr; 15분 완성 입문 가이드
+2. **[BigQuery 분석 가이드북](&lt;https://cloud.google.com/bigquery/docs&gt;)** &rarr; SQL 쿼리 작성법
+3. **[실시간 입찰 시스템 설계](&lt;https://cloud.google.com/solutions/real-time-bidding&gt;)** &rarr; 아키텍처 다이어그램 포함
+4. **[ROAS 최적화 케이스 스터디](&lt;https://www.moloco.com/case-studies&gt;)** &rarr; 실제 성공 사례 20+개
+
+&gt; "데이터 기반 의사결정은 이제 선택이 아닌 필수입니다. Moloco 플랫폼에서 제공하는 실시간 인사이트를 통해 더 스마트한 광고 운영이 가능해집니다." - Moloco 엔지니어링 팀[6][7]
+
+</code></pre>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

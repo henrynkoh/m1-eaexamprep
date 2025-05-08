@@ -1,0 +1,186 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>오늘의 단상_ "Rightly dividing the word of truth" GPT Actions용 API</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">오늘의 단상_ "Rightly dividing the word of truth" GPT Actions용 API</h2>
+                                <div class="box-info">
+                                    <p class="category">성경말씀</p>
+                                    <p class="date">2024-11-01 10:24:35</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">&nbsp;</p>
+<div id="SE-3137c3bf-411b-4efc-9673-a99e084095d3" data-a11y-title="본문" data-compid="SE-3137c3bf-411b-4efc-9673-a99e084095d3">
+<div>
+<div data-direction="top" data-compid="SE-3137c3bf-411b-4efc-9673-a99e084095d3" data-unitid="">
+<div>
+<div id="SE-dc250ace-6443-49fa-8728-7aa395cd260f">
+<p id="SE-4805685d-f510-421e-8285-830daf0dffe2" data-ke-size="size16"><span style="color: #000000;">&nbsp;"Rightly dividing the word of truth" GPT Actions를 위한 API를 만들기위 한 단계별 방법을 기록하였습니다. 이 API는 사용자의 질문을 받아 관련된 KJV Bible 구절을 찾아주는 기능을 수행합니다. OpenAPI 명세를 사용하여 API를 정의하겠습니다.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-37b443d5-3e16-424a-8f23-4471bf39b8b8" data-a11y-title="사진" data-compid="SE-37b443d5-3e16-424a-8f23-4471bf39b8b8">
+<div>
+<div data-direction="top" data-compid="SE-37b443d5-3e16-424a-8f23-4471bf39b8b8" data-unitid="">
+<div>
+<div id="SE-37b443d5-3e16-424a-8f23-4471bf39b8b8">
+<div data-direction="top" data-compid="" data-unitid="SE-37b443d5-3e16-424a-8f23-4471bf39b8b8"><figure class="imageblock alignCenter" width="500" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img.png" width="500"  />
+    </span>
+    <figcaption></figcaption>
+</figure></div>
+<span>대표</span><span>사진 삭제</span>
+<div>&nbsp;</div>
+</div>
+<div id="SE-0c20b82a-1b75-49a0-abea-68fe3cef5d24">
+<p id="SE-715b4b5e-17a1-404b-87e4-59fd4ec38050" data-ke-size="size16"><span>사진 설명을 입력하세요.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-acf0d268-10e9-46c4-9bff-91e7a7914a11" data-a11y-title="본문" data-compid="SE-acf0d268-10e9-46c4-9bff-91e7a7914a11">
+<div>
+<div data-direction="top" data-compid="SE-acf0d268-10e9-46c4-9bff-91e7a7914a11" data-unitid="">
+<div>
+<div id="SE-aa1df8ad-a421-4f89-8436-b0fc0d64d860">
+<p id="SE-514f539d-b232-402b-a151-8f64c6951c40" data-ke-size="size16"><span style="color: #000000;">openapi: 3.0.0 info: title: Rightly Dividing the Word of Truth API description: API for finding relevant KJV Bible verses based on user queries version: 1.0.0 servers: - url: <a href="https://api.rightlydividing.com/v1">https://api.rightlydividing.com/v1</a> paths: /search: post: summary: Search for relevant Bible verses description: Takes a user query and returns relevant KJV Bible verses operationId: searchVerses requestBody: required: true content: application/json: schema: $ref: '#/components/schemas/SearchRequest' responses: '200': description: Successful response content: application/json: schema: $ref: '#/components/schemas/SearchResponse' '400': description: Bad request '500': description: Internal server error /verse/{id}: get: summary: Get a specific Bible verse description: Returns details of a specific Bible verse by ID operationId: getVerse parameters: - name: id in: path required: true schema: type: string responses: '200': description: Successful response content: application/json: schema: $ref: '#/components/schemas/Verse' '404': description: Verse not found '500': description: Internal server error components: schemas: SearchRequest: type: object required: - query properties: query: type: string description: The user's search query limit: type: integer description: Maximum number of verses to return default: 5 SearchResponse: type: object properties: verses: type: array items: $ref: '#/components/schemas/Verse' explanation: type: string description: GPT-generated explanation of the search results Verse: type: object properties: id: type: string description: Unique identifier for the verse reference: type: string description: Bible reference (e.g., "John 3:16") text: type: string description: The text of the verse context: type: string description: Brief context of the verse</span></p>
+<p id="SE-b0edda8e-2500-4ac2-9b35-ea38c9f5d7e1" data-ke-size="size16">&nbsp;</p>
+<p id="SE-9f0f81a3-4c6a-4920-bac2-bea6f3cd692d" data-ke-size="size16"><span style="color: #000000;">이 OpenAPI 명세는 다음과 같은 주요 기능을 정의합니다:</span></p>
+<p id="SE-bf72e976-aef8-4044-9cd5-4b8b387e9458" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;"><b>/search</b></span><span style="color: #000000;"> 엔드포인트: 사용자의 질의를 받아 관련 성경 구절을 반환합니다.</span></li>
+<li><span style="color: #000000;"><b>/verse/{id}</b></span><span style="color: #000000;"> 엔드포인트: 특정 성경 구절의 상세 정보를 제공합니다.</span></li>
+</ol>
+<p id="SE-114a27a7-e7a3-4c8a-bb43-c2413ebb8f40" data-ke-size="size16">&nbsp;</p>
+<p id="SE-6013d413-fffc-4162-9cdd-e894dda09f09" data-ke-size="size16"><span style="color: #000000;">이 API를 구현하기 위해서는 다음과 같은 단계가 필요합니다:</span></p>
+<p id="SE-19bf0100-8d28-4f96-a896-05bac89c563e" data-ke-size="size16">&nbsp;</p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><span style="color: #000000;">서버 설정: Node.js와 Express.js를 사용하여 서버를 구축합니다.</span></li>
+<li><span style="color: #000000;">데이터베이스 연동: KJV Bible 텍스트를 저장할 데이터베이스(예: MongoDB)를 설정합니다.</span></li>
+<li><span style="color: #000000;">검색 기능 구현: 텍스트 검색 기능을 구현합니다 (예: Elasticsearch 사용).</span></li>
+<li><span style="color: #000000;">OpenAI GPT 통합: 사용자 질의 분석 및 결과 설명 생성을 위해 GPT 모델을 통합합니다.</span></li>
+<li><span style="color: #000000;">에러 처리 및 로깅: 적절한 에러 처리와 로깅 시스템을 구현합니다.</span></li>
+<li><span style="color: #000000;">보안 설정: API 키 인증 등의 보안 메커니즘을 구현합니다.</span></li>
+<li><span style="color: #000000;">테스트 및 배포: 단위 테스트 및 통합 테스트를 수행하고, 클라우드 플랫폼(예: AWS, Google Cloud)에 배포합니다.</span></li>
+</ol>
+<p id="SE-bb715921-2c75-47d0-953b-854ff728c5b3" data-ke-size="size16">&nbsp;</p>
+<p id="SE-23308671-d21f-402d-9fdd-cde852a8b228" data-ke-size="size16"><span style="color: #000000;">이 API를 기반으로 GPT Actions를 구현하면, 사용자는 자연어로 질문을 하고 관련된 성경 구절과 그에 대한 설명을 받을 수 있습니다. 예를 들어, 사용자가 "사랑에 대한 성경 구절"을 요청하면, API는 관련 구절들을 검색하고 GPT 모델을 사용하여 그 구절들의 의미와 연관성을 설명해줄 수 있습니다.</span></p>
+<p id="SE-cd9cd37b-6976-4a3b-ac5d-79222985f595" data-ke-size="size16">&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-a90de330-7124-46f6-9a76-ffe080c9d773" data-a11y-title="사진" data-compid="SE-a90de330-7124-46f6-9a76-ffe080c9d773">
+<div>
+<div data-direction="top" data-compid="SE-a90de330-7124-46f6-9a76-ffe080c9d773" data-unitid="">
+<div>
+<div id="SE-a90de330-7124-46f6-9a76-ffe080c9d773">
+<div data-direction="top" data-compid="" data-unitid="SE-a90de330-7124-46f6-9a76-ffe080c9d773"><figure class="imageblock alignCenter" width="500" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_1.png" width="500"  />
+    </span>
+    <figcaption></figcaption>
+</figure></div>
+<span>대표</span><span>사진 삭제</span></div>
+<div id="SE-5076adf5-d5be-4354-9a84-6a009a6ba64f">
+<p id="SE-aacc44f4-762b-4a14-bfe6-38248fed1bda" data-ke-size="size16"><span>사진 설명을 입력하세요.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-05fe78aa-5004-49c2-a6b5-f2e2f27599e1" data-a11y-title="사진" data-compid="SE-05fe78aa-5004-49c2-a6b5-f2e2f27599e1">
+<div>
+<div data-direction="top" data-compid="SE-05fe78aa-5004-49c2-a6b5-f2e2f27599e1" data-unitid="">
+<div>
+<div id="SE-05fe78aa-5004-49c2-a6b5-f2e2f27599e1">
+<div data-direction="top" data-compid="" data-unitid="SE-05fe78aa-5004-49c2-a6b5-f2e2f27599e1"><figure class="imageblock alignCenter" width="500" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_2.png" width="500"  />
+    </span>
+    <figcaption></figcaption>
+</figure></div>
+<span>대표</span><span>사진 삭제</span></div>
+<div id="SE-b9dd0168-4045-4387-ae28-9aa54dfa25c5">
+<p id="SE-35c476fb-6757-43b1-9b90-d8bf101cb26e" data-ke-size="size16"><span>사진 설명을 입력하세요.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-92345631-3be6-4e9f-b25e-d351bb3f7778" data-a11y-title="본문" data-compid="SE-92345631-3be6-4e9f-b25e-d351bb3f7778">
+<div>
+<div data-direction="top" data-compid="SE-92345631-3be6-4e9f-b25e-d351bb3f7778" data-unitid="">
+<div>
+<div id="SE-3cb8dce7-657a-4e27-a569-76333e0083bd">
+<p id="SE-1de624e6-9db9-4e62-91c0-6da12014c38e" data-ke-size="size16"><span style="color: #000000;">@@@</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-610c75c7-f4b0-4ef3-a052-b5df60ba926c" data-a11y-title="사진" data-compid="SE-610c75c7-f4b0-4ef3-a052-b5df60ba926c">
+<div>
+<div data-direction="top" data-compid="SE-610c75c7-f4b0-4ef3-a052-b5df60ba926c" data-unitid="">
+<div>
+<div id="SE-610c75c7-f4b0-4ef3-a052-b5df60ba926c">
+<div data-direction="top" data-compid="" data-unitid="SE-610c75c7-f4b0-4ef3-a052-b5df60ba926c"><figure class="imageblock alignCenter" width="500" >
+    <span data-lightbox="lightbox">
+        <img src="./img/img_3.png" width="500"  />
+    </span>
+    <figcaption></figcaption>
+</figure></div>
+<span>대표</span><span>사진 삭제</span></div>
+<div id="SE-b755fdf4-b71b-42ff-84c0-c8b978ee58f5">
+<p id="SE-b45ec2c9-2dde-4b0f-bd9e-0c84aa5a5b22" data-ke-size="size16"><span>사진 설명을 입력하세요.</span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="SE-70a83e0b-cce3-4463-9f58-40831ce110b3" data-a11y-title="본문" data-compid="SE-70a83e0b-cce3-4463-9f58-40831ce110b3">
+<div>
+<div data-direction="top" data-compid="SE-70a83e0b-cce3-4463-9f58-40831ce110b3" data-unitid="">
+<div>
+<div id="SE-974b1706-8d8d-41cc-9792-da82010813ff">
+<p id="SE-fd4774cb-0e07-42ea-8e39-3636781facd0" data-ke-size="size16">&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p data-ke-size="size16">&nbsp;</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

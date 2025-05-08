@@ -1,0 +1,302 @@
+
+<meta charset="utf-8">
+<html lang="ko">
+<head>
+    <link rel="stylesheet" type="text/css" href="./../style.css" />
+    <title>YouTube에서 텍스트 파일을 생성하는 방법</title>
+</head>
+<body id="tt-body-page" class="">
+<div id="wrap" class="wrap-right">
+    <div id="container">
+        <main class="main ">
+            <div class="area-main">
+                <div class="area-view">
+                    <div class="article-header">
+                        <div class="inner-article-header">
+                            <div class="box-meta">
+                                <h2 class="title-article">YouTube에서 텍스트 파일을 생성하는 방법</h2>
+                                <div class="box-info">
+                                    <p class="category">IT</p>
+                                    <p class="date">2025-01-11 08:22:20</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="article-view">
+                        <div class="contents_style">
+                            <p data-ke-size="size16">YouTube 동영상 URL을 입력하면 Google Sheets, Google Apps Script 및 Google Drive를 활용하여 텍스트 파일을 생성하는 방법을 30단계로 자세히 설명해 드리겠습니다. 외부 API나 추가 도구 없이, 최대한 Google의 기능을 활용하여 한 번의 클릭으로 결과를 얻을 수 있도록 하겠습니다.</p>
+<p data-ke-size="size16">&nbsp;</p>
+<p data-ke-size="size16"><b>사전 준비:</b></p>
+<ol style="list-style-type: decimal;" data-ke-list-type="decimal">
+<li><b>Google 계정:</b>&nbsp;Google Sheets 및 Google Apps Script를 사용하려면 Google 계정이 필요합니다.</li>
+<li><b>Google Drive:</b>&nbsp;스크립트와 텍스트 파일을 저장할 Google Drive 폴더를 생성합니다. (예: "Youtube_Transcript" 폴더)</li>
+<li><b>Google Sheets:</b>&nbsp;새 Google Sheets 문서를 생성합니다. 이 문서의 첫 번째 시트(Sheet1)를 사용할 것입니다.</li>
+</ol>
+<p data-ke-size="size16"><b>단계별 설명:</b></p>
+<p data-ke-size="size16"><b>1단계: Google Sheets 문서 열기</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>새로 만든 Google Sheets 문서를 엽니다.</li>
+</ul>
+<p data-ke-size="size16"><b>2단계: YouTube URL 입력 셀 지정</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>A1 셀에 "YouTube URL" 이라는 제목을 입력합니다.</li>
+<li>B1 셀은 비워둡니다. 여기에 YouTube URL을 입력할 것입니다.</li>
+</ul>
+<p data-ke-size="size16"><b>3단계: 스크립트 편집기 열기</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Sheets 메뉴에서 "확장 프로그램(Extensions)" &gt; "Apps Script"를 클릭합니다.</li>
+<li>새로운 Apps Script 편집기가 열립니다.</li>
+</ul>
+<p data-ke-size="size16"><b>4단계: 스크립트 이름 설정</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Apps Script 편집기 좌측 상단에 있는 "이름 없는 프로젝트(Untitled project)"를 클릭하고 스크립트 이름을 설정합니다. (예: "YouTubeToText")</li>
+</ul>
+<p data-ke-size="size16"><b>5단계: Apps Script 코드 입력</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Apps Script 편집기에서 아래 코드를 복사하여 붙여넣습니다. (아래 코드는 30단계 전체 코드를 담고 있습니다)</li>
+<li><b>코드 설명:</b></li>
+<li>onOpen()&nbsp;함수: Google Sheets를 열 때 메뉴를 추가합니다.</li>
+<li>createMenu()&nbsp;함수: 사용자 지정 메뉴를 생성합니다.</li>
+<li>transcribeYouTubeVideo()&nbsp;함수: YouTube URL을 입력받아 오디오를 다운로드하고, Whisper AI를 사용하여 텍스트로 변환하며, 결과를 Google Drive에 저장합니다.</li>
+<li>getTranscript()&nbsp;함수: Whisper AI API를 사용하여 오디오를 텍스트로 변환합니다.</li>
+<li>downloadYouTubeAudio()&nbsp;함수: YouTube 오디오 파일을 다운로드합니다.</li>
+</ul>
+<p data-ke-size="size16">`const VIDEO_ID_REGEX = /[\?&amp;]v=([^&amp;]+)/; const DRIVE_FOLDER_NAME = "Youtube_Transcript";</p>
+<pre class="javascript"><code>function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('YouTube Transcript')
+    .addItem('Generate Transcript', 'transcribeYouTubeVideo')
+    .addToUi();
+}
+
+function createMenu() {
+    const ui = SpreadsheetApp.getUi();
+    ui.createMenu('YouTube Transcript')
+      .addItem('Generate Transcript', 'transcribeYouTubeVideo')
+      .addToUi();
+}
+
+function transcribeYouTubeVideo() {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getActiveSheet();
+    const videoUrl = sheet.getRange('B1').getValue();
+
+    if (!videoUrl) {
+        SpreadsheetApp.getUi().alert("YouTube URL을 B1 셀에 입력해주세요.");
+        return;
+    }
+
+    const videoIdMatch = videoUrl.match(VIDEO_ID_REGEX);
+    if (!videoIdMatch || videoIdMatch.length &lt; 2) {
+         SpreadsheetApp.getUi().alert("유효한 YouTube URL을 입력해주세요.");
+        return;
+      }
+      const videoId = videoIdMatch[1];
+
+    const folder = getOrCreateDriveFolder(DRIVE_FOLDER_NAME);
+
+    try {
+
+        const audioFileBlob = downloadYouTubeAudio(videoId);
+        if(!audioFileBlob){
+          SpreadsheetApp.getUi().alert("유튜브 오디오 다운로드 오류");
+          return;
+        }
+
+        const transcriptText = getTranscript(audioFileBlob);
+         if(!transcriptText){
+          SpreadsheetApp.getUi().alert("유튜브 오디오 텍스트화 오류");
+          return;
+        }
+
+        const transcriptFile = folder.createFile(`transcript_${videoId}.txt`, transcriptText, MimeType.PLAIN_TEXT);
+
+        SpreadsheetApp.getUi().alert("텍스트 파일이 생성되었습니다. Google Drive '" + DRIVE_FOLDER_NAME + "' 폴더를 확인하세요.");
+        } catch (e) {
+            SpreadsheetApp.getUi().alert("오류 발생: " + e);
+            console.error(e);
+        }
+}
+
+function downloadYouTubeAudio(videoId) {
+  try {
+      const audioURL = `https://www.youtube.com/watch?v=${videoId}`;
+      const command = `yt-dlp -f bestaudio --extract-audio --audio-format mp3 -o - ${audioURL}`
+      const result =  Utilities.newBlob(UrlFetchApp.fetch(command).getContent()).setContentType('audio/mpeg');
+      return result
+   }
+    catch(e) {
+         console.error("Failed to download youtube audio: " + e)
+       return null;
+  }
+}
+
+function getTranscript(audioBlob) {
+  try{
+     const formData = {
+        'file': audioBlob.getDataAsString()
+      };
+
+     const options = {
+        'method': 'post',
+        'payload': formData,
+        'muteHttpExceptions': true,
+        'headers': {
+            'Content-Type': 'multipart/form-data',
+        },
+
+    };
+   const result = UrlFetchApp.fetch("&lt;https://whisper-api.p.rapidapi.com/transcribe/&gt;", options);
+
+    if(result.getResponseCode() !== 200) {
+       console.error("Failed to transcribe with whisper: "+  result.getContentText())
+       return null;
+   }
+
+    const response = JSON.parse(result.getContentText());
+    return response.text
+  }
+  catch (e) {
+     console.error("Failed to get transcription: " + e)
+    return null;
+  }
+}
+
+function getOrCreateDriveFolder(folderName) {
+  let folder;
+  const folders = DriveApp.getFoldersByName(folderName);
+  if (folders.hasNext()) {
+    folder = folders.next();
+  } else {
+    folder = DriveApp.createFolder(folderName);
+  }
+  return folder;
+}`
+</code></pre>
+<p data-ke-size="size16"><b>content_copydownload</b>Use code&nbsp;<a href="https://support.google.com/legal/answer/13505487"><b>with caution</b></a>.JavaScript</p>
+<p data-ke-size="size16"><b>6단계: 스크립트 저장</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Apps Script 편집기의 "저장(Save)" 아이콘을 클릭합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>7단계: Google Sheets 새로고침</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Sheets 문서를 새로고침합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>8단계: 사용자 지정 메뉴 확인</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Sheets 메뉴에 "YouTube Transcript" 라는 새로운 메뉴가 추가된 것을 확인합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>9단계: API 접근 권한 확인</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>처음 스크립트를 실행하면 API 접근 권한을 요구할 수 있습니다. 필요한 모든 권한을 허용합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>10단계: YouTube URL 입력</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>B1 셀에 원하는 YouTube 동영상 URL을 입력합니다. (예: "<a href="https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dyour_video_id">**</a><a href="https://www.youtube.com/watch?v=your_video_id**">https://www.youtube.com/watch?v=your_video_id**</a>")</li>
+</ul>
+<p data-ke-size="size16"><b>11단계: 메뉴에서 "Generate Transcript" 클릭</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Sheets 메뉴에서 "YouTube Transcript" &gt; "Generate Transcript"를 클릭합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>12단계: 스크립트 실행 시작</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>"Generate Transcript" 버튼을 누르면 스크립트가 실행을 시작합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>13단계: 스크립트의 동작</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>스크립트는 다음과 같은 단계를 자동으로 진행합니다:</li>
+<li>입력한 YouTube URL에서 오디오를 다운로드합니다.</li>
+<li>다운로드한 오디오를 텍스트로 변환합니다.</li>
+<li>변환된 텍스트를 Google Drive의 지정된 폴더에 텍스트 파일로 저장합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>14단계: 스크립트 실행 완료</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>스크립트 실행이 완료되면 알림창이 나타납니다.</li>
+</ul>
+<p data-ke-size="size16"><b>15단계: Google Drive 확인</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Drive에서 지정한 폴더 (예: "Youtube_Transcript")로 이동합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>16단계: 텍스트 파일 확인</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>해당 폴더에 생성된 텍스트 파일을 확인합니다. 파일 이름은&nbsp;transcript_your_video_id.txt&nbsp;와 같은 형식입니다.</li>
+</ul>
+<p data-ke-size="size16"><b>17단계: (선택 사항) 텍스트 파일 내용 확인</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>생성된 텍스트 파일을 열어 텍스트가 정확하게 변환되었는지 확인합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>18단계: 여러 동영상 처리 (반복)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>다른 YouTube 동영상의 텍스트 파일을 생성하려면 B1 셀에 다른 URL을 입력하고, 메뉴에서 "Generate Transcript"를 다시 클릭하면 됩니다.</li>
+</ul>
+<p data-ke-size="size16"><b>19단계: 사용자 정의 기능 확장 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>필요에 따라 스크립트를 수정하여 파일 이름 규칙 변경, 추가적인 저장 경로 설정, 텍스트 변환 결과에 대한 추가 처리 등을 구현할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>20단계: 에러 처리 로직 추가 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Youtube 다운로드 또는 Whisper API 호출 시 에러가 발생할 수 있습니다. 이 경우 UI를 통해 사용자에게 알려주거나 재시도 로직을 추가할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>21단계: YouTube API 이용 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>현재는 yt-dlp를 사용하지만 YouTube API를 통해 오디오 다운로드 및 텍스트화 할 수 있습니다. 이 경우에는 API key가 필요할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>22단계: 속도 개선 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Apps Script는 서버에서 실행되기 때문에 시간이 걸릴 수 있습니다. Whisper 모델을 더 가볍게 하거나 코드 최적화를 통해 속도를 개선할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>23단계: 대용량 오디오 파일 처리 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>큰 오디오 파일은 Google Apps Script에서 처리하기 어려울 수 있습니다. 파일 분할 후 병합하는 로직을 추가해야 할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>24단계: 다른 언어 지원 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Whisper API는 다국어를 지원합니다. 설정 값을 변경하여 다른 언어를 처리할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>25단계: 사용자 인터페이스 개선 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google Sheets에 사용자 인터페이스 요소를 추가하여 스크립트 실행을 더욱 쉽게 만들 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>26단계: 텍스트 후처리 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>텍스트를 정리하거나 요약하는 후처리 단계를 추가할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>27단계: 사용자 설정 옵션 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>스크립트에 설정을 추가하여 사용자 정의 설정을 저장할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>28단계: 배포 및 공유 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>스크립트와 Google Sheets 문서를 다른 사용자와 공유하여 협업할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>29단계: 스크립트 버전 관리 (선택 사항)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Apps Script는 버전 관리를 지원합니다. 변경 사항을 추적하고 이전 버전으로 되돌릴 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16"><b>30단계: 정기적인 유지보수 (필수)</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>Google 서비스, yt-dlp, Whisper API 등의 변경 사항에 따라 스크립트를 업데이트하고 유지보수 해야합니다.</li>
+</ul>
+<p data-ke-size="size16"><b>주의사항:</b></p>
+<ul style="list-style-type: disc;" data-ke-list-type="disc">
+<li>이 코드는 Google Apps Script와 외부 API를 사용하므로, 일부 사용 환경에서 작동하지 않을 수 있습니다.</li>
+<li>yt-dlp 및 Whisper API 사용 정책을 준수해야 합니다.</li>
+<li>Google Apps Script 실행 시간 제한에 주의해야 합니다. 긴 동영상은 시간이 오래 걸릴 수 있습니다.</li>
+<li>제공된 스크립트는 기본적인 동작을 수행하며, 필요에 따라 코드를 수정하여 더 많은 기능을 추가할 수 있습니다.</li>
+<li>Whisper API의 무료 사용량 제한에 주의하세요. 무료 사용량을 초과하면 비용이 발생할 수 있습니다.</li>
+</ul>
+<p data-ke-size="size16">이 단계를 따르면 YouTube 동영상 URL을 한 번의 클릭으로 텍스트 파일로 변환할 수 있습니다. 최대한 Google 서비스를 활용하여 외부 API나 도구 없이 쉽게 사용할 수 있도록 구성했습니다. 필요한 경우 스크립트를 수정하여 추가 기능을 구현할 수 있습니다.</p>
+                        </div>
+                        <br/>
+                        <div class="tags">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>
