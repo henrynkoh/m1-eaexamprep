@@ -262,15 +262,15 @@ export default function UsefulResourcesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 py-20">
+      <div className="container mx-auto px-4 sm:px-6">
         <header className="mb-8">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-primary">Useful Resources</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-primary">Useful Resources</h1>
               <p className="text-gray-600 mt-2">Additional materials and guides for EA exam preparation</p>
             </div>
-            <Link href="/resources" className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors inline-flex items-center gap-2">
+            <Link href="/resources" className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors inline-flex items-center gap-2 w-max">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
               </svg>
@@ -279,7 +279,7 @@ export default function UsefulResourcesPage() {
           </div>
         </header>
         
-        <div className="bg-white rounded-lg shadow-md p-8">
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-8">
           <div className="grid gap-6">
             {resources.map((resource, index) => (
               <div key={index} className="border-b pb-5 last:border-0 last:pb-0">
@@ -295,13 +295,13 @@ export default function UsefulResourcesPage() {
                       </svg>
                     )}
                   </div>
-                  <div>
+                  <div className="flex-1 min-w-0">
                     {resource.isPdf ? (
                       <a 
                         href={resource.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                        className="text-base sm:text-lg font-medium text-blue-600 hover:text-blue-800 hover:underline break-words"
                       >
                         {resource.title}
                         {resource.fileSize && <span className="ml-2 text-gray-500 text-sm">({resource.fileSize})</span>}
@@ -311,12 +311,12 @@ export default function UsefulResourcesPage() {
                         href={resource.url} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="text-lg font-medium text-blue-600 hover:text-blue-800 hover:underline"
+                        className="text-base sm:text-lg font-medium text-blue-600 hover:text-blue-800 hover:underline break-words"
                       >
                         {resource.title}
                       </a>
                     )}
-                    <p className="text-gray-600 mt-1">{resource.description}</p>
+                    <p className="text-gray-600 mt-1 text-sm sm:text-base">{resource.description}</p>
                   </div>
                 </div>
               </div>
@@ -324,9 +324,9 @@ export default function UsefulResourcesPage() {
           </div>
         </div>
         
-        <div className="mt-8 bg-blue-50 rounded-lg p-6 border border-blue-200">
-          <h2 className="text-xl font-semibold text-primary mb-3">Note on Resources</h2>
-          <p className="text-gray-700">
+        <div className="mt-8 bg-blue-50 rounded-lg p-4 sm:p-6 border border-blue-200">
+          <h2 className="text-lg sm:text-xl font-semibold text-primary mb-3">Note on Resources</h2>
+          <p className="text-gray-700 text-sm sm:text-base">
             These resources are stored locally in your application's public directory. They can be accessed directly through your browser without needing external access.
           </p>
         </div>
